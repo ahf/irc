@@ -468,6 +468,19 @@ int	exit_client(aClient *cptr, aClient *sptr, aClient *from,
 			sendto_flog(sptr, EXITC_REG, sptr->user->username,
 				    sptr->user->host);
 # endif
+# if defined(CLIENTS_CHANNEL) && (CLIENTS_CHANNEL_LEVEL & CCL_QUIT)
+			sendto_flag(SCH_CLIENT, "%s %s %s %s QUIT %c"
+#  if (CLIENTS_CHANNEL_LEVEL & CCL_QUITINFO)
+				" :%s"
+#  endif
+				, sptr->user->uid, sptr->name,
+				sptr->user->username, sptr->user->host,
+				sptr->exitc
+#  if (CLIENTS_CHANNEL_LEVEL & CCL_QUITINFO)
+				, comment
+#  endif
+				);
+# endif
 		}
 		else if (!IsService(sptr))
 		{
