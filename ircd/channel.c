@@ -2786,7 +2786,8 @@ Reg	aChannel	*chptr;
 /*
 ** m_topic
 **	parv[0] = sender prefix
-**	parv[1] = topic text
+**	parv[1] = channels list
+**	parv[2] = topic text
 */
 int	m_topic(cptr, sptr, parc, parv)
 aClient *cptr, *sptr;
