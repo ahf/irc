@@ -342,6 +342,12 @@ struct	ListItem	{
 #define IsConfNoResolveMatch(x)	((x)->flags & CFLAG_NORESOLVEMATCH)
 #define IsConfFallThrough(x)	((x)->flags & CFLAG_FALL)
 
+#define PFLAG_DELAYED		0x00001
+#define PFLAG_SERVERONLY	0x00002
+
+#define IsConfDelayed(x)	((x)->flags & PFLAG_DELAYED)
+#define IsConfServeronly(x)	((x)->flags & PFLAG_SERVERONLY)
+
 #define	IsIllegal(x)	((x)->status & CONF_ILLEGAL)
 
 typedef	struct	{
