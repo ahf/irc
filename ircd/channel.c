@@ -1110,6 +1110,9 @@ char	*parv[], *mbuf, *pbuf;
 				break;
 			if (whatt == MODE_ADD)
 			    {
+				if (**parv == ':')
+					/* this won't propagate right */
+					break;
 				lp = &chops[opcnt++];
 				lp->value.cp = *parv;
 				lp->flags = MODE_ADD|MODE_BAN;
@@ -1150,6 +1153,9 @@ char	*parv[], *mbuf, *pbuf;
 				break;
 			if (whatt == MODE_ADD)
 			    {
+				if (**parv == ':')
+					/* this won't propagate right */
+					break;
 				lp = &chops[opcnt++];
 				lp->value.cp = *parv;
 				lp->flags = MODE_ADD|MODE_EXCEPTION;
@@ -1190,6 +1196,9 @@ char	*parv[], *mbuf, *pbuf;
 				break;
 			if (whatt == MODE_ADD)
 			    {
+				if (**parv == ':')
+					/* this won't propagate right */
+					break;
 				lp = &chops[opcnt++];
 				lp->value.cp = *parv;
 				lp->flags = MODE_ADD|MODE_INVITE;
