@@ -2221,7 +2221,7 @@ int	parc;
 char	*parv[];
 {
 	aClient *acptr = NULL;
-	char	*inpath = get_client_name(cptr,FALSE);
+	char	*inpath = cptr->name;
 	char	*user, *path, *killer;
 	int	chasing = 0;
 
@@ -2302,7 +2302,7 @@ char	*parv[];
 		**	...!operhost!oper (comment)
 		*/
 		if (IsUnixSocket(cptr)) /* Don't use get_client_name syntax */
-			inpath = me.sockhost;
+			inpath = ME;
 		else
 			inpath = cptr->sockhost;
 		if (!BadPtr(path))
@@ -3224,10 +3224,17 @@ int	parc;
 char	*parv[];
 {
 	aClient *acptr;
-
+	char *path = (parc > 2) ? parv[2] : "*no-path*";
+	
+	if (parc < 2)
+	{
+		sendto_flag(SCH_ERROR, "Save with not enough parameters from %s",
+				cptr->name);
+		return;
+	}
 	/* need sanity checks here -syrk */
 	acptr = find_uid(parv[1], NULL);
 	if (acptr && strcasecmp(acptr->name, acptr->user->uid))
-		save_user(cptr, acptr, parv[2]);
+		save_user(cptr, acptr, path);
 	return 0;
 }
