@@ -232,41 +232,43 @@ time_t	now;
 	    {
 		r2ptr = rptr->next;
 		tout = rptr->sentat + rptr->timeout;
-		if (now >= tout && --rptr->retries <= 0)
-		    {
+		if (now >= tout)
+			if (--rptr->retries <= 0)
+			    {
 #ifdef DEBUG
-			Debug((DEBUG_ERROR,"timeout %x now %d cptr %x",
-				rptr, now, rptr->cinfo.value.cptr));
+				Debug((DEBUG_ERROR,"timeout %x now %d cptr %x",
+				       rptr, now, rptr->cinfo.value.cptr));
 #endif
-			reinfo.re_timeouts++;
-			cptr = rptr->cinfo.value.cptr;
-			switch (rptr->cinfo.flags)
-			{
-			case ASYNC_CLIENT :
-				ClearDNS(cptr);
-				if (!DoingAuth(cptr))
-					SetAccess(cptr);
-				break;
-			case ASYNC_CONNECT :
-				sendto_flag(SCH_ERROR,
-					    "Host %s unknown", rptr->name);
-				break;
-			}
-			rem_request(rptr);
-			continue;
-		    }
-		else
-		    {
-			rptr->sentat = now;
-			rptr->timeout += rptr->timeout;
-			resend_query(rptr);
-			tout = now + rptr->timeout;
+				reinfo.re_timeouts++;
+				cptr = rptr->cinfo.value.cptr;
+				switch (rptr->cinfo.flags)
+				    {
+				case ASYNC_CLIENT :
+					ClearDNS(cptr);
+					if (!DoingAuth(cptr))
+						SetAccess(cptr);
+					break;
+				case ASYNC_CONNECT :
+					sendto_flag(SCH_ERROR,
+						    "Host %s unknown",
+						    rptr->name);
+					break;
+				    }
+				rem_request(rptr);
+				continue;
+			    }
+			else
+			    {
+				rptr->sentat = now;
+				rptr->timeout += rptr->timeout;
+				resend_query(rptr);
+				tout = now + rptr->timeout;
 #ifdef DEBUG
-			Debug((DEBUG_INFO,"r %x now %d retry %d c %x",
-				rptr, now, rptr->retries,
-				rptr->cinfo.value.cptr));
+				Debug((DEBUG_INFO,"r %x now %d retry %d c %x",
+				       rptr, now, rptr->retries,
+				       rptr->cinfo.value.cptr));
 #endif
-		    }
+			    }
 		if (!next || tout < next)
 			next = tout;
 	    }
