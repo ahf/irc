@@ -1131,3 +1131,13 @@ void	check_split(void)
 	}
 }
 
+/* Some day play with better random functions (configure) etc. --B. */
+int	myrand(void)
+{
+	return rand();
+}
+
+void	mysrand(unsigned int seed)
+{
+	srand(seed);
+}
