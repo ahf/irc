@@ -83,6 +83,7 @@ char *infotext[] =
 	"",
 	"Thanks to the following people for help with preparing 2.10",
 	"",
+	"Q            Kurt Roeckx              Q@ping.be",
 	"Core         Magnus Tjernstrom        d92-mtm@ludd.luth.se",
 	"",
 	"Those who helped in prior versions and continue to be helpful:",
