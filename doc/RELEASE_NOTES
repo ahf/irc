@@ -32,6 +32,7 @@ Important changes in 2.11.0 (since 2.10.3p5):
 	* localstatedir in configure changed from var/run to var, be careful.
 	* user mode +w is doing nothing: class usage is in stats Y and wallops
 	  are sent to a new server channel &WALLOPS.
+	* irc client is no longer included.
 
 This is version 2.10.3 of the IRC software.
 ===============================================================================

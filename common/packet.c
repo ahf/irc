@@ -23,17 +23,9 @@ static  char rcsid[] = "@(#)$Id$";
 #endif
 
 #include "os.h"
-#ifndef CLIENT_COMPILE
-# include "s_defines.h"
-#else
-# include "c_defines.h"
-#endif
+#include "s_defines.h"
 #define PACKET_C
-#ifndef CLIENT_COMPILE
-# include "s_externs.h"
-#else
-# include "c_externs.h"
-#endif
+#include "s_externs.h"
 #undef PACKET_C
 
 /*
@@ -147,7 +139,6 @@ int	dopacket(aClient *cptr, char *buffer, int length)
 				** structure *does* not exist anymore!!! --msa
 				*/
 				return FLUSH_BUFFER;
-#ifndef CLIENT_COMPILE
 			/*
 			** Socket is dead so exit (which always returns with
 			** FLUSH_BUFFER here).  - avalon
@@ -170,7 +161,6 @@ int	dopacket(aClient *cptr, char *buffer, int length)
 			*/
 			if (IsServer(cptr) && (cptr->flags & FLAGS_UNKCMD))
 				break;
-#endif
 			ch1 = bufptr;
 		    }
 		else if (ch1 < bufptr + (sizeof(cptr->buffer)-1))
