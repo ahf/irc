@@ -747,6 +747,10 @@ char	*comment;
 				del_invite(sptr, lp->value.chptr);
 				/* again, this is all that is needed */
 
+			/* remove from uid hash table */
+			if (UniqueUser(sptr))
+				del_from_uid_hash_table(sptr->user->uid, sptr);
+
 			/* Add user to history */
 #ifndef BETTER_NDELAY
 			add_history(sptr, (sptr->flags & FLAGS_QUIT) ? 
