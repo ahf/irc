@@ -636,7 +636,6 @@ HEADER	*hptr;
 		cp += 4; /* INT32SZ */
 		dlen =  (int)ircd_getshort((u_char *)cp);
 		cp += 2; /* INT16SZ */
-		rptr->type = type;
 
 		len = strlen(hostbuf);
 		/* name server never returns with trailing '.' */
@@ -649,6 +648,16 @@ HEADER	*hptr;
 			len = MIN(len + strlen(ircd_res.defdname),
 				  sizeof(hostbuf) - 1);
 		    }
+
+		/* Check that it's a possible reply to the request we send. */
+		if (rptr->type != type && type != T_CNAME)
+		{
+			sendto_flag(SCH_ERROR, "Wrong reply type looking up %s. "
+				"Got: %d, expected %d.", hostbuf,
+				type, rptr->type);
+			cp += dlen;
+			continue;
+		}
 
 		switch(type)
 		{
