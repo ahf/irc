@@ -333,11 +333,11 @@ static char		digits[] = "0123456789";
 
 /* Forward. */
 
-static int		special(int);
-static int		printable(int);
-static int		dn_find(const u_char *, const u_char *,
-				const u_char * const *,
-				const u_char * const *);
+static int		special __P((int));
+static int		printable __P((int));
+static int		dn_find __P((const u_char *, const u_char *,
+				     const u_char * const *,
+				     const u_char * const *));
 
 /* Public. */
 
