@@ -374,7 +374,7 @@ int	register_user(aClient *cptr, aClient *sptr, char *nick, char *username)
 			strncpyzt(sptr->user->username, username, USERLEN+1);
 			if (sptr->passwd[0])
 				sendto_iauth("%d P %s", sptr->fd,sptr->passwd);
-			sendto_iauth("%d U %s", sptr->fd, username);
+			sendto_iauth("%d U %s", sptr->fd, sptr->user->username);
 			return 1;
 		    }
 		if (!DoneXAuth(sptr) && (iauth_options & XOPT_REQUIRED))
