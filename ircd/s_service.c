@@ -331,7 +331,7 @@ char	*parv[];
 		server = parv[2];
 		sptr->hopcount = atoi(parv[5]);
 		sp = find_tokserver(atoi(server), cptr, NULL);
-		if (!sp)
+		if (sp == NULL)
 		    {
 			sendto_flag(SCH_ERROR,
                        	    "ERROR: SERVICE:%s without SERVER:%s from %s",
