@@ -29,7 +29,7 @@ static  char rcsid[] = "@(#)$Id$";
 
 /****************************** PRIVATE *************************************/
 
-int	socks_start(u_int cl);
+static	int	socks_start(u_int cl);
 
 #define CACHETIME 30
 #define SOCKSPORT 1080

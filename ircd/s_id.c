@@ -208,7 +208,7 @@ int	cid_ok(char *name, int n)
 
 	for (i = 1; i <= n; i++)
 	{
-		if (alphabet_id[name[i]] == -1)
+		if (alphabet_id[(unsigned char)name[i]] == -1)
 		{
 			return 0;
 		}
