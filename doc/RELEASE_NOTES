@@ -20,6 +20,11 @@ Important configuration changes between 2.9.x and 2.10.x:
 
 	* The V line format has changed!
 
+------
+
+If the irc daemon is unable to bind any socket to listen to for incoming
+connections, it will die rather than stay alive.
+
 ===============================================================================
 
 New feature in 2.9.5:
