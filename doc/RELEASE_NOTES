@@ -8,6 +8,7 @@ New features in 2.10:
 	* added channel mode +e (EFnet's exceptions to bans).
 	* added channel mode +I (invitations).
 	* /invite can now be used to override channel bans & limit.
+	* AWAY is no longer supported.
 
 ===============================================================================
 
