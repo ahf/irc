@@ -554,9 +554,9 @@ char	*buffer, *bufend;
 		    !(IsServer(cptr) || IsService(cptr)))
 		    {	/* Flood control partly migrated into penalty */
 			if (bootopt & BOOT_PROT)
-				cptr->since = timeofday;
-			else
 				cptr->since += (1 + i / 100);
+			else
+				cptr->since = timeofday;
 			/* Allow only 1 msg per 2 seconds
 			 * (on average) to prevent dumping.
 			 * to keep the response rate up,
