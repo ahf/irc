@@ -590,16 +590,16 @@ char	*i0, *i1, *i2, *i3, *i4, *i5, *i6, *i7, *i8, *i9, *i10, *i11;
  */
 char *make_version()
 {
-	int ve, re, pl, be, al;
+	int ve, re, mi, dv, pl;
 	char ver[15];
 
-	sscanf(PATCHLEVEL, "%2d%2d%2d%2d%2d", &ve, &re, &pl, &be, &al);
+	sscanf(PATCHLEVEL, "%2d%2d%2d%2d%2d", &ve, &re, &mi, &dv, &pl);
 	sprintf(ver, "%d.%d", ve, re);	/* version & revision */
+	if (mi)	/* minor revision */
+		sprintf(ver + strlen(ver), ".%d", dv ? mi+1 : mi);
+	if (dv)	/* alpha/beta, note how visual patchlevel is raised above */
+		sprintf(ver + strlen(ver), "%c%d", DEVLEVEL, dv);
 	if (pl)	/* patchlevel */
-		sprintf(ver + strlen(ver), ".%d", be ? pl+1 : pl);
-	if (be)	/* beta, note how visual patchlevel is raised above */
-		sprintf(ver + strlen(ver), "b%d", be);
-	if (al)	/* patch */
-		sprintf(ver + strlen(ver), "p%d", al);
+		sprintf(ver + strlen(ver), "p%d", pl);
 	return mystrdup(ver);
 }
