@@ -1295,7 +1295,7 @@ Link *lp;
 		lp = find_user_link(repchan->members, acptr);
 	if (lp != NULL)
 	    {
-		if (lp->flags & (CHFL_UNIQOP|CHFL_CHANOP))
+		if (lp->flags & CHFL_CHANOP)
 			status[i++] = '@';
 		else if (lp->flags & CHFL_VOICE)
 			status[i++] = '+';
