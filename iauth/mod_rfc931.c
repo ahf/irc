@@ -49,6 +49,7 @@ rfc931_init(self)
 AnInstance *self;
 {
 	self->data = (void *) malloc(sizeof(struct _stats));
+	bzero((char *) self->data, sizeof(struct _stats));
 	return NULL;
 }
 
