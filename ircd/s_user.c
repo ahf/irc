@@ -2689,8 +2689,10 @@ int	m_kill(aClient *cptr, aClient *sptr, int parc, char *parv[])
 		return 1;
 	    }
 	sendto_flag(SCH_KILL,
-		    "Received KILL message for %s. From %s Path: %s!%s",
-		    acptr->name, parv[0], inpath, path);
+		    "Received KILL message for %s!%s@%s[%s/%s]. From %s Path: %s!%s",
+		    acptr->name, acptr->user->username, acptr->user->host,
+		acptr->user->servp->bcptr->name, isdigit(acptr->user->servp->sid[0]) ?
+		acptr->user->servp->sid : "2.10", parv[0], inpath, path);
 #if defined(USE_SYSLOG) && defined(SYSLOG_KILL)
 	if (IsOper(sptr))
 		syslog(LOG_DEBUG,"KILL From %s For %s Path %s!%s",
