@@ -118,9 +118,6 @@ char	serveropts[] = {
 #ifdef	ENABLE_SUMMON
 'S',
 #endif
-#ifdef	OPER_REMOTE
-'t',
-#endif
 #ifdef TOPIC_WHO_TIME
 'T',
 #endif
