@@ -2113,8 +2113,17 @@ char	*parv[];
 	salt[0] = '\0';
 	if (password && aconf->passwd)
 	    {
-		salt[0] = aconf->passwd[0];
-		salt[1] = aconf->passwd[1];
+		/* Determine if MD5 or DES */
+		if (strncmp(aconf->passwd, "$1$", 3))
+		    {
+			salt[0] = aconf->passwd[0];
+			salt[1] = aconf->passwd[1];
+		    }
+		else
+		    {
+			salt[0] = aconf->passwd[3];
+			salt[1] = aconf->passwd[4];
+		    }
 		salt[2] = '\0';
 		encr = crypt(password, salt);
 	    }
