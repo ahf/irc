@@ -7,7 +7,7 @@ This directory contains ircd related contributions.  Most of them fall
 	* service
 
 Each contribution lives in its own directory under contrib/ and has a
-README file.  For those who need to be compiled, this can be done in
+README file.  For those which need to be compiled, this can be done in
 the same directory as you compiled irc and/or ircd.
 
 If you want to submit a package for this directory, see the RULES file.
