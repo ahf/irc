@@ -45,7 +45,7 @@ static void
 set_clean_username(cptr)
 aClient *cptr;
 {
-	int i, dirty = 0;
+	int i = 0, dirty = 0;
 	char *s;
 
 	if (cptr->auth == NULL)
