@@ -958,3 +958,25 @@ static	void	remove_unknown(aClient *cptr, char *sender)
 			    sender, get_client_name(cptr, FALSE));
 }
 
+int	m_ignore(aClient *cptr, aClient *sptr, int parc, char **parv)
+{
+	return 1;
+}
+
+int	m_noprivileges(aClient *cptr, aClient *sptr, int parc, char **parv)
+{
+	sendto_one(sptr, replies[ERR_NOPRIVILEGES], ME, parv[0]);
+	return 1;
+}
+
+int	m_unregistered(aClient *cptr, aClient *sptr, int parc, char **parv)
+{
+	sendto_one(sptr, replies[ERR_NOTREGISTERED], ME, "*");
+	return -1;
+}
+
+int	m_registered(aClient *cptr, aClient *sptr, int parc, char **parv)
+{
+	sendto_one(sptr, replies[ERR_ALREADYREGISTRED], ME, parv[0]);
+	return 1;
+}
