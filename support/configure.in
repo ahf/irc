@@ -818,7 +818,6 @@ fi
 ])
 
 AC_DEFUN(IRC_LDM, [
-echo $enable_dsm
 if test -f ../ircd/s_ldm.c; then
   AC_DEFINE(PRETTY_PLEASE)
   LDMOBJ="s_ldm.o"
