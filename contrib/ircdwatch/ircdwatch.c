@@ -487,7 +487,8 @@ Usage:\n\
 %s\n", rcsid);
 }
 
-void main (int argc, char **argv) {
+int
+main (int argc, char **argv) {
   int i;
 
   chdir(DPATH);
