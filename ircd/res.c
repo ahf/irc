@@ -430,6 +430,12 @@ int	type;
 
 	if (rptr && !index(hname, '.') && ircd_res.options & RES_DEFNAMES)
 	    {
+		if (sizeof(hname) - 1 /* ending \0 */ <
+			strlen(hname) + 1 /* dot */ + strlen(ircd_res.defdname))
+		{
+			/* or some other retval? */
+			return -1;
+		}
 		(void)strncat(hname, dot, sizeof(hname) - len - 1);
 		len++;
 		(void)strncat(hname, ircd_res.defdname, sizeof(hname) - len -1);

@@ -108,7 +108,9 @@ int	size;
 			Debug((DEBUG_DNS,"ircd_res_init()"));
 			ircd_res_init();
 		    }
-		if (ircd_res.defdname[0])
+		if (ircd_res.defdname[0] &&
+			sizeof(hname) - 2 /* dot and ending \0 */ >= 
+			strlen(ircd_res.defdname) + strlen(hname))
 		    {
 			(void)strncat(hname, ".", size-1);
 			(void)strncat(hname, ircd_res.defdname, size-2);
