@@ -182,26 +182,22 @@ int	len;
 			istat.is_dbufmore++;
 		}
 		else
+# endif
 		{
-			if (IsServer(to) || IsService(to))
+			char ebuf[BUFSIZE];
+
+			ebuf[0] = '\0';
+			if (IsService(to) || IsServer(to))
 			{
-				sendto_flag(SCH_ERROR,
-					"Max SendQ limit exceeded for %s: %d > %d",
+				SPRINTF(ebuf,
+				"Max SendQ limit exceeded for %s: %d > %d",
 					get_client_name(to, FALSE),
 					DBufLength(&to->sendQ), get_sendq(to));
 			}
 			to->exitc = EXITC_SENDQ;
-			return dead_link(to, "Max Sendq exceeded");
+			return dead_link(to, ebuf[0] ? ebuf :
+				"Max Sendq exceeded");
 		}
-# else /* HUB */
-		if (IsService(to) || IsServer(to))
-			sendto_flag(SCH_ERROR,
-				"Max SendQ limit exceeded for %s: %d > %d",
-			   	get_client_name(to, FALSE),
-				DBufLength(&to->sendQ), get_sendq(to));
-		to->exitc = EXITC_SENDQ;
-		return dead_link(to, "Max Sendq exceeded");
-# endif /* HUB */
 	}
 # ifdef	ZIP_LINKS
 	/*
