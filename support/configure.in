@@ -796,10 +796,10 @@ AC_INIT([irc],[2.11],[ircd-bugs@irc.org])
 AC_REVISION([$Id$])
 AC_PREREQ(2.59)
 
-AC_ARG_WITH(logdir, [  --with-logdir=DIR       log files in DIR [[localstatedir/log/ircd]]], [
+AC_ARG_WITH(logdir, [  --with-logdir=DIR       log files in DIR [[localstatedir/log]]], [
 logdir=$with_logdir
 ],[
-logdir=$localstatedir'/log/ircd'
+logdir=$localstatedir'/log'
 ])
 AC_SUBST(logdir)
 AC_CONFIG_HEADER(setup.h:../support/setup.h.in)
