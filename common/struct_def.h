@@ -306,7 +306,7 @@ struct	ConfItem	{
 	char	*name;
 	int	port;
 	long	flags;		/* I-line flags */
-	u_int	pref;		/* preference value */
+	int	pref;		/* preference value */
 	struct	CPing	*ping;
 	time_t	hold;	/* Hold action until this time (calendar time) */
 	char	*source_ip;
