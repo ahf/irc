@@ -2934,7 +2934,7 @@ aConfItem	*aconf;
 	if (aconf->passwd && isdigit(*aconf->passwd))
 #ifdef INET6
 	    {
-		if (!inet_pton(AF_INET6, aconf->passwd,from.sin6_addr.s6_addr);
+		if (!inet_pton(AF_INET6, aconf->passwd,from.sin6_addr.s6_addr))
 			bcopy(minus_one, from.sin6_addr.s6_addr, IN6ADDRSZ);
 	    }
 #else
