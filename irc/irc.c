@@ -341,6 +341,7 @@ char	*argv[];
 		if (logfile)
 			do_log(NULL, NULL);
 		printf("Press any key.");
+		refresh();
         	getchar();
 		printf("\n");
 #ifdef DOCURSES
