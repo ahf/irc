@@ -304,8 +304,8 @@ aClient *cptr;
 					continue;
 				if (!strcmp(cptr->sockhost, acptr->user->host))
 				    {
-					if (ConfMaxUHGlobal(aconf) > 0 &&
-					    ++ghcnt >= ConfMaxUHGlobal(aconf))
+					if (ConfMaxHGlobal(aconf) > 0 &&
+					    ++ghcnt >= ConfMaxHGlobal(aconf))
 						return -6;
 					if (ConfMaxUHGlobal(aconf) > 0 &&
 					    !strcmp(cptr->user->username,
