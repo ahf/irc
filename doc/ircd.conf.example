@@ -62,7 +62,7 @@
 # Note that 'server name' refers to the name of the irc-server which needs 
 # not to be the same as the hostname of the machine it's running on.
 # Note that <SID> must be globally unique, so if you are part of bigger
-# network, ask other admins, what to set it to. If you are on IRCNet, ask
+# network, ask other admins, what to set it to. If you are on IRCnet, ask
 # your local coord.
 #
 # This let's ircd use the primary ip of your host to establish connections
@@ -81,7 +81,7 @@ M:example.irc.org::Example Geographic Location, Planet Earth:6667:00A
 # A:<Your Name/Location>:<Your E-Mail Addr>:<other info>::<network name>
 # Note that <network name> *must* be one word.
 #
-A:Organization, IRC dept.:Daemon <ircd@example.irc.org>:Client Server::IRCNet
+A:Organization, IRC dept.:Daemon <ircd@example.irc.org>:Client Server::IRCnet
 #
 #
 ############################
