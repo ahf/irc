@@ -557,9 +557,24 @@ int	register_user(aClient *cptr, aClient *sptr, char *nick, char *username)
 
 		aconf = sptr->confs->value.aconf;
 		if (IsUnixSocket(sptr))
+		{
 			strncpyzt(user->host, me.sockhost, HOSTLEN+1);
+		}
 		else
-			strncpyzt(user->host, sptr->sockhost, HOSTLEN+1);
+		{
+			if (IsConfNoResolveMatch(aconf))
+			{
+				/* sockhost contains resolved hostname (if any),
+				 * which we'll use in match_modeid to match. */
+				strncpyzt(user->host, user->sip,
+					HOSTLEN+1);
+			}
+			else
+			{
+				strncpyzt(user->host, sptr->sockhost,
+					HOSTLEN+1);
+			}
+		}
 
 		/* hmpf, why that? --B. */
 		bzero(sptr->passwd, sizeof(sptr->passwd));
