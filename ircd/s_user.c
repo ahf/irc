@@ -951,7 +951,7 @@ nickkilldone:
 static	int	m_message(cptr, sptr, parc, parv, notice)
 aClient *cptr, *sptr;
 char	*parv[];
-int	notice;
+int	parc, notice;
 {
 	Reg	aClient	*acptr;
 	Reg	char	*s;
