@@ -388,7 +388,7 @@ static	void	exit_server(aClient *cptr, aClient *acptr, aClient *from,
 	{
 		acptr2 = acptr->prev;
 		acptr2->flags |= flags;
-		exit_one_client(cptr->from, acptr2, &me, comment2);
+		exit_one_client(cptr->from, acptr2, from, comment2);
 	}
 
 	/* Make sure we only send the last SQUIT to a 2.11 server. */
@@ -400,10 +400,10 @@ static	void	exit_server(aClient *cptr, aClient *acptr, aClient *from,
 	{
 		sendto_flag(SCH_SERVER,
 			"Received SQUIT %s from %s (%s)", acptr->name,
-			acptr == cptr ? from->name : acptr->serv->up->name,
+			from->name,
 			acptr == cptr ? comment : comment2);
 	}
-	exit_one_client(cptr->from, acptr, &me,
+	exit_one_client(cptr->from, acptr, from,
 		acptr == cptr ? comment : comment2);
 	
 	return;
