@@ -1881,7 +1881,7 @@ static	int	can_join(aClient *sptr, aChannel *chptr, char *key)
 
 #ifdef CLIENTS_CHANNEL
 	if (*chptr->chname == '&' && !strcmp(chptr->chname, "&CLIENTS")
-		&& !is_allowed(sptr, ACL_CLIENTS))
+		&& is_allowed(sptr, ACL_CLIENTS))
 		return 0;
 #endif
 

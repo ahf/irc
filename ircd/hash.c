@@ -1297,7 +1297,7 @@ int	m_hash(aClient *cptr, aClient *sptr, int parc, char *parv[])
 		{0, NULL, NULL, NULL, NULL, NULL, NULL, NULL}
 	};
 
-	if (is_allowed(sptr, ACL_HAZH))
+	if (!is_allowed(sptr, ACL_HAZH))
 		return m_nopriv(cptr, sptr, parc, parv);
 	
 	if (parc < 2)

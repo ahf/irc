@@ -681,7 +681,7 @@ int	parse(aClient *cptr, char *buffer, char *bufend)
 		if (!(IsServer(cptr) || IsService(cptr)))
 		    {	/* Flood control partly migrated into penalty */
 			if ((bootopt & BOOT_PROT) &&
-				is_allowed(cptr, ACL_NOPENALTY))
+				!is_allowed(cptr, ACL_NOPENALTY))
 				cptr->since += (1 + i / 100);
 			else
 				cptr->since = timeofday;
@@ -787,7 +787,7 @@ int	parse(aClient *cptr, char *buffer, char *bufend)
 	** a LOCAL user client.
 	*/
 	if ((ret > 0) && IsRegisteredUser(cptr) && (bootopt & BOOT_PROT)
-		&& is_allowed(cptr, ACL_NOPENALTY))
+		&& !is_allowed(cptr, ACL_NOPENALTY))
 	    {
 		cptr->since += ret;
 /* only to lurk

@@ -2285,7 +2285,7 @@ int	m_tkline(aClient *cptr, aClient *sptr, int parc, char **parv)
 	int	time, status = CONF_TKILL;
 	char	*user, *host, *reason, *s;
 
-	if (is_allowed(sptr, ACL_TKLINE))
+	if (!is_allowed(sptr, ACL_TKLINE))
 		return m_nopriv(cptr, sptr, parc, parv);
 
 	/* sanity checks */
@@ -2472,7 +2472,7 @@ int	m_untkline(aClient *cptr, aClient *sptr, int parc, char **parv)
 	char	*user, *host;
 	int	deleted = 0;
 	
-	if (is_allowed(sptr, ACL_UNTKLINE))
+	if (!is_allowed(sptr, ACL_UNTKLINE))
 		return m_nopriv(cptr, sptr, parc, parv);
 
 	user = parv[1];
