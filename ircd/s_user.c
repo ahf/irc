@@ -3350,7 +3350,7 @@ int	m_umode(aClient *cptr, aClient *sptr, int parc, char *parv[])
 		    !IsServer(cptr))
 			ClearOper(sptr);
 		if (!(setflags & FLAGS_LOCOP) && IsLocOp(sptr))
-			sptr->user->flags &= ~FLAGS_LOCOP;
+			ClearLocOp(sptr);
 		if ((setflags & FLAGS_RESTRICT) &&
 		    !IsRestricted(sptr))
 		    {
