@@ -601,6 +601,7 @@ aConfItem	*make_conf()
 	aconf->pref = -1;
 	aconf->hold = time(NULL);
 	aconf->source_ip = NULL;
+	aconf->flags = 0L;
 	Class(aconf) = NULL;
 	return (aconf);
 }
