@@ -2361,54 +2361,6 @@ char	*parv[];
 	return 1;
 }
 
-#if !defined(NPATH)
-int	m_note(cptr, sptr, parc, parv)
-aClient	*cptr, *sptr;
-int	parc;
-char	*parv[];
-{
-	Reg	aServer *asptr;
-	Reg	int	i = 0;
-	aClient	*acptr;
-	int	wilds = 0;
-	char	*c, nbuf[50];
-
-	if (parc < 2)
-		return 1;
-
-	c = parv[1];
-
-	while (*c && *c != ' ' && i < 49)
-	    {
-		if (*c == '*' || *c == '?')
-			wilds = 1;
-	  	nbuf[i++] = *c++;
-	    }
-
-	nbuf[i] = 0;
-
-	if (wilds && (IsOper(sptr) || IsServer(sptr)))
-		for (i = highest_fd; i >= 0; i--)
-		    {
-			if (!(acptr = local[i]))
-				continue;
-			if (IsServer(acptr) && acptr != cptr)
-				sendto_one(acptr, ":%s NOTE :%s",
-					   parv[0], parv[1]);
-		    }
-	else
-		for (asptr = svrtop; asptr; asptr = asptr->nexts)
-			if ((acptr = asptr->bcptr) && acptr != cptr &&
-			    !mycmp(nbuf, acptr->name))
-			    {
-				sendto_one(acptr, ":%s NOTE :%s",
-					   parv[0], parv[1]);
-				break;
-			    }
-	return 2;
-}
-#endif
-
 static int user_modes[]	     = { FLAGS_OPER, 'o',
 				 FLAGS_LOCOP, 'O',
 				 FLAGS_INVISIBLE, 'i',

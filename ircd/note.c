@@ -3428,6 +3428,8 @@ char *parv[];
   }  else {
            c = split_string(param, 1, 1);
            if (index(c,'.')) {
+	       return 1;
+#if 0
 	       if (IsServer(sptr)) {
 		   distribute(cptr, sptr, param);
 		   return 0;
@@ -3456,7 +3458,7 @@ char *parv[];
                             return -1;
                           }
 	       } else return 0;
-     
+#endif
 	    }
        }
  if (!IsRegistered(sptr)) { 
