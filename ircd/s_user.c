@@ -2641,7 +2641,7 @@ char	*parv[];
 		if (encr == NULL)
 		    {
 			sendto_flag(SCH_ERROR, "crypt() returned NULL");
-			sendto_one(sptr,err_str(ERR_PASSWDMISMATCH, parv[0]));
+			sendto_one(sptr,replies[ERR_PASSWDMISMATCH], ME,BadTo(parv[0]));
 			return 3;
 		    }
 	    }
