@@ -15,6 +15,9 @@ iauth \- The Internet Relay Chat Authentication Program
 \fIiauth\fP is a slave process used by the \fIircd\fP program to perform
 the authentication of incoming connections.  The \fIircd\fP program starts
 \fIiauth\fP upon startup.
+
+\fIiauth\fP will close and reopen the log file whenever it receives a user
+signal 2, SIGUSR2.  This is useful to rotate the log file.
 .SH OPTIONS
 .TP
 .BI \-c " filename"
