@@ -98,11 +98,7 @@ int	sock;
 		if (termtype == TERMCAP_TERM)
 			tcap_move (-1, i);
 #endif
-#ifdef HPUX
-		if (select(32, (int *)&ready, 0, 0, NULL) < 0) {
-#else
-		if (select(32, &ready, 0, 0, NULL) < 0) {
-#endif
+		if (select(32, (SELECT_FDSET_TYPE *)&ready, 0, 0, NULL) < 0) {
 /*      perror("select"); */
 			continue;
 		}
