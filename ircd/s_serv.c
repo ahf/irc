@@ -2578,11 +2578,6 @@ int	m_connect(aClient *cptr, aClient *sptr, int parc, char *parv[])
 */
 int	m_wallops(aClient *cptr, aClient *sptr, int parc, char *parv[])
 {
-	if (!IsServer(sptr))
-	    {
-		sendto_flag(SCH_ERROR, "User WALLOP from %s", sptr->name);
-		return 2;
-	    }
 	sendto_ops_butone(IsServer(cptr) ? cptr : NULL, parv[0], "%s", parv[1]);
 #ifdef	USE_SERVICES
 	check_services_butone(SERVICE_WANT_WALLOP, NULL, sptr,
