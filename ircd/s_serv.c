@@ -519,25 +519,6 @@ char	*parv[];
 			(void) exit_client(bcptr, bcptr, &me, "Server Exists");
 		    }
 	    }
-	if ((acptr = find_person(host, NULL)) && (acptr != cptr))
-	    {
-		/*
-		** Server trying to use the same name as a person. Would
-		** cause a fair bit of confusion. Enough to make it hellish
-		** for a while and servers to send stuff to the wrong place.
-		*/
-		sendto_one(cptr,"ERROR :Nickname %s already exists!", host);
-		sendto_flag(SCH_ERROR,
-			    "Link %s cancelled: Server/nick collision on %s",
-			    inpath, host);
-		sendto_serv_butone(NULL, /* all servers */
-				   ":%s KILL %s :%s (%s <- %s)",
-				   ME, acptr->name, ME,
-				   acptr->from->name, host);
-		acptr->flags |= FLAGS_KILLED;
-		(void)exit_client(NULL, acptr, &me, "Nick collision");
-		return exit_client(cptr, cptr, &me, "Nick as Server");
-	    }
 
 	if (IsServer(cptr))
 	    {
