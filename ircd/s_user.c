@@ -1170,13 +1170,6 @@ int	parc, notice;
 					   parv[0]), nick);
 				continue;
 			    }
-			if ((s = (char *)rindex(ME, '.')) &&
-			    strcasecmp(rindex(nick, '.'), s))
-			    {
-				sendto_one(sptr, err_str(ERR_BADMASK,
-					   parv[0]), nick);
-				continue;
-			    }
 			sendto_match_butone(IsServer(cptr) ? cptr : NULL, 
 					    sptr, nick + 1,
 					    (*nick == '#') ? MATCH_HOST :
