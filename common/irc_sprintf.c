@@ -1,5 +1,5 @@
 /*
- *   IRC - Internet Relay Chat, ircd/irc_sprintf.c
+ *   IRC - Internet Relay Chat, common/irc_sprintf.c
  *   Copyright (C) 2002 Piotr Kucharski
  *
  *   This program is free software; you can redistribute it and/or modify
