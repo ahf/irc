@@ -75,6 +75,12 @@ void	initlists()
 
 void	outofmemory()
 {
+	if (serverbooting)
+	{
+
+		fprintf(stderr,"Fatal Error: Out of memory.\n");
+		exit(-1);
+	}
 	Debug((DEBUG_FATAL, "Out of memory: restarting server..."));
 	sendto_flag(SCH_NOTICE, "Ouch!!! Out of memory...");
 	restart("Out of Memory");
