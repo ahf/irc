@@ -1358,7 +1358,7 @@ char	*to;
 				   buf, cp->lseq, cp->lrecvd,
 				   cp->ping / (cp->recvd ? cp->recvd : 1),
 				   tmp->pref);
-			sendto_flag(SCH_DEBUG, "%s: %d", buf, cp->seq);
+			/* sendto_flag(SCH_DEBUG, "%s: %d", buf, cp->seq); */
 		    }
 	return;
 }
