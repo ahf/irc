@@ -2576,6 +2576,7 @@ int	m_njoin(aClient *cptr, aClient *sptr, int parc, char *parv[])
 	int chop, cnt = 0;
 	aChannel *chptr = NULL;
 	aClient *acptr;
+	int maxlen;
 
 	if (parc < 3 || *parv[2] == '\0')
 	    {
