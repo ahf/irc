@@ -7,3 +7,8 @@ Anyone with some free time is welcome to fix those =)
   in the hash tables. (Vesa already fixed this bug several
   times but it keeps crashing :^) [We haven't seen this for ages.]
 
+* localhost (127.0.0.1) resolving is wrong with INET6 enabled
+
+* occasionally we see NJOIN protocol errors (server sends the same NJOIN
+  cmd twice somehow)
+

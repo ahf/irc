@@ -8,6 +8,7 @@ Important changes in 2.11.0 (since 2.10.3p5):
 	  clients will stay on with changed nick.
 	* M: requires SID now. Please read INSTALL.txt and example.conf
 	* A: accepts "network name" parameter.
+	* H: can have SID masks to accept. Read docs.
 	* O: and o: in the config has swapped in the meaning, to match
 	  the umode. Update your config.
 	* Nicknames of local clients cannot have [\]^{|}~ chars. Sorry.
