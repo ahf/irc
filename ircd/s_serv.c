@@ -2460,7 +2460,7 @@ int	 m_lusers(aClient *cptr, aClient *sptr, int parc, char *parv[])
 		   istat.is_chan);
 	
 	sendto_one(sptr, replies[RPL_LUSERME], ME, BadTo(parv[0]), m_clients,
-		   m_services, m_servers,
+		   m_services, m_servers, m_clients,
 		   m_services, m_servers);
         sendto_one(sptr, replies[RPL_LUSERMAX], ME, BadTo(parv[0]),
 			istat.is_m_myclnt, istat.is_m_users,
