@@ -2728,7 +2728,7 @@ char	*parv[];
 		return 1;
 	    }
 	clean_channelname(parv[2]);
-	if (check_channelmask(sptr, acptr->from, parv[2]))
+	if (check_channelmask(sptr, acptr->user->servp->bcptr, parv[2]))
 		return 1;
 	if (*parv[2] == '&' && !MyClient(acptr))
 		return 1;
