@@ -914,13 +914,13 @@ void	sendto_common_channels(aClient *user, char *pattern, ...)
 				continue;
 			if (IsAnonymous(channels->value.chptr))
 				continue;
-			for (lp=channels->value.chptr->members;lp;
+			for (lp=channels->value.chptr->clist;lp;
 			     lp=lp->next)
 			    {
 				cptr = lp->value.cptr;
 				if (user == cptr)
 					continue;
-				if (!MyConnect(cptr) || sentalong[cptr->fd])
+				if (!cptr->user) || sentalong[cptr->fd])
 					continue;
 				sentalong[cptr->fd]++;
 #ifndef DEBUGMODE
