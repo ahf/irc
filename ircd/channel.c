@@ -2023,7 +2023,7 @@ char	*parv[];
 					/*
 					 * This is a bit wrong: if a channel
 					 * rightfully ceases to exist, it
-v					 * can still be *locked* for up to
+ 					 * can still be *locked* for up to
 					 * 2*CHIDNB^3 seconds (~24h)
 					 * Is it a reasonnable price to pay to
 					 * ensure shortname uniqueness? -kalt
