@@ -2642,11 +2642,6 @@ int	m_kill(aClient *cptr, aClient *sptr, int parc, char *parv[])
 	** Note: "acptr->name" is used instead of "user" because we may
 	**	 have changed the target because of the nickname change.
 	*/
-	if (IsLocOp(sptr) && !MyConnect(acptr))
-	    {
-		sendto_one(sptr, replies[ERR_NOPRIVILEGES], ME, BadTo(parv[0]));
-		return 1;
-	    }
 	sendto_flag(SCH_KILL,
 		    "Received KILL message for %s!%s@%s[%s/%s]. From %s Path: %s!%s",
 		    acptr->name, acptr->user->username, acptr->user->host,
