@@ -227,11 +227,6 @@ int	m_squit(aClient *cptr, aClient *sptr, int parc, char *parv[])
 		sendto_one(sptr, replies[ERR_NOSUCHSERVER], ME, BadTo(parv[0]), server);
 		return 1;
 	    }
-	if (MyConnect(sptr) && !MyConnect(acptr) && parc < 3)
-	    {
-                sendto_one(sptr, replies[ERR_NEEDMOREPARAMS], ME, BadTo(parv[0]), "SQUIT");
-		return 0;
-            }
 	if (IsLocOp(sptr) && !MyConnect(acptr))
 	    {
 		sendto_one(sptr, replies[ERR_NOPRIVILEGES], ME, BadTo(parv[0]));
