@@ -3096,7 +3096,7 @@ char	*parv[];
 		{
 			sendto_flag(SCH_ERROR,
 				"Received another EOB for server %s (%s)",
-				 sid, sptr->name);
+				 sptr->serv->sid, sptr->name);
 			return 1;
 		}
 	}
