@@ -1,7 +1,5 @@
 $Id$
 
-
-
 DESCRIPTION
 ===========
   ircdwatch is a daemon that regularly checks to see if ircd is running.
