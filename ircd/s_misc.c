@@ -31,6 +31,11 @@ static  char rcsid[] = "@(#)$Id$";
 #include "s_externs.h"
 #undef S_MISC_C
 
+#ifdef DELAYED_KILLS
+extern int dk_tocheck;
+extern int dk_lastfd;
+#endif
+
 static	void	exit_one_client __P((aClient *,aClient *,aClient *,char *));
 
 static	char	*months[] = {
@@ -492,7 +497,13 @@ char	*comment;	/* Reason for the exit */
 		if (MyConnect(sptr))
 		    {
 			if (IsPerson(sptr))
+			{
 				istat.is_myclnt--;
+#ifdef DELAYED_KILLS
+				if (sptr->fd > dk_lastfd)
+					dk_tocheck--;
+#endif
+			}
 			else if (IsServer(sptr))
 				istat.is_myserv--;
 			else if (IsService(sptr))
