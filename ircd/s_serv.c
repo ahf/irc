@@ -990,7 +990,7 @@ int	m_server_estab(aClient *cptr, char *sid, char *versionbuf)
 	{
 		bysptr = find_uid(cptr->serv->byuid, NULL);
 		/* we are interrested only in *remote* opers */
-		if (MyConnect(bysptr))
+		if (bysptr && MyConnect(bysptr))
 		{
 			bysptr = NULL;
 		}
