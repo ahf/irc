@@ -506,6 +506,9 @@ char	*conf_read(char *cfile)
 			if (itmp->timeout != DEFAULT_TIMEOUT)
 				printf("\t\ttimeout: %u seconds\n",
 				       itmp->timeout);
+			if (itmp->port != 0)
+				printf("\t\tport: %u\n",
+				       itmp->port);
 			if (itmp->mod->init)
 			    {
 				err = itmp->mod->init(itmp);
