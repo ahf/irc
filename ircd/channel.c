@@ -2055,8 +2055,20 @@ char	*parv[];
 				/* from a server, it is legitimate */
 			    }
 			else if (chptr)
+			    {
 				/* joining a !channel using the short name */
+				if (MyConnect(sptr) &&
+				    hash_find_channels(name+1, chptr))
+				    {
+					sendto_one(sptr,
+						   err_str(ERR_TOOMANYTARGETS,
+							   parv[0]),
+						   "Duplicate", name,
+						   "Join aborted.");
+					continue;
+				    }
 				name = chptr->chname;
+			    }
 		    }
 		if (!IsChannelName(name) ||
 		    (*name == '!' && IsChannelName(name+1)))
