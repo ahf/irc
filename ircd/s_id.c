@@ -132,6 +132,19 @@ void
 cache_chid(chptr)
 aChannel *chptr;
 {
+    /*
+    ** caching should be limited to the minimum,
+    ** for memory reasons, but most importantly for
+    ** user friendly-ness.
+    ** Is the logic here right, tho? 
+    */
+    if (chptr->history == 0 ||
+	(timeofday - chptr->history) >LDELAYCHASETIMELIMIT+DELAYCHASETIMELIMIT)
+	{
+	    MyFree((char *)chptr);
+	    return;
+	}
+
     chptr->nextch = idcache;
     idcache = chptr;
     istat.is_cchan++;
