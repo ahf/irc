@@ -194,7 +194,7 @@ char	*mask, *name;
 				return 0;
 	  		for (m--; (m > (u_char *)mask) && (*m == '?'); m--)
 				;
-			if ((*m == '*') && (m > (u_char *)mask) &&
+			if ((m > (u_char *)mask) && (*m == '*') &&
 			    (m[-1] != '\\'))
 				return 0;
 			if (!wild) 
