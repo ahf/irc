@@ -263,6 +263,8 @@ int	attach_Iline(aClient *cptr, struct hostent *hp, char *sockhost)
 		/* start with h_name */
 		hname = hp->h_name;
 		/* and repeat with all h_aliases */
+		/* XXX: check one day if we really need h_aliases[]
+		** to be checked against I:lines --B. */
 		for (i = 0; hname; hname = hp->h_aliases[i++])
 		{
 			char	fullname[HOSTLEN+1];
