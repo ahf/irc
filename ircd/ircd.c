@@ -492,7 +492,7 @@ static	time_t	check_pings(time_t currenttime)
 	aClient *bysptr = NULL;
 	int	ping = 0, i;
 	time_t	oldest = 0, timeout;
-	char	*reason;
+	char	*reason = NULL;
 
 	for (i = highest_fd; i >= 0; i--)
 	    {
