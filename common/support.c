@@ -536,10 +536,10 @@ char	*x;
 		dumpcore("MyFree %#x %ld %#x %#x", x, i, j,
 			 (k[3]<<24) | (k[2]<<16) | (k[1]<<8) | k[0]);
 
+	Debug((DEBUG_MALLOC, "MyFree(%#x)",x + SZ_CHST));
 #undef	free
 	(void)free(x);
 #define	free(x)	MyFree(x)
-	Debug((DEBUG_MALLOC, "MyFree(%#x)",x + SZ_CHST));
 
 	for (l = 0, s = marray; *s != x && l < mindex; l++, s++)
 		;
