@@ -1903,7 +1903,7 @@ FdAry	*fdp;
 	
 	if (nfds > 0 &&
 #ifndef	_DO_POLL_
-	    resfd >= 0
+	    resfd >= 0 &&
 #else
 	    (pfd = res_pfd) &&
 #endif
@@ -1915,7 +1915,7 @@ FdAry	*fdp;
 	    }
 	if (nfds > 0 &&
 #ifndef	_DO_POLL_
-	    udpfd >= 0
+	    udpfd >= 0 &&
 #else
 	    (pfd = udp_pfd) &&
 #endif
