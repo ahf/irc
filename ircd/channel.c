@@ -185,14 +185,35 @@ static	aListItem	*make_bei(char *nick, char *user, char *host)
 	tmp = (struct ListItem *)MyMalloc(sizeof(aListItem));
 
 	nick = check_string(nick);
-	tmp->nick=(char *) MyMalloc( strlen(nick)+1 );
-	strncpyzt(tmp->nick, nick, NICKLEN + 1);
+	if (nick == asterix)
+	{
+		tmp->nick = asterix;
+	}
+	else
+	{
+		tmp->nick=(char *) MyMalloc( strlen(nick)+1 );
+		strncpyzt(tmp->nick, nick, NICKLEN + 1);
+	}
 	user = check_string(user);
-	tmp->user=(char *) MyMalloc( strlen(user)+1 );
-	strncpyzt(tmp->user, user, USERLEN + 1);
+	if (user == asterix)
+	{
+		tmp->user = asterix;
+	}
+	else
+	{
+		tmp->user=(char *) MyMalloc( strlen(user)+1 );
+		strncpyzt(tmp->user, user, USERLEN + 1);
+	}
 	host = check_string(host);
-	tmp->host=(char *) MyMalloc( strlen(host)+1 );
-	strncpyzt(tmp->host, host, HOSTLEN + 1);
+	if (host == asterix)
+	{
+		tmp->host = asterix;
+	}
+	else
+	{
+		tmp->host=(char *) MyMalloc( strlen(host)+1 );
+		strncpyzt(tmp->host, host, HOSTLEN + 1);
+	}
 
 	return tmp;
 }
