@@ -63,6 +63,7 @@ static  char rcsid[] = "@(#)\$Id$";
 char *generation = "$generation";
 char *creation = "$creation";
 char *version;				/* Filled by make_version() */
+char **isupport;			/* Filled by make_isupport() */
 char *pass_version = PATCHLEVEL;
 
 char *infotext[] =
