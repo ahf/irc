@@ -1069,7 +1069,8 @@ char	*parv[];
 			 * to make sure the right client is affected by the
 			 * mode change.
 			 */
-			if (!(who = find_uid(parv[0], NULL)) &&
+			if (!(IsServer(cptr) &&
+				(who = find_uid(parv[0], NULL))) &&
 				!(who = find_chasing(sptr, parv[0], &chasing)))
 				break;
 	  		if (!IsMember(who, chptr))
