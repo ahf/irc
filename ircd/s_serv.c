@@ -893,7 +893,7 @@ char	*parv[];
 		add_client_to_list(acptr);
 		add_server_to_tree(acptr);
 		(void)add_to_client_hash_table(acptr->name, acptr);
-		if (!ST_UID(acptr))
+		if (ST_NOTUID(acptr))
 		{
 			(void)add_to_server_hash_table(acptr->serv, cptr);
 		}
@@ -1207,7 +1207,7 @@ int	m_server_estab(aClient *cptr, char *sid, char *versionbuf)
 
 	cptr->flags |= FLAGS_CBURST;
 	add_server_to_tree(cptr);
-	if (!ST_UID(cptr))
+	if (ST_NOTUID(cptr))
 	{
 		(void) add_to_server_hash_table(cptr->serv, cptr);
 	}
@@ -1255,7 +1255,7 @@ int	m_server_estab(aClient *cptr, char *sid, char *versionbuf)
 			** These are only true when *BOTH* NICK and USER have
 			** been received. -avalon
 			*/
-			if (!ST_UID(cptr) && *mlname == '*' &&
+			if (ST_NOTUID(cptr) && *mlname == '*' &&
 			    match(mlname, acptr->user->server) == 0)
 				stok = me.serv->tok;
 			else
@@ -1280,7 +1280,7 @@ int	m_server_estab(aClient *cptr, char *sid, char *versionbuf)
 		else if (IsService(acptr) &&
 			 match(acptr->service->dist, cptr->name) == 0)
 		    {
-			if (!ST_UID(cptr) && *mlname == '*' &&
+			if (ST_NOTUID(cptr) && *mlname == '*' &&
 			    match(mlname, acptr->service->server) == 0)
 				stok = me.serv->tok;
 			else

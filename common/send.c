@@ -1049,7 +1049,7 @@ void	sendto_match_butone_old(aClient *one, aClient *from, char *mask, int what, 
 			continue;
 		/* we want to pick only old servers to perhaps send them
 		** $/#-mask message, if it's old, check if clients match */
-		if (!ST_UID(cptr))
+		if (ST_NOTUID(cptr))
 		{
 			/* see comment in sendto_match_butone() */
 			for (srch = cptr->prev; srch; srch = srch->prev)

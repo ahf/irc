@@ -460,7 +460,7 @@ char	*parv[];
 		if (match(dist, acptr->name))
 			continue;
 		mlname = my_name_for_link(ME, acptr->serv->nline->port);
-		if (!ST_UID(acptr) && *mlname == '*' &&
+		if (ST_NOTUID(acptr) && *mlname == '*' &&
 			match(mlname, sptr->service->server)== 0)
 			stok = me.serv->tok;
 		else

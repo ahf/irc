@@ -683,7 +683,7 @@ char	*nick, *username;
 				   (*buf) ? buf : "+",
 				   sptr->info);
 		else
-			if (!ST_UID(acptr) && (aconf = acptr->serv->nline) &&
+			if (ST_NOTUID(acptr) && (aconf = acptr->serv->nline) &&
 			    !match(my_name_for_link(ME, aconf->port),
 				   user->server))
 				sendto_one(acptr, "NICK %s %d %s %s %s %s :%s",
