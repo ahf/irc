@@ -83,3 +83,6 @@
 
 /* Define is the system can use variable arguments. */
 #undef USE_STDARG
+
+/* Define as the resolver configuration file. */
+#undef IRC_RESCONF

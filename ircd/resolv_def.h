@@ -69,16 +69,6 @@
 #define	__RES	19960801
 
 /*
- * Resolver configuration file.
- * Normally not present, but may contain the address of the
- * inital name server(s) to query and the domain search list.
- */
-
-#ifndef _PATH_RESCONF
-#define _PATH_RESCONF        "/etc/resolv.conf"
-#endif
-
-/*
  * Global defines and variables for resolver stub.
  */
 #define	MAXNS			3	/* max # name servers we'll track */

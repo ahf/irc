@@ -239,7 +239,7 @@ ircd_res_init()
 #ifdef	NEXT
 	if (ircd_netinfo_res_init(&haveenv, &havesearch) == 0)
 #endif
-	if ((fp = fopen(_PATH_RESCONF, "r")) != NULL) {
+	if ((fp = fopen(IRC_RESCONF, "r")) != NULL) {
 	    /* read the config file */
 	    while (fgets(buf, sizeof(buf), fp) != NULL) {
 		/* skip comments */
