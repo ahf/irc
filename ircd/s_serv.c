@@ -1369,7 +1369,7 @@ char	*parv[];
 	if (IsServer(cptr) &&
 	    (stat != 'd' && stat != 'p' && stat != 'q' && stat != 's' &&
 	     stat != 'u' && stat != 'v') &&
-	    !(stat == 'o' && IsOper(sptr)))
+	    !((stat == 'o' || stat == 'c') && IsOper(sptr)))
 	    {
 		if (check_link(cptr))
 		    {
