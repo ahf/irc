@@ -1238,7 +1238,9 @@ int	parc, notice;
 				continue;
 			    }
 		    }
-		sendto_one(sptr, err_str(ERR_NOSUCHNICK, parv[0]), nick);
+		if (!notice)
+			sendto_one(sptr, err_str(ERR_NOSUCHNICK, parv[0]),
+				   nick);
 	    }
     return penalty;
 }
