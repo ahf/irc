@@ -43,7 +43,8 @@ New features in 2.11.0:
 	* New "STATS f" shows detailed information about client TCP connection
 	  (local opers only).
 	* New "SET" command, which makes possible to fine-tune certain ircd
-	  values during runtime (like dbuf poolsize and autoconnect).
+	  values during runtime (like dbuf poolsize, autoconnect and client
+	  accepting).
 	* New iauth module: mod_webproxy.
 	* Modules socks and webproxy can work on multiple different ports.
 	* New keyword "delayed" in iauth configuration (shortening time client
