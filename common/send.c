@@ -393,8 +393,8 @@ static	anUser	ausr = { NULL, NULL, NULL, NULL, 0, 0, 0, 0, NULL,
 			 0,NULL, ""};
 
 static	aClient	anon = { NULL, NULL, NULL, &ausr, NULL, NULL, 0, 0,/*flags*/
-			 &anon, -2, 0, STAT_CLIENT, "anonymous", "anonymous",
-			 "anonymous identity hider", 0, "",
+			 &anon, -2, 0, STAT_CLIENT, anon.namebuf, "anonymous",
+			 "anonymous", "anonymous identity hider", 0, "",
 # ifdef	ZIP_LINKS
 			 NULL,
 # endif
