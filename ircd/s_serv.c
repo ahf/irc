@@ -1756,9 +1756,6 @@ static	void	report_myservers(aClient *sptr, char *to)
 	int i;
 	int timeconnected;
 	aClient *acptr;
-#ifdef	HUB
-	aServer *asptr;
-#endif
 	int users, servers;
 
 	for (i = fdas.highest; i >= 0; i--)
@@ -3770,7 +3767,6 @@ static void report_listeners(aClient *sptr, char *to)
 {
 	aConfItem *tmp;
 	aClient	*acptr;
-	int	i;
 
 	for (acptr = ListenerLL; acptr; acptr = acptr->next)
 	{
