@@ -950,7 +950,6 @@ int	rehash(aClient *cptr, aClient *sptr, int sig)
 	{
 		rehashed = 1;
 	}
-	srand(now);
 	return ret;
 }
 
