@@ -650,7 +650,7 @@ I:135.11.35.0/24::::1
 Allows clients from machines which IP address is within block
 ``135.11.35.0/24'' to connect to the server.  If the host name
 is known, is it used as address for these clients.
-<p>tag/NEW!!!/ As of the 2.11.0 version of the server, I: line flags
+<p><tag/NEW!!!/ As of the 2.11.0 version of the server, I: line flags
 are introduced. 
 </descrip>
 
