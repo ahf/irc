@@ -242,10 +242,10 @@ install-server: install-ircd server
 	$(INSTALL_DATA) ../doc/iauth.8 $(server_man_dir)
 	$(INSTALL_DATA) ../doc/iauth.conf.5 $(conf_man_dir)
 	$(INSTALL_DATA) ../contrib/ircdwatch/ircdwatch.8 $(server_man_dir)
-	$(INSTALL_DATA) ../doc/example.conf $(ircd_conf_dir)/ircd.conf.example
-	$(INSTALL_DATA) ../support/iauth.conf $(ircd_conf_dir)/iauth.conf.example
+	$(INSTALL_DATA) ../doc/ircd.conf.example $(ircd_conf_dir)
+	$(INSTALL_DATA) ../doc/iauth.conf.example $(ircd_conf_dir)
 	-@if [ ! -f $(IAUTHCONF_PATH) ]; then \
-		$(INSTALL_DATA) ../support/iauth.conf $(IAUTHCONF_PATH); \
+		$(INSTALL_DATA) ../doc/iauth.conf.example $(IAUTHCONF_PATH); \
 	fi
 	-@if [ ! -f $(IRCDMOTD_PATH) ]; then \
 		$(INSTALL_DATA) ../support/ircd.motd $(IRCDMOTD_PATH); \
