@@ -1173,8 +1173,8 @@ int	m_server_estab(aClient *cptr, char *sid, char *versionbuf)
 		** Remove existing link only if it has been linked for longer
 		** and has sendq higher than a threshold. -Vesa
 		*/
-		if ((acptr = find_name(host, NULL))
-		    || (acptr = find_mask(host, NULL)))
+		if (((acptr = find_name(host, NULL))
+		    || (acptr = find_mask(host, NULL))) && IsServer(acptr))
 		    {
 			if (MyConnect(acptr) &&
 			    DBufLength(&acptr->sendQ) > CHREPLLEN &&
