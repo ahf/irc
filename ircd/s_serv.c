@@ -2227,6 +2227,11 @@ char	*parv[];
 	struct	tm	*tm;
 #endif
 
+	if (check_link(cptr))
+	    {
+		sendto_one(sptr, rpl_str(RPL_TRYAGAIN, parv[0]), "MOTD");
+		return 5;
+	    }
 	if (hunt_server(cptr, sptr, ":%s MOTD :%s", 1,parc,parv)!=HUNTED_ISME)
 		return 5;
 #ifdef CACHED_MOTD
