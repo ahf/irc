@@ -41,10 +41,11 @@ u_int nb;
 char *msg, *chk;
 {
 	if (chk)
-		printf("line %d: %s\n", nb, msg);
+		printf("configuration error line %d: %s\n", nb, msg);
 	else
 		sendto_log(ALOG_IRCD|ALOG_DCONF, LOG_ERR,
 			   "Configuration error line %d: %s", nb, msg);
+	exit(0);
 }
 
 /*

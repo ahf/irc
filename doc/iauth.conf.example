@@ -4,6 +4,9 @@
 # $Id$
 #
 
+# Important note: there must be one tab only before modules options.
+# Otherwise iauth will be dieing continously.
+
 # If iauth timeouts, then reject user
 notimeout
 # This makes the IRC server require that iauth performs the authentication
