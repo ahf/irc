@@ -191,7 +191,7 @@ static	void	showconf()
 {
 #if defined(CONFIG_DIRECTIVE_INCLUDE)
 	aConfig *p, *p2;
-	int etclen;
+	int etclen = 0;
 #else
 	int dh;
 	char	line[512], c[80], *tmp;

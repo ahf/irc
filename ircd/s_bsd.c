@@ -1673,7 +1673,9 @@ aClient	*add_connection(aClient *cptr, int fd)
 					     cptr);
 add_con_refuse:
 			(void)close(fd);
+#if defined(CLONE_CHECK) && defined(DELAY_CLOSE)
 add_con_refuse_delay:
+#endif
 			ircstp->is_ref++;
 			acptr->fd = -2;
 			free_client(acptr);

@@ -3750,7 +3750,7 @@ static int	reop_channel(time_t now, aChannel *chptr, int reopmode)
 	/* Why do we wait until CD expires? --B. */
 	if (now - chptr->history > DELAYCHASETIMELIMIT)
 	{
-		int idlelimit1, idlelimit2;
+		int idlelimit1 = 0, idlelimit2 = 0;
 
 		if (reopmode != CHFL_REOPLIST)
 		{

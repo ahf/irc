@@ -3644,7 +3644,7 @@ static	void	dump_sid_map(aClient *sptr, aClient *root, char *pbuf, int size)
 			root->serv->sid,
 			root->serv->usercnt[0] + root->serv->usercnt[1],
 			BadTo(root->serv->verstr),
-			MyConnect(root) ? timeofday - root->firsttime : -1);
+			MyConnect(root) ? (int) (timeofday - root->firsttime) : -1);
 	}
 	else
 	{

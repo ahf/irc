@@ -1227,10 +1227,13 @@ int	rehash(aClient *cptr, aClient *sptr, int sig)
  */
 int	openconf(void)
 {
-	int ret;
 #ifdef	M4_PREPROC
 	int	pi[2], i;
+#else
+	int ret;
+#endif
 
+#ifdef	M4_PREPROC
 	if (pipe(pi) == -1)
 		return -1;
 	switch(vfork())
