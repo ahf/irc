@@ -326,11 +326,13 @@ struct	ConfItem	{
 #define CFLAG_RNODNS		0x00002
 #define CFLAG_RNOIDENT		0x00004
 #define CFLAG_KEXEMPT		0x00008
+#define CFLAG_NORESOLVE		0x00010
 
 #define IsConfRestricted(x)	((x)->flags & CFLAG_RESTRICTED)
 #define IsConfRNoDNS(x)		((x)->flags & CFLAG_RNODNS)
 #define IsConfRNoIdent(x)	((x)->flags & CFLAG_RNOIDENT)
 #define IsConfKlineExempt(x)	((x)->flags & CFLAG_KEXEMPT)
+#define IsConfNoResolve(x)	((x)->flags & CFLAG_NORESOLVE)
 
 #define	IsIllegal(x)	((x)->status & CONF_ILLEGAL)
 
