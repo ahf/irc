@@ -166,7 +166,9 @@ typedef struct        LineItem aExtData;
 #define	FLAGS_RILINE	0x0020000 /* Restricted i-line [unused?] */
 #define	FLAGS_QUIT	0x0040000 /* QUIT :comment shows it's not a split */
 #define	FLAGS_SPLIT	0x0080000 /* client QUITting because of a netsplit */
-#define	FLAGS_HIDDEN	0x0100000 /* netsplit is behind a hostmask */
+#define	FLAGS_HIDDEN	0x0100000 /* netsplit is behind a hostmask,
+				     also used for marking clients in who_find
+				   */
 #define	FLAGS_UNKCMD	0x0200000 /* has sent an unknown command */
 #define	FLAGS_ZIP	0x0400000 /* link is zipped */
 #define	FLAGS_ZIPRQ	0x0800000 /* zip requested */
