@@ -1428,6 +1428,7 @@ int 	initconf(int opt)
 					bconf->class->links -= bconf->clients;
 					bconf->class = aconf->class;
 					bconf->class->links += bconf->clients;
+					bconf->flags = aconf->flags;
 				    }
 				free_conf(aconf);
 				aconf = bconf;
