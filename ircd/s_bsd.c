@@ -781,6 +781,7 @@ void	daemonize(void)
 #else
 		(void)setpgrp(0, (int)getpid());
 #endif
+		(void)fclose(stdin);
 		(void)close(0);
 		local[0] = NULL;
 	    }
