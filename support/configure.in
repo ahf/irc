@@ -245,7 +245,7 @@ else
 fi
 ])
 irc_cv_solaris_2=no
-if test "$irc_sun" = no; then
+if test "$irc_cv_sun" = no; then
   AC_MSG_RESULT(no)
 else
   if uname -r 2>/dev/null | grep "^5" >/dev/null; then
