@@ -718,11 +718,7 @@ HEADER	*hptr;
 			 */
 			if (hp->h_name)
 			    {
-				if (alias >= &(hp->h_aliases[MAXALIASES-1]))
-					break;
-				*alias = (char *)MyMalloc(len + 1);
-				(void)strcpy(*alias++, hostbuf);
-				*alias = NULL;
+				Debug((DEBUG_INFO, "duplicate PTR ignored"));
 			    }
 			else
 			    {
