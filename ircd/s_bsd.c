@@ -1673,6 +1673,8 @@ aClient	*add_connection(aClient *cptr, int fd)
 	acptr = make_client(NULL);
 
 	aconf = cptr->confs->value.aconf;
+	acptr->acpt = cptr;
+
 	/* Removed preliminary access check. Full check is performed in
 	 * m_server and m_user instead. Also connection time out help to
 	 * get rid of unwanted connections.
@@ -1719,6 +1721,7 @@ aClient	*add_connection(aClient *cptr, int fd)
 		{
 			sendto_flag(SCH_LOCAL, "Rejecting connection from %s.",
 				acptr->sockhost);
+			acptr->exitc = EXITC_CLONE;
 			sendto_flog(acptr, EXITC_CLONE, "", acptr->sockhost);
 #ifdef DELAY_CLOSE
 			nextdelayclose = delay_close(fd);
@@ -1762,7 +1765,6 @@ aClient	*add_connection(aClient *cptr, int fd)
 		highest_fd = fd;
 	local[fd] = acptr;
 	add_fd(fd, &fdall);
-	acptr->acpt = cptr;
 	add_client_to_list(acptr);
 	start_auth(acptr);
 #if defined(USE_IAUTH)
