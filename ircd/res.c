@@ -1197,7 +1197,7 @@ aCache	*cachep;
 				cp->he.h_addr_list,
 				addrcount));
 #endif
-			for (; addrcount; addrcount--)
+			for (i = addrcount; i; i--)
 			    {
 				*ab++ = (struct IN_ADDR *)t;
 				t += sizeof(struct IN_ADDR);
