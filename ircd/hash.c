@@ -322,8 +322,7 @@ void	inithashtables()
 	Reg int i;
 
 	clear_client_hash_table((_HASHSIZE) ? _HASHSIZE : HASHSIZE);
-	_UIDSIZE = _HASHSIZE;
-	clear_uid_hash_table(_UIDSIZE);
+	clear_uid_hash_table((_UIDSIZE) ? _UIDSIZE : UIDSIZE);
 	clear_channel_hash_table((_CHANNELHASHSIZE) ? _CHANNELHASHSIZE
                                  : CHANNELHASHSIZE);
 	clear_server_hash_table((_SERVERSIZE) ? _SERVERSIZE : SERVERSIZE);
