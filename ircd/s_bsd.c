@@ -2462,7 +2462,7 @@ int	*lenp;
 		outip.SIN_PORT = 0;
 		outip.SIN_FAMILY = AFINET;
 #ifdef INET6
-		if (!inetpton(AF_INET6, aconf->source_ip, outip.sin_addr.s6_addr))
+		if (!inetpton(AF_INET6, aconf->source_ip, outip.sin6_addr.s6_addr))
 #else
 		if ((outip.sin_addr.s_addr = inetaddr(aconf->source_ip)) == -1)
 #endif
