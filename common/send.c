@@ -1118,6 +1118,7 @@ static	SChan	svchans[SCH_MAX] = {
 #ifdef CLIENTS_CHANNEL
 	{ SCH_CLIENT,	"&CLIENTS",	NULL },
 #endif
+	{ SCH_OPER,	"&OPER",	NULL },
 };
 
 
