@@ -139,6 +139,10 @@ int	*length;
 
 	if (cptr->zip->incount + *length > ZIP_BUFFER_SIZE) /* sanity check */
 	    {
+	      sendto_flag(SCH_ERROR, "overflow in unzip_packet(): %d %d",
+			  cptr->zip->incount, *length);
+	      *length = -1;
+	      return NULL;
 	    }
 	/* put everything in zipbuf */
 	bcopy(cptr->zip->inbuf, zipbuf, cptr->zip->incount);
