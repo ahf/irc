@@ -783,7 +783,6 @@ void	daemonize(void)
 #endif
 		(void)fclose(stdin);
 		(void)close(0);
-		local[0] = NULL;
 	    }
 init_dgram:
 	resfd = init_resolver(0x1f);
