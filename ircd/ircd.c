@@ -889,6 +889,9 @@ char	*argv[];
 		/* exit if there is nothing to listen to */
 		if (acptr == NULL)
 			exit(-1);
+		/* Is there an M-line? */
+		if (!find_me())
+			exit(-1);
 	    }
 
 	dbuf_init();
