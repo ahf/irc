@@ -192,6 +192,8 @@ int	server, parc;
 		    }
 	 if (acptr)
 	    {
+		if (!IsRegistered(acptr))
+			return HUNTED_ISME;
 		if (IsMe(acptr) || MyClient(acptr) || MyService(acptr))
 			return HUNTED_ISME;
 		if (match(acptr->name, parv[server]))
