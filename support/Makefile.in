@@ -183,6 +183,7 @@ install-server: server
 	$(MKDIRHIER) $(ircd_dir); \
 	fi
 	$(INSTALL_PROGRAM) -m $(ircd_mode) $(SERVER) $(server_bin_dir)
+	$(INSTALL_PROGRAM) -m $(ircd_mode) $(IAUTH) $(server_bin_dir)
 	$(INSTALL_PROGRAM) -m $(ircd_mode) $(CHKCONF) $(server_bin_dir)
 	$(INSTALL_PROGRAM) -m $(ircd_mode) ircd-mkpasswd $(server_bin_dir)
 	$(INSTALL_PROGRAM) -m $(ircd_mode) ircdwatch $(server_bin_dir)
