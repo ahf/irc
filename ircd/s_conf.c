@@ -407,9 +407,12 @@ int    match_ipmask(char *mask, aClient *cptr, int maskwithusername)
 	}
 
 	/* Make sure that the ipv4 notation still works. */
-	if (IN6_IS_ADDR_V4MAPPED(&addr) && m < 96)
+	if (IN6_IS_ADDR_V4MAPPED(&addr))
 	{
-		m += 96;
+		if (m <= 32)
+			m += 96;
+		if (m <= 96)
+			goto badmask;
 	}
 
 	j = m & 0x1F;	/* number not mutliple of 32 bits */
