@@ -528,7 +528,7 @@ char *	replies[] = {
 /* 478 ERR_BANLISTFULL */	":%s 478 %s %s %s!%s@%s :Channel list is full",
 /* 479 */ (char *)NULL,
 /* 480 */ (char *)NULL,
-/* 481 ERR_NOPRIVILEGES */	":%s 481 %s :Permission Denied- You're not an IRC operator",
+/* 481 ERR_NOPRIVILEGES */	":%s 481 %s :Permission Denied",
 /* 482 ERR_CHANOPRIVSNEEDED */	":%s 482 %s %s :You're not channel operator",
 /* 483 ERR_CANTKILLSERVER */	":%s 483 %s %s :You can't kill a server!",
 /* 484 ERR_RESTRICTED */	":%s 484 %s :Your connection is restricted!",
