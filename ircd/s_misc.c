@@ -604,6 +604,12 @@ int	exit_client(aClient *cptr, aClient *sptr, aClient *from,
 			*/
 			return FLUSH_BUFFER;
 		}
+		/* being here means non-local server exited */
+		if (nextconnect == 0 && find_conf_name(sptr->name, CFLAG))
+		{
+			/* try AC */
+			nextconnect = timeofday + HANGONRETRYDELAY;
+		}
 		return 0;
  	}
 	
