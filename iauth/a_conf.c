@@ -126,8 +126,9 @@ char *cfile;
 			    }
 			*last = (AnInstance *) malloc(sizeof(AnInstance));
 			(*last)->nexti = NULL;
-			(*last)->opt = NULL;
 			(*last)->mod = Mlist[i];
+			(*last)->opt = NULL;
+			(*last)->data = NULL;
 			(*last)->hostname = NULL;
 			(*last)->address = NULL;
 

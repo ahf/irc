@@ -6,6 +6,10 @@ This is a development version of the IRC software.
 
 This version of the software adds support for IPv6.
 
+Important changes in 2.10.2 (since 2.10.1):
+	* iauth's socks module now uses an internal cache.
+	* iauth's socks module now checks for SOCKSv4 (rather than v5) proxies.
+
 ===============================================================================
 
 2.10 uses a new (server-server) protocol.
