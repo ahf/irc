@@ -646,7 +646,7 @@ loop_io()
 			continue;
 #endif
 		    }
-		if (TST_READ_EVENT(cldata[i].rfd))
+		if (cldata[i].rfd > 0 && TST_READ_EVENT(cldata[i].rfd))
 		    {
 			int len;
  
@@ -672,7 +672,7 @@ loop_io()
 			    }
 			nfds--;
 		    }
-		else if (TST_WRITE_EVENT(cldata[i].wfd))
+		else if (cldata[i].wfd > 0 && TST_WRITE_EVENT(cldata[i].wfd))
 		    {
 			if (cldata[i].instance->mod->work(i) != 0)
 				next_io(i, cldata[i].instance);
