@@ -82,7 +82,7 @@ server internal resolver.  It relies on the name servers
 defined in ``/etc/resolv.conf'' to be IPv4 addresses.
 <p>
 This version was tested on the following IPv6 systems:
-Digital Unix, Linux, NetBSD+INRIA.
+BSD/OS+KAME, Digital Unix, FreeBSD+KAME, Linux, NetBSD+INRIA.
 <p>
 Because IPv6 numeric addresses contain ``:'' characters,
 <bf>the separator for the server configuration file was
