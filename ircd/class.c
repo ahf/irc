@@ -230,7 +230,7 @@ int	get_sendq(aClient *cptr)
 	Reg	Link	*tmp;
 	Reg	aClass	*cl;
 
-	if (cptr->serv)
+	if (cptr->serv && cptr->serv->nline)
 		sendq = MaxSendq(cptr->serv->nline->class);
 	else if (cptr && !IsMe(cptr)  && (cptr->confs))
 		for (tmp = cptr->confs; tmp; tmp = tmp->next)
