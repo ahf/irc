@@ -868,6 +868,7 @@ typedef	struct	{
 	int	svc_chan;
 	char	*svc_chname;
 	struct	Channel	*svc_ptr;
+	int	fd;
 }	SChan;
 
 typedef enum ServerChannels {
