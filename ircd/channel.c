@@ -1313,9 +1313,11 @@ char	*parv[], *mbuf, *pbuf;
 					sendto_one(sptr,
 					   err_str(ERR_CHANOPRIVSNEEDED,
 						   parv[0]), chptr->chname);
-				else if (*ip == MODE_REOP && !IsServer(sptr) &&
+				else if ((*ip == MODE_REOP ||
+					  *ip == MODE_ANONYMOUS) &&
+					 !IsServer(sptr) &&
 					 !(is_chan_op(sptr,chptr)&CHFL_UNIQOP))
-					/* MODE_REOP is restricted to UNIQOP */
+					/* 2 modes restricted to UNIQOP */
 					sendto_one(sptr,
 					   err_str(ERR_CHANOPRIVSNEEDED,
 						   parv[0]), chptr->chname);
