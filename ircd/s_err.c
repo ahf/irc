@@ -62,7 +62,7 @@ static	Numeric	numeric_errors[] = {
 /* 413 */	{ ERR_NOTOPLEVEL, "%s :No toplevel domain specified" },
 /* 414 */	{ ERR_WILDTOPLEVEL, "%s :Wildcard in toplevel Domain" },
 /* 415 */	{ ERR_BADMASK, "%s :Bad Server/host mask" },
-/* 416 */	{ ERR_TOOMANYMATCHES, "%s %s :Output too long (try locally)" },
+/* 416 */	{ ERR_TOOMANYMATCHES, "%s :Output too long (try locally)" },
 		{ 0, (char *)NULL },
 		{ 0, (char *)NULL },
 		{ 0, (char *)NULL },
