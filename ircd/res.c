@@ -1160,8 +1160,13 @@ aCache	*cachep;
 	/*
 	 * Do the same again for IP#'s.
 	 */
+#ifdef INET6
 	for (s = (char *)rptr->he.h_addr.S_ADDR;
 	     ((struct IN_ADDR *)s)->S_ADDR; s += sizeof(struct IN_ADDR))
+#else
+	for (s = (char *)&rptr->he.h_addr.S_ADDR;
+	     ((struct IN_ADDR *)s)->S_ADDR; s += sizeof(struct IN_ADDR))
+#endif
 	    {
 #ifdef INET6
 		for (i = 0; (t = cp->he.h_addr_list[i]); i++)
