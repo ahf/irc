@@ -1996,6 +1996,7 @@ int	m_stats(aClient *cptr, aClient *sptr, int parc, char *parv[])
 		/* Although I have no idea, why only for opers. --B. */
 		case 'o': case 'O':	/* O:lines */
 		case 'c': 		/* C:/N: lines */
+		case 'C': 		/* class usage */
 		case 'h': case 'H':	/* H:/D: lines */
 		case 'a': case 'A':	/* iauth conf */
 		case 'b': case 'B':	/* B:lines */
