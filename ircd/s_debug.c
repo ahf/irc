@@ -346,6 +346,9 @@ char	*nick;
 		   -1, -1
 #endif
 		   );
+	sendto_one(cptr, ":%s %d %s :AC:%s SS:%d SU:%d", ME, RPL_STATSDEFINE,
+		   nick, (iconf.aconnect == 1) ? "ON" : "OFF",
+		   iconf.split_minservers, iconf.split_minusers);
 }
 
 void	count_memory(cptr, nick, debug)
