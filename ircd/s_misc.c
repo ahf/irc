@@ -625,7 +625,7 @@ char	*comment;
 	 ** need to send different names to different servers
 	 ** (domain name matching)
 	 */
-		if (!IsMasked(sptr)
+		if (!IsMasked(sptr))
 		{
 			istat.is_serv--;
 		}
