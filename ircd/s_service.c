@@ -630,7 +630,7 @@ char	*parv[];
 		    }
 	    }
 	
-	if (burst & (SERVICE_WANT_CHANNEL|SERVICE_WANT_MODE))
+	if (burst & (SERVICE_WANT_CHANNEL|SERVICE_WANT_VCHANNEL|SERVICE_WANT_MODE))
 	    {
 		char    modebuf[MODEBUFLEN], parabuf[MODEBUFLEN];
 		aChannel	*chptr;
@@ -639,7 +639,7 @@ char	*parv[];
 		    {
 			if (chptr->users == 0)
 				continue;
-			if (burst & SERVICE_WANT_CHANNEL)
+			if (burst&(SERVICE_WANT_CHANNEL|SERVICE_WANT_VCHANNEL))
 				sendto_one(sptr, "CHANNEL %s %d",
 					   chptr->chname, chptr->users);
 			if (burst & SERVICE_WANT_MODE)
