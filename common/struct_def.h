@@ -825,10 +825,11 @@ typedef	struct	{
 #define	HUNTED_ISME	0	/* if this server should execute the command */
 #define	HUNTED_PASS	1	/* if message passed onwards successfully */
 
-/* used when sending to #mask or $mask */
+/* used when sending to $#mask or $$mask */
 
-#define	MATCH_SERVER  1
-#define	MATCH_HOST    2
+#define	MATCH_SERVER	1
+#define	MATCH_HOST	2
+#define	MATCH_OLDSYNTAX	4
 
 /* used for sendto_serv */
 
