@@ -151,7 +151,7 @@ int	send_message(aClient *to, char *msg, int len)
 			 * exceed their maxsendq. --B. */
 			sendto_flag(SCH_NOTICE,
 				"Max SendQ limit exceeded for %s: %d > %d",
-				get_client_name(to, FALSE),
+				to->name,
 				DBufLength(&to->sendQ), get_sendq(to));
 		}
 		else
