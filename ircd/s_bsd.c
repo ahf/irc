@@ -510,7 +510,7 @@ void	init_sys()
 			(void)fprintf(stderr, "Hard Limit: %d IRC max: %d\n",
 				      (int) limit.rlim_max, MAXCONNECTIONS);
 			(void)fprintf(stderr,
-				      "Recompile and fix MAXCONNECTIONS\n");
+				      "Fix MAXCONNECTIONS and recompile.\n");
 			exit(-1);
 		    }
 		limit.rlim_cur = limit.rlim_max; /* make soft limit the max */
