@@ -1399,6 +1399,11 @@ char	*parv[];
 				   timeofday - acptr->firsttime);
 		    }
 		break;
+#if defined(USE_IAUTH)
+	case 'a' : case 'A' : /* iauth configuration */
+		report_iauth_conf(sptr, parv[0]);
+		break;
+#endif
 	case 'B' : case 'b' : /* B conf lines */
 		report_configured_links(cptr, parv[0], CONF_BOUNCE);
 		break;
