@@ -157,6 +157,7 @@ char	*argv[];
 	channel[0] = '\0';
 	me.user = &meUser;
 	me.from = &me;
+	me.info = (char *) malloc(REALLEN);
 	setuid(getuid());
 	version = make_version();
 
