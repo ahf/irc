@@ -1228,10 +1228,12 @@ char	**comment;
 	if (*reply)
 		sendto_one(cptr, reply, ME, now, cptr->name);
 	else if (tmp)
-		sendto_one(cptr, ":%s %d %s :%s", ME,
+		sendto_one(cptr, ":%s %d %s :%s%s", ME,
 			   ERR_YOUREBANNEDCREEP, cptr->name,
 			   BadPtr(tmp->passwd) ?
-			   "You are not welcome to this server" : tmp->passwd);
+			   "You are not welcome to this server" :
+			   "You are not welcome to this server: ",
+			   BadPtr(tmp->passwd) ? "" : tmp->passwd);
 
 	if (tmp && !BadPtr(tmp->passwd))
 		*comment = tmp->passwd;
