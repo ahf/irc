@@ -1244,7 +1244,7 @@ void	close_connection(aClient *cptr)
 		 * If nextconnect is still 0, reset it, nevertheless
 		 * I see no way for this to happen. :-) --B.
 		 */
-		nextconnect = timeofday;
+		nextconnect = timeofday + HANGONRETRYDELAY;
 	}
 
 	if (cptr->authfd >= 0)
