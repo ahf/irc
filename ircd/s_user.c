@@ -742,7 +742,7 @@ int	register_user(aClient *cptr, aClient *sptr, char *nick, char *username)
 		}
 		/* this will get nicely reduced to UNICK only, when
 		 * we are fully 2.11 */
-		if (ST_UID(acptr))
+		if (/*ST_UID*/IsServer(acptr))
 		{
 			sendto_one(acptr,
 				":%s UNICK %s %s %s %s %s %s :%s",
