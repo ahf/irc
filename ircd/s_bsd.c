@@ -2650,7 +2650,7 @@ free_server:
 	if (by && IsPerson(by))
 	    {
 		(void)strcpy(cptr->serv->by, by->name);
-		if (HasUID(by))
+		if (by->user)
 		{
 			strcpy(cptr->serv->byuid, by->user->uid);
 		}

@@ -2672,7 +2672,7 @@ static	void	trace_one(aClient *sptr, aClient *acptr)
 	int class;
 	char *to;
 
-	/* to = ST_UID(acptr) && HasUID(sptr) ? sptr->user->uid : sptr->name; */
+	/* to = ST_UID(acptr) && sptr->user ? sptr->user->uid : sptr->name; */
 	to = sptr->name;
 	name = get_client_name(acptr, FALSE);
 	class = get_client_class(acptr);

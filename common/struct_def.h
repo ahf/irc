@@ -767,7 +767,6 @@ struct Channel	{
 				  (IsService(x->prev) &&		\
 				  x->prev->service->servp == x->serv)))
 
-#define	HasUID(x)		(x->user && x->user->uid[0])
 #define	IsMasked(x)		(x && x->serv && x->serv->maskedby != x)
 
 #define IsSplit()		(iconf.split == 1)

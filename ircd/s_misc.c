@@ -908,7 +908,7 @@ static	void	exit_one_client(aClient *cptr, aClient *sptr, aClient *from,
 			}
 
 			/* remove from uid hash table */
-			if (HasUID(sptr))
+			if (sptr->user)
 			{
 				del_from_uid_hash_table(sptr->user->uid, sptr);
 			}
