@@ -306,7 +306,7 @@ static	Numeric	numeric_replies[] = {
 /* 231 */	{ RPL_SERVICEINFO, (char *)NULL },
 /* 232 */	{ RPL_ENDOFSERVICES, (char *)NULL },
 /* 233 */	{ RPL_SERVICE, (char *)NULL },
-/* 234 */	{ RPL_SERVLIST, "%s %s %s %d %d :%s" },
+/* 234 */	{ RPL_SERVLIST, "%s %s %s 0x%X %d :%s" },
 /* 235 */	{ RPL_SERVLISTEND, "%s %d :End of service listing" },
 		{ 0, (char *)NULL },
 		{ 0, (char *)NULL },
