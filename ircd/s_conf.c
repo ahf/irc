@@ -268,10 +268,12 @@ int	attach_Iline(aClient *cptr, struct hostent *hp, char *sockhost)
 			continue;	/* Try another I:line. */
 
 		namematched = 0;
-		if (hp)
+		/* If anything in aconf->name, one of hp hnames must match. */
+		if (*aconf->name && hp)
+		{
 			for (i = 0, hname = hp->h_name; hname;
 			     hname = hp->h_aliases[i++])
-			    {
+			{
 				strncpyzt(fullname, hname,
 					sizeof(fullname));
 				add_local_domain(fullname,
@@ -292,7 +294,8 @@ int	attach_Iline(aClient *cptr, struct hostent *hp, char *sockhost)
 					namematched = 1;
 					break;
 				}
-			    }
+			}
+		}
 
 		/* Require name to match before checking addr fields. */
 		if (!namematched)
