@@ -821,6 +821,8 @@ char	*comment;
 			add_history(sptr, (sptr == cptr) ? &me : NULL);
 #endif
 			off_history(sptr);
+			del_from_hostname_hash_table(sptr->user->host,
+						     sptr->user);
 		    }
 	    }
 	else if (sptr->name[0] && IsService(sptr))
