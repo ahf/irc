@@ -293,7 +293,7 @@ aChannel *chptr;
 			}
 			if (match(mode_user, cptr->username) != 0 &&
 				(match(mode_nick, cptr->name) != 0 ||
-				match(mode_user, cptr->uid) != 0))
+				match(mode_user, cptr->user->uid) != 0))
 			{
 				/* client doesn't match them, no point
 				   checking hostname */
