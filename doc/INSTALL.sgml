@@ -1204,6 +1204,8 @@ the ``All connections in use'' message.  In this case, the
 server doesn't process the connections at all, and has no
 knowledge of the client's host name, or class number.  For
 these cases, this field must be empty.
+<tag/Note/ Class number ``-1'' is used for rejecting clients
+that use wrong (server-only) port.
 <tag/Server Name/ This specifies the IRC server hostname
 that the client should use.
 <tag/Port/ This specifies the IRC server port that the
@@ -1222,6 +1224,10 @@ B:::irc2.stealth.net:6667:
 <p>
 When the server is completely full, clients should use the
 secondary server.
+
+B:-1::our.server.example:6667:
+
+Clients that connected to server-only port should really use port 6667.
 </descrip>
 
 <sect>Related resources
