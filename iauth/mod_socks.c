@@ -562,6 +562,11 @@ static	char	*socks_init(AnInstance *self)
 	mydata->lifetime = CACHETIME;
 
 	tmpbuf[0] = txtbuf[0] = '\0';
+	if (self->delayed)
+	{
+		strcat(tmpbuf, ",delayed");
+		strcat(txtbuf, ", Delayed");
+	}
 	if (strstr(self->opt, "log"))
 	{
 		mydata->options |= OPT_LOG;
