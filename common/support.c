@@ -784,8 +784,7 @@ char	**make_isupport(void)
 		ONICKLEN, TOPICLEN, TOPICLEN, MAXBANS, CHANNELLEN, CHIDLEN);
 
 	tis[1] = (char *) MyMalloc(BUFSIZE);
-	sprintf(tis[1],	"PENALTY FNC EXCEPTS=e INVEX=I CASEMAPPING=rfc1459 "
-		"CHARSET=utf-8");
+	sprintf(tis[1],	"PENALTY FNC EXCEPTS=e INVEX=I CASEMAPPING=ascii");
 	if (networkname)
 	{
 		strcat(tis[1], " NETWORK=");
