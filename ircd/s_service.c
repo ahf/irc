@@ -580,7 +580,7 @@ char	*parv[];
 				sendto_one(sptr, ":%s SERVER %s %d %s :%s",
 					   acptr->serv->up, acptr->name,
 					   acptr->hopcount+1,
-					   acptr->user->servp->tok,
+					   acptr->serv->tok,
 					   acptr->info);
 		    }
 	    }
