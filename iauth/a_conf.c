@@ -268,6 +268,7 @@ char	*conf_read(char *cfile)
 			    {
 				aTarget **ttmp;
 				u_long baseip = 0, lmask = 0;
+				int inverse = 0;
 
 				if ((ch = index(buffer, '\n')))
 				{
@@ -322,11 +323,21 @@ char	*conf_read(char *cfile)
 					needh = 1;
 					ttmp = &((*last)->hostname);
 					ch = buffer + 8;
+					if (*ch == '!')
+					{
+						inverse = 1;
+						ch++;
+					}
 				    }
 				else if (!strncasecmp(buffer+1, "ip = ", 5))
 				    {
 					ttmp = &((*last)->address);
 					ch = buffer + 6;
+					if (*ch == '!')
+					{
+						inverse = 1;
+						ch++;
+					}
 					if (strchr(ch, '/'))
 					    {
 						int i1, i2, i3, i4, m;
@@ -386,13 +397,7 @@ char	*conf_read(char *cfile)
 				while (*ttmp)
 					ttmp = &((*ttmp)->nextt);
 				*ttmp = (aTarget *) malloc(sizeof(aTarget));
-				if (*ch == '!')
-				    {
-					(*ttmp)->yes = -1;
-					ch++;
-				    }
-				else
-					(*ttmp)->yes = 0;
+				(*ttmp)->yes = inverse ? -1 : 0;
 				(*ttmp)->value = mystrdup(ch);
 				if ((*ttmp)->baseip)
 				    {
