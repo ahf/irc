@@ -280,7 +280,7 @@ static	Numeric	numeric_replies[] = {
 /* 204 */	{ RPL_TRACEOPERATOR, "Oper %d %s" },
 /* 205 */	{ RPL_TRACEUSER, "User %d %s" },
 /* 206 */	{ RPL_TRACESERVER, "Serv %d %dS %dC %s %s!%s@%s V%X%s" },
-/* 207 */	{ RPL_TRACESERVICE, "Service %d %s %d %d" },
+/* 207 */	{ RPL_TRACESERVICE, "Service %d %s 0x%X 0x%X" },
 /* 208 */	{ RPL_TRACENEWTYPE, "<newtype> 0 %s" },
 /* 209 */	{ RPL_TRACECLASS, "Class %d %d" },
 /* 210 */	{ RPL_TRACERECONNECT, "Retry. %d %s" },
