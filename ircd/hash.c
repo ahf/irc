@@ -154,7 +154,7 @@ static	u_int	hash_sid(char *sid, u_int *store)
  * is little or no point hashing on a full channel name which maybe 255 chars
  * long.
  */
-static	u_int	hash_channel_name(char *hname, int *store, int shortname)
+static	u_int	hash_channel_name(char *hname, u_int *store, int shortname)
 {
 	Reg	u_char	*name = (u_char *)hname;
 	Reg	u_char	ch;
