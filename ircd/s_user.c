@@ -1647,11 +1647,7 @@ char	*parv[];
 		Debug((DEBUG_DEBUG, "from %s user %s server %s -> %#x %s",
 			parv[0], username, server, sp, sp->bcptr->name));
 		strncpyzt(user->host, host, sizeof(user->host));
-#ifndef KRYS
-		strcpy(user->server, sp->bcptr->name);
-#else
 		user->server = find_server_string(sp->snum);
-#endif
 		goto user_finish;
 	    }
 
@@ -1664,11 +1660,7 @@ char	*parv[];
 		sptr->user->flags |= FLAGS_RESTRICTED;
 	sptr->user->flags |= (UFLAGS & atoi(host));
 	strncpyzt(user->host, host, sizeof(user->host));
-#ifndef KRYS
-	strcpy(user->server, ME);
-#else
 	user->server = find_server_string(me.serv->snum);
-#endif
 
 user_finish:
 	/* 

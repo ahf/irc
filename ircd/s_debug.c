@@ -95,9 +95,6 @@ char	serveropts[] = {
 #ifdef	BETTER_NDELAY
 'n',
 #endif
-#ifdef	KRYS
-'o',
-#endif
 #ifdef	CRYPT_OPER_PASSWORD
 'p',
 #endif

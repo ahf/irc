@@ -216,9 +216,7 @@ aClient	*cptr;
 #endif
 		serv->user = NULL;
 		serv->userlist = NULL;
-#ifdef KRYS
 		serv->snum = -1;
-#endif
 		*serv->by = '\0';
 		*serv->tok = '\0';
 		serv->stok = 0;
