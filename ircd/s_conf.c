@@ -2295,7 +2295,7 @@ int	wdhms2sec(char *input, int *output)
 
 	*output = 0;
 
-	if (!s) return 0;
+	if (!input) return 0;
 
 	s = input;
 	while (*s)
