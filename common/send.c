@@ -342,6 +342,7 @@ aClient *to;
 					/* Returns always len > 0 */
 		if ((rlen = deliver_it(to, msg, len)) < 0)
 		{
+#ifndef CLIENT_COMPILE
 			if ( (IsConnecting(to) || IsHandshake(to))
 			     && to->serv && to->serv->byuid[0])
 			{
@@ -353,6 +354,7 @@ aClient *to;
 					ME, bysptr->name, to->name);
 				}
 			}
+#endif
 			return dead_link(to,"Write error to %s, closing link");
 		}
 		(void)dbuf_delete(&to->sendQ, rlen);
