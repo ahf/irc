@@ -712,8 +712,8 @@ char	*argv[];
 		(void)fprintf(stderr,"WARNING: running ircd with uid = %d\n",
 			IRC_UID);
 		(void)fprintf(stderr,"         changing to gid %d.\n",IRC_GID);
-		(void)setuid(IRC_UID);
 		(void)setgid(IRC_GID);
+		(void)setuid(IRC_UID);
 	    } 
 # endif
 #endif /*CHROOTDIR/UID/GID*/
