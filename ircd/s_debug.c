@@ -250,10 +250,12 @@ char	*nick;
 		   me.name, RPL_STATSDEBUG, nick, secs/60, secs%60,
 		   rus.ru_utime.tv_sec/60, rus.ru_utime.tv_sec%60,
 		   rus.ru_stime.tv_sec/60, rus.ru_stime.tv_sec%60);
-	sendto_one(cptr, ":%s %d %s :RSS %d ShMem %d Data %d Stack %d",
-		   me.name, RPL_STATSDEBUG, nick, rus.ru_maxrss,
-		   rus.ru_ixrss / (rup * hzz), rus.ru_idrss / (rup * hzz),
-		   rus.ru_isrss / (rup * hzz));
+	if (rup && hzz)
+		sendto_one(cptr, ":%s %d %s :RSS %d ShMem %d Data %d Stack %d",
+			   me.name, RPL_STATSDEBUG, nick, rus.ru_maxrss,
+			   rus.ru_ixrss / (rup * hzz),
+			   rus.ru_idrss / (rup * hzz),
+			   rus.ru_isrss / (rup * hzz));
 	sendto_one(cptr, ":%s %d %s :Swaps %d Reclaims %d Faults %d",
 		   me.name, RPL_STATSDEBUG, nick, rus.ru_nswap,
 		   rus.ru_minflt, rus.ru_majflt);
