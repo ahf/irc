@@ -934,6 +934,12 @@ void	initstats()
 	bzero((char *)&ircst, sizeof(ircst));
 }
 
+void	initruntimeconf()
+{
+	memset((char *)&iconf, 0, sizeof(iconf));
+	iconf.aconnect = 1; /* default to ON */
+}
+
 void	tstats(cptr, name)
 aClient	*cptr;
 char	*name;
