@@ -853,7 +853,7 @@ char	*comment;
 			add_history(sptr, (sptr->flags & FLAGS_QUIT) ? 
 				    &me : NULL);
 #else
-			add_history(sptr, NULL);
+			add_history(sptr, (sptr == cptr) ? &me : NULL);
 #endif
 			off_history(sptr);
 		    }
