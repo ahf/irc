@@ -695,7 +695,7 @@ char	*parv[];
 	aClient *acptr;
 	int	delayed = 0;
 	char	nick[NICKLEN+2], *s, *user, *host;
-	Link	*lp;
+	Link	*lp = NULL;
 
 	if (IsService(sptr))
    	    {
