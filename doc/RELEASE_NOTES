@@ -5,7 +5,7 @@ This is a development version of the IRC software.
 ===============================================================================
 
 New features in 2.10:
-	* slave process handles identd lookups.. (modular design).
+	* slave process handles authentication (ident lookups, ..).
 	* creation of a collision proof type of channels (prefix !).
 	* opless !channels may be reoped by the server (mode +r).
 	* added channel mode +e (EFnet's exceptions to bans).
