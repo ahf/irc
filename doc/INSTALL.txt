@@ -413,8 +413,8 @@
 
      FFoorrmmaatt
 
-        P:<Internet IP#>:<*>::<Port>:<Flags>:
-        P:<Directory>:<*>:<*>:<Port>:<Flags>:
+        P:<Internet IP#>:::<Port>::<Flags>
+        P:<Directory>:::<Port>::<Flags>
 
 
 

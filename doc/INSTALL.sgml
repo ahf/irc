@@ -348,8 +348,8 @@ server's ability to accept connections. By use of this line
 in the ircd.conf file, it is easy to setup both Unix Domain
 ports for the server to accept connections on as well as
 extra internet ports.
-<tag/Format/<verb>P:&lt;Internet IP&num;&gt;:&lt;*&gt;::&lt;Port&gt;:&lt;Flags&gt;:
-P:&lt;Directory&gt;:&lt;*&gt;:&lt;*&gt;:&lt;Port&gt;:&lt;Flags&gt;:</verb>
+<tag/Format/<verb>P:&lt;Internet IP&num;&gt;:::&lt;Port&gt;::&lt;Flags&gt;
+P:&lt;Directory&gt;:::&lt;Port&gt;::&lt;Flags&gt;</verb>
 </descrip>
 <itemize>
 <item>Internet Ports
