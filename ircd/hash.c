@@ -177,7 +177,7 @@ static	u_int	hash_channel_name(char *hname, int *store, int shortname)
 /*
  * hash_host_name
  */
-static	u_int	hash_host_name(char *hname, int *store)
+static	u_int	hash_host_name(char *hname, u_int *store)
 {
 
 	Reg	u_char	*name = (u_char *)hname;
