@@ -1264,13 +1264,6 @@ int 	initconf(int opt)
 			case 's': /* CONF_OPERATOR                */
 				aconf->status = CONF_SERVICE;
 				break;
-#if 0
-			case 'U': /* Uphost, ie. host where client reading */
-			case 'u': /* this should connect.                  */
-			/* This is for client only, I must ignore this */
-			/* ...U-line should be removed... --msa */
-				break;
-#endif
 			case 'V': /* Server link version requirements */
 				aconf->status = CONF_VER;
 				break;
