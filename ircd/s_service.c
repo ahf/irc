@@ -574,12 +574,6 @@ int	m_servset(aClient *cptr, aClient *sptr, int parc, char *parv[])
 		sendto_one(sptr, replies[ERR_NOPRIVILEGES], ME, BadTo(parv[0]));
 		return 1;
 	    }
-	if (parc < 2)
-	    {
-		sendto_one(sptr, replies[ERR_NEEDMOREPARAMS], ME, BadTo(parv[0]),
-			   "SERVSET");
-		return 1;
-	    }
 	if (sptr->service->wants)
 		return 1;
 
