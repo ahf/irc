@@ -706,7 +706,7 @@ aConfItem *top;
 	u_int	otype = 0, valid = 0;
 
 	if (!top)
-		return 0;
+		return -1;
 
 	for (aconf = top; aconf; aconf = aconf->next)
 	    {
