@@ -194,6 +194,7 @@ int add;
 	if (!serv)
 	    {
 		serv = (aServer *)MyMalloc(sizeof(aServer));
+		memset(serv, 0, sizeof(aServer));
 #ifdef	DEBUGMODE
 		servs.inuse++;
 #endif
