@@ -575,7 +575,7 @@ struct	SMode	{
 
 struct	Message	{
 	char	*cmd;
-	int	(* func)();
+	int	(*func)(aClient *cptr, aClient *sptr, int parc, char *parv[]);
 	int	parameters;
 	u_int	flags;
 		/* bit 0 set means that this command is allowed to be used

@@ -180,8 +180,7 @@ struct Help helplist[] = {
 
 char helpbuf[80];
 
-void do_help(ptr, temp)
-char *ptr, *temp;
+void	do_help(char *ptr, char *temp)
 {
   struct Help *hptr;
   int count;

@@ -28,10 +28,7 @@ static  char rcsid[] = "@(#)$Id$";
 
 #define	CTCP_CHAR	0x1
 
-void check_ctcp(cptr, sptr, parc, parv)
-aClient	*cptr, *sptr;
-int	parc;
-char	*parv[];
+void	check_ctcp(aClient *cptr, aClient *sptr, int parc, char *parv[])
 {
 	char	*front = NULL, *back = NULL;
 
@@ -48,3 +45,4 @@ char	*parv[];
 			  CTCP_CHAR, version, CTCP_CHAR);
 	*back = CTCP_CHAR;
 }
+

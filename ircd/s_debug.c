@@ -192,9 +192,7 @@ void	debug(int level, char *form, ...)
  * different field names for "struct rusage".
  * -avalon
  */
-void	send_usage(cptr, nick)
-aClient *cptr;
-char	*nick;
+void	send_usage(aClient *cptr, char *nick)
 {
 #if HAVE_GETRUSAGE
 	struct	rusage	rus;
@@ -297,9 +295,7 @@ char	*nick;
 	return;
 }
 
-void	send_defines(cptr, nick)
-aClient *cptr;
-char	*nick;
+void	send_defines(aClient *cptr, char *nick)
 {
     	sendto_one(cptr, ":%s %d %s :HUB:%s MS:%d", 
 		   ME, RPL_STATSDEFINE, nick,
@@ -342,10 +338,7 @@ char	*nick;
 		   iconf.split_minservers, iconf.split_minusers);
 }
 
-void	count_memory(cptr, nick, debug)
-aClient	*cptr;
-char	*nick;
-int	debug;
+void	count_memory(aClient *cptr, char *nick, int debug)
 {
 	extern	aChannel	*channel;
 	extern	aClass		*classes;
@@ -683,3 +676,4 @@ int	debug;
 		   (u_long)sbrk((size_t)0)-(u_long)sbrk0);
 	return;
 }
+

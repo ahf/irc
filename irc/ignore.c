@@ -30,8 +30,7 @@ static  char rcsid[] = "@(#)$Id$";
 anIgnore *ignore = (anIgnore *) 0;
 char ibuf[80];
 
-void do_ignore(user, temp)
-char *user, *temp;
+void	do_ignore(char *user, char *temp)
 {
   char *ch, *wild = "*";
   anIgnore *iptr;
@@ -91,9 +90,7 @@ char *user, *temp;
   }
 }    
 
-anIgnore *find_ignore(user, para, fromhost)
-char *user, *fromhost;
-anIgnore *para;
+anIgnore	*find_ignore(char *user, anIgnore *para, char *fromhost)
 {
   anIgnore *iptr;
   for (iptr = ignore; iptr; iptr=iptr->next)
@@ -104,8 +101,7 @@ anIgnore *para;
   return iptr ? iptr : para;
 }
 
-int kill_ignore(iptr)
-anIgnore *iptr;
+int	kill_ignore(anIgnore *iptr)
 {
   anIgnore *i2ptr, *i3ptr = (anIgnore *) 0;
   for (i2ptr = ignore; i2ptr; i2ptr = i2ptr->next) {
@@ -124,9 +120,7 @@ anIgnore *iptr;
   return (-1);
 }
 
-int add_ignore(ch, status, fromhost)
-char *ch, *fromhost;
-int status;
+int	add_ignore(char *ch, int status, char *fromhost)
 {
   anIgnore *iptr;
   iptr = (anIgnore *) malloc(sizeof (anIgnore));
@@ -139,3 +133,4 @@ int status;
   iptr->flags = status;
   return(1);
 }
+

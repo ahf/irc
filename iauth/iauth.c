@@ -132,9 +132,7 @@ static	void	init_signals()
 #endif
 }
 
-int	main(argc, argv)
-int	argc;
-char	*argv[];
+int	main(int argc, char *argv[])
 {
 	time_t	nextst = time(NULL) + 90;
 	char *xopt;
@@ -221,3 +219,4 @@ char	*argv[];
 		    }
 	    }
 }
+

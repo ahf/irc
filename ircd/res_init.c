@@ -139,8 +139,7 @@ struct __res_state ircd_res
  *
  * Return 0 if completes successfully, -1 on error
  */
-int
-ircd_res_init()
+int	ircd_res_init()
 {
 	register FILE *fp;
 	register char *cp, **pp;
@@ -414,9 +413,7 @@ ircd_res_init()
 	return (0);
 }
 
-static void
-ircd_res_setoptions(options, source)
-	char *options, *source;
+static	void	ircd_res_setoptions(char *options, char *source)
 {
 	char *cp = options;
 	int i;
@@ -465,9 +462,8 @@ ircd_res_setoptions(options, source)
 
 #ifdef RESOLVSORT
 /* XXX - should really support CIDR which means explicit masks always. */
-static u_int32_t
-ircd_net_mask(in)		/* XXX - should really use system's version of this */
-	struct in_addr in;
+/* XXX - should really use system's version of this */
+static	u_int32_t	ircd_net_mask(struct in_addr in)
 {
 	register u_int32_t i = ntohl(in.s_addr);
 
@@ -480,10 +476,7 @@ ircd_net_mask(in)		/* XXX - should really use system's version of this */
 #endif
 
 #ifdef	NEXT
-static int
-ircd_netinfo_res_init(haveenv, havesearch)
-	int *haveenv;
-	int *havesearch;
+static int	ircd_netinfo_res_init(int *haveenv, int *havesearch)
 {
     register	int n;
     void	*domain, *parent;
@@ -634,11 +627,11 @@ ircd_netinfo_res_init(haveenv, havesearch)
 }
 #endif	/* NEXT */
 
-u_int
-ircd_res_randomid()
+u_int	ircd_res_randomid()
 {
 	struct timeval now;
 
 	gettimeofday(&now, NULL);
 	return (0xffff & (now.tv_sec ^ now.tv_usec ^ getpid()));
 }
+

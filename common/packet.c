@@ -54,10 +54,7 @@ static  char rcsid[] = "@(#)$Id$";
 **	with cptr of "local" variation, which contains all the
 **	necessary fields (buffer etc..)
 */
-int	dopacket(cptr, buffer, length)
-Reg	aClient *cptr;
-char	*buffer;
-Reg	int	length;
+int	dopacket(aClient *cptr, char *buffer, int length)
 {
 	Reg	char	*ch1;
 	Reg	char	*ch2, *bufptr;
@@ -182,3 +179,4 @@ Reg	int	length;
 	cptr->count = ch1 - bufptr;
 	return r;
 }
+

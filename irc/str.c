@@ -28,9 +28,7 @@ static  char rcsid[] = "@(#)$Id$";
 #include "c_externs.h"
 #undef STR_C
 
-char * center(buf,str,len)
-char *buf, *str;
-int len;
+char	*center(char *buf, char *str, int len)
 {
   char i,j,k;
   if ((i = strlen(str)) > len) {
@@ -48,9 +46,7 @@ int len;
 }
 
 /* William Wisner <wisner@b.cc.umich.edu>, 16 March 1989 */
-char *
-real_name(user)
-     struct passwd *user;
+char	*real_name(struct passwd *user)
 {
   char *bp, *cp;
   static char name[REALLEN+1];

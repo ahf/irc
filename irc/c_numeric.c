@@ -37,12 +37,9 @@ static  char rcsid[] = "@(#)$Id$";
 **		terminated list (parv[parc] == NULL).
 */
 
-int	do_numeric(numeric, cptr, sptr, parc, parv)
-int	numeric;
-aClient *cptr, *sptr;
-int	parc;
-char	*parv[];
-    {
+int	do_numeric(int numeric, aClient *cptr, aClient *sptr, int parc,
+		char *parv[])
+{
 	char *tmp;
 	int i;
 	time_t l;		/* ctime(&l) on STATS L */
@@ -411,3 +408,4 @@ char	*parv[];
 	  putline(mybuf);
 	return 0;
 }
+

@@ -39,10 +39,7 @@ static  char rcsid[] = "@(#)$Id$";
 
 #define	STDINBUFSIZE (0x80)
 
-int	client_init(host, portnum, cptr)
-char	*host;
-int	portnum;
-aClient	*cptr;
+int	client_init(char *host, int portnum, aClient *cptr)
 {
 	int	sock;
 	static	struct	hostent *hp;
@@ -108,8 +105,7 @@ aClient	*cptr;
 	return(sock);
 }
 
-void client_loop(sock)
-int	sock;
+void	client_loop(int sock)
 {
 	int	i = 0, size, pos;
 	char	apubuf[STDINBUFSIZE+1];
@@ -163,3 +159,4 @@ int	sock;
 #endif /* AUTOMATON */
 	} while (1);
 }
+
