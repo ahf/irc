@@ -643,10 +643,11 @@ char	*buffer, *bufend;
 	    }
 	if (MyConnect(from) && !IsPrivileged(from) &&
 	    (mptr->flags & (MSG_LOP|MSG_OP)))
-	    {
-		sendto_one(from, err_str(ERR_NOPRIVILEGES, para[0]));
-		return -1;
-	    }
+		if (!((mptr->flags & MSG_LOP) && IsLocOp(from)))
+		    {
+			sendto_one(from, err_str(ERR_NOPRIVILEGES, para[0]));
+			return -1;
+		    }
 #endif
 	/*
 	** ALL m_functions return now UNIFORMLY:
