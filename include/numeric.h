@@ -123,7 +123,6 @@
 #define	RPL_YOURHOST         002
 #define	RPL_CREATED          003
 #define	RPL_MYINFO           004
-#define	RPL_BOUNCE           005
 
 /*
  * Errors are in the range from 400-599 currently and are grouped by what
@@ -138,6 +137,7 @@
 #define ERR_TOOMANYTARGETS   407
 #define ERR_NOSUCHSERVICE    408
 #define	ERR_NOORIGIN         409
+#define	ERR_TOOMANYDESTS     410
 
 #define ERR_NORECIPIENT      411
 #define ERR_NOTEXTTOSEND     412
