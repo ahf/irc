@@ -914,8 +914,11 @@ int	main(int argc, char *argv[])
 
                 for (i = 0; i <= highest_fd; i++)
                     {   
-                        if ((acptr = listeners[i]))
-                                break;
+			if (!(acptr = local[i]))
+				continue;
+			if (IsListening(acptr))
+				break;
+			acptr = NULL;
 		    }
 		/* exit if there is nothing to listen to */
 		if (acptr == NULL && !(bootopt & BOOT_INETD))
