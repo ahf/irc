@@ -2826,13 +2826,15 @@ char	*parv[];
 				chptr = NULL;
 				while (chptr=hash_find_channels(name+1, chptr))
 				    {
-					if (!ShowChannel(sptr, chptr))
-						continue;
+					int scr = SecretChannel(chptr) &&
+							!IsMember(sptr, chptr);
 					rlen += sendto_one(sptr,
 							   rpl_str(RPL_LIST,
 								   parv[0]),
 							   chptr->chname,
+							   (scr) ? -1 :
 							   chptr->users,
+							   (scr) ? "" :
 							   chptr->topic);
 					if (!MyConnect(sptr) &&
 					    rlen > CHREPLLEN)
