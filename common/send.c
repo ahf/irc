@@ -1187,6 +1187,11 @@ void	logfiles_open(void)
 			|O_CREAT, S_IRUSR|S_IWUSR
 # endif
 			);
+	/* Better safe than sorry. */
+	if (userlog >= 0)
+	{
+		local[userlog] = NULL;
+	}
 #else
 	userlog = -1;
 #endif
@@ -1196,6 +1201,10 @@ void	logfiles_open(void)
 		|O_CREAT, S_IRUSR|S_IWUSR
 # endif
 			);
+	if (connlog >= 0)
+	{
+		local[connlog] = NULL;
+	}
 #else
 	connlog = -1;
 #endif
