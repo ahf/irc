@@ -1,5 +1,5 @@
 /************************************************************************
- *   IRC - Internet Relay Chat, iauth/mod_rfc921.c
+ *   IRC - Internet Relay Chat, iauth/mod_rfc931.c
  *   Copyright (C) 1998 Christophe Kalt
  *
  *   This program is free software; you can redistribute it and/or modify
