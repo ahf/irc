@@ -2119,7 +2119,7 @@ char	*parv[];
 	{
 		/* internal call of m_user for *local* user */
 #ifdef INET6
-		inetntop(AF_INET6, (char *)&sptr->ip, user->sip,
+		inetntop(AF_INET6, (char *)&sptr->ip, ipbuf,
 				sizeof(ipbuf));
 #else
 		strcpy(ipbuf, (char *)inetntoa((char *)&sptr->ip));
