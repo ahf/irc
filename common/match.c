@@ -178,7 +178,7 @@ int	match(char *mask, char *name)
 	char	*ma = mask, *na = name;
 	int	wild = 0, q = 0, calls = 0;
 
-	if (!*mask)
+	if (BadPtr(mask) || BadPtr(name))
 		return 1;
 
 	if (mask[0]=='*' && mask[1]=='\0')
