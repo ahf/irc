@@ -84,31 +84,6 @@ time_t	clock;
 	return buf;
 }
 
-/**
- ** myctime()
- **   This is like standard ctime()-function, but it zaps away
- **   the newline from the end of that string. Also, it takes
- **   the time value as parameter, instead of pointer to it.
- **   Note that it is necessary to copy the string to alternate
- **   buffer (who knows how ctime() implements it, maybe it statically
- **   has newline there and never 'refreshes' it -- zapping that
- **   might break things in other places...)
- **
- **/
-
-char	*myctime(value)
-time_t	value;
-{
-	static	char	buf[28];
-	Reg	char	*p;
-
-	(void)strcpy(buf, ctime(&value));
-	if ((p = (char *)index(buf, '\n')) != NULL)
-		*p = '\0';
-
-	return buf;
-}
-
 /*
 ** check_registered_user is used to cancel message, if the
 ** originator is a server or not registered yet. In other
