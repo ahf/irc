@@ -902,7 +902,7 @@ Reg	aClient	*cptr;
 			else
 				stok = acptr->user->servp->tok;
 			sendto_one(cptr, "SERVICE %s %s %s %d %d :%s",
-				   acptr->name, tok, acptr->service->dist,
+				   acptr->name, stok, acptr->service->dist,
 				   acptr->service->type, acptr->hopcount + 1,
 				   acptr->info);
 		    }
