@@ -2767,10 +2767,10 @@ aConfItem *aconf;
 	pi.pi_seq = cp->lseq++;
 	cp->seq++;
 	/*
-	 * Only recognise stats from the last 10 minutes as significant...
+	 * Only recognise stats from the last 20 minutes as significant...
 	 * Try and fake sliding along a "window" here.
 	 */
-	if (cp->seq * aconf->class->conFreq > 600)
+	if (cp->seq > 1 && cp->seq * aconf->class->conFreq > 1200)
 	    {
 		if (cp->recv)
 		    {
