@@ -742,6 +742,7 @@ int	main(int argc, char *argv[])
 	bzero((char *)&me, sizeof(me));
 
 	make_server(&me);
+	register_server(&me);
 
 	version = make_version();	/* Generate readable version string */
 
@@ -1014,6 +1015,7 @@ int	main(int argc, char *argv[])
 
 		tmp = make_client(NULL);
 		make_server(tmp);
+		register_server(tmp);
 
 		tmp->fd = 0;
 		tmp->flags = FLAGS_LISTEN;
