@@ -19,7 +19,7 @@
  */
 
 #ifndef lint
-static  char rcsid[] = "@(#)$Id$";
+static const volatile char rcsid[] = "@(#)$Id$";
 #endif
 
 #include "os.h"

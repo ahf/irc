@@ -24,7 +24,7 @@
 #undef RES_C
 
 #ifndef lint
-static  char rcsid[] = "@(#)$Id$";
+static const volatile char rcsid[] = "@(#)$Id$";
 #endif
 
 /* because there is a lot of debug code in here :-) */

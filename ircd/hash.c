@@ -17,7 +17,7 @@
  *   Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
  */
 #ifndef lint
-static  char rcsid[] = "@(#)$Id$";
+static const volatile char rcsid[] = "@(#)$Id$";
 #endif
 
 #include "os.h"

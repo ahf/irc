@@ -7,7 +7,7 @@
  */
 
 #ifndef lint
-char rcsid[] = "$Id$";
+static const volatile char rcsid[] = "$Id$";
 #endif
 
 #define IRC_SPRINTF_C

@@ -17,7 +17,7 @@
  *
  */
 
-static  char rcsid[] = "@(#)$Id$";
+static const volatile char rcsid[] = "@(#)$Id$";
 
 #include <stdio.h>
 #include <stdlib.h>     /* atol() */
