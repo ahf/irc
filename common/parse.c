@@ -752,7 +752,7 @@ int	parse(aClient *cptr, char *buffer, char *bufend)
 	if (mptr->handler[status] != m_nop && mptr->handler[status] != m_nopriv
 		&& mptr->handler[status] != m_unreg &&
 		mptr->minparams > 0 && 
-		(i <= mptr->minparams || para[i-1][0] == '\0'))
+		(i <= mptr->minparams || para[mptr->minparams][0] == '\0'))
 	{
 		if (status == STAT_SERVER)
 		{
