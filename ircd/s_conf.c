@@ -309,7 +309,7 @@ long	oline_flags_parse(char *string)
 	if (tmp & ACL_LOCOP)
 		tmp &= ~ACL_ALL_REMOTE;
 #ifdef OPER_KILL
-# ifdef LOCAL_KILL_ONLY
+# ifndef OPER_KILL_REMOTE
 	tmp &= ~ACL_KILLREMOTE;
 # endif
 #else
@@ -1282,7 +1282,7 @@ int	openconf(void)
 		if (serverbooting)
 		{
 			fprintf(stderr,
-			"Fatal Error: Can not open configuration file %s (%s)",
+			"Fatal Error: Can not open configuration file %s (%s)\n",
 			configfile,strerror(errno));
 		}
 	}

@@ -70,7 +70,7 @@ char	serveropts[] = {
 'J',
 #endif
 #ifdef	OPER_KILL
-# ifdef  LOCAL_KILL_ONLY
+# ifndef  OPER_KILL_REMOTE
 'k',
 # else
 'K',
