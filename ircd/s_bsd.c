@@ -422,7 +422,7 @@ start_iauth()
 	static char first = 1;
 	int sp[2], fd;
 
-	if ((bootopt & BOOT_NOIAUTH) == 0)
+	if ((bootopt & BOOT_NOIAUTH) != 0)
 		return;
 	if (adfd >= 0)
 	    {
