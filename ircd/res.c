@@ -1185,10 +1185,17 @@ aCache	*cachep;
 					(addrcount + 1) * sizeof(*ab));
 			cp->he.h_addr_list = base;
 #ifdef	DEBUG
+# ifdef	INET6
+			Debug((DEBUG_DNS,"u_l:add IP %s hal %x ac %d",
+				inetntop(AF_INET6, 
+				(char *)((struct in6_addr *)s)->s6_addr,
+				mydummy, MYDUMMY_SIZE),
+				cp->he.h_addr_list, addrcount));
+# else
 			Debug((DEBUG_DNS,"u_l:add IP %x hal %x ac %d",
-				ntohl(((struct IN_ADDR *)s)->S_ADDR),
-				cp->he.h_addr_list,
-				addrcount));
+				ntohl(((struct in_addr *)s)->s_addr),
+				cp->he.h_addr_list, addrcount));
+# endif
 #endif
 			for (i = addrcount; i; i--)
 			    {
