@@ -1646,7 +1646,7 @@ char	*parv[];
 				break;
 			/*
 			 * 'Rules' established for sending a WHOIS reply:
-			 * - if wildcards are being used dont send a reply if
+			 * - if wildcards are being used don't send a reply if
 			 *   the querier isnt any common channels and the
 			 *   client in question is invisible and wildcards are
 			 *   in use (allow exact matches only);

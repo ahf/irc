@@ -2915,7 +2915,7 @@ char	*parv[];
 			break;
 		lp = c2ptr->user->channel;
 		/*
-		 * dont show a client if they are on a secret channel or
+		 * don't show a client if they are on a secret channel or
 		 * they are on a channel sptr is on since they have already
 		 * been show earlier. -avalon
 		 */

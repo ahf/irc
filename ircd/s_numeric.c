@@ -89,7 +89,7 @@ char	*parv[];
 			** ...one might consider sendto_ops
 			** here... --msa
 			** And so it was done. -avalon
-			** And regretted. Dont do it that way. Make sure
+			** And regretted. Don't do it that way. Make sure
 			** it goes only to non-servers. -avalon
 			** Check added to make sure servers don't try to loop
 			** with numerics which can happen with nick collisions.

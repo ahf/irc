@@ -1073,7 +1073,7 @@ time_t	delay;
  * Here we just open that file and make sure it is opened to fd 2 so that
  * any fprintf's to stderr also goto the logfile.  If the debuglevel is not
  * set from the command line by -x, use /dev/null as the dummy logfile as long
- * as DEBUGMODE has been defined, else dont waste the fd.
+ * as DEBUGMODE has been defined, else don't waste the fd.
  */
 static	void	open_debugfile()
 {
