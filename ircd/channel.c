@@ -2008,6 +2008,11 @@ static	int	check_channelmask(aClient *sptr, aClient *cptr, char *chname)
 		*t = '\0';
 
 	s++;
+	if (*s == '\0')
+	{
+		/* ':' was last char (thus empty mask) --B. */
+		return 0;
+	}
 	if (match(s, ME) || (IsServer(cptr) && match(s, cptr->name)))
 	    {
 		if (MyClient(sptr))
