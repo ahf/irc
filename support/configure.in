@@ -665,6 +665,7 @@ if test $irc_cv_stdarg = yes; then
   AC_DEFINE(USE_STDARG)
 else
   AC_MSG_RESULT(no)
+  AC_MSG_ERROR([Compatibility code for systems without stdarg has not been written, please notify ircd-bugs@irc.org with description of your system type and version.])
 fi
 ])
 
