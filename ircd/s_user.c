@@ -2634,7 +2634,9 @@ int	old;
 		send_umode(cptr, sptr, old, ALL_UMODES, buf);
 #ifdef USE_SERVICES
 	/* buf contains all modes for local users, and iow only for remotes */
-	check_services_butone(SERVICE_WANT_UMODE, NULL, sptr,
-			      ":%s MODE %s :%s", sptr->name, sptr->name, buf);
+	if (*buf)
+		check_services_butone(SERVICE_WANT_UMODE, NULL, sptr,
+				      ":%s MODE %s :%s", sptr->name,
+				      sptr->name, buf);
 #endif
 }
