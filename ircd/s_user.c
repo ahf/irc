@@ -356,7 +356,7 @@ char	*nick, *username;
 		char *reason = NULL;
 
 #if defined(USE_IAUTH)
-		if (adfd < 0 && iauth_required)
+		if (!DoneXAuth(sptr) && iauth_required)
 		    {
 			time_t last = 0;
 

@@ -311,8 +311,11 @@ read_iauth()
 			    cptr->flags |= FLAGS_GOTID;
 			}
 		    else if (start[0] == 'D')
+		      {
 			    /*authentication finished*/
 			    ClearXAuth(cptr);
+			    SetDoneXAuth(cptr);
+		      }
 		    else
 			{
 			    /*
