@@ -2604,6 +2604,8 @@ aConfItem *aconf;
 
 	if (!aconf->ipnum.s_addr || aconf->ipnum.s_addr == -1 || !cp->port)
 		return;
+	if (aconf->class->conFreq == 0) /* avoid flooding */
+		return;
 	pi.pi_cp = aconf;
 	pi.pi_id = htonl(PING_CPING);
 	pi.pi_seq = cp->lseq++;
