@@ -345,7 +345,7 @@ time_t	currenttime;
 #endif /* TIMEDKLINES */
 			rehashed)
 		    {
-			if (IsPerson(cptr))
+			if (IsPerson(cptr) && !IsKlineExempt(cptr))
 			    {
 				kflag = find_kill(cptr, rehashed, &reason);
 #ifdef R_LINES_OFTEN
