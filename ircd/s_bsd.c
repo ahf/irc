@@ -415,7 +415,8 @@ void	close_listeners()
 }
 
 void
-start_iauth()
+start_iauth(rcvdsig)
+int rcvdsig;
 {
 #if defined(USE_IAUTH)
 	static time_t last = 0;
@@ -431,7 +432,7 @@ start_iauth()
 		return;
 	    }
 	read_iauth(); /* to reset olen */
-	if ((time(NULL) - last) > 300)
+	if ((time(NULL) - last) > 300 || rcvdsig)
 	    {
 		sendto_flag(SCH_AUTH, "Starting iauth...");
 		last = time(NULL);
@@ -598,7 +599,7 @@ void	init_sys()
 init_dgram:
 	resfd = init_resolver(0x1f);
 
-	start_iauth();
+	start_iauth(0);
 }
 
 void	write_pidfile()

@@ -1049,7 +1049,7 @@ time_t	delay;
 	    }
 	if (restart_iauth)
 	    {
-		start_iauth();
+		start_iauth(1);
 		restart_iauth = 0;
 	    }
 	/*
