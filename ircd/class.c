@@ -224,7 +224,7 @@ void	report_classes(aClient *sptr, char *to)
 	{
 		sendto_one(sptr, replies[RPL_STATSYLINE], ME, BadTo(to), 'Y',
 			Class(cltmp), PingFreq(cltmp), ConFreq(cltmp),
-			MaxLinks(cltmp), MaxSendq(cltmp),
+			MaxLinks(cltmp), MaxSendq(cltmp), MaxBSendq(cltmp),
 			MaxHLocal(cltmp), MaxUHLocal(cltmp),
 			MaxHGlobal(cltmp), MaxUHGlobal(cltmp), Links(cltmp));
 	}
