@@ -1020,6 +1020,16 @@ check_serverback:
 	(void)attach_conf(cptr, n_conf);
 	(void)attach_conf(cptr, c_conf);
 	(void)attach_confs(cptr, name, CONF_HUB|CONF_LEAF);
+	if (IsIllegal(n_conf) || IsIllegal(c_conf))
+	{
+		sendto_flag(SCH_DEBUG, "Illegal class!");
+		return -2;
+	}
+	if (!n_conf->host || !c_conf->host)
+	{
+		sendto_flag(SCH_DEBUG, "Null host in class!");
+		return -2;
+	}
 
 #ifdef INET6
 	if ((AND16(c_conf->ipnum.s6_addr) == 255) && !IsUnixSocket(cptr))
