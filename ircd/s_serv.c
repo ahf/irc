@@ -680,7 +680,7 @@ int	m_server(aClient *cptr, aClient *sptr, int parc, char *parv[])
 			check_servername_errors[tmperr][0],
 			host, get_client_name(cptr, TRUE));
 		return exit_client(cptr, cptr, &me,
-			(char *)check_servername_errors[tmperr][1]);
+			check_servername_errors[tmperr][1]);
 	}
 	
 	/* *WHEN* can it be that "cptr != sptr" ????? --msa */
