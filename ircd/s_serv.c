@@ -1084,8 +1084,6 @@ char	*parv[];
 
 	if (parc > 2)
 	    {
-		int	qlen = strlen(parv[2]);
-
 		if (IsServer(cptr) && check_link(cptr) && !IsOper(sptr))
 		    {
 			sendto_one(sptr, rpl_str(RPL_TRYAGAIN, parv[0]),

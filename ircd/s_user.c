@@ -1329,7 +1329,6 @@ aChannel *chptr;
 int oper;
 {
 	Reg	Link	*lp;
-	aChannel *channame;
 	int	member;
 
 	if (!IsAnonymous(chptr))
@@ -1438,7 +1437,7 @@ char	*parv[];
 	aChannel *chptr, *mychannel;
 	char	*channame = NULL;
 	int	oper = parc > 2 ? (*parv[2] == 'o' ): 0; /* Show OPERS only */
-	int	member, penalty = 0;
+	int	penalty = 0;
 	char	*p, *mask;
 
 	if (parc < 2)
