@@ -1738,9 +1738,6 @@ FdAry	*fdp;
 	int	res, length, fd, i, fdnew;
 	int	auth;
 
-#ifdef NPATH
-         note_delay(&delay);
-#endif
 #ifdef	pyr
 	(void) gettimeofday(&nowt, NULL);
 	timeofday = nowt.tv_sec;

@@ -792,9 +792,6 @@ char	*comment;
 				istat.is_user[0]--;
 			if (IsAnOper(sptr))
 				istat.is_oper--;
-#ifdef NPATH
-			note_signoff(sptr);
-#endif
 			sendto_common_channels(sptr, ":%s QUIT :%s",
 						sptr->name, comment);
 

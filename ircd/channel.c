@@ -41,13 +41,6 @@ static	char rcsid[] = "@(#)$Id$";
 #include "channel.h"
 #include "h.h"
 
-#ifdef EPATH
-#define m_names n_names
-#define m_list n_list
-#define m_join n_join
-#define m_mode n_mode
-#endif
-
 aChannel *channel = NullChn;
 
 static	void	add_invite __P((aClient *, aChannel *));
@@ -315,9 +308,6 @@ int	flags;
 			chptr->clist = ptr;
 		    }
 		ptr->flags++;
-#ifdef NPATH            
-                note_join(who, chptr);
-#endif
 	    }
 }
 
@@ -362,9 +352,6 @@ aChannel *chptr;
 #ifdef USE_SERVICES
 	check_services_butone(SERVICE_WANT_CHANNEL, NULL, &me, "CHANNEL %s %d",
 			      chptr->chname, chptr->users-1);
-#endif
-#ifdef NPATH            
-        note_leave(sptr, chptr);
 #endif
 	if (--chptr->users <= 0)
 		sub1_from_channel(chptr);

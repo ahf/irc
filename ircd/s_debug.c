@@ -89,7 +89,7 @@ char	serveropts[] = {
 #ifdef	IDLE_FROM_MSG
 'M',
 #endif
-#ifdef	NPATH
+#ifdef	NPATH /* gone */
 'N',
 #endif
 #ifdef	BETTER_NDELAY
