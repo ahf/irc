@@ -406,6 +406,7 @@ char	*parv[];
 	for (s = parv[1]; (nick = strtoken(&p, s, ",")); s = NULL)
 	    {
 		wp = wp2 = &was[(ww_index ? ww_index : ww_size) - 1];
+		j = 0;
 
 		do {
 			if (mycmp(nick, wp->ww_nick) == 0)
