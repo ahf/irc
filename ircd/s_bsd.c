@@ -1174,6 +1174,14 @@ void	close_connection(aClient *cptr)
 		if (nextconnect > aconf->hold || nextconnect == 0)
 			nextconnect = aconf->hold;
 	    }
+	if (IsServer(cptr) && nextconnect == 0)
+	{
+		/*
+		 * If nextconnect is still 0, reset it, nevertheless
+		 * I see no way for this to happen. :-) --B.
+		 */
+		nextconnect = timeofday;
+	}
 
 	if (cptr->authfd >= 0)
 	    {
