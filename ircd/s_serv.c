@@ -2135,7 +2135,7 @@ char	*parv[];
 		case STAT_ME:
 			break;
 		case STAT_UNKNOWN:
-			if (IsAnOper(sptr) || MyClient(sptr))
+			if (IsAnOper(sptr) || (MyPerson(sptr) && SendWallops(sptr)))
 				sendto_one(sptr,
 					   rpl_str(RPL_TRACEUNKNOWN, parv[0]),
 					   class, name);
@@ -2144,15 +2144,6 @@ char	*parv[];
 			/* Only opers see users if there is a wildcard
 			 * but anyone can see all the opers.
 			 */
-/*
-			if (IsOper(sptr)  &&
-			    (MyClient(sptr) || !(dow && IsInvisible(acptr)))
-			    || !dow || IsAnOper(acptr))
-			    {
-			if (IsOper(sptr) && !(dow || IsInvisible(acptr)) ||
-			    (IsOper(sptr) && IsLocal(sptr)) ||
-			    !dow || IsAnOper(acptr))
-*/
 			if (IsAnOper(acptr))
 				sendto_one(sptr,
 					   rpl_str(RPL_TRACEOPERATOR, parv[0]),
@@ -2161,17 +2152,6 @@ char	*parv[];
 				sendto_one(sptr,
 					   rpl_str(RPL_TRACEUSER, parv[0]),
 					   class, name);
-/*
-			    {
-				if (IsAnOper(acptr))
-					sendto_one(sptr,
-						   rpl_str(RPL_TRACEOPERATOR,
-						   parv[0]), class, name);
-				else
-					sendto_one(sptr, rpl_str(RPL_TRACEUSER,
-						   parv[0]), class, name);
-			    }
-*/
 			break;
 		case STAT_SERVER:
 			if (acptr->serv->user)
