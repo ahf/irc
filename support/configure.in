@@ -551,6 +551,7 @@ AC_DEFUN(IRC_STDARG,
 [AC_MSG_CHECKING([for working stdarg])
 AC_CACHE_VAL(irc_cv_stdarg,
 AC_TRY_RUN(
+[
 changequote(<<, >>)dnl
 <<
 #if HAVE_STDIO_H
@@ -630,8 +631,9 @@ int main(void)
 
   exit(res ? 0 : 1);
 }
->>,
+>>
 changequote([, ])dnl
+],
 irc_cv_stdarg=yes,
 irc_cv_stdarg=no)
 )
