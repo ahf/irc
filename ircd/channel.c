@@ -2329,6 +2329,10 @@ int	m_join(aClient *cptr, aClient *sptr, int parc, char *parv[])
 			clean_channelname(name), s = NULL;
 
 		chptr = get_channel(sptr, name, !CREATE);
+
+		if (chptr && IsMember(sptr, chptr))
+			continue;
+
 		if (MyConnect(sptr) && !(chptr && IsQuiet(chptr)) &&
 			sptr->user->joined >= MAXCHANNELSPERUSER)
 		{
@@ -2349,8 +2353,6 @@ int	m_join(aClient *cptr, aClient *sptr, int parc, char *parv[])
 		if (!chptr)
 			chptr = get_channel(sptr, name, CREATE);
 
-		if (IsMember(sptr, chptr))
-			continue;
 		if (!chptr ||
 		    (MyConnect(sptr) && (i = can_join(sptr, chptr, key))))
 		    {
