@@ -1128,7 +1128,7 @@ int	parc, notice;
 				else if (!notice)
 					sendto_one(sptr, err_str(
 						   ERR_TOOMANYTARGETS,
-						   parv[0]), nick);
+						   parv[0]), "Duplicate",nick);
 				continue;
 			    }
 		    }
