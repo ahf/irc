@@ -120,13 +120,14 @@ char *parv[];
   putline(mybuf);
 }
 
-void m_server(sptr, cptr, parc, parv)
+int m_server(sptr, cptr, parc, parv)
 aClient *cptr, *sptr;
 int parc;
 char *parv[];
 {
   sprintf(mybuf,"*** New server: %s", parv[1]);
   putline(mybuf);
+  return 0;
 }
 
 int m_topic(sptr, cptr, parc, parv)
