@@ -9,6 +9,3 @@ Anyone with some free time is welcome to fix those =)
 
 * localhost (127.0.0.1) resolving is wrong with INET6 enabled
 
-* occasionally we see NJOIN protocol errors (server sends the same NJOIN
-  cmd twice somehow)
-
