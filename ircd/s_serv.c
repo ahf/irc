@@ -2117,8 +2117,10 @@ char	*parv[];
 		case STAT_ME:
 			break;
 		case STAT_UNKNOWN:
-			sendto_one(sptr, rpl_str(RPL_TRACEUNKNOWN, parv[0]),
-				   class, name);
+			if (IsAnOper(sptr) || MyClient(sptr))
+				sendto_one(sptr,
+					   rpl_str(RPL_TRACEUNKNOWN, parv[0]),
+					   class, name);
 			break;
 		case STAT_CLIENT:
 			/* Only opers see users if there is a wildcard
