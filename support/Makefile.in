@@ -207,9 +207,9 @@ $(CHKCONF): $(CHKCONF_COMMON_OBJS) $(CHKCONF_OBJS)
 
 # stuff in contrib/
 
-$(IRCDWATCH): ircdwatch.o
+$(IRCDWATCH): ircdwatch.o clsupport.o
 	$(RM) $(IRCDWATCH)
-	$(CC) -o $(IRCDWATCH) ircdwatch.o
+	$(CC) -o $(IRCDWATCH) clsupport.o ircdwatch.o
 
 ircd-mkpasswd: mkpasswd.o
 	$(RM) ircd-mkpasswd
