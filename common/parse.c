@@ -421,7 +421,7 @@ int	find_sender(aClient *cptr, aClient **sptr, char *sender, char *buffer)
 				from = find_uid(sender, NULL);
 			}
 		}
-		else if (*sender == '$' && sender[SIDLEN] == '\0')
+		else if (*sender == '$' && strlen(sender) == SIDLEN)
 		{
 			/* Compatibility SID. */
 			aServer *servptr;
