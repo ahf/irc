@@ -1354,6 +1354,13 @@ char	*parv[];
 		{0, NULL, NULL, NULL, NULL, NULL, NULL, NULL}
 	};
 	
+	if (!IsAnOper(sptr))
+	{
+		sendto_one(sptr, replies[ERR_NOPRIVILEGES], ME, BadTo(parv[0]));
+
+		return 2;
+	}
+	
 	if (parc < 2)
 	{
 		sendto_one(sptr, ":%s NOTICE %s: Syntax: HASH <hash> [command]"
@@ -1379,8 +1386,6 @@ char	*parv[];
 				" number if given", ME, sptr->name);
 		
 #endif
-
-	
 
 		return 2;
 	}
