@@ -3148,7 +3148,7 @@ aClient	*cptr, *user;
 		if (*chptr->chname == '!' && !(cptr->serv->version & SV_NCHAN))
 			/* in reality, testing SV_NCHAN here is pointless */
 			continue;
-		if ((mask = index(chptr->chname, ':')))
+		if ((mask = rindex(chptr->chname, ':')))
 			if (match(++mask, cptr->name))
 				continue;
 		clen = strlen(chptr->chname);
