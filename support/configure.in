@@ -415,7 +415,7 @@ fi
 AC_DEFUN(IRC_SELECT_POLL,
 [AC_MSG_CHECKING([whether select or poll system call will be used])
 AC_CACHE_VAL(irc_cv_select_poll,
-[if test "$irc_cv_sun" != "no" && test "x$irc_solaris_2" = "x"; then
+[if test "$irc_cv_sun" != "no" && test "x$irc_cv_solaris_2" = "x"; then
   # we don't like SunOS' poll() function
   irc_cv_select_poll=select
 else  
