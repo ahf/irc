@@ -1272,7 +1272,8 @@ aClient *cptr;
 		aconf->hold = timeofday;
 		aconf->hold += (aconf->hold - cptr->since > HANGONGOODLINK) ?
 				HANGONRETRYDELAY : ConfConFreq(aconf);
-		if (nextconnect > aconf->hold)
+		/* nextconnect could be 0 */
+		if (nextconnect > aconf->hold || nextconnect == 0)
 			nextconnect = aconf->hold;
 	    }
 
