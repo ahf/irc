@@ -92,3 +92,6 @@
 
 /* Define as the resolver configuration file. */
 #undef IRC_RESCONF
+
+/* Define to enable IPv6 support */
+#undef INET6
