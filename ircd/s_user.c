@@ -2241,9 +2241,11 @@ char	*parv[];
 		encr = "";
 #endif
 #if defined(USE_SYSLOG) && defined(SYSLOG_OPER)
-		syslog(LOG_INFO, "OPER (%s) (%s) by (%s!%s@%s)",
+		syslog(LOG_INFO, "OPER (%s) (%s) by (%s!%s@%s) [%s@%s]",
 			name, encr,
-			parv[0], sptr->user->username, sptr->sockhost);
+		       parv[0], sptr->user->username, sptr->user->host,
+		       sptr->auth, IsUnixSocket(sptr) ? sptr->sockhost :
+                       inetntoa((char *)&sptr->ip));
 #endif
 #ifdef FNAME_OPERLOG
 	      {
@@ -2262,9 +2264,11 @@ char	*parv[];
 		    (logfile = open(FNAME_OPERLOG, O_WRONLY|O_APPEND)) != -1)
 		{
 		  (void)alarm(0);
-			SPRINTF(buf, "%s OPER (%s) (%s) by (%s!%s@%s)\n",
-				    myctime(timeofday), name, encr, parv[0],
-				    sptr->user->username, sptr->sockhost);
+		  SPRINTF(buf, "%s OPER (%s) (%s) by (%s!%s@%s) [%s@%s]\n",
+			  myctime(timeofday), name, encr,
+			  parv[0], sptr->user->username, sptr->user->host,
+			  sptr->auth, IsUnixSocket(sptr) ? sptr->sockhost :
+			  inetntoa((char *)&sptr->ip));
 		  (void)alarm(3);
 		  (void)write(logfile, buf, strlen(buf));
 		  (void)alarm(0);
