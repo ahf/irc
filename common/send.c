@@ -602,6 +602,12 @@ int	sendto_one(aClient *to, char *pattern, ...)
 }
 #endif
 
+/*
+ * sendto_channel_butone
+ *
+ * Send a message to all members of a channel that are connected to this
+ * server except client 'one'.
+ */
 #ifndef CLIENT_COMPILE
 #if ! USE_STDARG
 /*VARARGS*/
@@ -629,7 +635,7 @@ void	sendto_channel_butone(aClient *one, aClient *from, aChannel *chptr, char *p
 
 	if (one != from && MyConnect(from) && IsRegisteredUser(from))
 	    {
-		/* useless junk? */
+		/* useless junk? */ /* who said that and why? --B. */
 #if ! USE_STDARG
 		sendto_prefix_one(from, from, pattern, p1, p2, p3, p4,
 				  p5, p6, p7, p8, p9, p10, p11);
