@@ -1720,8 +1720,38 @@ int len;
 	char	*s, c;
 
 	for (s = name; (c = *s) && len; s++, len--)
+#ifdef RESTRICT_HOSTNAMES
+	{
+		/* basic character set */
+		if (isascii(c) && isalnum(c))
+			continue;
+		
+		/* special case: hyphen */
+		if ((c == '-') &&	/* we accept '-', but only if... */
+		    (s != name) &&	/* not "-aaa.bbb"                */
+		    (s[-1] != '.') &&	/* not "aaa.-bbb"                */
+		    (len != 1) &&	/* not "aaa.bbb-"                */
+		    (s[1] != '.'))	/* not "aaa-.bbb"                */
+			continue;
+
+		/* start of a new component */
+		if ((c == '.') &&	/* we accept '.', but only if... */
+		    (s != name) &&	/* not ".aaa.bbb"                */
+		    (s[-1] != '.'))	/* not "aaa..bbb"                */
+			continue;
+
+#ifdef HOSTNAMES_UNDERSCORE
+		/* ignore underscore in certain circumstances */
+		if (c == '_')
+			continue;
+#endif /* HOSTNAMES_UNDERSCORE */
+
+		return -1;
+	}
+#else /* RESTRICT_HOSTNAMES */
 		if (isspace(c) || (c == 0x7) || (c == ':') ||
 		    (c == '*') || (c == '?'))
 			return -1;
+#endif /* RESTRICT_HOSTNAMES */
 	return 0;
 }
