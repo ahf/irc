@@ -555,7 +555,7 @@ ns_name_unpack(msg, eom, src, dst, dstsiz)
 {
 	const u_char *srcp, *dstlim;
 	u_char *dstp;
-	int n, c, len, checked;
+	int n, len, checked;
 
 	len = -1;
 	checked = 0;
