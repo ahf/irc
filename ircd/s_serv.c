@@ -124,6 +124,7 @@ char	*parv[];
 	char	*server;
 	Reg	aClient	*acptr;
 	char	*comment = (parc > 2 && parv[2]) ? parv[2] : "no reason";
+	static char	comment2[TOPICLEN+1];
 
 	if (parc > 1)
 	    {
