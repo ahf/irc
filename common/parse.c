@@ -531,7 +531,8 @@ aClient *find_target(char *name,aClient *cptr)
 		else if (name[0] == '$' && name[SIDLEN] == '\0')
 		{
 			aServer *asptr;
-			asptr = find_tokserver(idtol(name+1), cptr, NULL);
+			asptr = find_tokserver(idtol(name + 1, SIDLEN - 1),
+				cptr, NULL);
 			if (acptr)
 			{
 				acptr = asptr->bcptr;

@@ -2737,7 +2737,8 @@ char	*parv[];
 		{
 			aServer *asptr;
 			/* Fake sid (comes from EOB emulation */
-			asptr = find_tokserver(idtol(sid + 1), cptr, NULL);
+			asptr = find_tokserver(idtol(sid + 1, SIDLEN - 1),
+				cptr, NULL);
 			if (asptr)
 			{
 				acptr = asptr->bcptr;
