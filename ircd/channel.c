@@ -1145,6 +1145,10 @@ char	*parv[], *mbuf, *pbuf;
 				Reg	u_char	*s;
 
 				for (s = (u_char *)*parv; *s; )
+				    {
+					/* comma cannot be inside key --Beeth */
+					if (*s == ',') 
+						*s = '.';
 					if (*s > 0x7f)
 						if (*s > 0xa0)
 							*s++ &= 0x7f;
@@ -1152,6 +1156,7 @@ char	*parv[], *mbuf, *pbuf;
 							*s = '\0';
 					else
 						s++;
+				    }
 			}
 
 			if (!**parv)
