@@ -66,9 +66,6 @@ char	serveropts[] = {
 #ifdef	BETTER_CDELAY
 'h',
 #endif
-#ifdef	SHOW_INVISIBLE_LUSERS
-'i',
-#endif
 #ifndef	NO_DEFAULT_INVISIBLE
 'I',
 #endif
