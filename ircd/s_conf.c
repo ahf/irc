@@ -125,9 +125,15 @@ aClient *cptr;
 	if (m < 0 || m > 128)
 		goto badmask;
 
-	if (inetpton(AF_INET6, mask, (void *)addr.s6_addr))
+	if (inetpton(AF_INET6, mask, (void *)addr.s6_addr) != 1)
 	{
 		return -1;
+	}
+
+	/* Make sure that the ipv4 notation still works. */
+	if (IN6_IS_ADDR_V4MAPPED(&addr) && m < 96)
+	{
+		m += 96;
 	}
 
 	j = m & 0x1F;	/* mumber not mutliple of 32 bits */
