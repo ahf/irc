@@ -387,7 +387,7 @@ socks_init(self)
 AnInstance *self;
 {
     struct socks_private *mydata;
-    char tmpbuf[32], cbuf[32];
+    char tmpbuf[80], cbuf[32];
     static char txtbuf[80];
     
 #if defined(INET6)
