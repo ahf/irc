@@ -526,6 +526,10 @@ static	aConfItem 	*initconf(void)
 				case 'M':
 				case 'F':
 					break;
+				case ' ':
+				case '\t':
+					/* so there's no weird warnings */
+					break;
 				default:
 					config_error(CF_WARN, CK_FILE, CK_LINE,
 						"unknown I-line flag: %c", *s);
@@ -561,6 +565,10 @@ static	aConfItem 	*initconf(void)
 				case 'p':
 				case 'P':
 				case 't':
+					break;
+				case ' ':
+				case '\t':
+					/* so there's no weird warnings */
 					break;
 				default:
 					config_error(CF_WARN, CK_FILE, CK_LINE,
