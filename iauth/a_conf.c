@@ -41,7 +41,7 @@ char *msg, *chk;
 	if (chk)
 		printf("line %d: %s\n", nb, msg);
 	else
-		sendto_log(ALOG_DCONF, LOG_ERR,
+		sendto_log(ALOG_IRCD|ALOG_DCONF, LOG_ERR,
 			   "Configuration error line %d: %s", nb, msg);
 }
 
