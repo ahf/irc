@@ -170,6 +170,7 @@ size_t the_size;
 				if ((cp-1) == local_dummy)
 				    {
 					op--;
+					*op++ = '0';
 					*op++ = ':';
 				    }
 
