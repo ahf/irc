@@ -1849,7 +1849,7 @@ char	*parv[];
 	if (!IsServer(sptr))
 	    {
 		pv[0] = parv[0];
-		pv[1] = "#wallops";
+		pv[1] = "+wallops";
 		pv[2] = message;
 		pv[3] = NULL;
 		return m_private(cptr, sptr, 3, pv);
