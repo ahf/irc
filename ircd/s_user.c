@@ -402,7 +402,7 @@ char	*nick, *username;
 				if (timeofday - last > 300)
 				    {
 					sendto_flag(SCH_AUTH, 
-			    "iauth not running! (refusing new connections)");
+		    "iauth may not be running! (refusing new connections)");
 					last = timeofday;
 				    }
 				reason = "No iauth!";
