@@ -285,7 +285,7 @@ u_int cl;
 					ch = cldata[cl].inbuffer;
 					while (*ch)
 					    {
-						if (!(isalnum || 
+						if (!(isalnum(*ch) || 
 						      ispunct(*ch) ||
 						      isspace(*ch)))
 							break;
