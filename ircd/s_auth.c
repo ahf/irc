@@ -201,14 +201,18 @@ read_iauth()
 			{
 			    sendto_flag(SCH_AUTH, "Garbage from iauth [%s]",
 					start);
+			    sendto_iauth("-1 E Garbage [%s]", start);
 			    /*
 			    ** The above should never happen, but i've seen it
 			    ** occasionnally, so let's try to get more info
 			    ** about it! -kalt
 			    */
 			    sendto_flag(SCH_AUTH,
-			"last='%c' start=%x end=%x buf=%x olen=%d i=%d",
+			"last='%u' start=%x end=%x buf=%x olen=%d i=%d",
 					last, start, end, buf, olen, i);
+			    sendto_iauth(
+			 "-1 E last=%u start=%x end=%x buf=%x olen=%d i=%d",
+			 		last, start, end, buf, olen, i);
 			    start = end;
 			    continue;
 			}
