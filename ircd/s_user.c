@@ -2613,7 +2613,7 @@ char	*parv[];
 	}
 	if (IsMe(acptr))
 	{
-		if (IsBursting(sptr))
+		if (IsServer(sptr) && IsBursting(sptr))
 		{
 			do_emulated_eob(sptr);
 		}
