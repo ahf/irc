@@ -201,6 +201,7 @@ socks_write(cl, strver)
 u_int cl;
 char *strver;
 {
+    struct socks_private *mydata = cldata[cl].instance->data;
     u_char query[22];    /* big enough to hold all queries */
     int query_len = 13;  /* lenght of socks4 query */
 #ifndef	INET6
