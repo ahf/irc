@@ -472,13 +472,19 @@ B:*.fi::irc.funet.fi:6667:
 ############################
 # S: [OPTIONAL]. These lines define services allowed to connect to your
 # server.  Each service needs a separate line which only allows him to
-# connect once.
+# connect once. Remember to compile the ircd with #define USE_SERVICES
+# in config.h, otherwise you can't use services.
 #
 # The fields are as follow:
 # S:<TARGET Host Mask>:<Password>:<Service Name>:<Service Type>:<Class>
 #
 # Example, you want to allow a local information service:
 S:eep.local.net:thisisapassword:EepInfo:0:1
+#
+# Another example, ircd versions since 04/10/1999 support also a hex
+# mask. This is a temporary kline service (tkserv) as you can find it in
+# contrib/tkserv :
+S:eep.local.net:thisisapassword:TkEep:0x2000000:1
 #
 #
 ############################
