@@ -21,10 +21,11 @@
 static  char rcsid[] = "@(#)$Id$";
 #endif
 
-#include "struct.h"
-#include "common.h"
-#include "sys.h"
-#include "h.h"
+#include "os.h"
+#include "s_defines.h"
+#define S_ZIP_C
+#include "s_externs.h"
+#undef S_ZIP_C
 
 #ifdef	ZIP_LINKS
 

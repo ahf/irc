@@ -21,10 +21,11 @@
 static  char rcsid[] = "@(#)$Id$";
 #endif
 
-#include "struct.h"
-#include "common.h"
-#include "numeric.h"
-#include "h.h"
+#include "os.h"
+#include "s_defines.h"
+#define CLASS_C
+#include "s_externs.h"
+#undef CLASS_C
 
 #define BAD_CONF_CLASS		-1
 #define BAD_PING		-2

@@ -58,26 +58,11 @@ static char sccsid[] = "@(#)res_mkquery.c	8.1 (Berkeley) 6/4/93";
 static char rcsid[] = "$Id$";
 #endif /* LIBC_SCCS and not lint */
 
-#include "config.h"
-#include "sys.h"
-
-#include <sys/types.h>
-#include <sys/param.h>
-#include <netinet/in.h>
-#include "nameser.h"
-
-#include <stdio.h>
-#include <netdb.h>
-#include "resolv.h"
-#if defined(BSD) && (BSD >= 199103)
-# include <string.h>
-#else
-# include "portability.h"
-#endif
-
-#if defined(USE_OPTIONS_H)
-# include <../conf/options.h>
-#endif
+#include "os.h"
+#include "s_defines.h"
+#define RES_MKQUERY_C
+#include "s_externs.h"
+#undef RES_MKQUERY_C
 
 /*
  * Form all types of queries.

@@ -23,11 +23,11 @@
 static  char rcsid[] = "@(#)$Id$";
 #endif
 
-#include "struct.h"
-#include "common.h"
-#include "sys.h" 
-#include "numeric.h"
-#include "h.h"
+#include "os.h"
+#include "s_defines.h"
+#define S_NUMERIC_C
+#include "s_externs.h"
+#undef S_NUMERIC_C
 
 static char buffer[1024];
 

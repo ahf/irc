@@ -51,26 +51,11 @@
 static  char rcsid[] = "@(#)$Id$";
 #endif
 
-#include "struct.h"
-#include "common.h"
-#include "sys.h"
-#include "numeric.h"
-#include <sys/socket.h>
-#include <fcntl.h>
-#include <sys/wait.h>
-#ifdef __hpux
-# ifdef HAVE_ARPA_INET_H
-#  include <arpa/inet.h>
-# endif
-#endif
-#if defined(PCS) || defined(AIX) || defined(DYNIXPTX) || defined(SVR3)
-#include <time.h>
-#endif
-#ifdef	R_LINES
-#include <signal.h>
-#endif
-
-#include "h.h"
+#include "os.h"
+#include "s_defines.h"
+#define S_CONF_C
+#include "s_externs.h"
+#undef S_CONF_C
 
 static	int	check_time_interval __P((char *, char *));
 static	int	lookup_confhost __P((aConfItem *));
@@ -730,7 +715,6 @@ int	openconf()
 	return open(configfile, O_RDONLY);
 #endif
 }
-extern char *getfield();
 
 /*
 ** initconf() 

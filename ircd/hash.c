@@ -20,13 +20,11 @@
 static  char rcsid[] = "@(#)$Id$";
 #endif
 
-#include "struct.h"
-#include "common.h"
-#include "sys.h"
-#include "hash.h"
-#include "h.h"
-
-#include <math.h>
+#include "os.h"
+#include "s_defines.h"
+#define HASH_C
+#include "s_externs.h"
+#undef HASH_C
 
 static	aHashEntry	*clientTable = NULL;
 static	aHashEntry	*channelTable = NULL;

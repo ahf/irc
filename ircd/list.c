@@ -40,16 +40,11 @@
 static  char rcsid[] = "@(#)$Id$";
 #endif
 
-#include "struct.h"
-#include "common.h"
-#include "sys.h"
-#include "h.h"
-#include "numeric.h"
-#ifdef	DBMALLOC
-#include "malloc.h"
-#endif
-void	free_link __P((Link *));
-Link	*make_link __P(());
+#include "os.h"
+#include "s_defines.h"
+#define LIST_C
+#include "s_externs.h"
+#undef LIST_C
 
 #ifdef	DEBUGMODE
 static	struct	liststats {
@@ -60,8 +55,6 @@ static	struct	liststats {
 
 anUser	*usrtop = NULL;
 aServer	*svrtop = NULL;
-
-void	outofmemory();
 
 int	numclients = 0;
 

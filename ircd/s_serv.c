@@ -25,22 +25,11 @@
 static  char rcsid[] = "@(#)$Id$";
 #endif
 
-#include <sys/types.h>
-#include <utmp.h>
-#include "struct.h"
-#include "common.h"
-#include "sys.h"
-#include "numeric.h"
-#include "msg.h"
-#include "channel.h"
-#if defined(PCS) || defined(AIX) || defined(DYNIXPTX) || defined(SVR3)
-#include <time.h>
-#endif
-#include <sys/stat.h>
-#include <fcntl.h>
-#include "h.h"
-
-extern  char    serveropts[];
+#include "os.h"
+#include "s_defines.h"
+#define S_SERV_C
+#include "s_externs.h"
+#undef S_SERV_C
 
 static	char	buf[BUFSIZE];
 
@@ -2214,7 +2203,7 @@ char	*parv[];
 			sendto_one(acptr, ":%s ERROR :Terminated by %s",
 				   ME, killer);
 	    }
-	(void)s_die();
+	(void)s_die(0);
 	return 0;
 }
 #endif

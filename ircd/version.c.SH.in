@@ -54,8 +54,11 @@ cat >version.c <<!SUB!THIS!
 static  char rcsid[] = "@(#)\$Id$";
 #endif
 
-#include "struct.h"
-#include "patchlevel.h"
+#include "os.h"
+#include "s_defines.h"
+#define VERSION_C
+#include "s_externs.h"
+#undef VERSION_C
 
 char *generation = "$generation";
 char *creation = "$creation";
