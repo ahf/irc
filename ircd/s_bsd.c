@@ -2031,10 +2031,14 @@ int	ro;
 			** if any of these is true, data won't be parsed
 			** so no need to check for anything!
 			*/
+#if defined(USE_IAUTH)
 			if (DoingDNS(cptr) || DoingAuth(cptr) ||
 			    WaitingXAuth(cptr) ||
 			    (DoingXAuth(cptr) &&
 			     !(iauth_options & XOPT_EARLYPARSE)))
+#else
+			if (DoingDNS(cptr) || DoingAuth(cptr))
+#endif
 				continue;
 #if ! USE_POLL
 			if (fd > highfd)
