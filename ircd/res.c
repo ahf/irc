@@ -109,7 +109,7 @@ int	op;
 		    {
 			ircd_res.nscount = 1;
 			ircd_res.nsaddr_list[0].sin_addr.s_addr =
-				inet_addr("127.0.0.1");
+				inetaddr("127.0.0.1");
 		    }
 	    }
 
@@ -748,10 +748,10 @@ char	*lp;
 	a = proc_answer(rptr, hptr, buf, buf+rc);
 	if (a == -1) {
 		sendto_flag(SCH_ERROR, "Bad hostname returned from %s for %s",
-			    inet_ntoa(sin.sin_addr),
+			    inetntoa((char *)&sin.sin_addr),
 			    inetntoa((char *)&rptr->he.h_addr));
 		Debug((DEBUG_DNS, "Bad hostname returned from %s for %s",
-		       inet_ntoa(sin.sin_addr),
+		       inetntoa((char *)&sin.sin_addr),
 		       inetntoa((char *)&rptr->he.h_addr)));
 	}
 #ifdef DEBUG

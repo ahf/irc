@@ -164,7 +164,6 @@ char	serveropts[] = {
 #ifdef GETRUSAGE_2
 # ifdef SVR4
 #  include <sys/time.h>
-#  include <sys/rusage.h>
 # endif
 # include <sys/resource.h>
 #else
