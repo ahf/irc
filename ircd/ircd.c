@@ -513,6 +513,7 @@ aClient	*mp;
 	(void)get_my_name(mp, mp->sockhost, sizeof(mp->sockhost)-1);
 	if (mp->name[0] == '\0')
 		strncpyzt(mp->name, mp->sockhost, sizeof(mp->name));
+	me.info = strdup("IRCers United");
 	mp->lasttime = mp->since = mp->firsttime = time(NULL);
 	mp->hopcount = 0;
 	mp->authfd = -1;

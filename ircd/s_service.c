@@ -447,7 +447,10 @@ char	*parv[];
 	sp->refcnt++;
 	svc->server = mystrdup(sp->bcptr->name);
 	strncpyzt(svc->dist, dist, HOSTLEN);
-	strncpyzt(sptr->info, info, REALLEN);
+	if (sptr->info != DefInfo)
+		MyFree(sptr->info);
+	if (strlen(info) > REALLEN) info[REALLEN] = '\0';
+	sptr->info = mystrdup(info);
 	svc->wants = 0;
 	svc->type = type;
 	sptr->hopcount = metric;

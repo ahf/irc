@@ -46,6 +46,8 @@ static  char rcsid[] = "@(#)$Id$";
 #include "s_externs.h"
 #undef LIST_C
 
+char *DefInfo = "*Not On This Net*"; /* constant */
+
 #ifdef	DEBUGMODE
 static	struct	liststats {
 	int	inuse;
@@ -140,6 +142,7 @@ aClient	*from;
 	cptr->status = STAT_UNKNOWN;
 	cptr->fd = -1;
 	(void)strcpy(cptr->username, "unknown");
+	cptr->info = DefInfo;
 	if (size == CLIENT_LOCAL_SIZE)
 	    {
 		cptr->since = cptr->lasttime = cptr->firsttime = timeofday;
@@ -159,6 +162,8 @@ aClient	*from;
 void	free_client(cptr)
 aClient	*cptr;
 {
+	if (cptr->info != DefInfo)
+		MyFree(cptr->info);
 	MyFree((char *)cptr);
 }
 
