@@ -51,7 +51,7 @@ client_man_dir = @mandir@/man1
 server_man_dir = @mandir@/man8
 
 # Directory where most files will be
-irc_dir = @libdir@/ircd
+irc_dir = @libdir@
 
 # Access mode for irc.
 irc_mode = 711
