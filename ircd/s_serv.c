@@ -2758,6 +2758,8 @@ char	*parv[];
 		closed++;
 	    }
 	sendto_one(sptr, replies[RPL_CLOSEEND], ME, BadTo(parv[0]), closed);
+	sendto_flag(SCH_NOTICE, "%s closed %d unknown connections", sptr->name,
+		    closed);
 	return 1;
 }
 
