@@ -2599,11 +2599,8 @@ int	m_wallops(aClient *cptr, aClient *sptr, int parc, char *parv[])
 
 	if (!IsServer(sptr))
 	    {
-		pv[0] = parv[0];
-		pv[1] = "+wallops";
-		pv[2] = message;
-		pv[3] = NULL;
-		return m_private(cptr, sptr, 3, pv);
+		sendto_flag(SCH_ERROR, "User WALLOP from %s", sptr->name);
+		return 2;
 	    }
 	sendto_ops_butone(IsServer(cptr) ? cptr : NULL, parv[0], "%s", message);
 #ifdef	USE_SERVICES
