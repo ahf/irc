@@ -449,10 +449,9 @@ read_iauth()
 			}
 		    start = end;
 		}
-	    if (start != buf+olen)
-		    bcopy(start, obuf, olen = (buf+olen)-start+1);
-	    else
-		    olen = 0;
+	    olen -= start - buf;
+	    if (olen)
+		    memcpy(obuf, start, olen);
 	}
 }
 
