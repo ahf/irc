@@ -701,6 +701,19 @@ int	register_user(aClient *cptr, aClient *sptr, char *nick, char *username)
 		(void)m_motd(sptr, sptr, 1, parv);
 		if (IsRestricted(sptr))
 			sendto_one(sptr, replies[ERR_RESTRICTED], ME, BadTo(nick));
+		if (IsConfNoResolve(sptr->confs->value.aconf))
+		{
+			sendto_one(sptr, ":%s NOTICE %s :Due to an administrative"
+				" decision, your hostname is not shown.",
+				ME, nick);
+		}
+		else if (IsConfNoResolveMatch(sptr->confs->value.aconf))
+		{
+			sendto_one(sptr, ":%s NOTICE %s :Due to an administrative"
+				" decision, your hostname is not shown,"
+				" but still matches channel MODEs.",
+				ME, nick);
+		}
 		send_umode(sptr, sptr, 0, ALL_UMODES, buf);
 		nextping = timeofday;
 		
