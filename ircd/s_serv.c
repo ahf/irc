@@ -1448,7 +1448,8 @@ int	m_links(aClient *cptr, aClient *sptr, int parc, char *parv[])
 			continue;
 		sendto_one(sptr, replies[RPL_LINKS], ME, BadTo(parv[0]),
 			   acptr->name, acptr->serv->up->name,
-			   acptr->hopcount, (acptr->info[0] ? acptr->info :
+			   acptr->hopcount, acptr->serv->sid,
+			   (acptr->info[0] ? acptr->info :
 			   "(Unknown Location)"));
 	    }
 

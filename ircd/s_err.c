@@ -396,7 +396,7 @@ char *	replies[] = {
 /* 361 RPL_KILLDONE */	(char *)NULL,
 /* 362 RPL_CLOSING */	":%s 362 %s %s :Closed. Status = %d",
 /* 363 RPL_CLOSEEND */	":%s 363 %s %d: Connections Closed",
-/* 364 RPL_LINKS */	":%s 364 %s %s %s :%d %s",
+/* 364 RPL_LINKS */	":%s 364 %s %s %s :%d %s %s",
 /* 365 RPL_ENDOFLINKS */	":%s 365 %s %s :End of LINKS list.",
 /* 366 RPL_ENDOFNAMES */	":%s 366 %s %s :End of NAMES list.",
 /* 367 RPL_BANLIST */	":%s 367 %s %s %s!%s@%s",
