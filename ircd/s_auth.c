@@ -27,10 +27,11 @@ static  char rcsid[] = "@(#)$Id$";
 #include "s_externs.h"
 #undef S_AUTH_C
 
+#if defined(USE_IAUTH)
+
 aExtCf		*iauth_conf = NULL;
 aExtData	*iauth_stats = NULL;
 
-#if defined(USE_IAUTH)
 /*
  * sendto_iauth
  *
