@@ -93,9 +93,6 @@ Reg	aClient	*cptr;
 	Debug((DEBUG_NOTICE,"auth(%x) from %s",
 	       cptr, inetntoa((char *)&us.sin_addr)));
 #endif
-/*
-if (IN6_IS_ADDR_V4MAPPED(us.sin6_addr.s6_addr)
-*/
 	if (bind(cptr->authfd, (struct SOCKADDR *)&us, ulen) >= 0)
 	    {
 		(void)getsockname(cptr->fd, (struct SOCKADDR *)&us, &ulen);

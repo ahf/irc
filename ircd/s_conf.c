@@ -1237,7 +1237,12 @@ char	**comment;
 		return 0;
 
 	host = cptr->sockhost;
+#ifdef INET6
+	ip = (char *) inetntop(AF_INET6, (char *)&cptr->ip, mydummy,
+			       MYDUMMY_SIZE);
+#else
 	ip = (char *) inetntoa((char *)&cptr->ip);
+#endif
 	if (!strcmp(host, ip))
 		ip = NULL; /* we don't have a name for the ip# */
 	name = cptr->user->username;
