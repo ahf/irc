@@ -1709,7 +1709,7 @@ static	int	bad_hostname(char *name, int len)
 #ifdef RESTRICT_HOSTNAMES
 	{
 		/* basic character set */
-		if (isascii(c) && isalnum(c))
+		if (isalnum(c))
 			continue;
 		
 		/* special case: hyphen */
