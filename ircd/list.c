@@ -617,6 +617,7 @@ aConfItem	*make_conf()
 	aconf->status = CONF_ILLEGAL;
 	aconf->pref = -1;
 	aconf->hold = time(NULL);
+	aconf->source_ip = NULL;
 	Class(aconf) = NULL;
 	return (aconf);
 }
@@ -654,6 +655,8 @@ aConfItem *aconf;
 		bzero(aconf->passwd, strlen(aconf->passwd));
 	if (aconf->ping)
 		MyFree(aconf->ping);
+	if (aconf->source_ip)
+		MyFree(aconf->source_ip);
 	MyFree(aconf->passwd);
 	MyFree(aconf->name);
 	MyFree(aconf);
