@@ -1558,7 +1558,7 @@ char	*msg, *username, *hostname;
 		cptr->receiveM, cptr->receiveK);
 
 #if defined(USE_SYSLOG) && (defined(SYSLOG_USERS) || defined(SYSLOG_CONN))
-	syslog(LOG_NOTICE, linebuf2);
+	syslog(LOG_NOTICE, linebuf);
 #endif
 
 #ifdef	USE_SERVICES
