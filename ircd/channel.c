@@ -2168,7 +2168,7 @@ char	*parv[];
 			     10))
 		    {
 			sptr->exitc = EXITC_VIRUS;
-			return exit_client(NULL, sptr, &me, "Virus Carrier");
+			return exit_client(sptr, sptr, &me, "Virus Carrier");
 		    }
 
 		chptr = get_channel(sptr, name, CREATE);
