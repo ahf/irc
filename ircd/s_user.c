@@ -1334,8 +1334,9 @@ char	*parv[];
 	     mask && penalty < MAXPENALTY;
              mask = strtoken(&p, NULL, ","))
 	    { 
-		clean_channelname(mask);
+		channame = NULL;
 		mychannel = NullChn;
+		clean_channelname(mask);
 		if (sptr->user && (lp = sptr->user->channel))
 				mychannel = lp->value.chptr;
 		/*
