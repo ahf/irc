@@ -89,7 +89,10 @@ aClient *cptr;
 {
         int i1, i2, i3, i4, m;
         u_long lmask, baseip;
+	char *at;
  
+	if (at = index(mask, '@'))
+		mask = at + 1;
         if (sscanf(mask, "%d.%d.%d.%d/%d", &i1, &i2, &i3, &i4, &m) != 5 ||
            m < 1 || m > 31) {
                sendto_flag(SCH_LOCAL, "Ignoring bad mask: %s", mask);
