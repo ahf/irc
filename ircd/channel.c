@@ -1752,7 +1752,7 @@ static	int	set_mode(aClient *cptr, aClient *sptr, aChannel *chptr,
 							LDELAYCHASETIMELIMIT;
 					}
 					/* XXX: fix this in 2.11.1 */
-					if (MyClient(sptr))
+					if (MyConnect(sptr) && !IsAnOper(sptr))
 					{
 						break;
 					}
