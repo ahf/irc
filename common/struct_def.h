@@ -27,6 +27,7 @@ typedef	struct	User	anUser;
 typedef	struct	Server	aServer;
 typedef	struct	Service	aService;
 typedef	struct	SLink	Link;
+typedef	struct	invSLink	invLink;
 typedef	struct	SMode	Mode;
 typedef	struct	fdarray	FdAry;
 typedef	struct	CPing	aCPing;
@@ -369,7 +370,7 @@ struct LineItem
  */
 struct	User	{
 	Link	*channel;	/* chain of channel pointer blocks */
-	Link	*invited;	/* chain of invite pointer blocks */
+	invLink	*invited;	/* chain of invite pointer blocks */
 	Link	*uwas;		/* chain of whowas pointer blocks */
 	char	*away;		/* pointer to away message */
 	time_t	last;		/* "idle" time */
@@ -598,6 +599,21 @@ struct	SLink	{
 		char	*cp;
 		int	i;
 	} value;
+	int	flags;
+};
+
+/* link structure used for invites */
+
+struct	invSLink	{
+	struct	invSLink	*next;
+	union {
+		aClient	*cptr;
+		aChannel *chptr;
+		aConfItem *aconf;
+		char	*cp;
+		int	i;
+	} value;
+	char	*who;
 	int	flags;
 };
 

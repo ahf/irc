@@ -539,6 +539,18 @@ Link	*make_link()
 	return lp;
 }
 
+invLink	*make_invlink()
+{
+	Reg	invLink	*lp;
+
+	lp = (invLink *)MyMalloc(sizeof(invLink));
+#ifdef	DEBUGMODE
+	links.inuse++;
+#endif
+	lp->flags = 0;
+	return lp;
+}
+
 void	free_link(lp)
 Reg	Link	*lp;
 {
@@ -548,6 +560,14 @@ Reg	Link	*lp;
 #endif
 }
 
+void	free_invlink(lp)
+Reg	invLink	*lp;
+{
+	MyFree((char *)lp);
+#ifdef	DEBUGMODE
+	links.inuse--;
+#endif
+}
 
 aClass	*make_class()
 {
