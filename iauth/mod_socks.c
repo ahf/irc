@@ -215,10 +215,10 @@ char *strver;
 	    sendto_log(ALOG_DSOCKS|ALOG_IRCD, LOG_ERR,
 		       "socks_write%s(%d): sscanf(\"%s\") failed", 
 #else
-    if (inet_pton(AF_INET6, cldata[cl].ourip, (void *) addr.s6_addr) != 1)
+    if (inetpton(AF_INET6, cldata[cl].ourip, (void *) addr.s6_addr) != 1)
 	{
 			sendto_log(ALOG_DSOCKS|ALOG_IRCD, LOG_ERR,
-			"socks_write%s(%d): inet_pton(\"%s\") failed",
+			"socks_write%s(%d): inetpton(\"%s\") failed",
 #endif
 			strver, cl, cldata[cl].ourip);
 	    close(cldata[cl].wfd);

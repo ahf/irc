@@ -61,7 +61,7 @@ aClient	*cptr;
 	if (isdigit(*host))
 #ifdef INET6
 	    {
-		if(!inet_pton(AF_INET6, host, server.sin6_addr.s6_addr))
+		if(!inetpton(AF_INET6, host, server.sin6_addr.s6_addr))
 			bcopy(minus_one, server.sin6_addr.s6_addr, IN6ADDRSZ);
 	    }
 #else
