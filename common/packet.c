@@ -101,9 +101,9 @@ Reg	int	length;
                         length--;
                     }   
                 cptr->flags &= ~FLAGS_ZIPSTART;
+		if (length == 0)
+			return r;
             }
-	if (length == 0)
-		return r;
 	if (cptr->flags & FLAGS_ZIP)
 	    {
 		/* uncompressed buffer first */
