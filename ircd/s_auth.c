@@ -423,6 +423,18 @@ read_iauth()
 		      }
 		    else
 			{
+			    char *reason;
+
+			    /* Copy kill reason received from iauth */
+			    reason = strstr(start, " :");
+			    if (reason && (reason + 2 != '\0'))
+			    {
+				    if (cptr->reason)
+				    {
+					    MyFree(cptr->reason);
+				    }
+				    cptr->reason = mystrdup(reason + 2);
+			    }
 			    /*
 			    ** mark for kill, because it cannot be killed
 			    ** yet: we don't even know if this is a server
