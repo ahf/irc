@@ -372,7 +372,7 @@ time_t	currenttime;
 			    }
 		    }
 		ping = IsRegistered(cptr) ? get_client_ping(cptr) :
-					    CONNECTTIMEOUT;
+					    ACCEPTTIMEOUT;
 		Debug((DEBUG_DEBUG, "c(%s) %d p %d k %d r %d a %d",
 			cptr->name, cptr->status, ping, kflag, rflag,
 			currenttime - cptr->lasttime));
