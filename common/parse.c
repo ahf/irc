@@ -553,7 +553,12 @@ char	*buffer, *bufend;
 		if ((mptr->flags & MSG_LAG) &&
 		    !(IsServer(cptr) || IsService(cptr)))
 		    {	/* Flood control partly migrated into penalty */
-			cptr->since += (1 + i / 100);
+#ifndef	BIG_NET
+			if (ircstp->is_bignet == 0)
+				cptr->since = timeofday;
+			else
+#endif
+				cptr->since += (1 + i / 100);
 			/* Allow only 1 msg per 2 seconds
 			 * (on average) to prevent dumping.
 			 * to keep the response rate up,
@@ -660,7 +665,7 @@ char	*buffer, *bufend;
         ** Add penalty score for sucessfully parsed command if issued by
 	** a LOCAL user client.
 	*/
-	if ((ret > 0) && IsRegisteredUser(cptr))
+	if ((ret > 0) && IsRegisteredUser(cptr) && ircstp->is_bignet)
 	    {
 		cptr->since += ret;
 /* only to lurk

@@ -2367,6 +2367,8 @@ aClient	*cptr;
 {
     if (!IsServer(cptr))
 	    return 0;
+    if (!ircstp->is_bignet)
+	    return 0;
 
     ircstp->is_ckl++;
     if ((int)DBufLength(&cptr->sendQ) > 65536) /* SendQ is already (too) high*/

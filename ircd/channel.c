@@ -1484,7 +1484,11 @@ char	*key;
 	Link	*lp, *banned;
 	int	ckinvite = 0;
 
-	if (chptr->users == 0 && chptr->history != 0)
+	if (chptr->users == 0 &&
+#ifndef	BIG_NET
+	    ircstp->is_bignet &&
+#endif
+	    chptr->history != 0)
 		return (timeofday > chptr->history) ? 0 : ERR_UNAVAILRESOURCE;
 	if (banned = match_modeid(CHFL_BAN, sptr, chptr))
 		if (match_modeid(CHFL_EXCEPTION, sptr, chptr))

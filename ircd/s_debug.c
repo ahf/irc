@@ -39,6 +39,9 @@ char	serveropts[] = {
 #ifndef	NO_IDENT
 'a',
 #endif
+#ifdef	BIG_NET
+'B',
+#endif
 #ifdef	CHROOTDIR
 'c',
 #endif
