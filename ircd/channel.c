@@ -3519,7 +3519,7 @@ char	*parv[];
 			continue;
 		}
 		nlen = strlen(acptr->name);
-		if (nlen > NICKLEN)
+		if (strchr(acptr->name, '.'))
 		{
 			continue;
 		}
