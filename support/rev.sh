@@ -5,8 +5,7 @@
 
 if test "`uname -s`" = AIX
 then
-  revdir="AIX-`oslevel 2>/dev/null|sed -e \"s/<//g\" -e \"s/>//g\" -e
-\"s@/@-@g\"`"
+  revdir="AIX-`oslevel 2>/dev/null|sed -e \"s/<//g\" -e \"s/>//g\" -e \"s@/@-@g\"`"
 else
   uname -p >/dev/null 2>&1
   if test "$?" != 0
