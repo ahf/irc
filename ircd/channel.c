@@ -2226,7 +2226,7 @@ char	*parv[];
 			sendto_serv_notv(cptr, SV_NJOIN, ":%s JOIN %s%s", name,
 					 parv[1], mbuf);
 		/* send join to local users on channel */
-		sendto_channel_butserv(chptr, &me, ":%s JOIN %s", name,
+		sendto_channel_butserv(chptr, acptr, ":%s JOIN %s", name,
 				       parv[1]);
 		/* build MODE for local users on channel, eventually send it */
 		if (*mbuf)
