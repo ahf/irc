@@ -2414,7 +2414,7 @@ char	*parv[];
 					sendto_one(sptr, replies[RPL_TOPIC_WHO_TIME],
 						ME, BadTo(parv[0]),
 						name, IsAnonymous(chptr) ?
-						"anonymous!anonymous@anomyous" :
+						"anonymous!anonymous@anonymous" :
 						chptr->topic_nuh,
 						chptr->topic_t);
 				}
