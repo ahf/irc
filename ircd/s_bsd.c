@@ -2106,6 +2106,7 @@ int	read_message(time_t delay, FdAry *fdp, int ro)
 	time_t	delay2 = delay;
 	int	res, length, fd, i;
 	int	auth;
+	int	write_err = 0;
 
 	for (res = 0;;)
 	    {
@@ -2384,7 +2385,7 @@ int	read_message(time_t delay, FdAry *fdp, int ro)
 			continue;
 		if (TST_WRITE_EVENT(fd))
 		    {
-			int	write_err = 0;
+			write_err = 0;
 			/*
 			** ...room for writing, empty some queue then...
 			*/
