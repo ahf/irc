@@ -175,6 +175,8 @@ Reg	int	length;
 				if (cptr->exitc == EXITC_REG)
 					cptr->exitc = EXITC_DEAD;
 				return exit_client(cptr, cptr, &me,
+						   (cptr->exitc == EXITC_SENDQ) ?
+						   "Max SendQ exceeded" :
 						   "Dead Socket");
 			    }
 			/*

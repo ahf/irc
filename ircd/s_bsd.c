@@ -2253,9 +2253,17 @@ int	ro;
 deadsocket:
 				if (TST_READ_EVENT(fd))
 					CLR_READ_EVENT(fd);
-				cptr->exitc = EXITC_ERROR;
-				(void)exit_client(cptr, cptr, &me,
-						  strerror(get_sockerr(cptr)));
+				if (cptr->exitc == EXITC_SENDQ)
+				{
+					(void)exit_client(cptr,cptr,&me,
+						"Max SendQ exceeded");
+				}
+				else
+				{
+					cptr->exitc = EXITC_ERROR;
+					(void)exit_client(cptr, cptr, &me,
+						strerror(get_sockerr(cptr)));
+				}
 				continue;
 			    }
 		    }
