@@ -2269,10 +2269,11 @@ deadsocket:
 			    }
 		    }
 		length = 1;	/* for fall through case */
-		if (!NoNewLine(cptr) || TST_READ_EVENT(fd)) {
-		    if (!DoingAuth(cptr))
-			    length = read_packet(cptr, TST_READ_EVENT(fd));
-		}
+		if (!NoNewLine(cptr) || TST_READ_EVENT(fd))
+		    {
+			if (!DoingAuth(cptr))
+				length = read_packet(cptr, TST_READ_EVENT(fd));
+		    }
 		readcalls++;
 		if (length == FLUSH_BUFFER)
 			continue;
