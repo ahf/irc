@@ -42,11 +42,13 @@ char *buf;
 	    return -1;
     if (write(adfd, buf, strlen(buf)) != strlen(buf))
 	{
+	    sendto_flag(SCH_AUTH, "Aiiie! lost slave authentication process");
 	    close(adfd);
 	    adfd = -1;
 	    /*
 	    ** this should not happen.. but if it does.. shall we try to
 	    ** restart the thing ? (afterall, iauth is almost stateless)
+	    ** (and can now be restarted.. but is it wise?)
 	    */
 	    return -1;
 	}
