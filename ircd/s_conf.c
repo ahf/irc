@@ -250,7 +250,7 @@ badmask:
 int	attach_Iline(aClient *cptr, struct hostent *hp, char *sockhost)
 {
 	Reg	aConfItem	*aconf;
-	char	*uhosts[MAXALIASES];
+	char	*uhosts[MAXALIASES+2];
 	char	ipname[HOSTLEN+USERLEN+2];
 	int	ulen = strlen(cptr->username) + 1; /* for '@' */
 	int	i, hostnum;
