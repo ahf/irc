@@ -1861,6 +1861,12 @@ static	int	can_join(aClient *sptr, aChannel *chptr, char *key)
 	    chptr->history != 0 && *chptr->chname != '!')
 		return (timeofday > chptr->history) ? 0 : ERR_UNAVAILRESOURCE;
 
+#ifdef CLIENTS_CHANNEL
+	if (*chptr->chname == '&' && !strcmp(chptr->chname, "&CLIENTS")
+		&& is_allowed(sptr, ACL_CLIENTS))
+		return (ERR_INVITEONLYCHAN);
+#endif
+
 	for (lp = sptr->user->invited; lp; lp = lp->next)
 		if (lp->chptr == chptr)
 			break;
