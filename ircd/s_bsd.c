@@ -608,9 +608,13 @@ void	init_sys(void)
 	bzero((char *)&fdas, sizeof(fdas));
 	bzero((char *)&fdall, sizeof(fdall));
 	fdas.highest = fdall.highest = -1;
-	bzero((char *)&local, sizeof(local));
+	/* we need stderr open, don't close() it, daemonize() will do it */
+	local[0] = local[1] = local[2] = NULL;
+	listeners[0] = listeners[1] = listeners[2] = NULL;
 	for (fd = 3; fd < MAXCONNECTIONS; fd++)
 	{
+		local[fd] = NULL;
+		listeners[fd] = NULL;
 		(void)close(fd);
 	}
 }
