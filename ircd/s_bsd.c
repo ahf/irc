@@ -2718,6 +2718,7 @@ char	*namebuf, *linebuf, *chname;
 	 */
 	if ((linebuf[0] != 't' || linebuf[1] != 't' || linebuf[2] != 'y')
 	    && (linebuf[0] != 'c' || linebuf[1] != 'o' || linebuf[2] != 'n')
+	    && (linebuf[0] != 'p' || linebuf[1] != 't' || linebuf[2] != 's')
 #ifdef HPUX
 	    && (linebuf[0] != 'p' || linebuf[1] != 't' || linebuf[2] != 'y' ||
 		linebuf[3] != '/')
