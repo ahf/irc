@@ -2723,7 +2723,7 @@ char	*namebuf, *linebuf, *chname;
 {
 	static	char	wrerr[] = "NOTICE %s :Write error. Couldn't summon.";
 	int	fd;
-	char	line[120];
+	char	line[512];
 	struct	tm	*tp;
 
 	tp = localtime(&timeofday);
