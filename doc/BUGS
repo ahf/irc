@@ -12,3 +12,5 @@ Anyone with some free time is welcome to fix those =)
 
 * The operator count showed by /LUSERS becomes incorrect (negative).
 
+* Clients may be disconnected with "Ping Timeout" message immediately
+  upon connection.
