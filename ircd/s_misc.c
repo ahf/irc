@@ -359,7 +359,6 @@ char	*comment;	/* Reason for the exit */
 	Reg	aClient	*acptr;
 	Reg	aClient	*next;
 	Reg	aServer *asptr;
-	Reg	aService *asvptr;
 #if defined(FNAME_USERLOG) || defined(USE_SYSLOG) || defined(USE_SERVICES)
 	time_t	on_for;
 #endif
