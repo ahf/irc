@@ -2,7 +2,7 @@
   SGML version by Christophe Kalt
   $Id$
 
-  This document describes how to install, and configure IRC 2.9.4.
+  This document describes how to install, and configure IRC 2.9.5.
 
   11..  IInnssttaalllliinngg IIRRCC..
 
