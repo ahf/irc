@@ -334,7 +334,7 @@ char	*nick, *username;
 	short	oldstatus = sptr->status;
 	char	*parv[3];
 #ifndef NO_PREFIX
-	char	*prefix;
+	char	prefix;
 #endif
 	int	i;
 
