@@ -122,7 +122,7 @@ struct Message msgtab[] = {
 					, 0, 0, 0L},
 #endif
 #endif /* !CLIENT_COMPILE */
-  { MSG_POST,    m_quit,     MAXPARA, MSG_NOU, 0, 0, 0L},
+  { MSG_POST,    m_post,     MAXPARA, MSG_NOU, 0, 0, 0L},
   { (char *) 0, (int (*)()) 0, 0, 0, 0, 0, 0L}
 };
 

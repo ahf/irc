@@ -1965,6 +1965,14 @@ user_finish:
 	return 2;
 }
 
+
+int	m_post(aClient *cptr, aClient *sptr, int parc, char *parv[])
+{
+	sendto_flag(SCH_LOCAL, "Denied http-post connection from %s.",
+		cptr->sockhost);
+	m_quit(cptr, sptr, parc, parv);
+}
+
 /*
 ** m_quit
 **	parv[0] = sender prefix
