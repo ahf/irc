@@ -199,7 +199,7 @@ ircd_res_init()
 
 	/* Allow user to override the local domain definition */
 	if ((cp = getenv("LOCALDOMAIN")) != NULL) {
-		(void)strncpy(ircd_res.defdname, cp, sizeof(ircd_res.defdname) - 1);
+		strncpyzt(ircd_res.defdname, cp, sizeof(ircd_res.defdname));
 		haveenv++;
 
 		/*
@@ -254,7 +254,7 @@ ircd_res_init()
 			    cp++;
 		    if ((*cp == '\0') || (*cp == '\n'))
 			    continue;
-		    strncpy(ircd_res.defdname, cp, sizeof(ircd_res.defdname) - 1);
+		    strncpyzt(ircd_res.defdname, cp, sizeof(ircd_res.defdname));
 		    if ((cp = strpbrk(ircd_res.defdname, " \t\n")) != NULL)
 			    *cp = '\0';
 		    havesearch = 0;
@@ -269,7 +269,7 @@ ircd_res_init()
 			    cp++;
 		    if ((*cp == '\0') || (*cp == '\n'))
 			    continue;
-		    strncpy(ircd_res.defdname, cp, sizeof(ircd_res.defdname) - 1);
+		    strncpyzt(ircd_res.defdname, cp, sizeof(ircd_res.defdname));
 		    if ((cp = strchr(ircd_res.defdname, '\n')) != NULL)
 			    *cp = '\0';
 		    /*
