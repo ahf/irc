@@ -642,7 +642,14 @@ char	*argv[];
 
 #ifdef	CHROOTDIR
 	ircd_res_init();
-	if (chroot(ROOT_PATH))
+	if (chdir(ROOT_PATH)!=0)
+	{
+		perror("chdir");
+		(void)fprintf(stderr,"%s: Cannot chdir: %s.\n", IRCD_PATH,
+			ROOT_PATH);
+		exit(5);
+	}
+	if (chroot(ROOT_PATH)!=0)
 	    {
 		perror("chroot");
 		(void)fprintf(stderr,"%s: Cannot chroot: %s.\n", IRCD_PATH,
