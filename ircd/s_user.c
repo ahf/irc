@@ -2917,19 +2917,7 @@ int	m_pong(aClient *cptr, aClient *sptr, int parc, char *parv[])
 			   destination);
 		return 2;	
 	}
-	if (IsMe(acptr))
-	{
-		if (IsServer(sptr) && IsBursting(sptr))
-		{
-			do_emulated_eob(sptr);
-		}
-
-#ifdef DEBUGMODE
-		Debug((DEBUG_NOTICE, "PONG: %s %s", origin,
-		      destination ? destination : "*"));
-#endif
-	}
-	else
+	if (!IsMe(acptr))
 	{
 		if (!(MyClient(sptr) && mycmp(origin, sptr->name)))
 			sendto_one(acptr,":%s PONG %s %s",

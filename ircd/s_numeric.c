@@ -93,11 +93,6 @@ int	do_numeric(int numeric, aClient *cptr, aClient *sptr, int parc,
 			** with numerics which can happen with nick collisions.
 			** - Avalon
 			*/
-			if (IsMe(acptr) && IsBursting(sptr)
-			    && numeric == ERR_NOSUCHSERVER)
-			{
-				do_emulated_eob(sptr);
-			}
 			if (IsMe(acptr) || acptr->from == cptr)
 				sendto_flag(SCH_NUM,
 					    "From %s for %s: %s %d %s %s.",
