@@ -306,7 +306,7 @@ int	m_service(aClient *cptr, aClient *sptr, int parc, char *parv[])
 	if (parc < 7 || *parv[1] == '\0' || *parv[2] == '\0' ||
 	    *parv[3] == '\0' || *parv[6] == '\0')
 	    {
-		sendto_one(cptr, replies[ERR_NEEDMOREPARAMS],
+		sendto_one(cptr, replies[ERR_NEEDMOREPARAMS], ME,
 			   BadTo(parv[0]), "SERVICE");
 		return 1;
 	    }
