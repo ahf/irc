@@ -206,3 +206,63 @@ char *name;
 	    return 0;
     return 1;
 }
+
+/*
+ * unique user IDs
+ */
+static char sid[SIDLEN+1];
+
+void
+init_sid(conf)
+char *conf;
+{
+
+	if (conf)
+	    {
+		if (strlen(conf) != SIDLEN)
+		    {
+			exit(0); /* ick.. -syrk */
+		    }
+		strcpy(sid, conf);
+	    }
+	else
+	    {
+		char tid[20];
+
+		srand(time(NULL));
+		sprintf(tid, "%d", rand());
+		sprintf(sid, "%.*s", SIDLEN, tid);
+	    }
+}
+
+char *
+next_uid()
+{
+	static char uid[NICKLEN+1+5];
+	char tid[20];
+
+	do
+	    {
+		sprintf(tid, "%d", rand());
+		sprintf(uid, "%s%.*s", sid, NICKLEN-SIDLEN, tid);
+	    }
+	while (find_uid(uid, NULL) != NULL);
+	return uid;
+}
+
+/*
+ * check_uid
+ *	various sanity checks to ensure that a UID is valid.
+ */
+int
+check_uid(uid)
+char *uid;
+{
+	if (!isdigit(uid[0]))
+		return 1;
+	/*
+	 * need to check for sid collisions.. ick, how?
+	 * another function? -syrk
+	 */
+	return 0;
+}
