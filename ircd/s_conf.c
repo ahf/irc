@@ -263,6 +263,8 @@ char	*oline_flags_to_string(long flags)
 		*s++ = 'P';
 	if (flags & ACL_CANFLOOD)
 		*s++ = 'p';
+	if (flags & ACL_TRACE)
+		*s++ = 't';
 	if (s == ofsbuf)
 		*s++ = '-';
 	*s++ = '\0';
@@ -299,6 +301,7 @@ long	oline_flags_parse(char *string)
 #endif
 		case 'P': tmp |= ACL_NOPENALTY; break;
 		case 'p': tmp |= ACL_CANFLOOD; break;
+		case 't': tmp |= ACL_TRACE; break;
 		}
 	}
 	return tmp;
