@@ -854,7 +854,7 @@ int	m_nick(aClient *cptr, aClient *sptr, int parc, char *parv[])
 		sendto_flag(SCH_LOCAL, "User connection to server-only P-line "
 			"from %s", get_client_host(cptr));
 		find_bounce(cptr, -1, -1);
-		return exit_client(NULL, cptr, &me, "Server only port");
+		return exit_client(cptr, cptr, &me, "Server only port");
 	}
 	if (IsService(sptr))
    	    {
@@ -2360,7 +2360,7 @@ int	m_user(aClient *cptr, aClient *sptr, int parc, char *parv[])
 		sendto_flag(SCH_LOCAL, "User connection to server-only P-line "
 			"from %s", get_client_host(cptr));
 		find_bounce(cptr, -1, -1);
-		return exit_client(NULL, cptr, &me, "Server only port");
+		return exit_client(cptr, cptr, &me, "Server only port");
 	}
 	/* Reject new USER */
 	if (IsServer(sptr) || IsService(sptr) || sptr->user)
