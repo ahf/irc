@@ -8,20 +8,8 @@ dnl new tests
 dnl ---------
 
 AC_DEFUN(IRC_MATHLIB, [
-	AC_MSG_CHECKING([library containing pow])
-	AC_CACHE_VAL([irc_cv_mathlib], [
-		irc_cv_mathlib=""
-		AC_LINK_IFELSE([AC_LANG_PROGRAM([[]], [[double x = 2.0; pow(x, 2.0)]])],[MATHLIBS=],[
-			irc_save_LIBS="$LIBS"
-			irc_cv_mathlib="-lm"
-			LIBS="-lm $LIBS"
-			AC_LINK_IFELSE([AC_LANG_PROGRAM([[[]]], [[[double x = 2.0; pow(x, 2.0)]]])],[MATHLIBS=-lm],[])
-			LIBS=$irc_save_LIBS
-		])
-	])
-	MATHLIBS=$irc_cv_mathlib
+	AC_CHECK_LIB([m], [pow], [MATHLIBS=-lm], [])
 	AC_SUBST(MATHLIBS)
-	AC_MSG_RESULT($MATHLIBS)
 ])
 
 AC_DEFUN(IRC_PATH_ZLIB,
