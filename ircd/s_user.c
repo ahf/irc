@@ -2376,7 +2376,7 @@ char	*parv[];
 		       parv[0], sptr->user->username, sptr->user->host,
 		       sptr->auth, IsUnixSocket(sptr) ? sptr->sockhost :
 #ifdef INET6
-                       inet_ntop(AF_INET6, (char *)&sptr->ip), mydummy, MYDUMMY_SIZE);
+                       inet_ntop(AF_INET6, (char *)&sptr->ip, mydummy, MYDUMMY_SIZE));
 #else
                        inetntoa((char *)&sptr->ip));
 #endif
