@@ -3832,8 +3832,8 @@ static int	reop_channel(time_t now, aChannel *chptr, int reopmode)
 			ME, chptr->chname, op.value.cptr->name);
 		sendto_channel_butserv(chptr, &me, ":%s MODE %s +o %s",
 			ME, chptr->chname, op.value.cptr->name);
+		chptr->reop = 0;
 	}
-	chptr->reop = 0;
 	return 1;
 }
 
