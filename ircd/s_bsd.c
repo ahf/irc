@@ -1943,18 +1943,20 @@ FdAry	*fdp;
 		nfds--;
 		CLR_READ_EVENT(udpfd);
 	    }
+#if defined(USE_IAUTH)
 	if (nfds > 0 &&
-#if ! USE_POLL
+# if ! USE_POLL
 	    adfd >= 0 &&
-#else
+# else
 	    (pfd = ad_pfd) &&
-#endif
+# endif
 	    TST_READ_EVENT(adfd))
 	    {
 		read_iauth();
 		nfds--;
 		CLR_READ_EVENT(udpfd);
 	    }
+#endif
 
 #if ! USE_POLL
 	for (i = fdp->highest; i >= 0; i--)

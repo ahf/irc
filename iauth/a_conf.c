@@ -254,11 +254,11 @@ AnInstance *inst;
 	if ((ttmp = inst->hostname) && (cldata[cl].state & A_GOTH))
 		while (ttmp)
 		    {
-			if (match(ttmp->value, cldata[cl].hostname) == 0)
+			if (match(ttmp->value, cldata[cl].host) == 0)
 				return 0;
 			ttmp = ttmp->nextt;
 		    }
-	if (noipchk == 0 && ttmp = inst->address)
+	if (noipchk == 0 && (ttmp = inst->address))
 		while (ttmp)
 		    {
 			if (match(ttmp->value, cldata[cl].itsip) == 0)
