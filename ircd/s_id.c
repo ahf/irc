@@ -202,7 +202,7 @@ char *name;
 		    return 0;
 	    l += 1;
 	}
-    if (l == CHIDLEN+1)
+    if (l != CHIDLEN+1)
 	    return 0;
     return 1;
 }
