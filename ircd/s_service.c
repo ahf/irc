@@ -680,8 +680,14 @@ char	*parv[];
 	    }
 
 	if ((acptr = best_service(parv[1], NULL)))
-		sendto_one(acptr, ":%s SQUERY %s :%s",
-			   parv[0], acptr->name, parv[2]);
+		if (MyConnect(acptr) &&
+		    (acptr->service->wants & SERVICE_WANT_PREFIX))
+			sendto_one(acptr, ":%s!%s@%s SQUERY %s :%s", parv[0],
+				   sptr->user->username, sptr->user->host,
+				   acptr->name, parv[2]);
+		else
+			sendto_one(acptr, ":%s SQUERY %s :%s",
+				   parv[0], acptr->name, parv[2]);
 	else
 		sendto_one(sptr, err_str(ERR_NOSUCHSERVICE, parv[0]), parv[1]);
 	return 2;

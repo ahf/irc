@@ -766,8 +766,8 @@ Reg	aClient	*cptr;
 	add_fd(cptr->fd, &fdas);
 #ifdef	USE_SERVICES
 	check_services_butone(SERVICE_WANT_SERVER, cptr->name, cptr,
-				":%s SERVER %s %d :%s", ME,
-				cptr->name, cptr->hopcount+1, cptr->info);
+			      ":%s SERVER %s %d %s :%s", ME, cptr->name,
+			      cptr->hopcount+1, cptr->serv->tok, cptr->info);
 #endif
 	sendto_flag(SCH_SERVER, "Sending SERVER %s (%d %s)", cptr->name,
 		    1, cptr->info);
@@ -2191,7 +2191,7 @@ char	*parv[];
 	    {
 		if (!(acptr = local[i]))
 			continue;
-		if (IsClient(acptr))
+		if (IsClient(acptr) || IsService(acptr))
 		    {
 			sendto_one(acptr,
 				   ":%s NOTICE %s :Server Terminating. %s",
