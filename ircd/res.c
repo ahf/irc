@@ -847,7 +847,7 @@ Reg	u_char	*ip;
 	hashv += (int)*ip++;
 	hashv += hashv + (int)*ip++;
 	hashv += hashv + (int)*ip++;
-	hashv += hashv + (int)*ip++;
+	hashv += hashv + (int)*ip;
 	hashv %= ARES_CACSIZE;
 	return (hashv);
 }

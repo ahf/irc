@@ -155,7 +155,7 @@ char	*in;
 	a = (int)*s++;
 	b = (int)*s++;
 	c = (int)*s++;
-	d = (int)*s++;
+	d = (int)*s;
 	(void)sprintf(buf, "%d.%d.%d.%d", a,b,c,d );
 
 	return buf;
