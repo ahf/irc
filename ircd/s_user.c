@@ -882,6 +882,22 @@ badparamcountkills:
 			}
 		}
 	}
+	if (IsServer(cptr) && isdigit(nick[0]) 
+		&& !strncasecmp(me.serv->sid, nick, SIDLEN))
+	{
+		/* Remote server send us remote user changing his nick
+		** to uid-like with our! sid. Burn the bastard. --B. */
+		sendto_flag(SCH_KILL, "Bad SID Nick Prefix: %s From: %s %s",
+				   parv[1], parv[0],
+				   get_client_name(cptr, FALSE));
+                sendto_serv_butone(NULL, ":%s KILL %s :%s (%s[%s] != %s)",
+                                   me.name, sptr->name, me.name,
+                                   sptr->name, sptr->from->name,
+                                   get_client_name(cptr, TRUE));
+                sptr->flags |= FLAGS_KILLED;
+                (void) exit_client(NULL, sptr, &me, "Fake SID Nick Prefix");
+                return exit_client(NULL, cptr, &me, "Fake SID Nick Prefix");
+	}
 	/*
 	 * if do_nick_name() returns a null name OR if the server sent a nick
 	 * name and do_nick_name() changed it in some way (due to rules of nick
