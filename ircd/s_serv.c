@@ -1424,9 +1424,7 @@ char	*parv[];
 		report_configured_links(cptr,parv[0],CONF_QUARANTINED_SERVER);
 		break;
 	case 'R' : case 'r' : /* usage */
-#ifdef DEBUGMODE
 		send_usage(cptr, parv[0]);
-#endif
 		break;
 	case 'S' : case 's' : /* S lines */
 		report_configured_links(cptr, parv[0], CONF_SERVICE);
