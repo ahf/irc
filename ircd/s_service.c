@@ -90,8 +90,10 @@ aClient *cptr;
 			if ((bcptr = sp->bcptr) &&
 			    !myncmp(name, bcptr->name, len))
 			    {
-				acptr = bcptr;
-				break;
+				if (!acptr || bcptr->hopcount < acptr->hopcount)
+				{
+					acptr = bcptr;
+				}
 			    }
 	return (acptr ? acptr : cptr);
 }
