@@ -2116,7 +2116,7 @@ int	ro;
 # endif			
 		    }
 #endif
-		Debug((DEBUG_L11, "udpfd %d resfd %d adfd %s", udpfd, resfd,
+		Debug((DEBUG_L11, "udpfd %d resfd %d adfd %d", udpfd, resfd,
 		       adfd));
 #if ! USE_POLL
 		Debug((DEBUG_L11, "highfd %d", highfd));
