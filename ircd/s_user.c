@@ -1066,6 +1066,7 @@ badparamcountkills:
 		save_user(NULL, sptr, path);
 
 		/* Everything is done */
+		ircstp->is_save++;
 		return 2;
 	}
 
@@ -1354,6 +1355,7 @@ int	m_unick(aClient *cptr, aClient *sptr, int parc, char *parv[])
 
 			/* Just introduce him with the uid to the rest. */
 			strcpy(nick, uid);
+			ircstp->is_save++;
 		    }
 		else
 		    {
@@ -3531,6 +3533,7 @@ int	m_save(aClient *cptr, aClient *sptr, int parc, char *parv[])
 	if (acptr && strcasecmp(acptr->name, acptr->user->uid))
 	{
 		save_user(cptr, acptr, path);
+		ircstp->is_save++;
 	}
 
 	return 0;

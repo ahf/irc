@@ -537,6 +537,7 @@ struct	stats {
 	u_int	is_empt; /* empty message */
 	u_int	is_num;	/* numeric message */
 	u_int	is_kill; /* number of kills generated on collisions */
+	u_int	is_save; /* number of saved clients */
 	u_int	is_fake; /* MODE 'fakes' */
 	u_int	is_asuc; /* successful auth requests */
 	u_int	is_abad; /* bad auth requests */
