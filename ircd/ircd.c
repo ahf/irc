@@ -658,8 +658,8 @@ ping_timeout:
 #endif
 	if (!oldest || oldest < currenttime)
 		oldest = currenttime + PINGFREQUENCY;
-	if (oldest < currenttime + 2)
-		oldest += 2;
+	if (oldest < currenttime + 30)
+		oldest += 30;
 	Debug((DEBUG_NOTICE,"Next check_ping() call at: %s, %d %d %d",
 		myctime(oldest), ping, oldest, currenttime));
 	return (oldest);
