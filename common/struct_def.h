@@ -905,6 +905,7 @@ typedef enum ServerChannels {
 #ifdef CLIENTS_CHANNEL
 	SCH_CLIENT,
 #endif
+	SCH_OPER,
 	SCH_MAX	
 } ServerChannels;
 
