@@ -1,4 +1,5 @@
 /*
+ * $Id$
  * ircd/res_def.h (C)opyright 1992 Darren Reed.
  */
 
