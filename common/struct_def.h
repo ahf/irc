@@ -664,9 +664,6 @@ struct Channel	{
 #define	CHFL_EXCEPTION	0x0010 /* exception channel flag */
 #define	CHFL_INVITE	0x0020 /* invite channel flag */
 #define	CHFL_REOPLIST	0x0040 /* reoplist channel flag */
-#ifdef OPER_KLUDGE
-#define	CHFL_OPERS	0x1000 /* oper mode flag */
-#endif
 
 /* Channel Visibility macros */
 
