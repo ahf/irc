@@ -608,13 +608,13 @@ char	*buffer, *bufend;
 				break;
 			    }
 			para[++i] = s;
-			if (i >= paramcount)
+			if (i >= paramcount-1)
 				break;
 			for (; *s != ' ' && *s; s++)
 				;
 		    }
 	    }
-	para[++i] = NULL;
+	para[++i] = NULL; /* at worst, ++i is paramcount (MAXPARA) */
 	if (mptr == NULL)
 		return (do_numeric(numeric, cptr, from, i, para));
 	mptr->count++;
