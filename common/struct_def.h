@@ -143,7 +143,7 @@ typedef enum Status {
 #define	SetMe(x)		((x)->status = STAT_ME)
 #define	SetUnknown(x)		((x)->status = STAT_UNKNOWN)
 #define	SetServer(x)		((x)->status = STAT_SERVER)
-#define	SetClient(x)		((x)->status = STAT_CLIENT)
+#define	SetClient(x)		((x)->status = IsAnOper((x)) ? STAT_OPER : STAT_CLIENT)
 #define	SetService(x)		((x)->status = STAT_SERVICE)
 
 #define	FLAGS_PINGSENT	0x0000001 /* Unreplied ping sent */
