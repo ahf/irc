@@ -171,11 +171,6 @@ void	debug(int level, char *form, ...)
 		va_start(va, form);
 		(void)vsprintf(debugbuf, form, va);
 		va_end(va);
-		if (local[2])
-		    {
-			local[2]->sendM++;
-			local[2]->sendB += strlen(debugbuf);
-		    }
 		(void)fprintf(stderr, "%s\n", debugbuf);
 	    }
 	errno = err;

@@ -2798,11 +2798,6 @@ static	void	trace_one(aClient *sptr, aClient *acptr)
 				   acptr->service->type, acptr->service->wants);
                         break;
 
-                case STAT_LOG:
-                        sendto_one(sptr, replies[RPL_TRACELOG], ME, to, ME,
-                                   acptr->port);
-                        break;
-
                 default: /* ...we actually shouldn't come here... --msa */
                         sendto_one(sptr, replies[RPL_TRACENEWTYPE], ME, to,
 				   name);

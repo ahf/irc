@@ -299,7 +299,6 @@ char *	replies[] = {
 /* 258 RPL_ADMINLOC2 */	":%s 258 %s :%s",
 /* 259 RPL_ADMINEMAIL */	":%s 259 %s :%s",
 /* 260 */ (char *)NULL,
-/* 261 RPL_TRACELOG */	":%s 261 %s File %s %d",
 /* 262 RPL_TRACEEND */	":%s 262 %s %s %s.%s :End of TRACE",
 /* 263 RPL_TRYAGAIN */	":%s 263 %s %s :Please wait a while and try again.",
 /* 264 */ (char *)NULL,

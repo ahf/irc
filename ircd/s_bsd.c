@@ -1915,7 +1915,7 @@ int	read_message(time_t delay, FdAry *fdp, int ro)
 #endif
 		for (i = fdp->highest; i >= 0; i--)
 		    {
-			if (!(cptr = local[fd = fdp->fd[i]]) || IsLog(cptr))
+			if (!(cptr = local[fd = fdp->fd[i]]))
 				continue;
 			Debug((DEBUG_L11, "fd %d cptr %#x %d %#x %s",
 				fd, cptr, cptr->status, cptr->flags,
