@@ -387,7 +387,7 @@ char *to;
 /*
  * report_iauth_stats
  *
- * called from m_stats(), this is the reply to /stats A
+ * called from m_stats(), this is part of the reply to /stats t
  */
 void
 report_iauth_stats(sptr, to)
