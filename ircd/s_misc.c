@@ -586,26 +586,36 @@ int	exit_client(aClient *cptr, aClient *sptr, aClient *from,
 	*/
 	comment1[0] = '\0';
 	if ((sptr->flags & FLAGS_KILLED) == 0)
-	    {
-	        const char *c = comment;
-		int i = 0;
-		while (*c && *c != ' ')
-			if (*c++ == '.')
-				i++;
-		if (*c++ && i)
-		    {
-		        i = 0;
+	{
+		if (comment[0] == '"')
+		{
+			/* definitely user quit, see m_quit */
+			sptr->flags |= FLAGS_QUIT;
+		}
+		else
+		{
+		        const char *c = comment;
+			int i = 0;
 			while (*c && *c != ' ')
 				if (*c++ == '.')
 					i++;
-			if (!i || *c)
+			if (*c++ && i)
+			{
+			        i = 0;
+				while (*c && *c != ' ')
+					if (*c++ == '.')
+						i++;
+				if (!i || *c)
+					sptr->flags |= FLAGS_QUIT;
+			}
+			else
+			{
 				sptr->flags |= FLAGS_QUIT;
-		    }
-		else
-			sptr->flags |= FLAGS_QUIT;
+			}
+		}
 
 		if (sptr == cptr && !(sptr->flags & FLAGS_QUIT))
-		    {
+		{
 			/*
 			** This will avoid nick delay to be abused by
 			** letting local users put a comment looking
@@ -614,12 +624,13 @@ int	exit_client(aClient *cptr, aClient *sptr, aClient *from,
 			strncpyzt(comment1, comment, HOSTLEN + HOSTLEN);
 			strcat(comment1, " ");
 			sptr->flags |= FLAGS_QUIT;
-		    }
-	    }
+		}
+	}
 	
 	exit_one_client(cptr, sptr, from, (*comment1) ? comment1 : comment);
 	/* XXX: we probably should not call it every client exit */
-	check_split();
+	/* checking every server quit should suffice --B. */
+	/* check_split(); */
 	return cptr == sptr ? FLUSH_BUFFER : 0;
     }
 
