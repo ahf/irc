@@ -34,7 +34,6 @@ static  char rcsid[] = "@(#)$Id$";
 /* 
    A lot of socks v4 proxies return 4,91 instead of 0,91 otherwise
    working perfectly -- this will deal with them.
-   If undefined, it will work only with 'megaparanoid' option.
 */
 #define BROKEN_PROXIES 1
 
