@@ -673,7 +673,6 @@ int	main(int argc, char *argv[])
 {
 	uid_t	uid, euid;
 
-	(void) myctime(time(NULL));	/* Don't ask, just *don't* ask */
 	sbrk0 = (char *)sbrk((size_t)0);
 	uid = getuid();
 	euid = geteuid();
