@@ -331,11 +331,11 @@ static	aConfItem 	*initconf()
 				++ncount;
 				aconf->status = CONF_NOCONNECT_SERVER;
 				break;
-			case 'O':
+			case 'o':
 				aconf->status = CONF_OPERATOR;
 				break;
 			/* Local Operator, (limited privs --SRB) */
-			case 'o':
+			case 'O':
 				aconf->status = CONF_LOCOP;
 				break;
 			case 'P': /* listen port line */
@@ -350,11 +350,6 @@ static	aConfItem 	*initconf()
 			case 'S': /* Service. Same semantics as   */
 			case 's': /* CONF_OPERATOR                */
 				aconf->status = CONF_SERVICE;
-				break;
-			case 'U': /* Uphost, ie. host where client reading */
-			case 'u': /* this should connect.                  */
-			/* This is for client only, I must ignore this */
-			/* ...U-line should be removed... --msa */
 				break;
 			case 'V':
 				aconf->status = CONF_VER;
