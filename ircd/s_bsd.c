@@ -1401,7 +1401,7 @@ aClient *cptr;
 		    {
 			blptr= *blscn;
 			*blscn=blptr->next;
-			MyFree((char *)blptr);
+			MyFree(blptr);
 		    }
 		else
 			blscn = &(*blscn)->next;

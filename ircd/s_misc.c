@@ -1018,7 +1018,7 @@ char *filename;
 	    {
 		last = motd->next;
 		MyFree(motd->line);
-		MyFree((char *)motd);
+		MyFree(motd);
 	    }
 	motd_tm = *localtime(&Sb.st_mtime);
 	(void)dgets(-1, NULL, 0); /* make sure buffer is at empty pos */

@@ -70,7 +70,7 @@ aClient	*cptr;
 			free_server(serv->servp, cptr);
 		if (serv->server)
 			MyFree(serv->server);
-		MyFree((char *)serv);
+		MyFree(serv);
 		cptr->service = NULL;
 	    }
 }

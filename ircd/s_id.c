@@ -154,7 +154,7 @@ aChannel *chptr;
     if (chptr->history == 0 ||
 	(timeofday - chptr->history) >LDELAYCHASETIMELIMIT+DELAYCHASETIMELIMIT)
 	{
-	    MyFree((char *)chptr);
+	    MyFree(chptr);
 	    return;
 	}
 
@@ -196,7 +196,7 @@ collect_chid()
 		    *chptr = del->nextch;
 		    istat.is_cchan--;
 		    istat.is_cchanmem -= sizeof(aChannel) +strlen(del->chname);
-		    MyFree((char *)del);
+		    MyFree(del);
 		}
 	    else
 		    chptr = &((*chptr)->nextch);

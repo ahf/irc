@@ -583,11 +583,10 @@ size_t	y;
 	return ret + SZ_CHST;
     }
 
-void	MyFree(x)
-char	*x;
+void	MyFree(void *p)
 {
 	size_t	i;
-	char	*j;
+	char	*j, *x = p;
 	u_char	k[4];
 	register int	l;
 	register char	**s;

@@ -2087,7 +2087,7 @@ aChannel *chptr;
 		if (*chptr->chname == '!' && close_chid(chptr->chname+1))
 			cache_chid(chptr);
 		else
-			MyFree((char *)chptr);
+			MyFree(chptr);
 	    }
 }
 
