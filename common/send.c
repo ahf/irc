@@ -1314,7 +1314,7 @@ void	sendto_flog(aClient *cptr, char msg, char *username, char *hostname)
 		/* hmm, let me take an educated guess... a hostname? */
 		hostname,
 		/* ident, if available */
-		cptr->auth ? cptr->auth : "",
+		cptr->auth ? cptr->auth : "?",
 		/* client IP */
 		cptr->user ? cptr->user->sip :
 #ifdef INET6
