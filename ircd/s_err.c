@@ -40,7 +40,7 @@ static	Numeric	local_replies[] = {
 /* 001 */	{ RPL_WELCOME, ":Welcome to the Internet Relay Network %s" },
 /* 002 */	{ RPL_YOURHOST, ":Your host is %s, running version %s" },
 /* 003 */	{ RPL_CREATED, ":This server was created %s" },
-/* 004 */	{ RPL_MYINFO, "%s %s aoOirw abeiIklmnopqrstv" },
+/* 004 */	{ RPL_MYINFO, "%s %s aoOirw abeiIklmnoOpqrstv" },
 /* 005 */	{ RPL_BOUNCE, ":Try server %s, port %d" },
 		{ 0, (char *)NULL }
 };
