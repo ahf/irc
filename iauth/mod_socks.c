@@ -140,7 +140,7 @@ u_int cl;
 				if (cldata[cl].instance->opt &&
 				    strstr(cldata[cl].instance->opt, "log"))
 					sendto_log(ALOG_FLOG, LOG_INFO,
-						   "Open SOCKS proxy: %s[%s]",
+						   "socks: open proxy: %s[%s]",
 						   cldata[cl].host,
 						   cldata[cl].itsip);
 			    }
