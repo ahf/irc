@@ -85,7 +85,7 @@ struct __res_state {
 	int	retry;			/* number of times to retransmit */
 	u_long	options;		/* option flags - see below. */
 	int	nscount;		/* number of name servers */
-	struct sockaddr_in
+	struct SOCKADDR_IN
 		nsaddr_list[MAXNS];	/* address of name server */
 #define	nsaddr	nsaddr_list[0]		/* for backward compatibility */
 	u_short	id;			/* current message id */
