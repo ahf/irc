@@ -67,8 +67,6 @@ static	int	dead_link(to, notice)
 aClient *to;
 char	*notice;
 {
-	if (IsHeld(to))
-		return -1;
 	to->flags |= FLAGS_DEADSOCKET;
 	/*
 	 * If because of BUFFERPOOL problem then clean dbufs now so that
