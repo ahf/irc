@@ -85,9 +85,11 @@ int	*store;
 		hash <<= 1;
 		hash += hashtab[(int)ch];
 	}
-	*store = hash;
+	/*
 	if (hash < 0)
 		hash = -hash;
+	*/
+	*store = hash;
 	hash %= _HASHSIZE;
 	return (hash);
 }
