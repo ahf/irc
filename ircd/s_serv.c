@@ -209,7 +209,7 @@ char	*parv[];
 		sendto_one(sptr, err_str(ERR_NOPRIVILEGES, parv[0]));
 		return 1;
 	    }
-	if (!MyConnect(acptr))
+	if (!MyConnect(acptr) && (cptr != acptr->from))
 	    {
 		sendto_one(acptr->from, ":%s SQUIT %s :%s", parv[0],
 			   acptr->name, comment);
