@@ -2477,7 +2477,7 @@ char	*parv[];
 #ifdef	USE_SERVICES
 		check_services_butone(SERVICE_WANT_OPER, sptr->user->server, 
 				      sptr, ":%s MODE %s :+%c", parv[0],
-				      parv[0], IsOper(sptr) ? 'O' : 'o');
+				      parv[0], IsOper(sptr) ? 'o' : 'O');
 #endif
 		if (IsAnOper(sptr))
 			istat.is_oper++;
