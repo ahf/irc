@@ -1541,6 +1541,14 @@ int 	initconf(int opt)
 			DupString(aconf->name, tmp);
 			if ((tmp = getfield(NULL)) == NULL)
 				break;
+#ifdef XLINE
+			if (aconf->status == CONF_XLINE)
+			{
+				DupString(aconf->source_ip, tmp);
+				/* For X: we stop parsing after 4th field */
+				break;
+			}
+#endif
 			aconf->port = 0;
 			if (sscanf(tmp, "0x%x", &aconf->port) != 1 ||
 			    aconf->port == 0)
@@ -1645,12 +1653,6 @@ int 	initconf(int opt)
 				}
 			}
 		}
-#ifdef XLINE
-		if (aconf->status & CONF_XLINE && tmp3)
-		{
-			aconf->flags = xline_flags_parse(tmp3);
-		}
-#endif
 		if (aconf->status & CONF_SERVICE)
 			aconf->port &= SERVICE_MASK_ALL;
 		if (aconf->status & (CONF_SERVER_MASK|CONF_SERVICE))
