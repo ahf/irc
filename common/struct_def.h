@@ -864,3 +864,8 @@ typedef	struct	Ignore {
 #   error UIDLEN must be bigger than SIDLEN
 #endif
 
+/*
+ * base for channel IDs and UIDs
+ */
+#define CHIDNB 36
+
