@@ -80,7 +80,7 @@ net.
 <sect1>SQUERY
 <p>
 This new command stands for ``Service Query''.  The first
-argument is the serice name, and the second the text to be
+argument is the service name, and the second the text to be
 sent to the service.
 
 <sect>How to set up a service
