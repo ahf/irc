@@ -920,7 +920,7 @@ void	sendto_common_channels(aClient *user, char *pattern, ...)
 				cptr = lp->value.cptr;
 				if (user == cptr)
 					continue;
-				if (!cptr->user) || sentalong[cptr->fd])
+				if (!cptr->user || sentalong[cptr->fd])
 					continue;
 				sentalong[cptr->fd]++;
 #ifndef DEBUGMODE
