@@ -1521,22 +1521,30 @@ char	**comment;
 		    }
 	    }
 
-	if (*reply)
-		sendto_one(cptr, reply, ME, now, cptr->name);
-	else if (tmp)
-		sendto_one(cptr, ":%s %d %s :%s%s", ME,
-			   ERR_YOUREBANNEDCREEP, cptr->name,
-			   BadPtr(tmp->passwd) ?
-			   "You are not welcome to this server" :
-			   "You are not welcome to this server: ",
-			   BadPtr(tmp->passwd) ? "" : tmp->passwd);
-
 	if (tmp && !BadPtr(tmp->passwd))
+	{
 		*comment = tmp->passwd;
+	}
 	else
+	{
 		*comment = NULL;
+	}
+	if (*reply)
+	{
+		/* R_LINE and TIMED_KLINE */
+		sendto_one(cptr, reply, ME, now, cptr->name);
+	}
+	else if (tmp)
+	{
+		sendto_one(cptr, replies[ERR_YOUREBANNEDCREEP], 
+			ME, cptr->name,
+			BadPtr(tmp->name) ? "*" : tmp->name,
+			BadPtr(tmp->host) ? "*" : tmp->host,
+			*comment ? ":" : "",
+			*comment ? *comment : "");
+	}
 
- 	return (tmp ? -1 : 0);
+	return (tmp ? -1 : 0);
 }
 
 /*
