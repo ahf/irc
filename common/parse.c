@@ -607,6 +607,8 @@ char	*buffer, *bufend;
 	if (mptr == NULL)
 		return (do_numeric(numeric, cptr, from, i, para));
 	mptr->count++;
+	if (!MyConnect(from))
+		mptr->rcount++;
 	if (IsRegisteredUser(cptr) &&
 #ifdef	IDLE_FROM_MSG
 	    mptr->func == m_private)

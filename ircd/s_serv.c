@@ -1360,7 +1360,8 @@ char	*parv[];
 			if (mptr->count)
 				sendto_one(cptr, rpl_str(RPL_STATSCOMMANDS,
 					   parv[0]), mptr->cmd,
-					   mptr->count, mptr->bytes);
+					   mptr->count, mptr->bytes,
+					   mptr->rcount);
 		break;
 	case 'o' : case 'O' : /* O (and o) lines */
 		report_configured_links(cptr, parv[0], CONF_OPS);
