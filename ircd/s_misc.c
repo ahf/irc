@@ -179,6 +179,7 @@ char	*get_client_name(aClient *sptr, int showip)
 
 	if (MyConnect(sptr))
 	    {
+#ifdef UNIXPORT
 		if (IsUnixSocket(sptr))
 		    {
 			if (showip)
@@ -189,6 +190,7 @@ char	*get_client_name(aClient *sptr, int showip)
 					sptr->name, me.sockhost);
 		    }
 		else
+#endif
 		    {
 			if (showip)
 				(void)sprintf(nbuf, "%s[%.*s@%s]",
