@@ -2277,7 +2277,7 @@ int	ro;
 deadsocket:
 				if (TST_READ_EVENT(fd))
 					CLR_READ_EVENT(fd);
-				if (cptr->exitc =! EXITC_UNDEF)
+				if (cptr->exitc != EXITC_UNDEF)
 					sendto_flag(SCH_DEBUG,
 						    "EXITC overwritten: %c",
 						    cptr->exitc);
