@@ -477,7 +477,7 @@ char	*parv[];
 			check_servername_errors[tmperr][0],
 			host, get_client_name(cptr, TRUE));
 		return exit_client(cptr, cptr, &me,
-			check_servername_errors[tmperr][1]);
+			(char *)check_servername_errors[tmperr][1]);
 	}
 	
 	/* *WHEN* can it be that "cptr != sptr" ????? --msa */
