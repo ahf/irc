@@ -1016,6 +1016,7 @@ void	io_loop()
 	while (maxs--)
 		if (read_message(0, &fdas, 0))
 		    {
+			timeofday = time(NULL);
 			dog_check(0); /* to trigger debug notices only */
 			flush_fdary(&fdas);
 		    }
@@ -1036,8 +1037,8 @@ void	io_loop()
 		sendto_flag(SCH_DEBUG, "read_message(RO) -> 0 [%d]", delay);
 		(void)read_message(delay - 1, &fdall, 0);
 	    }
-	dog_check(1);
 	timeofday = time(NULL);
+	dog_check(1);
 
 	Debug((DEBUG_DEBUG ,"Got message(s)"));
 	/*
