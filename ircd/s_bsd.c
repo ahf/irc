@@ -157,7 +157,7 @@ aClient *cptr;
 	 * gamble anyway.
 	 */
 #ifdef	SO_ERROR
-	if (!IsMe(cptr) && cptr->fd >= 0)
+	if (cptr && !IsMe(cptr) && cptr->fd >= 0)
 		if (!GETSOCKOPT(cptr->fd, SOL_SOCKET, SO_ERROR, &err, &len))
 			if (err)
 				errtmp = err;
