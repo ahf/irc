@@ -3581,7 +3581,7 @@ static int	reop_channel(time_t now, aChannel *chptr, int reopmode)
 			/* If channel reop is heavily overdue, don't care about
 			** idle. Find the least idle client possible.
 			*/
-			if (now - chptr->history > 7*LDELAYCHASETIMELIMIT)
+			if (now - chptr->reop > 7*LDELAYCHASETIMELIMIT)
 			{
 				if (op.value.cptr == NULL ||
 					lp->value.cptr->user->last >
