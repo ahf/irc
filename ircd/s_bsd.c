@@ -464,7 +464,6 @@ start_iauth()
 		first = 0;
 	else
 	    {
-		char buf[10];
 		int i;
 		aClient *cptr;
 
@@ -474,8 +473,7 @@ start_iauth()
 				continue;
 			if (IsServer(cptr) || IsService(cptr))
 				continue;
-			sprintf(buf, "%d O\n", i);
-			sendto_iauth(buf);
+			sendto_iauth("%d O", i);
 		    }
 	    }
 #endif
