@@ -777,7 +777,6 @@ yes
 #ifdef _ZETA_MINAMI_INET6
 yes
 #endif], irc_cv_v6type=zeta)))))
-    fi
     fi])
   AC_MSG_RESULT($irc_cv_v6type)
 
