@@ -795,8 +795,9 @@ int	m_server(aClient *cptr, aClient *sptr, int parc, char *parv[])
 		/*
 		**
 		*/
-		if (!(aconf = find_conf_host_sid(cptr->confs, host, 
-			ST_UID(cptr) ? parv[3] : "", CONF_HUB)) ||
+		if (!(aconf = ST_UID(cptr) ?
+			find_conf_host_sid(cptr->confs, host, parv[3], CONF_HUB)
+			: find_conf_host(cptr->confs, host, CONF_HUB)) ||
 		    (aconf->port && (hop > aconf->port)) )
 		    {
 			sendto_flag(SCH_ERROR,
