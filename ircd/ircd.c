@@ -963,6 +963,7 @@ int	main(int argc, char *argv[])
 
 #endif
 	timeofday = time(NULL);
+	initanonymous();
 	initstats();
 	initruntimeconf();
 	ircd_readtune(tunefile);
