@@ -3119,7 +3119,8 @@ time_t	now;
 		else
 		    {
 			cur_nb++;
-			if (*chptr->chname == '!' && 
+			if (*chptr->chname == '!' &&
+			    (chptr->mode.mode & MODE_REOP) &&
 			    chptr->reop && chptr->reop <= now)
 				r_cnt += reop_channel(now, chptr);
 		    }
