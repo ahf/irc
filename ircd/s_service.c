@@ -512,9 +512,9 @@ int	m_service(aClient *cptr, aClient *sptr, int parc, char *parv[])
 		if (match(dist, bcptr->name))
 			continue;
 
-			sendto_one(bcptr, ":%s SERVICE %s %s %d :%s",
-					sp->sid, acptr->name, dist, type, info);
-		}
+		sendto_one(bcptr, ":%s SERVICE %s %s %d :%s",
+				sp->sid, acptr->name, dist, type, info);
+	}
 		
 	return 0;
 }
@@ -609,11 +609,11 @@ int	m_servset(aClient *cptr, aClient *sptr, int parc, char *parv[])
 				continue;
 			split = (MyConnect(acptr) &&
 				 mycmp(acptr->name, acptr->sockhost));
-				sendto_one(sptr, ":%s SERVER %s %d %s :%s",
-					acptr->serv->up->name, acptr->name,
-					acptr->hopcount+1,
-					acptr->serv->sid,
-					acptr->info);
+			sendto_one(sptr, ":%s SERVER %s %d %s :%s",
+				acptr->serv->up->name, acptr->name,
+				acptr->hopcount+1,
+				acptr->serv->sid,
+				acptr->info);
 		    }
 	    }
 
