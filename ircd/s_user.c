@@ -1264,7 +1264,7 @@ char	*parv[];
 	*/
 	acptr = make_client(cptr);
 	add_client_to_list(acptr);
-	acptr->user = make_user(sptr);
+	(void)make_user(acptr);
 	/* more corrrect is this, but we don't yet have ->mask, so...
 	acptr->user->servp = find_server_name(sptr->serv->mask->serv->snum);
 	... just remember to change it one day --Beeth */
