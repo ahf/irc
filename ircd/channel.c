@@ -652,7 +652,7 @@ aChannel *chptr;
 	    {
 		*mbuf++ = 'l';
 		if (IsMember(cptr, chptr) || IsServer(cptr))
-			SPRINTF(pbuf, "%d ", chptr->mode.limit);
+			sprintf(pbuf, "%d ", chptr->mode.limit);
 	    }
 	if (*chptr->mode.key)
 	    {

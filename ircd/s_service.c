@@ -265,11 +265,11 @@ int	type;
 	 	if ((hp = cptr->hostp))
 			for (s = hp->h_name, i = 0; s; s = hp->h_aliases[i++])
 			    {
-				SPRINTF(uhost, "%s@%s", cptr->username, s);
+				sprintf(uhost, "%s@%s", cptr->username, s);
 				if (match(tmp->host, uhost) == 0)
 					return tmp;
 			    }
-		SPRINTF(uhost, "%s@%s", cptr->username, cptr->sockhost);
+		sprintf(uhost, "%s@%s", cptr->username, cptr->sockhost);
 		if (match(tmp->host, uhost) == 0)
 			return tmp;
 	    }

@@ -676,7 +676,7 @@ aClient	*cptr;
 		goto authsenderr;
 	    }
 
-	SPRINTF(authbuf, "%u , %u\r\n",
+	sprintf(authbuf, "%u , %u\r\n",
 		(unsigned int)ntohs(them.SIN_PORT),
 		(unsigned int)ntohs(us.SIN_PORT));
 

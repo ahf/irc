@@ -184,7 +184,7 @@ int	len;
 			ebuf[0] = '\0';
 			if (IsService(to) || IsServer(to))
 			{
-				SPRINTF(ebuf,
+				sprintf(ebuf,
 				"Max SendQ limit exceeded for %s: %d > %d",
 					get_client_name(to, FALSE),
 					DBufLength(&to->sendQ), get_sendq(to));
