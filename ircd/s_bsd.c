@@ -2245,7 +2245,8 @@ int	read_message(time_t delay, FdAry *fdp, int ro)
 		/*
 		 * accept connections
 		 */
-		if (TST_READ_EVENT(fd) && IsListener(cptr))
+		if (TST_READ_EVENT(fd) && IsListener(cptr) &&
+			!IsListenerInactive(cptr))
 		    {
 			CLR_READ_EVENT(fd);
 			cptr->lasttime = timeofday;
