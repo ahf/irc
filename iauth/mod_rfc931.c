@@ -164,7 +164,7 @@ u_int cl;
 						free(cldata[cl].authuser);
 					cldata[cl].authuser = mystrdup(ch);
 					cldata[cl].best = cldata[cl].instance;
-					if (unix)
+					if (!other)
 						cldata[cl].state |= A_UNIX;
 					sendto_ircd("%c %d %s %u %s",
 						    (other) ? 'u' : 'U', cl,
