@@ -289,7 +289,7 @@ void	free_user(anUser *user, aClient *cptr)
 		if ((serv = user->servp))
 		    {
 			user->servp = NULL; /* to avoid some impossible loop */
-			free_server(serv, cptr);
+			free_server(serv, serv->bcptr);
 		    }
 		if (user->away)
 		    {
