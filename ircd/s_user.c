@@ -1051,7 +1051,8 @@ int	parc, notice;
 					   parv[0]), nick);
 				continue;
 			    }
-			if (strcasecmp(rindex(nick, '.'), s))
+			if ((s = (char *)rindex(ME, '.')) &&
+			    strcasecmp(rindex(nick, '.'), s))
 			    {
 				sendto_one(sptr, err_str(ERR_BADMASK,
 					   parv[0]), nick);
