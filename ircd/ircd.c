@@ -959,6 +959,12 @@ void	io_loop()
 {
 	static	time_t	delay = 0;
 	int maxs = 4;
+#if defined(PRETTY_PLEASE)
+	static	time_t	nexttfa = 0;
+
+	if (timeofday >= nexttfa)
+		nexttfa = time_for_action(timeofday);
+#endif
 
 	/*
 	** We only want to connect if a connection is due,

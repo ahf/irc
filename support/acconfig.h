@@ -99,3 +99,5 @@
 
 /* Define to enable dynamically shared iauth module support */
 #undef USE_DSM
+
+#undef PRETTY_PLEASE

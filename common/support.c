@@ -816,6 +816,9 @@ char *make_version()
 		sprintf(ver + strlen(ver), "%c%d", DEVLEVEL, dv);
 	if (pl)	/* patchlevel */
 		sprintf(ver + strlen(ver), "p%d", pl);
+#if defined(PRETTY_PLEASE)
+	strcat(ver, "+ldm");
+#endif
 	return mystrdup(ver);
 }
 
