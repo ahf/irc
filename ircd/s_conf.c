@@ -139,7 +139,7 @@ aClient *cptr;
 		m += 96;
 	}
 
-	j = m & 0x1F;	/* mumber not mutliple of 32 bits */
+	j = m & 0x1F;	/* number not mutliple of 32 bits */
 	m >>= 5;	/* number of 32 bits */
 
 	if (m && memcmp((void *)(addr.s6_addr), 
