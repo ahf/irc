@@ -420,6 +420,9 @@ static	aConfItem 	*initconf()
 						case 'N':
 							aconf->flags |= CFLAG_NORESOLVE;
 							break;
+						case 'F':
+							aconf->flags |= CFLAG_FALL;
+							break;
 						default:
 				                        (void)fprintf(stderr,
 							"%s:%d\tWARNING: unknown I-line flag: %c\n",

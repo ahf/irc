@@ -333,12 +333,14 @@ struct	ListItem	{
 #define CFLAG_RNOIDENT		0x00004
 #define CFLAG_KEXEMPT		0x00008
 #define CFLAG_NORESOLVE		0x00010
+#define CFLAG_FALL		0x00020
 
 #define IsConfRestricted(x)	((x)->flags & CFLAG_RESTRICTED)
 #define IsConfRNoDNS(x)		((x)->flags & CFLAG_RNODNS)
 #define IsConfRNoIdent(x)	((x)->flags & CFLAG_RNOIDENT)
 #define IsConfKlineExempt(x)	((x)->flags & CFLAG_KEXEMPT)
 #define IsConfNoResolve(x)	((x)->flags & CFLAG_NORESOLVE)
+#define IsConfFallThrough(x)	((x)->flags & CFLAG_FALL)
 
 #define	IsIllegal(x)	((x)->status & CONF_ILLEGAL)
 
@@ -895,6 +897,7 @@ typedef	struct	{
 #define EXITC_LUHMAX	'l'	/* local clients per user@host max limit */
 #define EXITC_MBUF	'M'	/* mem alloc error */
 #define EXITC_PING	'P'	/* ping timeout */
+#define EXITC_BADPASS	'p'	/* bad password */
 #define EXITC_SENDQ	'Q'	/* send queue exceeded */
 #define EXITC_REF	'R'	/* Refused */
 #define EXITC_AREF	'U'	/* Unauthorized by iauth */
