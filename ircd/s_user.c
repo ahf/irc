@@ -3446,7 +3446,7 @@ static	void	save_user(aClient *cptr, aClient *sptr, char *path)
 	if (MyConnect(sptr))
 	{
 		sendto_one(sptr, replies[RPL_SAVENICK], cptr ? cptr->name : ME,
-			   sptr->name);
+			   sptr->name, sptr->user->uid);
 	}
 	
 	sendto_common_channels(sptr, ":%s NICK :%s",

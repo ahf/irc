@@ -71,7 +71,7 @@ char *	replies[] = {
 /* 040 */ (char *)NULL,
 /* 041 */ (char *)NULL,
 /* 042 RPL_YOURID */	":%s 042 %s %s :your unique ID",
-/* 043 RPL_SAVENICK */	":%s 043 %s :Nickname collision, forcing nick change to your unique ID.",
+/* 043 RPL_SAVENICK */	":%s 043 %s %s :nickname collision, forcing nick change to your unique ID.",
 /* 044 */ (char *)NULL,
 /* 045 */ (char *)NULL,
 /* 046 */ (char *)NULL,
