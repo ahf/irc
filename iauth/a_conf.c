@@ -162,7 +162,11 @@ char *cfile;
 					continue;
 				    }
 				*ch++ = '\0';
+# if defined(RTLD_NOW)
 				mod_handle = dlopen(ch, RTLD_NOW);
+# else
+				mod_handle = dlopen(ch, RTLD_LAZY);
+# endif
 				if (mod_handle == NULL)
 				    {
 					conf_err(lnnb, dlerror(), cfile);
