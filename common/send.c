@@ -1176,8 +1176,8 @@ void	sendto_flag(u_int chan, char *pattern, ...)
 	return;
 }
 
-static int userlog;
-static int connlog;
+static int userlog = -1;
+static int connlog = -1;
 
 void	logfiles_open(void)
 {
@@ -1207,12 +1207,14 @@ void	logfiles_close(void)
 	if (userlog != -1)
 	{
 		(void)close(userlog);
+		userlog = -1;
 	}
 #endif
 #ifdef FNAME_CONNLOG
 	if (connlog != -1)
 	{
 		(void)close(connlog);
+		connlog = -1;
 	}
 #endif
 }
