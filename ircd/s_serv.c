@@ -310,12 +310,6 @@ int	m_squit(aClient *cptr, aClient *sptr, int parc, char *parv[])
 			    (timeconnected % 3600)/60, 
 			    timeconnected % 60);
 	    }
-	if (!IsMasked(acptr))
-	{
-		sendto_flag(SCH_SERVER, "Received SQUIT %s from %s (%s)",
-			acptr->name, parv[0], comment);
-	}
-
 	return exit_client(cptr, acptr, sptr, comment);
 }
 
