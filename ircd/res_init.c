@@ -97,7 +97,11 @@ static void ircd_res_setoptions __P((char *, char *));
 #ifdef RESOLVSORT
 static const char sort_mask[] = "/&";
 #define ISSORTMASK(ch) (strchr(sort_mask, ch) != NULL)
+#ifdef INET6
 static u_int32_t ircd_net_mask __P((struct in_addr));
+#else
+static u_int32_t ircd_net_mask __P((struct in_addr));
+#endif
 #endif
 
 #if !defined(isascii)	/* XXX - could be a function */
@@ -186,6 +190,7 @@ ircd_res_init()
 	if (!ircd_res.id)
 		ircd_res.id = ircd_res_randomid();
 
+/*ifdef INET6 not, because of IPv4 DNS serving */
 #ifdef USELOOPBACK
 	ircd_res.nsaddr.sin_addr = inet_makeaddr(IN_LOOPBACKNET, 1);
 #else

@@ -105,7 +105,11 @@ char	*str;
 #ifndef	NOWRITEALARM
 	(void)alarm(WRITEWAITDELAY);
 #endif
+#ifdef INET6
+	retval = sendto(cptr->fd, str, len, 0, 0, 0);
+#else
 	retval = send(cptr->fd, str, len, 0);
+#endif
 	/*
 	** Convert WOULDBLOCK to a return of "0 bytes moved". This
 	** should occur only if socket was non-blocking. Note, that

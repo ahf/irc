@@ -88,6 +88,9 @@
  * is new enough to contain a certain feature.
  */
 
+#ifndef	INET6
+/* let's assume for now that IPv6 system don't need ours -kalt */
+
 #define __BIND		19960801	/* interface version stamp */
 
 /*
@@ -328,3 +331,5 @@ typedef struct {
 	*t_cp   = t_l; \
 	(cp) += INT32SZ; \
 }
+
+#endif
