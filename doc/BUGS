@@ -9,3 +9,11 @@ Anyone with some free time is welcome to fix those =)
 
 * localhost (127.0.0.1) resolving is wrong with INET6 enabled
 
+* if the same hostname has both A and AAAA (properly set), when client
+  connects from either, name/ip is cached and connecting from other
+  does not resolve the client
+
+* duplicate dns cache entries can happen
+
+* spoofing hostnames is still possible (res.c rewrite needed to split
+  cache in two)
