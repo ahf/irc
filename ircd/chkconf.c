@@ -237,6 +237,10 @@ int	opt;
 			case 'a': /* of this server. */
 				aconf->status = CONF_ADMIN;
 				break;
+			case 'B': /* bounce line */
+			case 'b':
+				aconf->status = CONF_BOUNCE;
+				break;
 			case 'C': /* Server where I should try to connect */
 			case 'c': /* in case of lp failures             */
 				ccount++;
