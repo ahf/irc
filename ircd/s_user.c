@@ -2576,7 +2576,7 @@ int	m_kill(aClient *cptr, aClient *sptr, int parc, char *parv[])
 	user = parv[1];
 	path = parv[2];
 
-	if (strlen(path) > (size_t) TOPICLEN)
+	if (IsAnOper(cptr) && strlen(path) > (size_t) TOPICLEN)
 		path[TOPICLEN] = '\0';
 
 	/* first, _if coming from a server_ check for kill on UID */
