@@ -215,6 +215,10 @@ char	*conf_read(char *cfile)
 				continue;
 			    }
 #endif
+			if (!strncmp("exit", buffer, 4))
+			{
+				break;
+			}
 			if (buffer[0] == '\t')
 			    {
 				conf_err(lnnb, "Ignoring unexpected property.",
