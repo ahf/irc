@@ -1065,7 +1065,16 @@ aClient	*cptr;
 	sendto_one(cptr, "SERVER %s 1 :%s",
 		   my_name_for_link(ME, aconf->port), me.info);
 	if (!IsDead(cptr))
+	    {
 		start_auth(cptr);
+#if defined(USE_IAUTH)
+		/*
+		** This could become a bug.. but I don't think iauth needs the
+		** hostname/aliases in this case. -kalt
+		*/
+		sendto_iauth("%d d", cptr->fd);
+#endif
+	    }
 
 	return (IsDead(cptr)) ? -1 : 0;
 }
