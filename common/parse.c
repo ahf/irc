@@ -461,7 +461,7 @@ int	find_sender(aClient *cptr, aClient **sptr, char *sender, char *buffer)
 	}
 #endif
 
-	para[0] = sender;
+	para[0] = from->name;
 
 	/* Hmm! If the client corresponding to the
 	** prefix is not found--what is the correct
