@@ -2547,6 +2547,9 @@ free_server:
 		if (cptr->fd >= 0)
 			(void)close(cptr->fd);
 		cptr->fd = -2;
+		/* make_server() sets ->bcptr, clear it now or free_server()
+		** complains. --B. */
+		cptr->serv->bcptr = NULL;
 		free_server(cptr->serv);
 		free_client(cptr);
 		return -1;
