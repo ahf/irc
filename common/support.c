@@ -192,9 +192,8 @@ size_t the_size;
 	{
 		char	*p;
 
-		/* also check for FFFF? - Q */
-		p = strstr(local_dummy, ":ffff:");	
-		if (!p)
+		if (!(p = strstr(local_dummy, ":ffff:")) ||
+			!(p = strstr(local_dummy, ":FFFF:")))
 		{
 			return NULL;	/* crash and burn */
 		}
