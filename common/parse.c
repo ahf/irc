@@ -414,7 +414,7 @@ static	int	find_sender(aClient *cptr, aClient **sptr, char *sender,
 {
 	aClient *from = NULL;
 
-	if (/*ST_UID*/IsServer(cptr))
+	if (IsServer(cptr))
 	{
 		if (isdigit(*sender))
 		{
@@ -500,7 +500,7 @@ aClient	*find_target(char *name, aClient *cptr)
 {
 	aClient *acptr = NULL;
 	
-	if (/*ST_UID*/IsServer(cptr))
+	if (IsServer(cptr))
 	{
 		if (isdigit(name[0]))
 		{
