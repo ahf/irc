@@ -979,7 +979,7 @@ int	main(int argc, char *argv[])
 
                 (void)strcpy(tmp->serv->namebuf, "*");
 
-                if (inetport(tmp, 0, "0.0.0.0", 0))
+                if (inetport(tmp, 0, "0.0.0.0", 0, 1))
                         tmp->fd = -1;
 		if (tmp->fd == 0) 
 		    {
