@@ -496,7 +496,8 @@ char	*nick, *username;
 				sendto_flag(SCH_LOCAL,
 					    "Denied connection from %s.",
 					    get_client_host(sptr));
-			return exit_client(cptr, cptr, &me, "Denied access");
+			return exit_client(cptr, cptr, &me,
+			         sptr->reason ? sptr->reason : "Denied access");
 		    }
 		if ((i = check_client(sptr)))
 		    {
