@@ -3192,6 +3192,8 @@ static	void	do_dns_async()
 				    }
 				else
 					sendto_iauth("%d d", cptr->fd);
+				if (iauth_options & XOPT_EXTWAIT)
+					cptr->lasttime = timeofday;
 #endif
 			    }
 			break;
