@@ -1466,6 +1466,9 @@ int	m_server_estab(aClient *cptr, char *sid, char *versionbuf)
 			/* send EOBs */
 			for (asptr = svrtop; asptr; asptr = asptr->nexts)
 			{
+				/* No appending of own SID */
+				if (asptr->bcptr == &me)
+					continue;
 				/* Send EOBs only for servers which already
 				 * finished bursting */
 				if (!IsBursting(asptr->bcptr))
