@@ -234,11 +234,7 @@ time_t	currenttime;
 		** a D(eny) line.
 		*/
 		if (find_denied(aconf->name, Class(cltmp)))
-		    {
-			sendto_flag(SCH_DEBUG, "%s", aconf->name);
 			continue;
-		    }
-		sendto_flag(SCH_DEBUG, "%s OK", aconf->name);
 		/* We have a candidate, let's see if it could be the best. */
 		if (!cptr && (Links(cltmp) < MaxLinks(cltmp)) &&
 		    (!con_conf ||
