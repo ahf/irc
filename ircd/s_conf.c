@@ -1429,6 +1429,10 @@ int	opt;
 				MyFree(tmp2);
 				tmp2 = NULL;
 			    }
+			if (tmp3)
+			{
+				DupString(aconf->source_ip, tmp3);
+			}
 				
 		    }
 		/*
