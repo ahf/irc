@@ -113,6 +113,7 @@ int	deliver_it(aClient *cptr, char *str, int len)
 
 #ifdef DEBUGMODE
 	if (retval < 0) {
+		retval = -errno;
 		writeb[0]++;
 		Debug((DEBUG_ERROR,"write error (%s) to %s",
 			strerror(errno), cptr->name));
