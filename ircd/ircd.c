@@ -912,6 +912,7 @@ char	*argv[];
 	dbuf_init();
 	setup_me(&me);
 	init_sid(SERVER_ID);
+	add_to_sid_hash_table(SERVER_ID,&me);
 	check_class();
 	ircd_writetune(tunefile);
 	if (bootopt & BOOT_INETD)
