@@ -307,7 +307,7 @@ Reg	int	count;
  * by a hostmask)
  * Returns the number of marked servers
  */
-int	mark_blind_servers (aClient *cptr, *aClient server)
+int	mark_blind_servers (aClient *cptr, aClient *server)
 {
 	Reg	int		i, j = 0;
 	Reg	aClient		*acptr;
