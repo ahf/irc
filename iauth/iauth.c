@@ -168,6 +168,7 @@ char	*argv[];
 
 	init_signals();
 	init_syslog();
+	init_filelogs();
 	sendto_log(ALOG_DMISC, LOG_NOTICE, "Daemon starting (%s%s).",
 		   make_version(),
 #if defined(IAUTH_DEBUG)
