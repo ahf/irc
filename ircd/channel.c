@@ -321,6 +321,10 @@ aChannel *chptr;
 			if (sscanf(tmp->value.cp, "%*[^@]@%[0-9.]/%d",
 				buf, &mask) == 2)
 			{
+				if (mask == 0)
+					break;
+				if (mask > 32 || mask < 0)
+					continue;
 				mask=32-mask;
 				/* BUG: where is nick!user@ part checking? */
 				if (htonl(cptr->ip.s_addr) >> mask ==
