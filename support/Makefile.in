@@ -398,7 +398,7 @@ ircdwatch.o: ../contrib/ircdwatch/ircdwatch.c
 mkpasswd.o: ../contrib/mkpasswd/mkpasswd.c
 	$(CC) $(O_CFLAGS) -c -o $@ ../contrib/mkpasswd/mkpasswd.c
 
-tkserv.o: ../contrib/tkserv/tkserv.c
+tkserv.o: ../contrib/tkserv/tkserv.c tkconf.h
 	$(CC) $(O_CFLAGS) -DIRCDPATH="\"$(server_bin_dir)\"" -c -o $@ $<
 
 clean:
