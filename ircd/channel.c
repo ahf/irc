@@ -249,8 +249,7 @@ static	int	add_modeid(int type, aClient *cptr, aChannel *chptr,
 				return -1;
 			    }
 			if (type == mode->flags &&
-			    (BanMatch(mode->value.alist, modeid) ||
-			    BanMatch(modeid, mode->value.alist)))
+				BanExact(mode->value.alist, modeid))
 			    {
 				int rpl;
 
