@@ -77,6 +77,8 @@ char *cfile;
 			if (buffer[0] == '#' || buffer[0] == '\n')
 				continue;
 			*ch = '\0';
+			if (ch = index(buffer, '#'))
+				*ch = '\0';
 			/* debugmode setting */
 			if (!strncmp("debuglvl = 0x", buffer, 13))
 			    {
