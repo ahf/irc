@@ -1745,7 +1745,11 @@ int len;
 #ifdef RESTRICT_HOSTNAMES
 	{
 		/* basic character set */
-		if (isascii(c) && isalnum(c))
+		if (c >= 'a' && c <= 'z')
+			continue;
+		if (c >= 'A' && c <= 'Z')
+			continue;
+		if (c >= '0' && c <= '9')
 			continue;
 		
 		/* special case: hyphen */
