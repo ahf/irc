@@ -1239,11 +1239,7 @@ static	int	set_mode(aClient *cptr, aClient *sptr, aChannel *chptr,
 				break;
 			if (whatt == MODE_ADD)
 			    {
-				if (*mode->key && !IsServer(cptr))
-					sendto_one(cptr, replies[ERR_KEYSET],
-						   ME, BadTo(cptr->name), chptr->chname);
-				else if (ischop &&
-				    (!*mode->key || IsServer(cptr)))
+				if (ischop)
 				    {
 					if (**parv == ':')
 						/* this won't propagate right*/
@@ -1263,7 +1259,8 @@ static	int	set_mode(aClient *cptr, aClient *sptr, aChannel *chptr,
 				    {
 					lp = &chops[opcnt++];
 					lp->value.cp = *parv;
-					if (strlen(lp->value.cp) > KEYLEN)
+					if (strlen(lp->value.cp) >
+					    (size_t) KEYLEN)
 						lp->value.cp[KEYLEN] = '\0';
 					lp->flags = MODE_KEY|MODE_DEL;
 					keychange = 1;
