@@ -607,7 +607,7 @@ char	*parv[];
 		    }
 
 		acptr = make_client(cptr);
-		(void)make_server(acptr);
+		(void)make_server(acptr, TRUE);
 		acptr->hopcount = hop;
 		strncpyzt(acptr->name, host, sizeof(acptr->name));
 		if (acptr->info != DefInfo)
@@ -874,7 +874,7 @@ Reg	aClient	*cptr;
 		    cptr->hopcount, (cptr->flags & FLAGS_ZIP) ? "z" : "");
 	(void)add_to_client_hash_table(cptr->name, cptr);
 	/* doesnt duplicate cptr->serv if allocted this struct already */
-	(void)make_server(cptr);
+	(void)make_server(cptr, TRUE);
 	cptr->serv->up = &me;
 	cptr->serv->nline = aconf;
 	cptr->serv->version = cptr->hopcount;   /* temporary location */

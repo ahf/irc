@@ -2409,7 +2409,7 @@ struct	hostent	*hp;
 	/*
 	** The socket has been connected or connect is in progress.
 	*/
-	(void)make_server(cptr);
+	(void)make_server(cptr, TRUE);
 	if (by && IsPerson(by))
 	    {
 		(void)strcpy(cptr->serv->by, by->name);
