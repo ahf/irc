@@ -2819,16 +2819,19 @@ static	void	polludp()
 
 	if (timeofday == last)
 	    {
-		if (timeofday > lasterr + 30)
+		if (++cnt > 14)
 		    {
-			sendto_flag(SCH_NOTICE,
+			if (timeofday > lasterr + 30)
+			    {
+				sendto_flag(SCH_NOTICE,
 				    "udp packet dropped: %d bytes from %s.%d",
-				    n,inetntoa((char *)&from.sin_addr),
-				    ntohs(from.sin_port));
-			lasterr = timeofday;
+					    n,inetntoa((char *)&from.sin_addr),
+					    ntohs(from.sin_port));
+				lasterr = timeofday;
+			    }
+			ircstp->is_udpdrop++;
+			return;
 		    }
-		ircstp->is_udpdrop++;
-		return;
 	    }
 	else
 		cnt = 0, last = timeofday;
