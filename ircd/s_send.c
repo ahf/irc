@@ -276,7 +276,7 @@ esendto_channel_butone(aClient *orig, char *imsg, aClient *one,
 		{
 		    /* to local users */
 		    if (plen == 0)
-			    plen = sprintf(":anonymous!anonymous@anonymous %s %s", imsg, chptr->chname);
+			    plen = sprintf(":anonymous!anonymous@anonymous. %s %s", imsg, chptr->chname);
 		}
 	    else
 		{
