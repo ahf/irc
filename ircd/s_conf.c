@@ -2363,6 +2363,10 @@ int	m_tkline(aClient *cptr, aClient *sptr, int parc, char **parv)
 	}
 
 	/* All seems fine. */
+#ifdef TKLINE_MAXTIME
+	if (time > TKLINE_MAXTIME)
+		time = TKLINE_MAXTIME;
+#endif
 	if (*user == '=')
 	{
 		status = CONF_TOTHERKILL;
