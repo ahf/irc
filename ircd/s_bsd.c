@@ -760,8 +760,7 @@ Reg	aClient	*cptr;
 
 #ifdef INET6
 	if (IN6_IS_ADDR_LOOPBACK(&cptr->ip) || IsUnixSocket(cptr) ||
-		(cptr->ip.s6_laddr[0]==mysk.sin6_addr.s6_laddr[0] &&
-		 cptr->ip.s6_laddr[1]==mysk.sin6_addr.s6_laddr[1])
+	    !memcmp(cptr->ip.s6_addr, mysk.sin6_addr.s6_addr, 8) 
 /* ||
 	    IN6_ARE_ADDR_SAMEPREFIX(&cptr->ip, &mysk.SIN_ADDR))
  about the same, I think              NOT */
