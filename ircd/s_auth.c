@@ -364,7 +364,7 @@ read_iauth()
 				    istat.is_auth -= 1;
 				    MyFree(cptr->auth);
 				}
-			    cptr->auth = mystrdup(tbuf);
+			    cptr->auth = mystrdup(start+strlen(tbuf));
 			    set_clean_username(cptr);
 			    cptr->flags |= FLAGS_GOTID;
 			}
