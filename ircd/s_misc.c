@@ -1135,6 +1135,7 @@ void	read_motd(char *filename)
 	    }
 	if (Sb.st_mtime <= motd_mtime)
 	{
+		close(fd);
 		return;
 	}
 	motd_mtime = Sb.st_mtime;
