@@ -867,20 +867,22 @@ typedef	struct	{
 	struct	Channel	*svc_ptr;
 }	SChan;
 
-#define	SCH_ERROR	1
-#define	SCH_NOTICE	2
-#define	SCH_KILL	3
-#define	SCH_CHAN	4
-#define	SCH_NUM		5
-#define	SCH_SERVER	6
-#define	SCH_HASH	7
-#define	SCH_LOCAL	8
-#define	SCH_SERVICE	9
-#define	SCH_DEBUG	10
-#define	SCH_AUTH	11
-#define	SCH_SAVE	12
-#define	SCH_WALLOP	13
-#define	SCH_MAX		13
+typedef enum ServerChannels {
+	SCH_ERROR,
+	SCH_NOTICE,
+	SCH_KILL,
+	SCH_CHAN,
+	SCH_NUM,
+	SCH_SERVER,
+	SCH_HASH,
+	SCH_LOCAL,
+	SCH_SERVICE,
+	SCH_DEBUG,
+	SCH_AUTH,
+	SCH_SAVE,
+	SCH_WALLOP,
+	SCH_MAX	
+} ServerChannels;
 
 /* used for async dns values */
 

@@ -1107,7 +1107,7 @@ void	setup_svchans(void)
 	int	i;
 	SChan	*shptr;
 
-	for (i = SCH_MAX, shptr = svchans + (i - 1); i > 0; i--, shptr--)
+	for (i = SCH_MAX - 1, shptr = svchans + i; i >= 0; i--, shptr--)
 		shptr->svc_ptr = find_channel(shptr->svc_chname, NULL);
 }
 
@@ -1117,9 +1117,9 @@ void	sendto_flag(u_int chan, char *pattern, ...)
 	SChan	*shptr;
 	char	nbuf[1024];
 
-	if (chan < 1 || chan > SCH_MAX)
+	if (chan < 0 || chan >= SCH_MAX)
 		chan = SCH_NOTICE;
-	shptr = svchans + (chan - 1);
+	shptr = svchans + chan;
 
 	if ((chptr = shptr->svc_ptr))
 	    {
