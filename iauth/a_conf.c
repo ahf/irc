@@ -28,7 +28,7 @@ static  char rcsid[] = "@(#)$Id$";
 #undef A_CONF_C
 
 static aModule *Mlist[] =
-	{ &Module_rfc931, &Module_socks, (aModule *)NULL };
+	{ &Module_rfc931, &Module_socks, &Module_pipe, (aModule *)NULL };
 
 u_int	debuglevel = 0;
 
