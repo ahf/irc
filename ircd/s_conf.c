@@ -1760,8 +1760,10 @@ int 	initconf(int opt)
 				strncpyzt(me.serv->namebuf, aconf->host,
 					  sizeof(me.serv->namebuf));
 			if (me.serv->sid[0] == '\0' && tmp && *tmp)
-				strncpyzt(me.serv->sid, tmp,
-					sizeof(me.serv->sid));
+			{
+				for(i = 0; i < sizeof(me.serv->sid); i++)
+					me.serv->sid[i] = toupper(tmp[i]);
+			}
 						
 			if (aconf->port)
 				setup_ping(aconf);
