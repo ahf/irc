@@ -2174,7 +2174,7 @@ char	*parv[];
 #endif
 		return 1;
 	    }
-	else if (IsOper(sptr))
+	else if (IsAnOper(sptr))
 	    {
 		if (MyConnect(sptr))
 			sendto_one(sptr, rpl_str(RPL_YOUREOPER, parv[0]));
