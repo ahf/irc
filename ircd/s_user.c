@@ -1473,6 +1473,12 @@ int	parc, notice;
 							     MATCH_SERVER,
 					    ":%s %s %s :%s", parv[0],
 					    cmd, nick, parv[2]);
+			sendto_match_butone_old(IsServer(cptr) ? cptr : NULL, 
+					    sptr, nick + 2,
+					    (*(nick+1) == '#') ? MATCH_HOST :
+							     MATCH_SERVER,
+					    ":%s %s %s :%s", parv[0],
+					    cmd, ++nick, parv[2]);
 			continue;
 		    }
 		
