@@ -998,7 +998,7 @@ Reg	aClient	*cptr;
 					   acptr->name, acptr->user->uid,
 					   acptr->user->username,
 					   acptr->user->host,
-					   acptr->user->ip,
+					   acptr->user->sip,
 					   (*buf) ? buf : "+", acptr->info);
 			else
 				sendto_one(cptr,"NICK %s %d %s %s %s %s :%s",
