@@ -72,10 +72,6 @@ on UNIX systems.
 
 <sect1>Notes concerning IPv6 support
 <p>
-The only part of the software that doesn't use IPv6 is the
-server internal resolver.  It relies on the name servers
-defined in ``/etc/resolv.conf'' to be IPv4 addresses.
-<p>
 This version was tested on the following IPv6 systems:
 BSD/OS+KAME, Digital Unix, FreeBSD+KAME, Linux, NetBSD+INRIA.
 <p>
