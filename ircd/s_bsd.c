@@ -3028,9 +3028,9 @@ static	void	polludp()
 
 			sprintf(buf, "udp port recvfrom() from %s to %%s: %%s",
 #ifdef INET6
-				from.sin6_addr
+				from.sin6_addr.s_addr
 #else
-				from.sin_addr
+				from.sin_addr.s_addr
 #endif
 				== 0 ? "unknown" :
 #ifdef INET6
