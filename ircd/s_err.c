@@ -191,7 +191,7 @@ static	Numeric	numeric_replies[] = {
 /* 322 */	{ RPL_LIST, "%s %d :%s" },
 /* 323 */	{ RPL_LISTEND, ":End of LIST" },
 /* 324 */	{ RPL_CHANNELMODEIS, "%s %s %s" },
-/* 325 */	{ RPL_UNIQOPIS, "%s %s %s" },
+/* 325 */	{ RPL_UNIQOPIS, "%s %s" },
 		{ 0, (char *)NULL },
 		{ 0, (char *)NULL },
 		{ 0, (char *)NULL },
