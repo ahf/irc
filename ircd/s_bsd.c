@@ -349,7 +349,7 @@ int	add_listener(aConfItem *aconf)
 		if (IsConfDelayed(aconf) && !firstrejoindone)
 		{
 			dolisten = 0;
-			SetListeningInactive(cptr);
+			SetListenerInactive(cptr);
 		}
 		if (inetport(cptr, aconf->host, aconf->name, aconf->port,
 				dolisten))

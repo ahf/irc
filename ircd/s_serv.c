@@ -3784,6 +3784,6 @@ static void report_listeners(aClient *sptr, char *to)
 			acptr->receiveM, acptr->receiveB,
 			timeofday - acptr->firsttime,
 			acptr->confs->value.aconf->clients,
-			IsListeningInactive(acptr) ? "inactive" : "active" );
+			IsListenerInactive(acptr) ? "inactive" : "active" );
 	}
 }
