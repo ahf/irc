@@ -707,12 +707,12 @@ aClient	*cptr;
 /*
 ** del_from_sid_hash_table
 */
-int	del_from_sid_hash_table(aServer *sptr, aClient *cptr)
+int	del_from_sid_hash_table(aServer *sptr)
 {
 	Reg	aServer	*tmp, *prev = NULL;
 	Reg	u_int	hashv;
 
-	hashv = cptr->serv->sidhashv;
+	hashv = sptr->sidhashv;
 	hashv %= _SIDSIZE;
 	for (tmp = (aServer *)sidTable[hashv].list; tmp; tmp = tmp->sidhnext)
 	{
