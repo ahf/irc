@@ -2365,6 +2365,7 @@ int	m_join(aClient *cptr, aClient *sptr, int parc, char *parv[])
 		flags = 0;
 		chop[0] = '\0';
 		if (MyConnect(sptr) && UseModes(name) &&
+			(*name != '#' || !IsSplit()) &&
 		    (!IsRestricted(sptr) || (*name == '&')) && !chptr->users &&
 		    !(chptr->history && *chptr->chname == '!'))
 		    {
