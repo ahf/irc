@@ -3616,8 +3616,8 @@ static	void	dump_sid_map(aClient *sptr, aClient *root, char *pbuf)
 	}
 	else
 	{
-		sprintf(pbuf, "%s %d %s %s%s%s", root->name, root->serv->sid,
-			  root->serv->usercnt[0] + root->serv->usercnt[2],
+		sprintf(pbuf, "%s %s %d %s%s%s", root->name, root->serv->sid,
+			  root->serv->usercnt[0] + root->serv->usercnt[1],
 			  root->serv->verstr[0] ? " " : "",
 			  root->serv->verstr,
 			  IsBursting(root) ? " BURST" : "");
