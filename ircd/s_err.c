@@ -42,6 +42,43 @@ static	Numeric	local_replies[] = {
 /* 003 */	{ RPL_CREATED, ":This server was created %s" },
 /* 004 */	{ RPL_MYINFO, "%s %s aoOirw abeiIklmnoOpqrstv" },
 /* 005 */	{ RPL_BOUNCE, ":Try server %s, port %d" },
+		{ 0, (char *)NULL },
+		{ 0, (char *)NULL },
+		{ 0, (char *)NULL },
+		{ 0, (char *)NULL },
+		{ 0, (char *)NULL },
+		{ 0, (char *)NULL },
+		{ 0, (char *)NULL },
+		{ 0, (char *)NULL },
+		{ 0, (char *)NULL },
+		{ 0, (char *)NULL },
+		{ 0, (char *)NULL },
+		{ 0, (char *)NULL },
+		{ 0, (char *)NULL },
+		{ 0, (char *)NULL },
+		{ 0, (char *)NULL },
+		{ 0, (char *)NULL },
+		{ 0, (char *)NULL },
+		{ 0, (char *)NULL },
+		{ 0, (char *)NULL },
+		{ 0, (char *)NULL },
+		{ 0, (char *)NULL },
+		{ 0, (char *)NULL },
+		{ 0, (char *)NULL },
+		{ 0, (char *)NULL },
+		{ 0, (char *)NULL },
+		{ 0, (char *)NULL },
+		{ 0, (char *)NULL },
+		{ 0, (char *)NULL },
+		{ 0, (char *)NULL },
+		{ 0, (char *)NULL },
+		{ 0, (char *)NULL },
+		{ 0, (char *)NULL },
+		{ 0, (char *)NULL },
+		{ 0, (char *)NULL },
+		{ 0, (char *)NULL },
+		{ 0, (char *)NULL },
+/* 042 */	{ RPL_YOURID, ":Your universal ID is %s" },
 		{ 0, (char *)NULL }
 };
 
@@ -381,7 +418,7 @@ char	*to;
 	Reg	Numeric	*nptr;
 	Reg	int	num = numeric;
 
-	if (num > 5)
+	if (num > 42)
 		num -= (num > 300) ? 300 : 100;
 
 	if (BadPtr(to))		/* for unregistered clients */
