@@ -1613,7 +1613,7 @@ char *to;
 #ifdef HUB
                         for (asptr = svrtop;asptr;asptr = asptr->nexts)
                         {
-				if (IsMasked(asptr))
+				if (IsMasked(asptr->bcptr))
 				{
 					continue;
 				}
