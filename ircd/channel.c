@@ -3120,7 +3120,7 @@ time_t	now;
 		else
 		    {
 			cur_nb++;
-			if (chptr->reop <= now)
+			if (*chptr->chname == '!' && chptr->reop <= now)
 				r_cnt += reop_channel(now, chptr);
 		    }
 		chptr = chptr->nextch;
