@@ -1217,7 +1217,7 @@ int	m_hash(aClient *cptr, aClient *sptr, int parc, char *parv[])
 	
 	if (parc < 2)
 	{
-		sendto_one(sptr, ":%s NOTICE %s: Syntax: HASH <hash> [command]"
+		sendto_one(sptr, ":%s NOTICE %s: Syntax: HAZH <hash> [command]"
 				,ME, sptr->name);
 		i = 0;
 		while (HashTables[i].hash)
