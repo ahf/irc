@@ -358,16 +358,16 @@ aChannel *chptr;
 		sptr->user->joined--;
 		istat.is_userc--;
 	    }
-	if (--chptr->users <= 0)
-		sub1_from_channel(chptr);
 #ifdef USE_SERVICES
 	check_services_butone(SERVICE_WANT_CHANNEL, NULL, &me, "CHANNEL %s %d",
-			      chptr->chname, chptr->users);
+			      chptr->chname, chptr->users-1);
 #endif
-	istat.is_chanusers--;
 #ifdef NPATH            
         note_leave(sptr, chptr);
 #endif
+	if (--chptr->users <= 0)
+		sub1_from_channel(chptr);
+	istat.is_chanusers--;
 }
 
 static	void	change_chan_flag(lp, chptr)
