@@ -3344,16 +3344,18 @@ int	m_umode(aClient *cptr, aClient *sptr, int parc, char *parv[])
 						ME, BadTo(parv[0]), *m);
 				break;
 			}
-	/*
-	 * stop users making themselves operators too easily
-	 */
 	if (cptr)
 	    {
+		/* stop users making themselves operators too easily */
 		if (!(setflags & FLAGS_OPER) && IsOper(sptr) &&
 		    !IsServer(cptr))
 			ClearOper(sptr);
 		if (!(setflags & FLAGS_LOCOP) && IsLocOp(sptr))
 			ClearLocOp(sptr);
+		if ((setflags & (FLAGS_OPER|FLAGS_LOCOP)) && !IsAnOper(sptr))
+		{
+			sptr->status = STAT_CLIENT;
+		}
 		if ((setflags & FLAGS_RESTRICT) &&
 		    !IsRestricted(sptr))
 		    {
