@@ -915,6 +915,7 @@ int	check_client(aClient *cptr)
 				    *((unsigned long *)hp->h_addr));
 #endif
 			hp = NULL;
+			cptr->hostp = NULL;
 		    }
 	    }
 
