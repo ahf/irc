@@ -3352,7 +3352,8 @@ int	m_umode(aClient *cptr, aClient *sptr, int parc, char *parv[])
 			ClearOper(sptr);
 		if (!(setflags & FLAGS_LOCOP) && IsLocOp(sptr))
 			ClearLocOp(sptr);
-		sptr->status = IsAnOper(sptr) ? STAT_OPER : STAT_CLIENT;
+		/* but once they are, set their status */
+		SetClient(sptr);
 		if ((setflags & FLAGS_RESTRICT) &&
 		    !IsRestricted(sptr))
 		    {
