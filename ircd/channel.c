@@ -2489,8 +2489,16 @@ int	m_join(aClient *cptr, aClient *sptr, int parc, char *parv[])
 		*/
 		if (index(name, ':') || *chptr->chname == '!') /* compat */
 		{
-			sendto_match_servs(chptr, cptr, ":%s NJOIN %s :%s%s",
-				ME, name,
+			sendto_match_servs_v(chptr, cptr, SV_UID,
+				":%s NJOIN %s :%s%s", me.serv->sid, name,
+				s && s[0] == 'O' && s[1] == 'v' ? "@@+" : 
+				s && s[0] == 'O' ? "@@" : 
+				s && s[0] == 'o' && s[1] == 'v' ? "@+" :
+				s && s[0] == 'o' ? "@" :
+				s && s[0] == 'v' ? "+" : "",
+				HasUID(sptr) ? sptr->user->uid : parv[0]);
+			sendto_match_servs_notv(chptr, cptr, SV_UID,
+				":%s NJOIN %s :%s%s", ME, name,
 				s && s[0] == 'O' && s[1] == 'v' ? "@@+" : 
 				s && s[0] == 'O' ? "@@" : 
 				s && s[0] == 'o' && s[1] == 'v' ? "@+" :
@@ -2500,7 +2508,15 @@ int	m_join(aClient *cptr, aClient *sptr, int parc, char *parv[])
 		}
 		else if (*chptr->chname != '&')
 		{
-			sendto_serv_butone(cptr, ":%s NJOIN %s :%s%s",
+			sendto_serv_v(cptr, SV_UID, ":%s NJOIN %s :%s%s",
+				me.serv->sid, name,
+				s && s[0] == 'O' && s[1] == 'v' ? "@@+" : 
+				s && s[0] == 'O' ? "@@" : 
+				s && s[0] == 'o' && s[1] == 'v' ? "@+" :
+				s && s[0] == 'o' ? "@" :
+				s && s[0] == 'v' ? "+" : "",
+				HasUID(sptr) ? sptr->user->uid : parv[0]);
+			sendto_serv_notv(cptr, SV_UID, ":%s NJOIN %s :%s%s",
 				ME, name,
 				s && s[0] == 'O' && s[1] == 'v' ? "@@+" : 
 				s && s[0] == 'O' ? "@@" : 
