@@ -63,7 +63,7 @@ static	void	do_dns_async (void);
 static	int	set_sock_opts (int, aClient *);
 #ifdef	UNIXPORT
 static	struct	SOCKADDR *connect_unix (aConfItem *, aClient *, int *);
-static	void	add_unixconnection (aClient *, int);
+static	aClient	*add_unixconnection (aClient *, int);
 static	char	unixpath[256];
 #endif
 static	char	readbuf[READBUF_SIZE];
@@ -1572,7 +1572,7 @@ add_con_refuse:
 }
 
 #ifdef	UNIXPORT
-static	void	add_unixconnection(aClient *cptr, int fd)
+static	aClient	*add_unixconnection(aClient *cptr, int fd)
 {
 	aClient *acptr;
 	aConfItem *aconf = NULL;
@@ -1592,7 +1592,7 @@ static	void	add_unixconnection(aClient *cptr, int fd)
 			acptr->fd = -2;
 			free_client(acptr);
 			(void)close(fd);
-			return;
+			return NULL;
 		    }
 		else
 			aconf->clients++;
@@ -1617,7 +1617,7 @@ static	void	add_unixconnection(aClient *cptr, int fd)
 	sendto_iauth("%d O", acptr->fd);
 	SetDoneXAuth(acptr);
 # endif
-	return;
+	return acptr;
 }
 #endif
 
