@@ -210,6 +210,7 @@ static	time_t	try_connections(time_t currenttime)
 	aConfItem *con_conf = NULL;
 	double	f, f2;
 	aCPing	*cp;
+	int	allheld = 1;
 
 	Debug((DEBUG_NOTICE,"Connection check at   : %s",
 		myctime(currenttime)));
@@ -234,6 +235,7 @@ static	time_t	try_connections(time_t currenttime)
 				next = aconf->hold;
 			continue;
 		    }
+		allheld = 0;	/* at least one candidate not held for future */
 		send_ping(aconf);
 
 		cltmp = Class(aconf);
@@ -288,6 +290,7 @@ static	time_t	try_connections(time_t currenttime)
 				    con_conf->name, con_conf->host);
 	    }
 	else
+	if (allheld == 0)	/* disable AC only when some C: got checked */
 	{
 		/* No suitable conf for AC was found, so why bother checking
 		** again? If some server quits, it'd get reenabled --B. */
