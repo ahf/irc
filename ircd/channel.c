@@ -2761,28 +2761,6 @@ char	*parv[];
 	return penalty;
 }
 
-int	count_channels(sptr)
-aClient	*sptr;
-{
-Reg	aChannel	*chptr;
-	Reg	int	count = 0;
-
-	for (chptr = channel; chptr; chptr = chptr->nextch)
-	    {
-		if (chptr->users) /* don't count channels in history */
-#ifdef	SHOW_INVISIBLE_LUSERS
-			if (SecretChannel(chptr))
-			    {
-				if (IsAnOper(sptr))
-					count++;
-			    }
-			else
-#endif
-				count++;
-	    }
-	return (count);
-}
-
 /*
 ** m_topic
 **	parv[0] = sender prefix
