@@ -336,6 +336,7 @@ static	Numeric	numeric_replies[] = {
 		{ 0, (char *)NULL },
 /* 261 */	{ RPL_TRACELOG, "File %s %d" },
 /* 262 */	{ RPL_TRACEEND, "%s %s.%s :End of TRACE" },
+/* 263 */	{ RPL_TRYAGAIN, "%s :Please wait a while and try again." },
 		{ 0, (char *)NULL }
 };
 

@@ -240,6 +240,7 @@ aClient	*cptr;
 		    }
 		serv->bcptr = cptr;
 		SPRINTF(serv->tok, "%d", serv->ltok);
+		serv->lastload = 0;
 	    }
 	return cptr->serv;
 }
