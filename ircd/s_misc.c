@@ -380,7 +380,7 @@ char	*comment;	/* Reason for the exit */
 				    sptr->user->host);
 # endif
 		    }
-		else if (sptr->exitc != EXITC_REF)
+		else if (sptr->exitc != EXITC_REF && sptr->exitc != EXITC_AREF)
 		    {
 # if defined(USE_SYSLOG) && defined(SYSLOG_CONN)
 			syslog(LOG_NOTICE, 
