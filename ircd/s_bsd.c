@@ -1297,7 +1297,11 @@ void	close_connection(aClient *cptr)
 	if ((i = cptr->fd) >= 0)
 	    {
 #if defined(USE_IAUTH)
-		sendto_iauth("%d D", cptr->fd);
+		if (!IsListener(cptr))
+		{
+			// iauth doesn't know about listening FD
+			sendto_iauth("%d D", cptr->fd);
+		}
 #endif
 		flush_connections(i);
 		if (IsServer(cptr) || IsListener(cptr))
@@ -1333,7 +1337,7 @@ void	close_connection(aClient *cptr)
 		 * clean up extra sockets from P-lines which have been
 		 * discarded.
 		 */
-		if (cptr->acpt != &me)
+		if ((cptr->acpt != &me) && !(IsListener(cptr)))
 		    {
 			aconf = cptr->acpt->confs->value.aconf;
 			if (aconf->clients > 0)
@@ -1344,7 +1348,9 @@ void	close_connection(aClient *cptr)
 	    }
 	
 	/* Remove from Listener Linked list */
-	if (IsListener(cptr))
+	if (IsListener(cptr) && cptr->confs && cptr->confs->value.aconf &&
+		IsIllegal(cptr->confs->value.aconf) &&
+		cptr->confs->value.aconf->clients <= 0)
 	{
 		if (cptr->prev)
 		{
