@@ -31,7 +31,7 @@ static  char rcsid[] = "@(#)$Id$";
 #include "s_externs.h"
 #undef S_SERVICE_C
 
-static	aService	*svctop = NULL;
+aService	*svctop = NULL;
 
 aService	*make_service(cptr)
 aClient	*cptr;
