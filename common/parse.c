@@ -567,8 +567,6 @@ char	*buffer, *bufend;
 			 * bursts of up to 5 msgs are allowed
 			 * -SRB
 			 */
-			if (mptr->func != m_ison && mptr->func != m_mode)
-				cptr->ract += (2 + i /120);
 		    }
 #endif
 	    }
