@@ -188,6 +188,8 @@ char	*argv[];
 	else
 #endif
 		sendto_ircd("G 0");
+	if (iauth_required)
+		sendto_ircd("O R");
 
 	while (1)
 	    {
