@@ -69,6 +69,8 @@ time_t	nextpreference = 1;	/* time for next calculate_preference call */
 time_t	nexttkexpire = 0;	/* time for next tkline_expire call */
 #endif
 
+aClient *ListenerLL = NULL;	/* Listeners linked list */
+
 RETSIGTYPE s_die(int s)
 {
 #ifdef	USE_SYSLOG
