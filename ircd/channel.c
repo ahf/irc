@@ -2065,7 +2065,8 @@ char	*parv[];
 			continue;
 		if (!MyConnect(sptr) && (BadPtr(para) || (rlen > CHREPLLEN)))
 			break;
-		if (!ShowChannel(sptr, chptr))
+		if ((BadPtr(para) || !HiddenChannel(chptr)) &&
+		    !ShowChannel(sptr, chptr))
 			continue; /* -- users on this are not listed */
 
 		/* Find users on same channel (defined by chptr) */
