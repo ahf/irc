@@ -112,11 +112,11 @@ aClient	*cptr;
 	    {
 		if (cptr->zip->in)
 			inflateEnd(cptr->zip->in);
-		MyFree(cptr->zip->in);
+		MyFree((char *)cptr->zip->in);
 		if (cptr->zip->out)
 			deflateEnd(cptr->zip->out);
-		MyFree(cptr->zip->out);
-		MyFree(cptr->zip);
+		MyFree((char *)cptr->zip->out);
+		MyFree((char *)cptr->zip);
 		cptr->zip = NULL;
 	    }
 }

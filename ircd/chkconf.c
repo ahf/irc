@@ -28,6 +28,7 @@ static  char rcsid[] = "@(#)$Id$";
 #undef CHKCONF_C
 
 #define MyMalloc(x)     malloc(x)
+#define MyFree(x)       free(x)
 
 static	void	new_class();
 static	char	*getfield(), confchar ();
