@@ -737,10 +737,12 @@ char	*lp;
 	    }
 	a = proc_answer(rptr, hptr, buf, buf+rc);
 	if (a == -1) {
-		sendto_flag(SCH_ERROR, "Bad hostname returned from %s",
-			inet_ntoa(sin.sin_addr));
-		Debug((DEBUG_DNS, "Bad hostname returned from %s",
-			inet_ntoa(sin.sin_addr)));
+		sendto_flag(SCH_ERROR, "Bad hostname returned from %s for %s",
+			    inet_ntoa(sin.sin_addr),
+			    inetntoa((char *)&rptr->he.h_addr));
+		Debug((DEBUG_DNS, "Bad hostname returned from %s for %s",
+		       inet_ntoa(sin.sin_addr),
+		       inetntoa((char *)&rptr->he.h_addr)));
 	}
 #ifdef DEBUG
 	Debug((DEBUG_INFO,"get_res:Proc answer = %d",a));
