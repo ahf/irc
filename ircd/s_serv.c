@@ -2906,7 +2906,8 @@ int	m_trace(aClient *cptr, aClient *sptr, int parc, char *parv[])
 						     * trace is person */
 			    && !(a2cptr == sptr)    /* but not user self */
 			    && !(IsAnOper(a2cptr))  /* nor some oper */
-			    && !(IsAnOper(sptr) && MyConnect(sptr))
+			    && (!MyConnect(sptr) ||
+				is_allowed(sptr, ACL_TRACE))
 						    /* nor it is my oper
 						     * doing trace */
 			   )
