@@ -748,6 +748,8 @@ struct Channel	{
 #define	HasUID(x)		(x->user && x->user->uid[0])
 #define	IsMasked(x)		(x && x->serv && x->serv->maskedby != x)
 
+#define IsSplit()		(iconf.split == 1)
+
 typedef	struct	{
 	u_long	is_user[2];	/* users, non[0] invis and invis[1] */
 	u_long	is_serv;	/* servers */
@@ -953,5 +955,8 @@ typedef	struct	Ignore {
 /* Runtime onfiguration structure */
 typedef struct
 {
-	int aconnect;	/* 1 - ON 0 - OFF */
+	int aconnect;	/* 0 - OFF 1 - ON */
+	int split;	/* 0 - NO 1 - YES */
+	int split_minservers;
+	int split_minusers;
 } iconf_t;
