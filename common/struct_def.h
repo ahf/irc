@@ -621,14 +621,19 @@ struct	SMode	{
 
 typedef	int	(*CmdHandler)(aClient *, aClient *, int, char **);
 
+struct	Cmd {
+	CmdHandler	handler;	/* command */
+	u_int		count;		/* total count */
+	u_int		rcount;		/* remote count */
+	u_long		bytes;
+	u_long		rbytes;
+};
+
 struct	Message	{
 	char	*cmd;
 	int	minparams;
 	int	maxparams;
-	u_int	count;	/* total count */
-	u_int	rcount;	/* remote count */
-	u_long	bytes;
-	CmdHandler	handler[STAT_MAX];
+	struct Cmd	handlers[STAT_MAX];
 };
 
 /* fd array structure */

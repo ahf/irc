@@ -240,7 +240,7 @@ char *	replies[] = {
 /* 209 */ NULL,
 /* 210 */ NULL,
 /* 211 RPL_STATSLINKINFO */	(char *)NULL,
-/* 212 RPL_STATSCOMMANDS */	":%s 212 %s %s %u %u %u",
+/* 212 RPL_STATSCOMMANDS */	":%s 212 %s %s %u %u %u %u %u %u %u %u %u %u %u %u %u %u %u %u %u %u %u %u",
 /* 213 RPL_STATSCLINE */	":%s 213 %s %c %s %s %s %d %d",
 /* 214 RPL_STATSNLINE */	":%s 214 %s %c %s %s %s %d %d",
 /* 215 RPL_STATSILINE */	":%s 215 %s %c %s %s %s %d %d %s",
