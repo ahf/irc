@@ -997,6 +997,9 @@ char	*name;
 		   sp->is_ckr, sp->is_cbr, sp->is_skr, sp->is_sbr);
 	sendto_one(cptr, ":%s %d %s :time connected %u %u",
 		   ME, RPL_STATSDEBUG, name, sp->is_cti, sp->is_sti);
+#if defined(USE_IAUTH)
+	report_iauth_stats(cptr, name);
+#endif
 }
 
 #ifdef CACHED_MOTD
