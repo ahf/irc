@@ -348,7 +348,22 @@ static	Link	*match_modeid(int type, aClient *cptr, aChannel *chptr)
 			/* perhaps we could relax it and check remotes too? */
 			if (MyConnect(cptr))
 			{
-				if (IsConfNoResolveMatch(cptr->confs->value.aconf))
+				Link *acf = cptr->confs;
+
+				/* scroll acf to I:line */
+				if (IsAnOper(cptr))
+				{
+					acf = acf->next;
+				/* above is faster but will fail if we introduce
+				** something that will attach another conf for
+				** client -- the following will have to be used:
+					for (; acf; acf = acf->next)
+					if (acf->value.aconf->status & CONF_CLIENT)
+					break;
+				*/
+				}
+
+				if (IsConfNoResolveMatch(acf->value.aconf))
 				{
 					/* user->host contains IP and was just
 					 * checked; try sockhost, it may have
