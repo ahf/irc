@@ -692,7 +692,7 @@ char	*nick, *username;
 				sendto_one(acptr, "NICK %s %d %s %s %s %s :%s",
 					   nick, sptr->hopcount+1, 
 					   user->username, user->host, 
-					   user->servp->tok, 
+					   user->servp->maskedby->serv->tok, 
 					   (*buf) ? buf : "+", sptr->info);
 	    }	/* for(my-leaf-servers) */
 #ifdef	USE_SERVICES

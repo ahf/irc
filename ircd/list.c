@@ -207,30 +207,40 @@ int add;
 		serv->refcnt = 1;
 		serv->nexts = NULL;
 		cptr->serv = serv;
+
+		for (sp = svrtop; sp; spp = sp, sp = sp->nexts)
+			if (spp && ((spp->ltok) + 1 < sp->ltok))
+				break;
+
 		if (add)
 		{
-			for (sp = svrtop; sp; spp = sp, sp = sp->nexts)
-				if (spp && ((spp->ltok) + 1 < sp->ltok))
-					break;
 			serv->prevs = spp;
-			if (spp)
-			    {
-				serv->ltok = spp->ltok + 1;
-				spp->nexts = serv;
-			    }
-			else
-			    {	/* Me, myself and I alone */
-				svrtop = serv;
-				serv->ltok = 1;
-			    }
-
-			if (sp)
-			    {
-				serv->nexts = sp;
-				sp->prevs = serv;
-			    }
-			SPRINTF(serv->tok, "%d", serv->ltok);
 		}
+		if (spp)
+		{
+			serv->ltok = spp->ltok + 1;
+			if (add)
+			{
+				spp->nexts = serv;
+			}
+		}
+		else
+		{
+			/* Me, myself and I alone */
+			serv->ltok = 1;
+			if (add)
+			{
+				svrtop = serv;
+			}
+		}
+
+		if (add && sp)
+		{
+			serv->nexts = sp;
+			sp->prevs = serv;
+		}
+
+		SPRINTF(serv->tok, "%d", serv->ltok);
 		serv->bcptr = cptr;
 		serv->lastload = 0;
 	    }
