@@ -1081,8 +1081,8 @@ aClient	*cptr;
 			    "Lost N-Line for %s", get_client_name(cptr,FALSE));
 		return -1;
 	    }
-	sendto_one(cptr, "SERVER %s 1 :%s",
-		   my_name_for_link(ME, aconf->port), me.info);
+	sendto_one(cptr, "SERVER %s 1 %s :%s",
+		   my_name_for_link(ME, aconf->port), me.serv->sid, me.info);
 	if (!IsDead(cptr))
 	    {
 		start_auth(cptr);
