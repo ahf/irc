@@ -451,7 +451,7 @@ char *	replies[] = {
 /* 413 ERR_NOTOPLEVEL */	":%s 413 %s %s :No toplevel domain specified",
 /* 414 ERR_WILDTOPLEVEL */	":%s 414 %s %s :Wildcard in toplevel Domain",
 /* 415 ERR_BADMASK */	":%s 415 %s %s :Bad Server/host mask",
-/* 416 ERR_TOOMANYMATCHES */	":%s 416 %s %s %s :Output too long (try locally)",
+/* 416 ERR_TOOMANYMATCHES */	":%s 416 %s %s :output too big, truncated",
 /* 417 */ (char *)NULL,
 /* 418 */ (char *)NULL,
 /* 419 */ (char *)NULL,
