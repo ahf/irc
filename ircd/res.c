@@ -682,7 +682,7 @@ HEADER	*hptr;
 			       inetntoa((char *)adr),
 			       hostbuf));
 #endif
-			if (!hp->h_name)
+			if (!hp->h_name && len < HOSTLEN)
 			    {
 				hp->h_name =(char *)MyMalloc(len+1);
 				(void)strcpy(hp->h_name, hostbuf);
@@ -701,6 +701,10 @@ HEADER	*hptr;
 			    }
 			cp += n;
 			len = strlen(hostbuf);
+			if (len > HOSTLEN)
+			    {
+				return -1;
+			    }
 			Debug((DEBUG_INFO, "got host %s (%d vs %d)",
 				hostbuf, len, strlen(hostbuf)));
 			if (bad_hostname(hostbuf, len))
@@ -723,6 +727,10 @@ HEADER	*hptr;
 			break;
 		case T_CNAME :
 			cp += dlen;
+			if (len > HOSTLEN)
+			    {
+				return -1;
+			    }
 			Debug((DEBUG_INFO,"got cname %s",hostbuf));
 			if (bad_hostname(hostbuf, len))
 				return -1; /* a break would be enough here */
