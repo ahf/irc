@@ -175,6 +175,7 @@ char	*argv[];
 
 	init_signals();
 	init_syslog();
+	xopt = conf_read(NULL);
 	init_filelogs();
 	sendto_log(ALOG_DMISC, LOG_NOTICE, "Daemon starting (%s%s).",
 		   make_version(),
@@ -185,7 +186,6 @@ char	*argv[];
 #endif
 		   );
 	init_io();
-	xopt = conf_read(NULL);
 	sendto_ircd("V %s", make_version());
 	sendto_ircd("O %s", xopt);
 	conf_ircd();
