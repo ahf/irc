@@ -2182,6 +2182,11 @@ char	*parv[];
 	sptr->user->flags |= (UFLAGS & atoi(host));
 	strncpyzt(user->host, host, sizeof(user->host));
 	user->server = find_server_string(me.serv->snum);
+#ifdef INET6
+	inetntop(AF_INET6, sptr->ip.sin6_addr, user->sip, sizeof(user->sip));
+#else
+	strcpy(user->sip, (char *)inetntoa((char *)&sptr->ip));
+#endif
 
 user_finish:
 	reorder_client_in_list(sptr);

@@ -250,6 +250,8 @@ int	sid_valid(char *sid)
 	return cid_ok(sid, SIDLEN - 1);
 }
 
+#if 0
+/* we don't need it */
 static char sid[SIDLEN+1];
 
 void init_sid(char *conf)
@@ -260,6 +262,7 @@ void init_sid(char *conf)
 	}
 	strcpy(sid, conf);
 }
+#endif
 
 char * next_uid()
 {
@@ -268,7 +271,7 @@ static	long	curr_cid = 0;
 
 	do
 	{
-		sprintf(uid, "%s%s", sid, ltoid(curr_cid, NICKLEN-SIDLEN));
+		sprintf(uid, "%s%s", me.serv->sid, ltoid(curr_cid, NICKLEN-SIDLEN));
 		curr_cid++;
 
 		/* 
