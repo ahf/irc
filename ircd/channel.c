@@ -2345,6 +2345,7 @@ int	m_join(aClient *cptr, aClient *sptr, int parc, char *parv[])
 			    }
 		    }
 		if (!IsChannelName(name) ||
+		    (*name == '+' && (*(name+1) == '#' || *(name+1) == '!')) ||
 		    (*name == '!' && IsChannelName(name+1)))
 		    {
 			if (MyClient(sptr))
