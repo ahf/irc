@@ -33,9 +33,6 @@ static  char rcsid[] = "@(#)$Id$";
  * spaces are not allowed.
  */
 char	serveropts[] = {
-#ifdef	SENDQ_ALWAYS
-'A',
-#endif
 #ifndef	NO_IDENT
 'a',
 #endif
@@ -324,17 +321,12 @@ void	send_defines(cptr, nick)
 aClient *cptr;
 char	*nick;
 {
-    	sendto_one(cptr, ":%s %d %s :HUB:%s P_S:%d MS:%d", 
+    	sendto_one(cptr, ":%s %d %s :HUB:%s MS:%d", 
 		   ME, RPL_STATSDEFINE, nick,
 #ifdef HUB
 		   "yes",
 #else
 		   "no",
-#endif
-#ifdef PREFER_SERVER
-		   PREFER_SERVER,
-#else
-		   -1,
 #endif
 		   MAXSERVERS);
     	sendto_one(cptr,
