@@ -16,6 +16,7 @@ example.conf	- server configuration example file (useful complement to
 
 Other files of interest:
 
+LICENSE		- license agreement
 ChangeLog	- log of source changes
 BUGS		- list of known bugs
 2.10-New	- transition documentation from 2.9 to 2.10 version
