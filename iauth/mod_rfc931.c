@@ -253,16 +253,6 @@ u_int cl;
 				while (ch && *ch && *ch == ' ') ch++;
 				if (ch && *ch)
 				    {
-					char *chk = ch-1;
-
-					while (*++chk)
-						if (*chk == ':' ||
-						    *chk == '@' ||
-						    *chk == '[' ||
-						    isspace(*chk))
-							break;
-					if (*chk)
-						other = 1;
 					if (cldata[cl].authuser)
 						free(cldata[cl].authuser);
 					cldata[cl].authuser = mystrdup(ch);
