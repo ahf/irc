@@ -422,6 +422,7 @@ char	*conf_read(char *cfile)
 		(*last)->popt = NULL;
 		(*last)->address = NULL;
 		(*last)->delayed = 0;
+		(*last)->port = 0;
 	    }
 	ident->timeout = MAX(DEFAULT_TIMEOUT, ident->timeout);
 	if (ident->delayed)
