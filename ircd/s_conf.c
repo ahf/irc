@@ -775,7 +775,7 @@ int	sig;
 	for (cltmp = NextClass(FirstClass()); cltmp; cltmp = NextClass(cltmp))
 		MaxLinks(cltmp) = -1;
 
-	if (sig != 2)
+	if (sig == 2)
 		flush_cache();
 	(void) initconf(0);
 	close_listeners();
