@@ -102,9 +102,6 @@ char	*str;
 #ifdef	DEBUGMODE
 	writecalls++;
 #endif
-#ifndef	NOWRITEALARM
-	(void)alarm(WRITEWAITDELAY);
-#endif
 	retval = send(cptr->fd, str, len, 0);
 	/*
 	** Convert WOULDBLOCK to a return of "0 bytes moved". This
@@ -126,9 +123,6 @@ char	*str;
 	else if (retval > 0)
 		cptr->flags &= ~FLAGS_BLOCKED;
 
-#ifndef	NOWRITEALARM
-	(void )alarm(0);
-#endif
 #ifdef DEBUGMODE
 	if (retval < 0) {
 		writeb[0]++;
