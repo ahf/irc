@@ -3203,6 +3203,10 @@ save_user(cptr, sptr, path)
 aClient *cptr, *sptr;
 char *path;
 {
+	if (MyConnect(sptr))
+	{
+		sendto_one(sptr,replies[RPL_SAVENICK],cptr->name,sptr->name);
+	}
 	sendto_common_channels(sptr, ":%s NICK :%s",
 			       sptr->name, sptr->user->uid);
 	add_history(sptr, NULL);
