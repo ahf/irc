@@ -629,6 +629,10 @@ char	*comment;
 		{
 			istat.is_serv--;
 		}
+		if (!IsBursting(sptr))
+		{
+			istat.is_eobservers--;
+		}
 	 	for (i = fdas.highest; i >= 0; i--)
 		    {
 			Reg	aConfItem *aconf;
