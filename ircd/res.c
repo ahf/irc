@@ -377,7 +377,7 @@ Reg	ResRQ	*rptr;
 	char	hname[HOSTLEN+1];
 	int	len;
 
-	(void)strncpy(hname, name, sizeof(hname) - 1);
+	strncpyzt(hname, name, sizeof(hname));
 	len = strlen(hname);
 
 	if (rptr && !index(hname, '.') && ircd_res.options & RES_DEFNAMES)
