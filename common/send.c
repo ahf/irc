@@ -1181,6 +1181,7 @@ static	SChan	svchans[SCH_MAX] = {
 	{ SCH_DEBUG,	"&DEBUG",	NULL },
 	{ SCH_AUTH,	"&AUTH",	NULL },
 	{ SCH_SAVE,	"&SAVE",	NULL },
+	{ SCH_WALLOP,	"&WALLOPS",	NULL },
 };
 
 

@@ -879,7 +879,8 @@ typedef	struct	{
 #define	SCH_DEBUG	10
 #define	SCH_AUTH	11
 #define	SCH_SAVE	12
-#define	SCH_MAX		12
+#define	SCH_WALLOP	13
+#define	SCH_MAX		13
 
 /* used for async dns values */
 
