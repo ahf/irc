@@ -153,7 +153,7 @@ Reg	aClient	*cptr, *nodelay;
 			 ** This nickname has to be locked, thus copy it to the
 			 ** lock[] array.
 			 */
-			strncpyzt(locked[lk_index].nick, np->ww_nick, NICKLEN);
+			strcpy(locked[lk_index].nick, np->ww_nick);
 			locked[lk_index++].logout = np->ww_logout;
 			if (lk_index >= lk_size)
 				lk_index = 0;
@@ -289,7 +289,7 @@ time_t        timelimit;
 		{
 			return 0;
 		}
-		if (!myncmp(nick, lp->nick, NICKLEN))
+		if (!mycmp(nick, lp->nick))
 		{
 			return 1;
 		}
