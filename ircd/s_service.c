@@ -388,7 +388,7 @@ char	*parv[];
 		if (!do_nick_name(parv[1], 0))
 		    {
 			sendto_one(sptr, err_str(ERR_ERRONEUSNICKNAME,
-				   parv[0]));
+				   parv[0]), parv[1]);
 			return 1;
 		    }
 		if (strlen(parv[1]) + strlen(server) + 2 >= (size_t) HOSTLEN)
