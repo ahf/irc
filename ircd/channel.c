@@ -352,7 +352,7 @@ static	Link	*match_modeid(int type, aClient *cptr, aChannel *chptr)
 					continue;
 				}
 			}
-			if (match(tmp->value.alist->user, cptr->username) != 0)
+			if (match(tmp->value.alist->user, cptr->user->username) != 0)
 			{
 				/* no match on user part */
 				continue;
