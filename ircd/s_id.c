@@ -147,7 +147,7 @@ aChannel *chptr;
     chptr->nextch = idcache;
     idcache = chptr;
     istat.is_cchan++;
-    istat.is_cchanmem -= sizeof(aChannel) + strlen(chptr->chname);
+    istat.is_cchanmem += sizeof(aChannel) + strlen(chptr->chname);
 }
 
 /* check_chid: checks if a (short) channel name is in the cache
