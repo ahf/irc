@@ -981,9 +981,9 @@ char	*name;
 	sendto_one(cptr,":%s %d %s :udp errors %u udp dropped %u",
 		   ME, RPL_STATSDEBUG, name, sp->is_udperr, sp->is_udpdrop);
 	sendto_one(cptr,
-	   ":%s %d %s :link checks %u passed %u 15s/%u 30s dropped %uSq/%uFl",
+   ":%s %d %s :link checks %u passed %u 15s/%u 30s dropped %uSq/%uYg/%uFl",
 		   ME, RPL_STATSDEBUG, name, sp->is_ckl, sp->is_cklq,
-		   sp->is_cklok, sp->is_cklQ, sp->is_cklno);
+		   sp->is_cklok, sp->is_cklQ, sp->is_ckly, sp->is_cklno);
 	if (sp->is_wwcnt)
 		sendto_one(cptr, ":%s %d %s :whowas turnover %u/%u/%u [%u]",
 			   ME, RPL_STATSDEBUG, name, sp->is_wwmt,
