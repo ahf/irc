@@ -449,6 +449,7 @@ int rcvdsig;
 		sendto_flag(SCH_AUTH, "Starting iauth...");
 		last = time(NULL);
 		read_iauth(); /* to reset olen */
+		iauth_spawn += 1;
 	    }
 	else
 		return;

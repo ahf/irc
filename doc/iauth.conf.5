@@ -40,7 +40,10 @@ syntax using the \fIiauth\fP program to avoid later problems.
 .TP
 .B required
 By specifying this keyword, the IRC server is told not to accept new user
-connections if iauth is not running.
+connections unless the authentication is handled by iauth.
+.B notimeout
+By specifying this keyword, the IRC server is told not to accept new user
+connections if iauth hasn't finished its work in time.
 .SH MODULES
 .TP
 .B pipe
