@@ -135,7 +135,7 @@ read_iauth()
 		    if (*start != 'U' && *start != 'u' &&
 			*start != 'K' && *start != 'D')
 			{
-			    sendto_flag(SCH_AUTH, "Garbage from iauth [%.*]",
+			    sendto_flag(SCH_AUTH, "Garbage from iauth [%s]",
 					start);
 			    start = end;
 			    continue;
