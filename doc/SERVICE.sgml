@@ -223,6 +223,7 @@ of what the S line setting is:
 SERVICE_WANT_PREFIX     0x10000 /* to receive n!u@h instead of n */
 SERVICE_WANT_TOKEN      0x20000 /* use server token instead of name */
 SERVICE_WANT_EXTNICK    0x40000 /* user extended NICK syntax */
+SERVICE_WANT_UID        0x80000 /* user extended UID syntax */
 </verb>
 <tag/mask2/ It is optional.  It is a subset of mask1 that
 defines which information the service wants to receive in a
