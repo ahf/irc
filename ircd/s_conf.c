@@ -1490,7 +1490,7 @@ int 	initconf(int opt)
 		if ((aconf->status & CONF_LISTEN_PORT) && tmp3)
 		{
 			/* Parse P-line flags */
-			aconf->flags |= pline_flags_parse(tmp3);
+			aconf->flags = pline_flags_parse(tmp3);
 		}
 		
 		if (aconf->status & CONF_SERVICE)
