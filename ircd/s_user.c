@@ -742,14 +742,11 @@ int	register_user(aClient *cptr, aClient *sptr, char *nick, char *username)
 		}
 		/* this will get nicely reduced to UNICK only, when
 		 * we are fully 2.11 */
-		if (/*ST_UID*/IsServer(acptr))
-		{
-			sendto_one(acptr,
+		sendto_one(acptr,
 				":%s UNICK %s %s %s %s %s %s :%s",
 				user->servp->sid, nick, user->uid,
 				user->username, user->host, user->sip,
 				(*buf) ? buf : "+", sptr->info);
-		}
 	}	/* for(my-leaf-servers) */
 #ifdef	USE_SERVICES
 #if 0

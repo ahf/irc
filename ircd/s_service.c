@@ -334,7 +334,7 @@ int	m_service(aClient *cptr, aClient *sptr, int parc, char *parv[])
 		return 1;
 	    }
 
-	if ((/*ST_NOTUID*/0 && parc < 7) || parc < 5)
+	if (parc < 5)
 	{
 		sendto_one(cptr, replies[ERR_NEEDMOREPARAMS], ME,
 			   BadTo(parv[0]), "SERVICE");
@@ -342,18 +342,9 @@ int	m_service(aClient *cptr, aClient *sptr, int parc, char *parv[])
 	}
 
 	/* Copy parameters into better documenting variables */
-	if (/*ST_NOTUID*/0)
-	{
-		dist = parv[3];
-		type = strtol(parv[4], NULL, 0);
-		info = parv[6];
-	}
-	else
-	{
-		dist = parv[2];
-		type = strtol(parv[3], NULL, 0);
-		info = parv[4];
-	}
+	dist = parv[2];
+	type = strtol(parv[3], NULL, 0);
+	info = parv[4];
 
 	/*
 	 * Change the sender's origin.
@@ -368,11 +359,8 @@ int	m_service(aClient *cptr, aClient *sptr, int parc, char *parv[])
 		
 		/* 2.11 protocol - :SID SERVICE ..
 		 * - we know that the sptr contains the correct server */
-		if (/*ST_UID*/IsServer(cptr))
-		{
-			acptr->hopcount = sptr->hopcount;
-			sp = sptr->serv;
-		}
+		acptr->hopcount = sptr->hopcount;
+		sp = sptr->serv;
 		
 		if (sp == NULL)
 		{
