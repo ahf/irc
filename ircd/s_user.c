@@ -2190,7 +2190,7 @@ char	*parv[];
 		acptr = find_server(origin, NULL);
 	if (!acptr || acptr != sptr)
 		origin = cptr->name;
-	if (!BadPtr(destination) && mycmp(destination, ME) != 0)
+	if (!BadPtr(destination) && match(destination, ME) != 0)
 	    {
 		if ((acptr = find_server(destination, NULL)))
 			sendto_one(acptr,":%s PING %s :%s", parv[0],
