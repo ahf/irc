@@ -1460,6 +1460,7 @@ add_con_refuse:
 		sendto_flog(acptr, " ?Clone? ", 0, "<none>",
 			    (acptr->hostp) ? acptr->hostp->h_name :
 			    acptr->sockhost);
+		del_queries((char *)acptr);
 		goto add_con_refuse;
 	    }
 #endif
