@@ -829,6 +829,39 @@ void	sendto_serv_v(aClient *one, int ver, char *pattern, ...)
 	return;
 }
 
+#if ! USE_STDARG
+void	sendto_serv_notv(one, ver, pattern, p1,p2,p3,p4,p5,p6,p7,p8,p9,p10,p11)
+aClient *one;
+int	ver;
+char	*pattern, *p1, *p2, *p3, *p4, *p5, *p6, *p7, *p8, *p9, *p10, *p11;
+#else
+void	sendto_serv_notv(aClient *one, int ver, char *pattern, ...)
+#endif
+{
+	Reg	int	i, len=0;
+	Reg	aClient *cptr;
+
+	for (i = fdas.highest; i >= 0; i--)
+		if ((cptr = local[fdas.fd[i]]) &&
+		    (!one || cptr != one->from) && !IsMe(cptr) &&
+		    ((cptr->serv->version & ver) == 0)) {
+			if (!len)
+			    {
+#if ! USE_STDARG
+				len = sendprep(pattern, p1, p2, p3, p4, p5,
+					       p6, p7, p8, p9, p10, p11);
+#else
+				va_list	va;
+				va_start(va, pattern);
+				len = vsendprep(pattern, va);
+				va_end(va);
+#endif
+			    }
+			(void)send_message(cptr, sendbuf, len);
+	}
+	return;
+}
+
 /*
  * sendto_common_channels()
  *
