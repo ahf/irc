@@ -1171,7 +1171,7 @@ char	*parv[];
 		return 2;
 	    }
 
-	if (strlen(uid) > NICKLEN)
+	if (!check_uid(uid))
 	{
 		/* Any better numeric? */
 		sendto_one(sptr, replies[ERR_ERRONEOUSNICKNAME], ME, 
