@@ -767,7 +767,7 @@ Reg	aClient	*cptr;
 			return exit_client(cptr, cptr, &me,
 					   "zip_init() failed");
 		    }
-		cptr->flags |= FLAGS_ZIP;
+		cptr->flags |= FLAGS_ZIP|FLAGS_ZIPSTART;
 	    }
 #endif
 
