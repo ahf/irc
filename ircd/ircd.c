@@ -427,7 +427,7 @@ time_t	currenttime;
 					    "Kill line active for %s",
 					    get_client_name(cptr, FALSE));
 				cptr->exitc = EXITC_KLINE;
-				if (reason)
+				if (!BadPtr(reason))
 					sprintf(buf, "Kill line active: %.80s",
 						reason);
 				(void)exit_client(cptr, cptr, &me, (reason) ?

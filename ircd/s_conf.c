@@ -1297,6 +1297,8 @@ char	**comment;
 
 	if (tmp && !BadPtr(tmp->passwd))
 		*comment = tmp->passwd;
+	else
+		*comment = NULL;
 
  	return (tmp ? -1 : 0);
 }
