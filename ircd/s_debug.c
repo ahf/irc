@@ -121,6 +121,9 @@ char	serveropts[] = {
 #ifdef	OPER_REMOTE
 't',
 #endif
+#ifdef TOPIC_WHO_TIME
+'T',
+#endif
 #ifndef	NO_PREFIX
 'u',
 #endif
