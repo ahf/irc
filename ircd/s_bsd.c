@@ -601,11 +601,13 @@ void	init_sys()
 void	daemonize()
 {
 	int fd;
-	(void) fclose(stdout);
-	(void)close(1);
 
 	if (bootopt & BOOT_TTY)	/* debugging is going to a tty */
 		goto init_dgram;
+
+	(void) fclose(stdout);
+	(void)close(1);
+
 	if (!(bootopt & BOOT_DEBUG))
 		(void)close(2);
 
