@@ -1863,7 +1863,7 @@ find_denied(name, class)
 				    continue;
 			    if (!aconf2->class || ConfClass(aconf2) != ck)
 				    continue;
-			    if (find_client(aconf2->host, NULL))
+			    if (find_client(aconf2->name, NULL))
 				    return aconf2;
 			}
 		}
