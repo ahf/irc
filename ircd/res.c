@@ -744,6 +744,7 @@ HEADER	*hptr;
 			ans++;
 			break;
 		default :
+			cp += dlen;
 #ifdef DEBUG
 			Debug((DEBUG_INFO,"proc_answer: type:%d for:%s",
 			      type,hostbuf));
