@@ -51,7 +51,7 @@ char	serveropts[] = {
 #ifdef	RANDOM_NDELAY
 'd',
 #endif
-#ifdef	LOCOP_REHASH
+#if defined(LOCOP_REHASH) && defined(OPER_REHASH)
 'e',
 #endif
 #ifdef	OPER_REHASH
@@ -77,6 +77,12 @@ char	serveropts[] = {
 #endif
 #ifndef	NO_DEFAULT_INVISIBLE
 'I',
+#endif
+#if defined(LOCOP_DIE) && defined(OPER_DIE)
+'j',
+#endif
+#ifdef	OPER_DIE
+'J',
 #endif
 #ifdef	OPER_KILL
 # ifdef  LOCAL_KILL_ONLY
@@ -106,7 +112,7 @@ char	serveropts[] = {
 #ifdef	CRYPT_LINK_PASSWORD
 'P',
 #endif
-#ifdef	LOCOP_RESTART
+#if defined(LOCOP_RESTART) && defined(OPER_RESTART)
 'r',
 #endif
 #ifdef	OPER_RESTART
