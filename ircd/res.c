@@ -598,7 +598,7 @@ HEADER	*hptr;
 			len = strlen(hostbuf);
 			Debug((DEBUG_INFO, "got host %s (%d vs %d)",
 				hostbuf, len, strlen(hostbuf)));
-			if (bad_hostname(hostbuf))
+			if (bad_hostname(hostbuf, len))
 				return -1;
 			/*
 			 * copy the returned hostname into the host name
@@ -623,7 +623,7 @@ HEADER	*hptr;
 		case T_CNAME :
 			cp += dlen;
 			Debug((DEBUG_INFO,"got cname %s",hostbuf));
-			if (bad_hostname(hostbuf))
+			if (bad_hostname(hostbuf, len))
 				return -1;
 			if (alias >= &(hp->h_aliases[MAXALIASES-1]))
 				break;
