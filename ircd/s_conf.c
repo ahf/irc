@@ -336,7 +336,11 @@ attach_iline:
 		{
 			SetKlineExempt(cptr);
 		}
-		get_sockhost(cptr, uhost);
+		/* Copy uhost (hostname) over sockhost, if conf flag permits. */
+		if (hp && !IsConfNoResolve(aconf))
+		{
+			get_sockhost(cptr, uhost);
+		}
 		if ((i = attach_conf(cptr, aconf)) < -1)
 			find_bounce(cptr, ConfClass(aconf), -1);
 		return i;
