@@ -30,23 +30,32 @@ static  char rcsid[] = "@(#)$Id$";
 static FILE	*debug, *authlog;
 
 void
-init_log()
+init_filelogs()
 {
-#if defined(USE_SYSLOG)
-	openlog("iauth", LOG_PID|LOG_NDELAY, LOG_FACILITY);
-#endif
 #if defined(IAUTH_DEBUG)
+	if (debug)
+		fclose(debug);
 	debug = fopen(OPATH, "w");
 # if defined(USE_SYSLOG)
 	if (!debug)
 		syslog(LOG_ERR, "Failed to open \"%s\" for writing", OPATH);
 # endif
 #endif /* IAUTH_DEBUG */
+	if (authlog)
+		fclose(authlog);
 	authlog = fopen(FNAME_AUTHLOG, "a");
 #if defined(USE_SYSLOG)
 	if (!authlog)
 		syslog(LOG_NOTICE, "Failed to open \"%s\" for writing",
 		       FNAME_AUTHLOG);
+#endif
+}
+
+void
+init_syslog()
+{
+#if defined(USE_SYSLOG)
+	openlog("iauth", LOG_PID|LOG_NDELAY, LOG_FACILITY);
 #endif
 }
 
