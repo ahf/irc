@@ -7,8 +7,6 @@ Anyone with some free time is welcome to fix those =)
   in the hash tables. (Vesa already fixed this bug several
   times but it keeps crashing :^)
 
-* #define DBUF_TAIL is still not working.
-
 * RECONNECT is still in some unknown state. (and deactivated
   for various reasons)
 

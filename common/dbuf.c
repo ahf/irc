@@ -39,10 +39,6 @@
 static  char rcsid[] = "@(#)$Id$";
 #endif
 
-/* Do not define until it is fixed. -krys
-#define	DBUF_TAIL
- */
-
 #include <stdio.h>
 #include "struct.h"
 #include "common.h"
