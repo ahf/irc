@@ -351,8 +351,8 @@ int	mark_blind_servers (aClient *cptr, aClient *server)
 **	comment: The original comment for the SQUIT. (Only for cptr itself.)
 **	comment2: The comment for (S)QUIT reasons for the rest.
 */
-void	exit_server(aClient *cptr, aClient *acptr, char *comment,
-		char *comment2)
+static	void	exit_server(aClient *cptr, aClient *acptr, char *comment,
+			char *comment2)
 {
 	aClient	*acptr2;
 	int	flags;

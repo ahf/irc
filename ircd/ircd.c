@@ -1085,7 +1085,7 @@ int	main(int argc, char *argv[])
 }
 
 
-void	io_loop()
+static	void	io_loop(void)
 {
 	static	time_t	delay = 0;
 	int maxs = 4;
