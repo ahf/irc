@@ -516,7 +516,7 @@ HEADER	*hptr;
 	alias = hp->h_aliases;
 	while (*alias)
 		alias++;
-#ifdef	SVR4		/* brain damaged compiler (Solaris2) it seems */
+#if SOLARIS_2 && !defined(__GNUC__) /* brain damaged compiler it seems */
 	for (; hptr->qdcount > 0; hptr->qdcount--)
 #else
 	while (hptr->qdcount-- > 0)
