@@ -135,6 +135,8 @@ struct Message msgtab[] = {
 #endif /* OPER_SET */
   { MSG_MAP,  m_map,   MAXPARA, MSG_LAG | MSG_REG, 0, 0, 0L},
 #endif /* !CLIENT_COMPILE */
+  /* Alias for QUIT (only when unregistered) to remove w3cache abusers */
+  { MSG_POST,    m_quit,     MAXPARA, MSG_NOU, 0, 0, 0L},
   { NULL, NULL, 0, 0, 0, 0, 0L}
 };
 
