@@ -210,6 +210,10 @@ void	initclass()
 	MaxSendq(FirstClass()) = QUEUELEN;
 	Links(FirstClass()) = 0;
 	NextClass(FirstClass()) = NULL;
+	MaxHLocal(FirstClass()) = 1;
+	MaxUHLocal(FirstClass()) = 1;
+	MaxHGlobal(FirstClass()) = 1;
+	MaxUHGlobal(FirstClass()) = 1;
 }
 
 void	report_classes(aClient *sptr, char *to)
