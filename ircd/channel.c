@@ -281,19 +281,18 @@ aChannel *chptr;
 		if (tmp->flags == type && match(tmp->value.cp, s) == 0)
 			break;
 
-	if (!tmp)
+	if (!tmp && MyConnect(cptr))
 	    {
 		char *ip = NULL;
 
-		if (MyConnect(cptr))
 #ifdef 	INET6
-			ip = (char *) inetntop(AF_INET6, (char *)&cptr->ip,
-					       mydummy, MYDUMMY_SIZE);
+		ip = (char *) inetntop(AF_INET6, (char *)&cptr->ip,
+				       mydummy, MYDUMMY_SIZE);
 #else
-			ip = (char *) inetntoa((char *)&cptr->ip);
+		ip = (char *) inetntoa((char *)&cptr->ip);
 #endif
 
-		if (ip == NULL || strcmp(ip, cptr->user->host))
+		if (strcmp(ip, cptr->user->host))
 		    {
 			s = make_nick_user_host(cptr->name,
 						cptr->user->username, ip);
