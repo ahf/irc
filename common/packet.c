@@ -93,11 +93,20 @@ Reg	int	length;
 	ch1 = bufptr + cptr->count;
 	ch2 = buffer;
 #ifdef	ZIP_LINKS
+        if (cptr->flags & FLAGS_ZIPSTART)
+            {
+                if (*ch2 == '\n') /* also check \r ? */
+                    {
+                        ch2++;
+                        length--;
+                    }   
+                cptr->flags &= ~FLAGS_ZIPSTART;
+            }   
 	if (cptr->flags & FLAGS_ZIP)
 	    {
 		/* uncompressed buffer first */
 		zipped = length;
-		ch2 = unzip_packet(cptr, buffer, &zipped);
+		ch2 = unzip_packet(cptr, ch2, &zipped);
 		length = zipped;
 		zipped = 1;
 		if (length == -1)
@@ -169,13 +178,13 @@ Reg	int	length;
 				** contained PASS/SERVER and is now zipped!
 				** Ignore the '\n' that should be here.
 				*/
-				if (*ch2 == '\n')
+				zipped = length;
+				if (zipped > 0 && *ch2 == '\n')
 				    {
 					ch2++;
-					zipped = length - 1;
+					zipped--;
 				    }
-				else
-					zipped = length; /* impossible case? */
+				cptr->flags &= ~FLAGS_ZIPSTART;
 				ch2 = unzip_packet(cptr, ch2, &zipped);
 				length = zipped;
 				zipped = 1;
@@ -192,4 +201,3 @@ Reg	int	length;
 	cptr->count = ch1 - bufptr;
 	return r;
 }
-
