@@ -602,6 +602,9 @@ char	*nick, *username;
 		user->servp->usercnt[0]++;
 		istat.is_user[0]++;
 	}
+	
+	check_split();
+	
 	if ((istat.is_user[1] + istat.is_user[0]) > istat.is_m_users) {
 
 		istat.is_m_users = istat.is_user[1] + istat.is_user[0];
@@ -668,6 +671,14 @@ char	*nick, *username;
 			sendto_one(sptr, replies[ERR_RESTRICTED], ME, BadTo(nick));
 		send_umode(sptr, sptr, 0, ALL_UMODES, buf);
 		nextping = timeofday;
+		
+#ifdef SPLIT_CONNECT_NOTICE
+		if (IsSplit())
+		{
+			sendto_one(sptr, ":%s NOTICE %s :%s", ME, nick,
+				   SPLIT_CONNECT_NOTICE);
+		}
+#endif
 	    }
 
 	for (i = fdas.highest; i >= 0; i--)
