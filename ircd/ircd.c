@@ -635,6 +635,8 @@ static	void	setup_me(aClient *mp)
 	strncpyzt(mp->user->username, (p) ? p->pw_name : "unknown",
 		  sizeof(mp->user->username));
 	(void) strcpy(mp->user->host, mp->name);
+	SetEOB(mp);
+	istat.is_eobservers = 1;
 
 	(void)add_to_client_hash_table(mp->name, mp);
 	(void)add_to_sid_hash_table(mp->serv->sid, mp);

@@ -1108,8 +1108,7 @@ void	read_motd(char *filename)
 
 void	check_split(void)
 {
-	/* + 1 for this server  */
-	if (istat.is_eobservers + 1 < iconf.split_minservers ||
+	if (istat.is_eobservers < iconf.split_minservers ||
 	    istat.is_user[0] + istat.is_user[1] < iconf.split_minusers)
 	{
 		/* Split detected */
