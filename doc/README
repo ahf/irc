@@ -9,8 +9,9 @@ The files relevant to the software compilation and configuration are:
 RELEASE_NOTES	- useful information for people upgrading from a previous
 		  version
 INSTALL.txt	- detailed information about compilation and configuration
-example.conf	- server configuration example file (useful complement to
-		  INSTALL)
+ircd.conf.example	- server configuration example file (useful complement
+		  	  to INSTALL)
+iauth.conf.example	- iauth configuration example
 
 
 
