@@ -30,7 +30,7 @@ CC = @CC@
 # for the server
 S_CFLAGS = @CFLAGS@ -I. -I../ircd -I../common @IRC_ZLIB_INCLUDE@
 # for the authentication daemon
-A_CFLAGS = @CFLAGS@ -I. -I../iauth -I../common
+A_CFLAGS = @CFLAGS@ -I. -I../iauth -I../common @IRC_ZLIB_INCLUDE@
 # for chkconfig
 CC_CFLAGS = @CFLAGS@ -I. -I../ircd -I../common
 # for the client
