@@ -1581,8 +1581,19 @@ char	*parv[];
 		else
 		    {
 			if (!(sp = find_tokserver(atoi(server), cptr, NULL)))
-				acptr = find_server(server, NULL); /* hmm??? */
-/*			strncpyzt(user->tok, server, sizeof(user->tok));*/
+			    {
+				/*
+				** Why? Why do we keep doing this?
+				** s_service.c had the same kind of kludge.
+				** Can't we get rid of this? - krys
+				*/
+				acptr = find_server(server, NULL);
+				if (acptr)
+					sendto_flag(SCH_ERROR,
+			    "ERROR: SERVER:%s uses wrong syntax for NICK (%s)",
+					    get_client_name(cptr, FALSE),
+						    parv[0]);
+			    }
 		    }
 		if (acptr)
 			sp = acptr->serv;
