@@ -1168,6 +1168,7 @@ void	check_split(void)
 			if (!firstrejoindone)
 			{
 				firstrejoindone = 1;
+				activate_delayed_listeners();
 			}
 		}
 	}
