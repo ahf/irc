@@ -156,10 +156,10 @@ int	len;
 	if (to->fd < 0)
 	    {
 		Debug((DEBUG_ERROR,
-		      "Local socket %s with negative fd... AARGH!",
+		       "Local socket %s with negative fd... AARGH!",
 		      to->name));
 	    }
-	else if (IsMe(to))
+	if (IsMe(to))
 	    {
 		sendto_flag(SCH_ERROR, "Trying to send to myself! [%s]", msg);
 		return 0;
