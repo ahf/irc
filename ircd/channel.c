@@ -2511,7 +2511,7 @@ char	*parv[];
 		}
 
 		/* For 2.11 servers. */
-		target = HasUID(acptr) ? acptr->name : acptr->user->uid;
+		target = HasUID(acptr) ? acptr->user->uid : acptr->name;
 		while (*target)
 		{
 			*u++ = *target++;
