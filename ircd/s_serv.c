@@ -2010,12 +2010,15 @@ char	*parv[];
 	case 'Y' : case 'y' : /* Y lines */
 		report_classes(cptr, parv[0]);
 		break;
-	case 'Z' : 	      /* memory use (OPER only) */
+	case 'Z':
+#ifdef DEBUGMODE
+		 /* memory use (OPER only) */
 		if (MyOper(sptr))
 			count_memory(cptr, parv[0], 1);
 		else
 			sendto_one(sptr, replies[ERR_NOPRIVILEGES], ME, BadTo(parv[0]));
 		break;
+#endif
 	case 'z' :	      /* memory use */
 		count_memory(cptr, parv[0], 0);
 		break;
