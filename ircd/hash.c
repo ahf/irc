@@ -571,10 +571,10 @@ aClient *cptr;
 	for (;;)
 	    {
 		t--;
-		for (; t > server; t--)
+		for (; t >= server; t--)
 			if (*(t+1) == '.')
 				break;
-		if (*t == '*' || t == server)
+		if (t < server || *t == '*')
 			break;
 		ch = *t;
 		*t = '*';
