@@ -2006,7 +2006,8 @@ aClient	*cptr, *sptr;
 int	parc;
 char	*parv[];
 {
-	sendto_one(sptr, rpl_str(RPL_REHASHING, parv[0]), configfile);
+	sendto_one(sptr, rpl_str(RPL_REHASHING, parv[0]),
+		   basename(configfile));
 	sendto_flag(SCH_NOTICE,
 		    "%s is rehashing Server config file", parv[0]);
 #ifdef USE_SYSLOG
