@@ -675,14 +675,16 @@ HEADER	*hptr;
 			bcopy(cp, (char *)&dr, dlen);
 			adr->s_addr = dr.s_addr;
 #endif
-			Debug((DEBUG_INFO,"got ip # %s for %s",
 #ifdef INET6
+			Debug((DEBUG_INFO,"got ip # %s for %s",
 			       inet_ntop(AF_INET6, (char *)adr, mydummy,
 					 MYDUMMY_SIZE),
-#else
-			       inetntoa((char *)adr),
-#endif
 			       hostbuf));
+#else
+			Debug((DEBUG_INFO,"got ip # %s for %s",
+			       inetntoa((char *)adr),
+			       hostbuf));
+#endif
 			if (!hp->h_name)
 			    {
 				hp->h_name =(char *)MyMalloc(len+1);
@@ -1500,13 +1502,15 @@ aCache	*ocp;
 	 */
 	hashv = hash_number((u_char *)hp->h_addr);
 #ifdef	DEBUG
-	Debug((DEBUG_DEBUG,"rem_cache: h_addr %s hashv %d next %#x first %#x",
 # ifdef INET6
+	Debug((DEBUG_DEBUG,"rem_cache: h_addr %s hashv %d next %#x first %#x",
 	       inet_ntop(AF_INET6, hp->h_addr, mydummy, MYDUMMY_SIZE),
-# else
-	       inetntoa(hp->h_addr),
-# endif
 	       hashv, ocp->hnum_next, hashtable[hashv].num_list));
+# else
+	Debug((DEBUG_DEBUG,"rem_cache: h_addr %s hashv %d next %#x first %#x",
+	       inetntoa(hp->h_addr),
+	       hashv, ocp->hnum_next, hashtable[hashv].num_list));
+# endif
 #endif
 	for (cp = &hashtable[hashv].num_list; *cp; cp = &((*cp)->hnum_next))
 		if (*cp == ocp)

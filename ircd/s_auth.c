@@ -135,14 +135,16 @@ Reg	aClient	*cptr;
 	    {
 		report_error("binding stream socket for auth request %s:%s",
 			     cptr);
-		Debug((DEBUG_ERROR,"auth(%x) bind failed on %s port %d - %d",
 #ifdef INET6
+		Debug((DEBUG_ERROR,"auth(%x) bind failed on %s port %d - %d",
 		      cptr, inet_ntop(AF_INET6, (char *)&us.sin6_addr,
 		      mydummy, MYDUMMY_SIZE),
-#else
-		      cptr, inetntoa((char *)&us.sin_addr),
-#endif
 		      ntohs(us.SIN_PORT), errno));
+#else
+		Debug((DEBUG_ERROR,"auth(%x) bind failed on %s port %d - %d",
+		      cptr, inetntoa((char *)&us.sin_addr),
+		      ntohs(us.SIN_PORT), errno));
+#endif
 	    }
 
 	cptr->flags |= (FLAGS_WRAUTH|FLAGS_AUTH);
