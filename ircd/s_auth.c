@@ -54,7 +54,7 @@ aClient *cptr;
 	if (index(cptr->auth, '[') || index(cptr->auth, '@') ||
 	    strlen(cptr->auth) > USERLEN)
 		dirty = 1;
-	else if (cptr->auth[0] = ':')
+	else if (cptr->auth[0] == ':')
 	    {
 		dirty = 1;
 		s += 1;
