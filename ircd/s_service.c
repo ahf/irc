@@ -692,7 +692,8 @@ int	m_servset(aClient *cptr, aClient *sptr, int parc, char *parv[])
 					   chptr->chname, chptr->topic);
 		    }
 	    }
-	/* cptr->flags ^= FLAGS_CBURST; */
+	sendto_one(sptr, "EOB");
+	cptr->flags ^= FLAGS_CBURST;
 	return 0;
 }
 #endif
