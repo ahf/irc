@@ -97,7 +97,7 @@ aClient *cptr;
 	u_long	lmask;
 #ifdef	INET6
 	int	j;
-#endif;
+#endif
  
 	strncpyzt(dummy, mask, sizeof(dummy));
 	mask = dummy;

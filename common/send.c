@@ -1476,7 +1476,7 @@ logfiles_open()
 	connlog = open(FNAME_CONNLOG, O_WRONLY|O_APPEND|O_NDELAY);
 #else
 	connlog = -1;
-#endif;
+#endif
 }
 
 void
