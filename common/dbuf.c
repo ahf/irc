@@ -55,15 +55,6 @@ static  char rcsid[] = "@(#)$Id$";
 u_int	poolsize = (BUFFERPOOL > 1500000) ? BUFFERPOOL : 1500000;
 dbufbuf	*freelist = NULL;
 
-
-/* This is a dangerous define because a broken compiler will set DBUFSIZ
-** to 4, which will work but will be very inefficient. However, there
-** are other places where the code breaks badly if this is screwed
-** up, so... -- Wumpus
-*/
-
-#define DBUFSIZ sizeof(((dbufbuf *)0)->data)
-
 #ifdef DBUF_INIT
 
 /* dbuf_init--initialize a stretch of memory as dbufs.
