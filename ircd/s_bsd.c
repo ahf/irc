@@ -1992,7 +1992,7 @@ int	ro;
 	time_t	delay2 = delay;
 	int	res, length, fd, i;
 	int	auth;
-	int	incr, skipped = -1;
+	int	incr = MAXCONNECTIONS, skipped = -1;
 	static	time_t uncomplete_date = 0;
 
 	for (res = 0;;)
@@ -2208,10 +2208,13 @@ int	ro;
 	    }
 #endif
 
-	incr = dog_incr();
-	if (ro && incr != 500)
-		sendto_flag(SCH_DEBUG, "RO: %d %d %d", fdp->highest, nfds,
-			    incr);
+	if (fdp == &fdall)
+	    {
+		incr = dog_incr();
+		if (ro && incr < 500)
+			sendto_flag(SCH_DEBUG, "RO: %d %d %d",
+				    fdp->highest, nfds, incr);
+	    }
 #if ! USE_POLL
 	for (i = fdp->highest; i >= 0; i--)
 #else
@@ -2376,7 +2379,7 @@ deadsocket:
 			    uncomplete_date, ret, nfds, i);
 		dog_done();
 	    }
-	else
+	else if (fdp == &fdall)
 	    {
 		if (uncomplete_date)
 			sendto_flag(SCH_DEBUG,
