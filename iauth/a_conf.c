@@ -395,6 +395,7 @@ char *cfile;
 	if (o_dto) *ch++ = 'T';
 	if (needh) *ch++ = 'W';
 	*ch++ = '\0';
+	return o_all;
 }
 
 /* conf_match: check if an instance is to be applied to a connection */
