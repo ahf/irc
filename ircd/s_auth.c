@@ -180,6 +180,7 @@ read_iauth()
 			    sendto_flag(SCH_AUTH, "Aiiie! lost slave authentication process (errno = %d)", errno);
 			    close(adfd);
 			    adfd = -1;
+			    olen = 0;
 			    start_iauth(0);
 			}
 		    break;
