@@ -499,16 +499,11 @@ static	int	socks_read(u_int cl, char *strver)
 	return -1;
 
 again:
-	if (cldata[cl].mod_status == ST_V5b)
-	{
-		return 0;
-	}
-	else
+	if (cldata[cl].mod_status != ST_V5b)
 	{
 		return socks_start(cl);
 	}
 
-	/* not reached */
 	return 0;
 }
 

@@ -199,7 +199,7 @@ static	int	proxy_check_cache(u_int cl)
 
 static	int	proxy_write(u_int cl)
 {
-	u_char query[128];	/* big enough to hold all queries */
+	char query[128];	/* big enough to hold all queries */
 	int query_len;		/* length of query */
 #ifndef	INET6
 	u_int a, b, c, d;

@@ -1072,7 +1072,7 @@ aChannel	*hash_find_channels(char *name, aChannel *chptr)
 /*
  * hash_find_stoken
  */
-aServer	*hash_find_stoken(int tok, aClient *cptr, void *dummy)
+aServer	*hash_find_stoken(int tok, aClient *cptr, void *mydummy)
 {
 	Reg	aServer	*tmp, *prv = NULL;
 	Reg	aHashEntry	*tmp3;
@@ -1096,7 +1096,7 @@ aServer	*hash_find_stoken(int tok, aClient *cptr, void *dummy)
 			    }
 			return (tmp);
 		    }
-	return (aServer *)dummy;
+	return (aServer *)mydummy;
 }
 
 /*

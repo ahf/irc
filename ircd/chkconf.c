@@ -481,8 +481,8 @@ static	aConfItem 	*initconf()
 		if (IsIllegal(aconf))
 			continue;
 
-		for (;;) /* Fake loop, that I can use break here --msa */
-		    {
+		do
+		{
 			if ((tmp = getfield(NULL)) == NULL)
 				break;
 			DupString(aconf->host, tmp);
@@ -505,8 +505,7 @@ static	aConfItem 	*initconf()
 				aconf->class = get_class(atoi(tmp), nr);
 			    }
 			tmp3 = getfield(NULL);
-			break;
-		    }
+		} while (0); /* to use break without compiler warnings */
 
 		if ((aconf->status & CONF_CLIENT) && tmp3)
 		{
