@@ -1189,8 +1189,7 @@ char	*parv[], *mbuf, *pbuf;
 			    }
 			else if (whatt == MODE_DEL)
 			    {
-				if (ischop && (mycmp(mode->key, *parv) == 0 ||
-				     IsServer(cptr)))
+				if (ischop)
 				    {
 					lp = &chops[opcnt++];
 					lp->value.cp = mode->key;
