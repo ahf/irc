@@ -3433,6 +3433,7 @@ int	m_set(aClient *cptr, aClient *sptr, int parc, char *parv[])
 						iconf.split_minusers, tmp);
 					iconf.split_minusers = tmp;
 				}
+				check_split();
 				break;
 			}
 		} /* switch(acmd) */
