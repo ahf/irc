@@ -222,6 +222,7 @@ char *cfile;
 			(*last)->in = icount++;
 			(*last)->mod = Mlist[i];
 			(*last)->opt = NULL;
+			(*last)->popt = NULL;
 			(*last)->data = NULL;
 			(*last)->hostname = NULL;
 			(*last)->address = NULL;
