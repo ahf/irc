@@ -498,10 +498,10 @@ void	init_sys()
 	if (((bootopt & BOOT_CONSOLE) || isatty(0)) &&
 	    !(bootopt & (BOOT_INETD|BOOT_OPER)))
 	    {
-#ifndef _DO_MIKE_DEBUGGING__  /* Mike debugging XXX */
+#ifndef _WIN32
 		if (fork())
 			exit(0);
-#endif /* _DO_MIKE_DEBUGGING__  */
+#endif
 #ifdef TIOCNOTTY
 		if ((fd = open("/dev/tty", O_RDWR)) >= 0)
 		    {
