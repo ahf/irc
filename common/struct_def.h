@@ -612,6 +612,9 @@ struct Channel	{
 #define	CHFL_BAN	0x0008 /* ban channel flag */
 #define	CHFL_EXCEPTION	0x0010 /* exception channel flag */
 #define	CHFL_INVITE	0x0020 /* invite channel flag */
+#ifdef OPER_KLUDGE
+#define	CHFL_OPERS	0x1000 /* oper mode flag */
+#endif
 
 /* Channel Visibility macros */
 
@@ -817,6 +820,7 @@ typedef	struct	{
 #define EXITC_DEAD	'D'	/* socket died */
 #define EXITC_ERROR	'E'	/* socket error */
 #define EXITC_FLOOD	'F'	/* client flooding */
+#define EXITC_FAILURE	'f'	/* connect failure */
 #define EXITC_GHMAX	'G'	/* global clients per host max limit */
 #define EXITC_GUHMAX	'g'	/* global clients per user@host max limit */
 #define EXITC_NOILINE	'I'	/* No matching I:line */

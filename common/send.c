@@ -1589,6 +1589,7 @@ char	msg, *username, *hostname;
 			case EXITC_NOILINE:	anyptr=" No Auth "; break;
 			case EXITC_AUTHFAIL:	anyptr="No iauth!"; break;
 			case EXITC_AUTHTOUT:	anyptr="iauth t/o"; break;
+			case EXITC_FAILURE:	anyptr=" Failure "; break;
 			default:		anyptr=" Unknown ";
 		}
 		(void)sprintf(buf, "%s", anyptr);
