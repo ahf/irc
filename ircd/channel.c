@@ -1615,12 +1615,21 @@ static	int	set_mode(aClient *cptr, aClient *sptr, aChannel *chptr,
 			case MODE_INVITE :
 			case MODE_REOPLIST :
 				tmplen = BanLen(lp->value.alist) + 2 /* !@ */;
+				if (len + tmplen + 2 > (size_t) MODEBUFLEN)
+				{
+					free_bei(lp->value.alist);
+					tmplen = -1;
+				}
 				break;
 			default:
 				tmplen = strlen(cp);
+				if (len + tmplen + 2 > (size_t) MODEBUFLEN)
+				{
+					tmplen = -1;
+				}
 			}
 
-			if (len + tmplen + 2 > (size_t) MODEBUFLEN)
+			if (tmplen == -1)
 				break;
 			/*
 			 * pass on +/-o/v regardless of whether they are
