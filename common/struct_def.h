@@ -974,6 +974,7 @@ typedef enum ServerChannels {
 /* Defines used for SET command */
 #define TSET_ACONNECT 0x001
 #define TSET_POOLSIZE 0x002
+#define TSET_CACCEPT 0x004
 #define TSET_SHOWALL (int) ~0
 
 /* Runtime configuration structure */
@@ -983,6 +984,7 @@ typedef struct
 	int split;	/* 0 - NO 1 - YES */
 	int split_minservers;
 	int split_minusers;
+	int caccept;	/* 0 - OFF 1 - ON 2 - SPLIT */
 } iconf_t;
 
 /* O:line flags, used also in is_allowed() */
