@@ -2432,7 +2432,7 @@ void do_tkline(char *who, int time, char *user, char *host, char *reason, int st
 		}
 		tkconf = aconf;
 	}
-	sendto_flag(SCH_NOTICE, "TKLINE %s@%s (%d) by %s :%s",
+	sendto_flag(SCH_OPER, "TKLINE %s@%s (%d) by %s :%s",
 		aconf->name, aconf->host, time, who, reason);
 
 	/* get rid of tklined clients */
