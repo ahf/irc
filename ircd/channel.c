@@ -2927,6 +2927,10 @@ int	m_kick(aClient *cptr, aClient *sptr, int parc, char *parv[])
 
 				remove_user_from_channel(who,chptr);
 				penalty += 2;
+				/* Once user kicks himself out of channel,
+				** he cannot kick anymore, can he? --B. */
+				if (MyPerson(sptr) && who == sptr)
+					break;
 				if (penalty >= MAXPENALTY && MyPerson(sptr))
 					break;
 			    }
