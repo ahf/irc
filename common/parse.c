@@ -568,7 +568,7 @@ int	parse(aClient *cptr, char *buffer, char *bufend)
 	Reg	int	len, i, numeric = 0, paramcount;
 	Reg	struct	Message *mptr = NULL;
 	int	ret;
-	int	status = from->status < STAT_SERVER ? STAT_UNREG : from->status;
+	int	status;
 
 	Debug((DEBUG_DEBUG, "Parsing %s: %s",
 		get_client_name(cptr, FALSE), buffer));
@@ -740,6 +740,7 @@ int	parse(aClient *cptr, char *buffer, char *bufend)
 	mptr->count++;
 	if (!MyConnect(from))
 		mptr->rcount++;
+	status = from->status < STAT_SERVER ? STAT_UNREG : from->status;
 	if (IsRegisteredUser(cptr) &&
 #ifdef	IDLE_FROM_MSG
 	    mptr->handler[status] == m_private)
