@@ -1162,7 +1162,7 @@ int	doall;
 		sendto_one(cptr, reply,
 			   ME, ERR_YOUREBANNEDCREEP, cptr->name);
 	else if (tmp)
-		sendto_one(cptr, ":%s %d %s :*** %s", ME,
+		sendto_one(cptr, ":%s %d %s :%s", ME,
 			   ERR_YOUREBANNEDCREEP, cptr->name,
 			   BadPtr(tmp->passwd) ?
 			   "You are not welcome to this server" : tmp->passwd);
