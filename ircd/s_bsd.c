@@ -2031,7 +2031,9 @@ int	ro;
 			** so no need to check for anything!
 			*/
 			if (DoingDNS(cptr) || DoingAuth(cptr) ||
-			    DoingXAuth(cptr))
+			    WaitingXAuth(cptr) ||
+			    (DoingXAuth(cptr) &&
+			     !(iauth_options & XOPT_EARLYPARSE)))
 				continue;
 #if ! USE_POLL
 			if (fd > highfd)

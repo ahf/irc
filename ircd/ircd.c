@@ -449,6 +449,7 @@ time_t	currenttime;
 #endif
 				ClearDNS(cptr);
 				ClearXAuth(cptr);
+				ClearWXAuth(cptr);
 				cptr->firsttime = currenttime;
 				cptr->lasttime = currenttime;
 				continue;

@@ -144,13 +144,14 @@ read_iauth()
 		    if (*start == 'O') /* options */
 			{
 			    iauth_options = 0;
+			    if (strchr(start+2, 'A'))
+				    iauth_options |= XOPT_EARLYPARSE;
 			    if (strchr(start+2, 'R'))
 				    iauth_options |= XOPT_REQUIRED;
 			    if (strchr(start+2, 'T'))
 				    iauth_options |= XOPT_NOTIMEOUT;
 			    if (strchr(start+2, 'W'))
 				    iauth_options |= XOPT_EXTWAIT;
-
 			    if (iauth_options)
 				    sendto_flag(SCH_AUTH, "iauth options: %x",
 						iauth_options);
@@ -328,6 +329,14 @@ read_iauth()
 			    /*authentication finished*/
 			    ClearXAuth(cptr);
 			    SetDoneXAuth(cptr);
+			    if (WaitingXAuth(cptr))
+				{
+				    ClearWXAuth(cptr);
+				    register_user(cptr, cptr, cptr->name,
+						  cptr->user->username);
+				}
+			    else
+				    ClearWXAuth(cptr);
 		      }
 		    else
 			{
