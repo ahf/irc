@@ -68,25 +68,10 @@ Reg	int	length;
 #endif
  
 	me.receiveB += length; /* Update bytes received */
-	if (me.receiveB > 1023)
-	    {
-		me.receiveK += (me.receiveB >> 10);
-		me.receiveB &= 0x03ff;
-	    }
 	cptr->receiveB += length;
-	if (cptr->receiveB > 1023)
-	    {
-		cptr->receiveK += (cptr->receiveB >> 10);
-		cptr->receiveB &= 0x03ff;	/* 2^10 = 1024, 3ff = 1023 */
-	    }
 	if (acpt != &me)
 	    {
 		acpt->receiveB += length;
-		if (acpt->receiveB > 1023)
-		    {
-			acpt->receiveK += (acpt->receiveB >> 10);
-			acpt->receiveB &= 0x03ff;
-		    }
 	    }
 
 	bufptr = cptr->buffer;

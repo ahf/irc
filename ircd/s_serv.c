@@ -1700,7 +1700,7 @@ aClient *cptr, *sptr;
 int	parc;
 char	*parv[];
     {
-	static	char	Lformat[]  = ":%s %d %s %s %u %u %u %u %u :%u";
+	static	char	Lformat[]  = ":%s %d %s %s %u %lu %llu %lu %llu :%u";
 	struct	Message	*mptr;
 	aClient	*acptr;
 	char	stat = parc > 1 ? parv[1][0] : '\0';
@@ -1762,9 +1762,8 @@ char	*parv[];
 					RPL_STATSLINKINFO, parv[0],
 					get_client_name(acptr, isupper(stat)),
 					(int)DBufLength(&acptr->sendQ),
-					(int)acptr->sendM, (int)acptr->sendK,
-					(int)acptr->receiveM, 
-					(int)acptr->receiveK,
+					acptr->sendM, acptr->sendB,
+					acptr->receiveM, acptr->receiveB,
 					timeofday - acptr->firsttime);
 			    }
 		    }
@@ -1775,9 +1774,8 @@ char	*parv[];
 					RPL_STATSLINKINFO, parv[0],
 					get_client_name(acptr, isupper(stat)),
 					(int)DBufLength(&acptr->sendQ),
-					(int)acptr->sendM, (int)acptr->sendK,
-					(int)acptr->receiveM,
-					(int)acptr->receiveK,
+					acptr->sendM, acptr->sendB,
+					acptr->receiveM, acptr->receiveB,
 					timeofday - acptr->firsttime);
 			
 		    }

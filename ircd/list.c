@@ -153,6 +153,7 @@ aClient	*from;
 		cptr->authfd = -1;
 		cptr->auth = cptr->username;
 		cptr->exitc = EXITC_UNDEF;
+		cptr->receiveB = cptr->sendB = cptr->receiveM = cptr->sendM = 0;
 #ifdef	ZIP_LINKS
 		cptr->zip = NULL;
 #endif

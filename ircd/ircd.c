@@ -417,7 +417,7 @@ time_t	currenttime;
 					    {
 						cptr->exitc = EXITC_AUTHTOUT;
 						sendto_iauth("%d T", cptr->fd);
-						ereject_user(cptr, " Timeout ",
+						exit_client(cptr, cptr, &me,
 						     "Authentication Timeout");
 						continue;
 					    }
