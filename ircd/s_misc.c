@@ -996,6 +996,7 @@ void	initruntimeconf(void)
 {
 	memset((char *)&iconf, 0, sizeof(iconf));
 	iconf.aconnect = 1; /* default to ON */
+	iconf.split = 1; /* ircd starts in split-mode */
 
 	/* Defaults set in config.h */
 	iconf.split_minservers = SPLIT_SERVERS;
