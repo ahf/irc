@@ -602,12 +602,9 @@ char	*nick, *username;
 		user->tok[1] = '\0';*/
 		sp = user->servp;
 	    }
-	else if (user->username != username)
-	    {
-		sendto_flag(SCH_DEBUG, 
-			"remote user with username != user->username");
+	else
 		strncpyzt(user->username, username, USERLEN+1);
-	    }
+
 	SetClient(sptr);
 	if (!MyConnect(sptr))
 /* && IsServer(cptr)) -- obsolete, old 2.8 protocol;
