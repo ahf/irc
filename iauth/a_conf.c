@@ -91,12 +91,16 @@ char *cfile;
 	Mlist[Mcnt] = NULL;
 
 	cfh = fopen((cfile) ? cfile : IAUTHCONF_PATH, "r");
-	if (!cfh && cfile)
+	if (!cfh)
 	    {
-		perror("Couldn't open config file");
-		exit(0);
+		if (cfile)
+		    {
+			perror("Couldn't open config file");
+			exit(0);
+		    }
 	    }
-
+	else
+	    {
 		while (fgets(buffer, 160, cfh))
 		    {
 			if (ch = index(buffer, '\n'))
@@ -362,6 +366,7 @@ char *cfile;
 
 			last = &((*last)->nexti);
 		    }
+	    }
 
 	if (ident == NULL)
 	    {
