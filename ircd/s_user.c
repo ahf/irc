@@ -2971,10 +2971,10 @@ int	m_oper(aClient *cptr, aClient *sptr, int parc, char *parv[])
 		s = index(aconf->host, '@');
 		*s++ = '\0';
 #ifndef	NO_OPER_REMOTE
-		if (aconf->status == CONF_LOCOP)
+		if (aconf->flags & ACL_LOCOP)
 #else
 		if ((match(s,me.sockhost) && !IsLocal(sptr)) ||
-		    aconf->status == CONF_LOCOP)
+		    aconf->flags & ACL_LOCOP)
 #endif
 			SetLocOp(sptr);
 		else

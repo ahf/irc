@@ -348,11 +348,8 @@ static	aConfItem 	*initconf()
 				aconf->status = CONF_NOCONNECT_SERVER;
 				break;
 			case 'o':
-				aconf->status = CONF_OPERATOR;
-				break;
-			/* Local Operator, (limited privs --SRB) */
 			case 'O':
-				aconf->status = CONF_LOCOP;
+				aconf->status = CONF_OPERATOR;
 				break;
 			case 'P': /* listen port line */
 			case 'p':
