@@ -558,9 +558,6 @@ aClient	*mp;
 	mp->serv->snum = find_server_num (ME);
 	(void) make_user(mp);
 	istat.is_users++;	/* here, cptr->next is NULL, see make_user() */
-#ifndef NO_USRTOP
-	usrtop = mp->user;
-#endif
 	mp->user->flags |= FLAGS_OPER;
 	mp->serv->up = mp->name;
 	mp->user->server = find_server_string(mp->serv->snum);

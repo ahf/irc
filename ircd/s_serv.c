@@ -946,14 +946,6 @@ Reg	aClient	*cptr;
 			** These are only true when *BOTH* NICK and USER have
 			** been received. -avalon
 			*/
-#ifndef NO_USRTOP
-			if (acptr->user->servp->userlist == NULL)
-				sendto_flag(SCH_ERROR,
-			    "ERROR: USER:%s without SERVER:%s(%d) (to %s)",
-					    acptr->name, acptr->user->server,
-					    acptr->user->servp->tok,
-					    cptr->name);
-#endif
 			if (*mlname == '*' &&
 			    match(mlname, acptr->user->server) == 0)
 				stok = me.serv->tok;

@@ -455,9 +455,7 @@ char	*parv[];
 	svc->wants = 0;
 	svc->type = type;
 	sptr->hopcount = metric;
-#ifdef NO_USRTOP
 	reorder_client_in_list(sptr);
-#endif
 	(void)add_to_client_hash_table(sptr->name, sptr);
 
 #ifdef	USE_SERVICES
