@@ -31,11 +31,6 @@ static  char rcsid[] = "@(#)$Id$";
 #include "s_externs.h"
 #undef S_MISC_C
 
-#ifdef DELAYED_KILLS
-extern int dk_tocheck;
-extern int dk_lastfd;
-#endif
-
 static	void	exit_one_client (aClient *, aClient *, aClient *, const char *);
 static	void	exit_server(aClient *cptr, aClient *acptr, const char *comment,
 			const char *comment2);
@@ -493,10 +488,6 @@ int	exit_client(aClient *cptr, aClient *sptr, aClient *from,
 			if (IsPerson(sptr))
 			{
 				istat.is_myclnt--;
-#ifdef DELAYED_KILLS
-				if (sptr->fd > dk_lastfd)
-					dk_tocheck--;
-#endif
 			}
 			else if (IsServer(sptr))
 			{

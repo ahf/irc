@@ -565,8 +565,9 @@ int	register_user(aClient *cptr, aClient *sptr, char *nick, char *username)
 		bzero(sptr->passwd, sizeof(sptr->passwd));
 		/*
 		 * following block for the benefit of time-dependent K:-lines
+		 * how come "time-dependant"? I don't see it. --B.
 		 */
-		if (!IsKlineExempt(sptr) && find_kill(sptr, 1, &reason))
+		if (!IsKlineExempt(sptr) && find_kill(sptr, 0, &reason))
 		    {
 			/*char buf[100];*/
 
