@@ -22,7 +22,7 @@ static  char rcsid[] = "@(#)$Id$";
 #endif
 
 #include "os.h"
-/* #include "s_defines.h" */
+#include "s_defines.h"
 #define CHKCONF_C
 #include "match_ext.h"
 #undef CHKCONF_C
