@@ -166,7 +166,7 @@ int	len;
 				    poolsize);
 			istat.is_dbufmore++;
 		    }
-		else if (IsServer(to))
+		else if (IsServer(to) || IsService(to))
 			sendto_flag(SCH_ERROR,
 				"Max SendQ limit exceeded for %s: %d > %d",
 			   	get_client_name(to, FALSE),
@@ -177,7 +177,7 @@ int	len;
 			return dead_link(to, "Max Sendq exceeded");
 		    }
 #  else /* HUB */
-		if (IsServer(to))
+		if (IsService(to) || IsServer(to))
 			sendto_flag(SCH_ERROR,
 				"Max SendQ limit exceeded for %s: %d > %d",
 			   	get_client_name(to, FALSE),
@@ -285,7 +285,7 @@ tryagain:
 		if (DBufLength(&to->sendQ) > get_sendq(to))
 		    {
 #  ifdef HUB
-			if (IsServer(to) && CBurst(to))
+			if ((IsService(to) || IsServer(to)) && CBurst(to))
 			    {
 				aClass	*cl = to->serv->nline->class;
 
@@ -297,9 +297,9 @@ tryagain:
                                             poolsize);
 				istat.is_dbufmore++;
 			    }
-			else if (IsServer(to))
+			else if (IsServer(to) || IsService(to))
 #  else
-			if (IsServer(to))
+			if (IsServer(to) || IsService(to))
 #  endif
 			sendto_flag(SCH_ERROR,
 				"Max SendQ limit exceeded for %s: %d > %d",
