@@ -152,14 +152,27 @@ size_t the_size;
 		char cnt = 0, *cp = local_dummy, *op = out;
 
 		while (*cp)
-			if (*cp++ == ':')
+		    {
+			if (*cp == ':')
 				cnt += 1;
+			if (*cp++ == '.')
+			    {
+				cnt += 1;
+				break;
+			    }
+		    }
 		cp = local_dummy;
 		while (*cp)
 		    {
 			*op++ = *cp++;
 			if (*(cp-1) == ':' && *cp == ':')
 			    {
+				if ((cp-1) == local_dummy)
+				    {
+					op--;
+					*op++ = ':';
+				    }
+
 				*op++ = '0';
 				while (cnt++ < 7)
 				    {
@@ -168,6 +181,7 @@ size_t the_size;
 				    }
 			    }
 		    }
+		if (*(op-1)==':') *op++ = '0';
 		*op = '\0';
 		Debug((DEBUG_DNS,"Expanding `%s' -> `%s'", local_dummy,
 		       out));
@@ -757,7 +771,7 @@ char	*i0, *i1, *i2, *i3, *i4, *i5, *i6, *i7, *i8, *i9, *i10, *i11;
 char *make_version()
 {
 	int ve, re, mi, dv, pl;
-	char ver[15];
+	char ver[20];
 
 	sscanf(PATCHLEVEL, "%2d%2d%2d%2d%2d", &ve, &re, &mi, &dv, &pl);
 	sprintf(ver, "%d.%d", ve, re);	/* version & revision */
@@ -767,6 +781,7 @@ char *make_version()
 		sprintf(ver + strlen(ver), "%c%d", DEVLEVEL, dv);
 	if (pl)	/* patchlevel */
 		sprintf(ver + strlen(ver), "p%d", pl);
+	strcat(ver, "+IPv6");
 	return mystrdup(ver);
 }
 
