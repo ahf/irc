@@ -1314,6 +1314,10 @@ aClient *cptr;
 		if (nextconnect > aconf->hold || nextconnect == 0)
 			nextconnect = aconf->hold;
 	    }
+	if (nextconnect == 0 && (IsHandshake(cptr) || IsConnecting(cptr)))
+	{
+		nextconnect = timeofday + HANGONRETRYDELAY;
+	}
 
 	if (cptr->authfd >= 0)
 	    {
