@@ -229,6 +229,8 @@ int	server, parc;
 **  anything outside the above set will terminate nickname.
 **  In addition, the first character cannot be '-'
 **  or a Digit.
+**  Finally forbid the use of "anonymous" because of possible
+**  abuses related to anonymous channnels. -kalt
 **
 **  Note:
 **	'~'-character should be allowed, but
@@ -242,6 +244,9 @@ char	*nick;
 	Reg	char	*ch;
 
 	if (*nick == '-' || isdigit(*nick)) /* first character in [0..9-] */
+		return 0;
+
+	if (!strcasecmp(nick, "anonymous"))
 		return 0;
 
 	for (ch = nick; *ch && (ch - nick) < NICKLEN; ch++)
