@@ -1219,6 +1219,8 @@ void	sendto_ops_butone(aClient *one, aClient *from, char *pattern, ...)
 	bzero((char *)&sentalong[0], sizeof(int) * MAXCONNECTIONS);
 	for (cptr = client; cptr; cptr = cptr->next)
 	    {
+		if (IsService(cptr))
+			continue;
 		if ((IsPerson(cptr) && !SendWallops(cptr)) || IsMe(cptr))
 			continue;
 		if (MyClient(cptr) && !(IsServer(from) || IsMe(from)))
