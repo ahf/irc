@@ -655,6 +655,7 @@ char	*parv[];
 	}
 
 	host = parv[1];
+	hop = atoi(parv[2]);
 	strncpyzt(info, parv[parc-1], REALLEN);
 
 	/* check if the servername is valid */
