@@ -2755,6 +2755,10 @@ int	m_part(aClient *cptr, aClient *sptr, int parc, char *parv[])
 	*buf = '\0';
 
 	parv[1] = canonize(parv[1]);
+	comment = (BadPtr(parv[2])) ? "" : parv[2];
+	if (strlen(comment) > TOPICLEN)
+		comment[TOPICLEN] = '\0';
+
 	for (; (name = strtoken(&p, parv[1], ",")); parv[1] = NULL)
 	    {
 		convert_scandinavian(name, cptr);
@@ -2775,12 +2779,6 @@ int	m_part(aClient *cptr, aClient *sptr, int parc, char *parv[])
 				   name);
 			continue;
 		    }
-		comment = (BadPtr(parv[2])) ? parv[0] : parv[2];
-		if (IsAnonymous(chptr) && (comment == parv[0]))
-			comment = "None";
-		if (strlen(comment) > (size_t) TOPICLEN)
-			comment[TOPICLEN] = '\0';
-
 		/*
 		**  Remove user from the old channel (if any)
 		*/
