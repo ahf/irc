@@ -1546,17 +1546,20 @@ char	*parv[];
 			case MODE_CHANOP :
 				c = 'o';
 				cp = lp->value.cptr->name;
-				ucp = lp->value.cptr->user->uid;
+				ucp = HasUID(lp->value.cptr) ?
+					lp->value.cptr->user->uid : cp;
 				break;
 			case MODE_UNIQOP :
 				c = 'O';
 				cp = lp->value.cptr->name;
-				ucp = lp->value.cptr->user->uid;
+				ucp = HasUID(lp->value.cptr) ?
+					lp->value.cptr->user->uid : cp;
 				break;
 			case MODE_VOICE :
 				c = 'v';
 				cp = lp->value.cptr->name;
-				ucp = lp->value.cptr->user->uid;
+				ucp = HasUID(lp->value.cptr) ?
+					lp->value.cptr->user->uid : cp;
 				break;
 			case MODE_BAN :
 				c = 'b';
