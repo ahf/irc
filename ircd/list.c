@@ -618,7 +618,7 @@ aConfItem	*make_conf()
 	istat.is_conf++;
 	istat.is_confmem += sizeof(aConfItem);
 
-	bzero((char *)&aconf->ipnum, sizeof(struct in_addr));
+	bzero((char *)&aconf->ipnum, sizeof(struct IN_ADDR));
 	aconf->clients = aconf->port = 0;
 	aconf->next = NULL;
 	aconf->host = aconf->passwd = aconf->name = NULL;
