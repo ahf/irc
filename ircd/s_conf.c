@@ -226,11 +226,13 @@ int    match_ipmask(char *mask, aClient *cptr, int maskwithusername)
 	char	*p;
 	struct  IN_ADDR addr;
 	char	dummy[128];
+	char	*omask;
 	u_long	lmask;
 #ifdef	INET6
 	int	j;
 #endif
  
+	omask = mask;
 	strncpyzt(dummy, mask, sizeof(dummy));
 	mask = dummy;
 	if (maskwithusername && (p = index(mask, '@')))
@@ -290,7 +292,7 @@ int    match_ipmask(char *mask, aClient *cptr, int maskwithusername)
 #endif
 badmask:
 	if (maskwithusername)
-	sendto_flag(SCH_ERROR, "Ignoring bad mask: %s", mask);
+	sendto_flag(SCH_ERROR, "Ignoring bad mask: %s", omask);
 	return -1;
 }
 
