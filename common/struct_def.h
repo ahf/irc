@@ -379,7 +379,10 @@ struct	User	{
 	char	uid[UIDLEN+1];
 	char	host[HOSTLEN+1];
 	char	*server;
+	u_int	hhashv;		/* hostname hash value */
+	struct User *hhnext;	/* next entry in hostname hash */
 	char	sip[40];	/* ip as a string, big enough for ipv6 */
+
 };
 
 struct	Server	{
