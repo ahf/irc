@@ -1720,9 +1720,9 @@ int	class, fd;
 					aconf->name, aconf->port);
 				strcat(rpl, "\r\n");
 #ifdef INET6
-				sendto(class, rpl, strlen(rpl), 0, 0, 0);
+				sendto(fd, rpl, strlen(rpl), 0, 0, 0);
 #else
-				send(class, rpl, strlen(rpl), 0);
+				send(fd, rpl, strlen(rpl), 0);
 #endif
 				return;
 			    }
