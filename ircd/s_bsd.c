@@ -610,7 +610,9 @@ void	init_sys(void)
 
 void	daemonize(void)
 {
+#ifdef TIOCNOTTY
 	int fd;
+#endif
 
 	if (bootopt & BOOT_TTY)	/* debugging is going to a tty */
 		goto init_dgram;
