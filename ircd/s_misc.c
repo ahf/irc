@@ -770,7 +770,7 @@ static	void	exit_one_client(aClient *cptr, aClient *sptr, aClient *from,
 			if ((sptr->flags & FLAGS_SPLIT) == 0)
 			    {
 				sendto_serv_butone(cptr, ":%s QUIT :%s",
-						   sptr->name, comment);
+						   sptr->user->uid, comment);
 #ifdef	USE_SERVICES
 				check_services_butone(SERVICE_WANT_QUIT|
 						      SERVICE_WANT_RQUIT, 
@@ -794,7 +794,7 @@ static	void	exit_one_client(aClient *cptr, aClient *sptr, aClient *from,
 						if (acptr->flags & FLAGS_HIDDEN)
 							sendto_one(acptr,
 								":%s QUIT :%s",
-								sptr->name,
+								sptr->user->uid,
 								comment);
 					}
 #ifdef	USE_SERVICES
