@@ -1725,7 +1725,7 @@ char	*parv[];
 	*mbuf = '\0';
 	mbuf = modebuf;
 
-	if ((!ischop) && MyConnect(sptr) && !IsServer(sptr))
+	if ((!ischop) && (count) && MyConnect(sptr) && !IsServer(sptr))
 	{
 		/* rejected mode change */
 		int num = ERR_CHANOPRIVSNEEDED;
