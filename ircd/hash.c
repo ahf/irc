@@ -685,7 +685,7 @@ aClient	*cptr;
 /*
 ** del_from_server_hash_table
 */
-int	del_from_server_hash_table(aServer *sptr, aClient *cptr)
+int	del_from_sid_hash_table(aServer *sptr, aClient *cptr)
 {
 	Reg	aServer	*tmp, *prev = NULL;
 	Reg	u_int	hashv;
@@ -999,7 +999,7 @@ void	*dummy;
 /*
 ** hash_find_sid
 */
-aServer	*hash_find_sid(char *sid, aclient *cptr)
+aClient	*hash_find_sid(char *sid, aClient *cptr)
 {
 	Reg     aServer *tmp;
 	Reg     aServer *prv = NULL;
@@ -1014,7 +1014,7 @@ aServer	*hash_find_sid(char *sid, aclient *cptr)
 		if (hv == tmp->sidhashv && mycmp(sid, tmp->sid) == 0)
 		{
 			sidhits++;
-			return (tmp);
+			return (tmp->bcptr);
 		}
 	}
 	sidmiss++;
