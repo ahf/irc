@@ -302,7 +302,7 @@ char	*parv[];
 	    {
 		(void)strncpy(info, parv[2], REALLEN);
 		i = strlen(info);
-		if (parc > 3 && ((i+2) > REALLEN))
+		if (parc > 3 && ((i+2) < REALLEN))
 		    {
 				(void)strncat(info, " ", REALLEN - i - 1);
 				(void)strncat(info, parv[3], REALLEN - i - 2);
