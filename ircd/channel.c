@@ -2811,7 +2811,8 @@ char	*parv[];
 					rlen += sendto_one(sptr,
 							   rpl_str(RPL_LIST,
 								   parv[0]),
-							   name, chptr->users,
+							   chptr->chname,
+							   chptr->users,
 							   chptr->topic);
 					if (!MyConnect(sptr) &&
 					    rlen > CHREPLLEN)
