@@ -85,7 +85,7 @@ vsendto_log(int flags, int slflag, char *pattern, va_list va)
 #endif
 	if (authlog && (flags & ALOG_FLOG))
 	    {
-		fprintf(authlog, logbuf+1);
+		fprintf(authlog, "%s: %s", myctime(time(NULL)), logbuf+1);
 		fflush(authlog);
 	    }
 	if (flags & ALOG_IRCD)
