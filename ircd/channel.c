@@ -281,7 +281,7 @@ static	int	del_modeid(int type, aChannel *chptr, aListItem *modeid)
         for (mode = &(chptr->mlist); *mode; mode = &((*mode)->next))
 	{
 		if (type == (*mode)->flags &&
-			modeid == NULL ? 1 : BanExact(modeid, (*mode)->value.alist))
+			(modeid == NULL ? 1 : BanExact(modeid, (*mode)->value.alist)))
 		{
 			tmp = *mode;
 			*mode = tmp->next;
