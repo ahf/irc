@@ -1428,7 +1428,7 @@ char	*parv[];
 		    }
 		else
 		    {
-			if ((acptr = find_client(cm, NULL)))
+			if ((acptr = find_client(cm, NULL)) && MyConnect(acptr))
 				sendto_one(cptr, Lformat, ME,
 					RPL_STATSLINKINFO, parv[0],
 					get_client_name(acptr, isupper(stat)),
