@@ -529,29 +529,6 @@ aClient	*cptr;
 }
 
 /*
- * hash_find_nickserv
- */
-aClient	*hash_find_nickserv(name, cptr)
-char	*name;
-aClient *cptr;
-{
-	aClient	*c2ptr = cptr;
-	char	*serv;
-
-	if ((serv = (char *)index(name, '@')))
-	    {
-		*serv++ = '\0';
-		c2ptr = hash_find_server(serv, cptr);
-		if (c2ptr && IsMe(c2ptr))
-			c2ptr = hash_find_client(name, cptr);
-		*--serv = '@';
-	    }
-	else
-		c2ptr = hash_find_client(name, cptr);
-	return (c2ptr);
-}
-
-/*
  * hash_find_server
  */
 aClient	*hash_find_server(server, cptr)
