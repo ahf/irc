@@ -29,7 +29,7 @@ static  char rcsid[] = "@(#)$Id$";
 
 /* #undef	DEBUG	/* because there is a lot of debug code in here :-) */
 
-static	char	hostbuf[HOSTLEN+1+100];
+static	char	hostbuf[HOSTLEN+1+100]; /* +100 for INET6 */
 static	char	dot[] = ".";
 static	int	incache = 0;
 static	CacheTable	hashtable[ARES_CACSIZE];

@@ -88,8 +88,6 @@
  * is new enough to contain a certain feature.
  */
 
-#ifndef	OSF
-
 #define __BIND		19960801	/* interface version stamp */
 
 /*
@@ -330,5 +328,3 @@ typedef struct {
 	*t_cp   = t_l; \
 	(cp) += INT32SZ; \
 }
-
-#endif
