@@ -405,7 +405,7 @@ static	time_t	check_pings(time_t currenttime)
 
 	for (i = highest_fd; i >= 0; i--)
 	    {
-		if (!(cptr = local[i]) || IsListening(cptr))
+		if (!(cptr = local[i]))
 			continue;
 
 #ifdef TIMEDKLINES
