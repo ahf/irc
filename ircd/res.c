@@ -1013,29 +1013,24 @@ getres_err:
 			 * set, then give it a try next.
 			 */
 			if (ircd_res.options & RES_DEFNAMES && ++rptr->srch == 0)
-			    {
+			{
 				rptr->retries = ircd_res.retry;
 				rptr->sends = 0;
 				rptr->resend = 1;
+			}
 #ifdef INET6
 /* Comment out this ifdef to get names like ::ffff:a.b.c.d */
 /* We always want to query for both IN A and IN AAAA */
-				if(rptr->type == T_AAAA)
-					query_name(rptr->name, C_IN, T_A, rptr);
-					Debug((DEBUG_DNS,"getres_err: didn't work with T_AAAA, now also trying with T_A for %s",rptr->name));
+			if(rptr->type == T_AAAA)
+			{
+				rptr->type = T_A;
+				query_name(rptr->name, C_IN, T_A, rptr);
+				Debug((DEBUG_DNS, "getres_err: didn't work "
+					"with T_AAAA, now also trying with "
+					"T_A for %s", rptr->name));
+			}
 #endif
-				resend_query(rptr);
-			    }
-			else
-			    {
-#ifdef INET6
-/* Comment out this ifdef to get names like ::ffff:a.b.c.d */
-				if(rptr->type == T_AAAA)
-					query_name(rptr->name, C_IN, T_A, rptr);
-					Debug((DEBUG_DNS,"getres_err: didn't work with T_AAAA, now also trying with T_A for %s",rptr->name));
-#endif
-				resend_query(rptr);
-			    }
+			resend_query(rptr);
 		    }
 		else if (lp)
 			bcopy((char *)&rptr->cinfo, lp, sizeof(Link));
