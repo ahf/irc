@@ -105,7 +105,7 @@ P::::6667:
 #
 # an internet domain socket listening on port 6668, for address 206.252.192.20
 # (again useful if you're running virtual interfaces)
-P:206.252.192.20:::6667:
+P:206.252.192.20:::6668:
 #
 # an internet domain socket listening on port 6669 for connections from
 # the addresses matching 147.210.18.* :
