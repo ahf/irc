@@ -103,7 +103,7 @@ char	*parv[];
 	    case ERR_NONICKNAMEGIVEN:
 		sprintf(mybuf, "*** Error: %s: No nickname given", parv[0]);
 		break;
-	    case ERR_ERRONEUSNICKNAME:
+	    case ERR_ERRONEOUSNICKNAME:
 		sprintf(mybuf,
 			"*** Error: %s: Some special characters cannot %s",
 			parv[0], "be used in nicknames");

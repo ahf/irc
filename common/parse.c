@@ -39,7 +39,7 @@ static  char rcsid[] = "@(#)$Id$";
 struct Message msgtab[] = {
   { MSG_PRIVATE, m_private,  MAXPARA, MSG_LAG|MSG_REGU, 0, 0, 0L},
 #ifndef CLIENT_COMPILE
-  { MSG_NJOIN,   m_njoin,    MAXPARA, MSG_LAG|MSG_NOU, 0, 0, 0L},
+  { MSG_NJOIN,   m_njoin,    MAXPARA, MSG_LAG|MSG_REG|MSG_NOU, 0, 0, 0L},
 #endif
   { MSG_JOIN,    m_join,     MAXPARA, MSG_LAG|MSG_REGU, 0, 0, 0L},
   { MSG_MODE,    m_mode,     MAXPARA, MSG_LAG|MSG_REG, 0, 0, 0L},

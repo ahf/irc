@@ -451,7 +451,9 @@ ircd_res_setoptions(options, source)
 			printf(";;\tdebug\n");
 #endif
 		} else if (!strncmp(cp, "inet6", sizeof("inet6") - 1)) {
+#ifndef HAVE_GETIPNODEBYNAME
 			ircd_res.options |= RES_USE_INET6;
+#endif
 		} else {
 			/* XXX - print a warning here? */
 		}

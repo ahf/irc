@@ -157,7 +157,7 @@ char	*argv[];
 	channel[0] = '\0';
 	me.user = &meUser;
 	me.from = &me;
-	me.info = (char *) malloc(REALLEN);
+	me.info = (char *) malloc(REALLEN + 1);
 	setuid(getuid());
 	version = make_version();
 
@@ -342,7 +342,9 @@ char	*argv[];
 		if (logfile)
 			do_log(NULL, NULL);
 		printf("Press any key.");
+#ifdef	DOCURSES
 		refresh();
+#endif
         	getchar();
 		printf("\n");
 #ifdef DOCURSES
