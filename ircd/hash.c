@@ -115,7 +115,7 @@ static	u_int	hash_uid(char *uid, u_int *store)
 	for (; (ch = *uid); uid++)
 	{
 		hash <<= 4;
-		hash += hashtab[(int)ch];
+		hash ^= hashtab[(int)ch];
 	}
 	if (store)
 	{
