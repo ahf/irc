@@ -1395,7 +1395,7 @@ int	class;
 
 	for (aconf = conf; aconf; aconf = aconf->next)
 	    {
-		if (aconf->status & CONF_BOUNCE)
+		if (aconf->status != CONF_BOUNCE)
 			continue;
 		/* early rejection, connection class is unknown */
 		if (cptr == NULL && atoi(aconf->host) == -1)
