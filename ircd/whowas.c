@@ -61,6 +61,7 @@ static	void	grow_history()
 **	usually called before changing to a new name (nick).
 **	Client must be a fully registered user (specifically,
 **	the user structure must have been allocated).
+**	if nodelay is NULL, then the nickname will be subject to NickDelay
 */
 void	add_history(cptr, nodelay)
 Reg	aClient	*cptr, *nodelay;
