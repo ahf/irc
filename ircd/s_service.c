@@ -161,7 +161,6 @@ void	check_services_butone(long action, char *server, aClient *cptr, char *fmt, 
 #else
 				va_list	va;
 				va_start(va, fmt);
-				va_arg(va, char *);
 				vsendto_one(acptr, fmt, va);
 				va_end(va);
 #endif
