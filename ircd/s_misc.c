@@ -476,7 +476,7 @@ char	*comment;	/* Reason for the exit */
 		    {
 # if defined(FNAME_CONNLOG) || defined(USE_SERVICES) || \
 	(defined(USE_SYSLOG) && defined(SYSLOG_CONN))
-			if (sptr->exitc == NULL || sptr->exitc == EXITC_REG)
+			if (sptr->exitc == '\0' || sptr->exitc == EXITC_REG)
 			{
 				sptr->exitc = EXITC_UNDEF;
 			}
