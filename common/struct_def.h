@@ -956,3 +956,18 @@ typedef struct
 	int split_minservers;
 	int split_minusers;
 } iconf_t;
+
+/* functions being subject to access checking */
+typedef enum ACL {
+	ACL_KILL,
+	ACL_SQUIT,
+	ACL_CONNECT,
+	ACL_CLOSE,
+	ACL_HAZH,
+	ACL_DNS,
+	ACL_REHASH,
+	ACL_RESTART,
+	ACL_DIE,
+	ACL_SET,
+	ACL_MAX
+} ACL; 
