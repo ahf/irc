@@ -1061,6 +1061,12 @@ nickkilldone:
 	    {
 		char	*pv[7];
 
+		if (parc != 8)
+		{
+			/* New NICK *must* have proper param count */
+			goto badparamcountkills;
+		}
+
 		/* A server introducing a new client, change source */
 		sptr = make_client(cptr);
 		add_client_to_list(sptr);
