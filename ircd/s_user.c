@@ -964,6 +964,7 @@ nickkilldone:
 	if (IsServer(sptr))
 	    {
 		char	*pv[7];
+		int	i;
 
 		if (parc != 8)
 		    {
@@ -989,8 +990,12 @@ nickkilldone:
 		pv[4] = parv[7];
 		pv[5] = parv[6];
 		pv[6] = NULL;
-		(void)add_to_client_hash_table(nick, sptr);
-		return m_user(cptr, sptr, 6, pv);
+		i = m_user(cptr, sptr, 6, pv);
+		if (i > 0)
+		    {
+			(void)add_to_client_hash_table(nick, sptr);
+		    }
+		return i;
 	    }
 	else if (sptr->name[0])		/* NICK received before, changing */
 	    {
