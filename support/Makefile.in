@@ -50,7 +50,9 @@ client_man_dir = @mandir@/man1
 # Directory in which to install the server manual page file.
 server_man_dir = @mandir@/man8
 
-# Directory where most files will be
+# Directory where most files will be.
+# This path is important as it is hardcoded into the server,
+# it should exist and contain at least the configuration file.
 ircd_dir = @libdir@
 
 # Access mode for irc.
