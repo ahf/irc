@@ -626,6 +626,9 @@ aChannel *chptr;
 	    || chptr->users == 0) /* channel is empty (locked), thus no mode */
 		return;
 
+	if (check_channelmask(&me, cptr, chptr->chname))
+		return;
+
 	*modebuf = *parabuf = '\0';
 	channel_modes(cptr, modebuf, parabuf, chptr);
 
