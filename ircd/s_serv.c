@@ -1315,13 +1315,13 @@ int	m_server_estab(aClient *cptr, char *sid, char *versionbuf)
 
 			e = eobbuf;
 			eobmaxlen = BUFSIZE
-				        - 1		/*    ":"     */
+					- 1		/*    ":"     */
 					- SIDLEN 	/*  my SID    */
 					- 6 		/*   " EOB :" */
 					- 2;		/*   "\r\n"   */
 
 			/* space for last comma and SID (calculation moved
-        		 * from "if (e - eobbuf > eobmaxlen)" inside following
+			 * from "if (e - eobbuf > eobmaxlen)" inside following
 			 * loop)
 			 */ 
 			eobmaxlen -= SIDLEN + 1;
@@ -1350,10 +1350,17 @@ int	m_server_estab(aClient *cptr, char *sid, char *versionbuf)
 					e += SIDLEN;
 				}
 			}
-			/* Send the rest */
-			*e = '\0';
-			sendto_one(cptr, ":%s EOB :%s", me.serv->sid,
-					eobbuf+1);
+			/* Send the rest, if any */
+			if (e > eobbuf)
+			{
+				*e = '\0';
+				sendto_one(cptr, ":%s EOB :%s", me.serv->sid,
+						eobbuf+1);
+			}
+			else
+			{
+				sendto_one(cptr, ":%s EOB", me.serv->sid);
+			}
 		}
 	}
 	else
@@ -2805,9 +2812,17 @@ char	*parv[];
 
 	}
 	
-	*e = '\0';
-	/* Send the rest */
-	sendto_serv_v(sptr, SV_UID, ":%s EOB :%s", sptr->serv->sid, eobbuf + 1);
+	/* Send the rest, if any */
+	if (e > eobbuf)
+	{
+		*e = '\0';
+		sendto_serv_v(sptr, SV_UID, ":%s EOB :%s",
+			sptr->serv->sid, eobbuf + 1);
+	}
+	else
+	{
+		sendto_serv_v(sptr, SV_UID, ":%s EOB");
+	}
 	
 	return 1;
 }
