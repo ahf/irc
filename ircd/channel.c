@@ -2278,6 +2278,14 @@ char	*parv[];
 				return;
 			    }
 		    }
+		/* make sure user isn't already on channel */
+		if (IsMember(acptr, chptr))
+		    {
+			sendto_flag(SCH_ERROR, "NJOIN protocol error from %s",
+				    get_client_name(cptr, TRUE));
+			sendto_one(cptr, "ERROR :NJOIN protocol error");
+			continue;
+		    }
 		/* add user to channel */
 		add_user_to_channel(chptr, acptr, chop);
 		/* build buffer for NJOIN capable servers */
