@@ -2717,8 +2717,26 @@ int	m_kill(aClient *cptr, aClient *sptr, int parc, char *parv[])
 	}
 #if defined(USE_SYSLOG) && defined(SYSLOG_KILL)
 	if (IsOper(sptr))
-		syslog(LOG_DEBUG,"KILL From %s For %s Path %s!%s",
-			parv[0], acptr->name, inpath, path);
+	{
+		if (IsService(acptr))
+		{
+			syslog(LOG_DEBUG, "KILL From %s For %s[%s] Path %s!%s",
+				parv[0], acptr->name, 
+				isdigit(acptr->service->servp->sid[0]) ?
+				acptr->service->servp->sid : "2.10",
+				inpath, path);
+		}
+		else
+		{
+			syslog(LOG_DEBUG, "KILL From %s For %s!%s@%s[%s/%s] "
+				"Path %s!%s", parv[0], acptr->name, 
+				acptr->user->username, acptr->user->host,
+				acptr->user->servp->bcptr->name, 
+				isdigit(acptr->user->servp->sid[0]) ?
+				acptr->user->servp->sid : "2.10",
+				inpath, path);
+		}
+	}
 #endif
 	/*
 	** And pass on the message to other servers. Note, that if KILL
