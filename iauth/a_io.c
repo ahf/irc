@@ -266,6 +266,8 @@ parse_ircd()
 				free(cldata[cl].authuser);
 				cldata[cl].authuser = NULL;
 			    }
+			cldata[cl].user[0] = '\0';
+			cldata[cl].host[0] = '\0';
 			cldata[cl].best = cldata[cl].tried = NULL;
 			cldata[cl].buflen = 0;
 			if (chp[0] == 'C')
