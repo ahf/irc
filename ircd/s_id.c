@@ -119,7 +119,7 @@ char *id;
     if (id_alphabet[1 + alphabet_id[current]] == id[1])
 	    return 1;
     if (id[0] == current &&
-	idtol(id) >= (timeofday % pow(CHIDNB, CHIDLEN)))
+	idtol(id) >= (timeofday % (u_int) pow(CHIDNB, CHIDLEN)))
 	    return 1;
     return 0;
 }
