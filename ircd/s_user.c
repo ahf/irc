@@ -568,16 +568,6 @@ char	*nick, *username;
 			return exit_client(cptr, sptr, &me, (reason) ? buf :
 					   "K-lined");
 		    }
-#ifdef R_LINES
-		if (find_restrict(sptr))
-		    {
-			sendto_flag(SCH_LOCAL, "R-lined %s@%s.",
-				    user->username, sptr->sockhost);
-			ircstp->is_ref++;
-			sptr->exitc = EXITC_RLINE;
-			return exit_client(cptr, sptr, &me , "R-lined");
-		    }
-#endif
 		if (oldstatus == STAT_MASTER && MyConnect(sptr))
 			(void)m_oper(&me, sptr, 1, parv);
 		sp = user->servp;

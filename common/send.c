@@ -1266,7 +1266,6 @@ char	msg, *username, *hostname;
 			case EXITC_AREF:
 			case EXITC_AREFQ:	anyptr=" Denied  "; break;
 			case EXITC_KLINE:	anyptr=" K lined "; break;
-			case EXITC_RLINE:	anyptr=" R lined "; break;
 			case EXITC_CLONE:	anyptr=" ?Clone? "; break;
 			case EXITC_YLINEMAX:	anyptr="   max   "; break;
 			case EXITC_NOILINE:	anyptr=" No Auth "; break;

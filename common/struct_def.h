@@ -849,7 +849,6 @@ typedef	struct	{
 #define EXITC_MBUF	'M'	/* mem alloc error */
 #define EXITC_PING	'P'	/* ping timeout */
 #define EXITC_SENDQ	'Q'	/* send queue exceeded */
-#define EXITC_RLINE	'r'	/* R-lined */
 #define EXITC_REF	'R'	/* Refused */
 #define EXITC_AREF	'U'	/* Unauthorized by iauth */
 #define EXITC_AREFQ	'u'	/* Unauthorized by iauth, be quiet */
