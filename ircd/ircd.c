@@ -850,6 +850,11 @@ int	main(int argc, char *argv[])
 		    }
 	    }
 
+	if (strlen(tunefile) > 255)
+	{
+		fprintf(stderr, "Too long tune filename\n");
+		exit(-1);
+	}
 	if (argc > 0)
 		bad_command(); /* This exits out */
 
