@@ -111,7 +111,7 @@ int	*store;
 	Reg	int	i = 30;
 	Reg	u_int	hash = 5;
 
-	if (*name == '-')
+	if (*name == '!')
 		name += 1 + CHIDLEN;
 	for (; (ch = *name) && --i; name++)
 	{
@@ -624,7 +624,7 @@ aChannel *chptr;
 	for (tmp = (aChannel *)tmp3->list; tmp; prv = tmp, tmp = tmp->hnextch)
 		if (hv == tmp->hashv &&
 		    ((exact == 1 && mycmp(name, tmp->chname) == 0) ||
-		     (exact == 0 && *tmp->chname == '-' &&
+		     (exact == 0 && *tmp->chname == '!' &&
 		      mycmp(name, tmp->chname + CHIDLEN + 1) == 0)))
 		    {
 			chhits++;

@@ -801,7 +801,7 @@ char	*comment;
 				** it makes MyConnect == False - krys
 				*/
 				if (sptr != cptr)
-					if (*lp->value.chptr->chname == '-')
+					if (*lp->value.chptr->chname == '!')
 					    {
 						if (!(sptr->flags &FLAGS_QUIT))
 							lp->value.chptr->history = timeofday + LDELAYCHASETIMELIMIT;
