@@ -137,7 +137,7 @@ char	*str;
 	if (retval < 0) {
 		writeb[0]++;
 		Debug((DEBUG_ERROR,"write error (%s) to %s",
-			sys_errlist[errno], cptr->name));
+			strerror(errno), cptr->name));
 #ifndef	CLIENT_COMPILE
 		hold_server(cptr);
 #endif
