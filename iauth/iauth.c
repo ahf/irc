@@ -186,6 +186,7 @@ char	*argv[];
 		   );
 	init_io();
 	xopt = conf_read(NULL);
+	sendto_ircd("V %s", make_version());
 	sendto_ircd("O %s", xopt);
 	conf_ircd();
 
