@@ -640,7 +640,7 @@ char	*nick, *username;
 		if ((acptr->serv->version & SV_UID) && user->uid[0])
 			sendto_one(acptr,
 				   ":%s UNICK %s %s %s %s %s %s :%s",
-				   me.serv->sid, nick, user->uid,
+				   user->servp->sid, nick, user->uid,
 				   user->username, user->host,
 				   user->sip,
 				   (*buf) ? buf : "+",
