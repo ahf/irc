@@ -145,7 +145,7 @@ ircd_res_init()
 	register FILE *fp;
 	register char *cp, **pp;
 	register int n;
-	char buf[BUFSIZ];
+	char buf[MAXDNAME];
 	int nserv = 0;    /* number of nameserver records read from file */
 	int haveenv = 0;
 	int havesearch = 0;

@@ -204,7 +204,6 @@ struct res_sym {
 #define	dn_count_labels	__dn_count_labels
 #define	dn_comp		__dn_comp
 #define	res_randomid	__res_randomid
-#define	res_send	__res_send
 #define	res_isourserver	__res_isourserver
 #define	res_nameinquery	__res_nameinquery
 #define	res_queriesmatch __res_queriesmatch
@@ -217,4 +216,5 @@ struct res_sym {
 #define	res_search	__res_search
 #define	res_querydomain	__res_querydomain
 #define	res_mkquery	__res_mkquery
+#define	res_send	__res_send
 #endif
