@@ -40,6 +40,8 @@ all install config configure:
 		fi; \
 		/bin/cp ../support/Makefile.irc ../support/Makefile.ircd .; \
 		cd ..; \
+		echo; \
+		echo "Have you read doc/README? (I hope so)"; \
 		echo "Next cd ${rev}, edit config.h and run make to build"; \
 	fi
 
