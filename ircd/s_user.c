@@ -1312,7 +1312,7 @@ int	m_unick(aClient *cptr, aClient *sptr, int parc, char *parv[])
 	/*
 	** Check validity of UID.
 	*/
-	if (!check_uid(uid))
+	if (!check_uid(uid, sptr->serv->sid))
 	{
 		/* This is so bad, that I really don't want to deal with it! */
 		sendto_ops_butone(NULL, &me,
