@@ -765,6 +765,25 @@ aConfItem	*find_conf_host(Link *lp, char *host, int statmask)
 	return NULL;
 }
 
+aConfItem	*find_conf_host_sid(Link *lp, char *host, char *sid, int statmask)
+{
+	Reg	aConfItem *tmp;
+	int	hostlen = host ? strlen(host) : 0;
+  
+	if (hostlen > HOSTLEN || BadPtr(host))
+		return (aConfItem *)NULL;
+	for (; lp; lp = lp->next)
+	    {
+		tmp = lp->value.aconf;
+		if (tmp->status & statmask &&
+		    (!(tmp->status & CONF_SERVER_MASK || tmp->host) ||
+	 	     (tmp->host && !match(tmp->host, host))) &&
+			(!tmp->passwd || !match(tmp->passwd, sid)))
+			return tmp;
+	    }
+	return NULL;
+}
+
 /*
  * find_conf_ip
  *
