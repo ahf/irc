@@ -3550,6 +3550,11 @@ static	void	save_user(aClient *cptr, aClient *sptr, char *path)
 	{
 		sendto_one(sptr, replies[RPL_SAVENICK], cptr ? cptr->name : ME,
 			   sptr->name, sptr->user->uid);
+#if defined(CLIENTS_CHANNEL) && (CLIENTS_CHANNEL_LEVEL & CCL_NICK)
+		sendto_flag(SCH_CLIENT, "%s %s %s %s NICK %s",
+			sptr->user->uid, sptr->name, sptr->user->username,
+			sptr->user->host, sptr->user->uid);
+#endif
 	}
 	
 	sendto_common_channels(sptr, ":%s NICK :%s",
