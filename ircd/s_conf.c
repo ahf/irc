@@ -1687,8 +1687,7 @@ char	**comment;
 					continue;
 		
 		/* user & port matching */
-		if ((!check || match(tmp->name,
-			(*check == '+' ? check+1, check)) == 0) &&
+		if ((!check || match(tmp->name, check) == 0) &&
 		    (!tmp->port || (tmp->port == cptr->acpt->port)))   
 		    {
 #ifdef TIMEDKLINES
