@@ -1995,6 +1995,10 @@ char	*parv[];
 			(void)strcpy(jbuf, "0");
 			continue;
 		    }
+		if (MyClient(sptr))
+		    {
+			clean_channelname(name);
+		    }
 		if (*name == '!')
 		    {
 			chptr = NULL;
