@@ -2389,8 +2389,7 @@ int	m_join(aClient *cptr, aClient *sptr, int parc, char *parv[])
 				sendto_channel_butserv(chptr, sptr,
 						PartFmt,
 						parv[0], chptr->chname,
-						IsAnonymous(chptr) ? "None" :
-						(key ? key : parv[0]));
+						key ? key : "");
 				remove_user_from_channel(sptr, chptr);
 			    }
 			sendto_match_servs(NULL, cptr, ":%s JOIN 0 :%s",
