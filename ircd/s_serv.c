@@ -2112,8 +2112,8 @@ int	m_stats(aClient *cptr, aClient *sptr, int parc, char *parv[])
 			    {
 				if (!(acptr = local[i]))
 					continue;
-				if (IsPerson(acptr) && !(MyConnect(sptr)
-				    && IsAnOper(sptr)) && acptr != sptr)
+				if (IsPerson(acptr) && (!MyConnect(sptr)
+				    || is_allowed(sptr, ACL_TRACE)) && acptr != sptr)
 					continue;
 				if (wilds && match(cm, acptr->name))
 					continue;
