@@ -27,8 +27,8 @@
 #define FLAG_ROUNDS  0x00000040
 #define FLAG_EXT     0x00000080
 
-extern char *getpass(void);
-extern char *crypt(void);
+extern char *getpass();
+extern char *crypt();
 
 char *make_des_salt(void);
 char *make_ext_salt(int);
