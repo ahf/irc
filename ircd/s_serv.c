@@ -108,7 +108,7 @@ int	m_version(aClient *cptr, aClient *sptr, int parc, char *parv[])
 {
 	if (hunt_server(cptr,sptr,":%s VERSION :%s",1,parc,parv)==HUNTED_ISME)
 		sendto_one(sptr, replies[RPL_VERSION], ME, BadTo(parv[0]),
-			   version, debugmode, ME, serveropts);
+			   version, debugmode, ME, me.serv->sid, serveropts);
 	return 2;
 }
 
