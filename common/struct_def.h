@@ -933,3 +933,14 @@ typedef	struct	Ignore {
  */
 #define CHIDNB 36
 
+
+/* Defines used for SET command */
+#define TSET_ACONNECT 0x001
+#define TSET_POOLSIZE 0x002
+#define TSET_SHOWALL (int) ~0
+
+/* Runtime onfiguration structure */
+typedef struct
+{
+	int aconnect;	/* 1 - ON 0 - OFF */
+} iconf_t;
