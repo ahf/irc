@@ -993,8 +993,9 @@ Reg	aClient	*cptr;
 			send_umode(NULL, acptr, 0, SEND_UMODES, buf);
 			if (cptr->serv->version & SV_UID && *acptr->user->uid)
 				sendto_one(cptr,
-					   UNICK %s %s %s %s %s %s :%s",
-					   acptr>name, acptr->user->uid,
+					   ":%s UNICK %s %s %s %s %s %s :%s",
+					   me.serv->sid,
+					   acptr->name, acptr->user->uid,
 					   acptr->user->username,
 					   acptr->user->host,
 					   acptr->user->ip,
