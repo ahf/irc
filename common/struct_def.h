@@ -64,6 +64,8 @@ typedef struct        LineItem aExtData;
 #define	CHIDLEN		5		/* WARNING: *DONT* CHANGE THIS!!!! */
 #define	SIDLEN		4		/* WARNING: *DONT* CHANGE THIS!!!! */
 #define	MAXMODEPARAMS	3		/* WARNING: *DONT* CHANGE THIS!!!! */
+#define	DELAYCHASETIMELIMIT	1800	/* WARNING: *DONT* CHANGE THIS!!!! */
+#define	LDELAYCHASETIMELIMIT	5400	/* WARNING: *DONT* CHANGE THIS!!!! */
 
 #define	READBUF_SIZE	16384	/* used in s_bsd.c *AND* s_zip.c ! */
  
