@@ -696,7 +696,7 @@ void	setup_server_channels(aClient *mp)
 	chptr = get_channel(mp, "&CLIENTS", CREATE);
 	strcpy(chptr->topic, "SERVER MESSAGES: clients activity");
 	add_user_to_channel(chptr, mp, CHFL_CHANOP);
-	chptr->mode.mode = smode|MODE_SECRET;
+	chptr->mode.mode = smode|MODE_SECRET|MODE_INVITEONLY;
 #endif
 
 	setup_svchans();
@@ -1881,8 +1881,8 @@ static	int	can_join(aClient *sptr, aChannel *chptr, char *key)
 
 #ifdef CLIENTS_CHANNEL
 	if (*chptr->chname == '&' && !strcmp(chptr->chname, "&CLIENTS")
-		&& is_allowed(sptr, ACL_CLIENTS))
-		return (ERR_INVITEONLYCHAN);
+		&& !is_allowed(sptr, ACL_CLIENTS))
+		return 0;
 #endif
 
 	for (lp = sptr->user->invited; lp; lp = lp->next)
