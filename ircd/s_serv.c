@@ -576,12 +576,6 @@ int    m_smask(aClient *cptr, aClient *sptr, int parc, char *parv[])
 {
 	aClient *acptr;
 
-	if (parc < 3)
-	{
-		return exit_client(cptr, cptr, &me,
-			"Not enough parameters to SMASK");
-	}
-
 	if (!sid_valid(parv[1]))
 	{
 		sendto_flag(SCH_ERROR,
