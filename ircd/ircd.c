@@ -887,7 +887,7 @@ char	*argv[];
 			acptr = NULL;
 		    }
 		/* exit if there is nothing to listen to */
-		if (acptr == NULL)
+		if (acptr == NULL && !(bootopt & BOOT_INETD))
 			exit(-1);
 		/* Is there an M-line? */
 		if (!find_me())
