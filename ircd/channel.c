@@ -42,6 +42,7 @@ static	char rcsid[] = "@(#)$Id$";
 #undef CHANNEL_C
 
 static	char	asterix[2]="*";
+
 #define	BanLen(x)	((strlen(x->nick)+strlen(x->user)+strlen(x->host)))
 #define BanMatch(x,y)	((!match(x->nick,y->nick)&&!match(x->user,y->user)&&!match(x->host,y->host)))
 #define BanExact(x,y)	((!mycmp(x->nick,y->nick)&&!mycmp(x->user,y->user)&&!mycmp(x->host,y->host)))
