@@ -369,7 +369,6 @@ char	*parv[];
 		** Rather than KILL the link which introduced it, KILL the
 		** youngest of the two links. -avalon
 		*/
-		acptr = acptr->from;
 		bcptr = (cptr->firsttime > acptr->from->firsttime) ? cptr :
 			acptr->from;
 		sendto_one(bcptr, "ERROR :Server %s already exists", host);
