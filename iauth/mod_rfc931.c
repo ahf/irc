@@ -156,6 +156,7 @@ u_int cl;
 					while (*++chk)
 						if (*chk == ':' ||
 						    *chk == '@' ||
+						    *chk == '[' ||
 						    isspace(*chk))
 							break;
 					if (*chk)

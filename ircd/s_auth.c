@@ -506,7 +506,7 @@ Reg	aClient	*cptr;
 				break;
 		strncpyzt(system, t, sizeof(system));
 		for (t = ruser; *s && (t < ruser + sizeof(ruser)); s++)
-			if (!isspace(*s) && *s != ':' && *s != '@')
+			if (!isspace(*s) && *s != ':' && *s != '@' && *s !='[')
 				*t++ = *s;
 		*t = '\0';
 		Debug((DEBUG_INFO,"auth reply ok [%s] [%s]", system, ruser));
