@@ -1051,9 +1051,7 @@ int	parc, notice;
 					   parv[0]), nick);
 				continue;
 			    }
-			if (match(nick + 1, sptr->user->server) &&
-			    (*nick == '$' ||
-			     match(nick + 1, sptr->user->host)))
+			if (strcasecmp(rindex(nick, '.'), s))
 			    {
 				sendto_one(sptr, err_str(ERR_BADMASK,
 					   parv[0]), nick);
