@@ -400,9 +400,9 @@ static	aClient	anon = { NULL, NULL, NULL, &ausr, NULL, NULL, 0, 0,/*flags*/
 # endif
 			 0, {0, 0, NULL }, {0, 0, NULL },
 			 0, 0, 0L, 0L, 0, 0, 0, NULL, NULL, 0, NULL, 0
-# if defined(__STDC__)	/* hack around union{} initialization	-Vesa */
+//# if defined(__STDC__)	/* hack around union{} initialization	-Vesa */
 			 , {0}, NULL, "", "", EXITC_UNDEF
-# endif
+//# endif
 			};
 #endif
 

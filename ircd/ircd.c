@@ -622,7 +622,7 @@ static	void	setup_me(aClient *mp)
 #endif
 	mp->hostp->h_addr_list = (char **)MyMalloc(2*sizeof(char *));
 #ifdef	INET6
-	mp->hostp->h_addr_list[0] = (char *)&in6addr_loopback;
+	mp->hostp->h_addr_list[0] = (const char *)&in6addr_loopback;
 #else
 	mp->hostp->h_addr_list[0] = (void *)MyMalloc(mp->hostp->h_length);
 	*(long *)(mp->hostp->h_addr_list[0]) = IN_LOOPBACKNET;

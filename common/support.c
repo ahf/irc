@@ -35,6 +35,10 @@ static  char rcsid[] = "@(#)$Id$";
 #endif
 #undef SUPPORT_C
 
+unsigned char minus_one[]={ 255, 255, 255, 255, 255, 255, 255, 255, 255,
+                                        255, 255, 255, 255, 255, 255, 255, 0};
+
+
 char	*mystrdup(char *s)
 {
 	/* Portable strdup(), contributed by mrg, thanks!  -roy */
@@ -183,7 +187,7 @@ char	*inetntop(int af, const void *in, char *out, size_t the_size)
 	}	
 	/* quick and dirty hack to give ipv4 just ipv4 instead of
 	 * ::ffff:ipv4 - Q */
-	if (af == AF_INET6 && IN6_IS_ADDR_V4MAPPED((struct in6_addr *)in))
+	if (af == AF_INET6 && IN6_IS_ADDR_V4MAPPED((const struct in6_addr *)in))
 	{
 		char	*p;
 
@@ -258,9 +262,9 @@ int	inetpton(int af, const char *src, void *dst)
 		i = inet_pton(AF_INET, src, dst);
 
 		/* ugly hack */
-		memcpy(dst + 12, dst, 4);
+		memcpy((char *)dst + 12, dst, 4);
 		memset(dst, 0, 10);
-		memset(dst + 10, 0xff, 2);
+		memset((char *)dst + 10, 0xff, 2);
 		return i;
 	    }
 	return inet_pton(af, src, dst);
