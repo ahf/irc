@@ -1648,6 +1648,8 @@ add_con_refuse:
 				     acptr->hostp->h_aliases[i++]);
 		if (acptr->hostp->h_name)
 			sendto_iauth("%d N %s",acptr->fd,acptr->hostp->h_name);
+		else if (acptr->hostp->h_aliases[0])
+			sendto_iauth("%d n", acptr->fd);
 	    }
 #endif
 	return acptr;
@@ -3189,6 +3191,8 @@ static	void	do_dns_async()
 					if (hp->h_name)
 						sendto_iauth("%d N %s",
 							cptr->fd, hp->h_name);
+					else if (hp->h_aliases[0])
+						sendto_iauth("%d n", cptr->fd);
 				    }
 				else
 					sendto_iauth("%d d", cptr->fd);
