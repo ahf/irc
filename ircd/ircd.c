@@ -653,7 +653,6 @@ char	*argv[];
 	make_server(&me);
 
 	version = make_version();	/* Generate readable version string */
-	isupport = make_isupport();	/* Generate RPL_ISUPPORT (005) numerics */
 
 	/*
 	** All command line parameters have the syntax "-fstring"
@@ -904,6 +903,12 @@ char	*argv[];
 				me.serv->sid);
 			exit(-1);
 		}
+		if (!networkname)
+		{
+			fprintf(stderr,
+			"Warning: Network name is not set in ircd.conf\n");
+		}
+		isupport = make_isupport();	/* Generate RPL_ISUPPORT (005) numerics */
 	    }
 
 	setup_me(&me);
