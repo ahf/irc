@@ -455,7 +455,7 @@ char	*comment;	/* Reason for the exit */
 	    {
 		if (sptr->flags & FLAGS_KILLED)
 		    {
-			sendto_flag(SCH_LOCAL, "Killed: %s.",
+			sendto_flag(SCH_NOTICE, "Killed: %s.",
 				    get_client_name(sptr, TRUE));
 			sptr->exitc = EXITC_KILL;
 		    }

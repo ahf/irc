@@ -3577,7 +3577,7 @@ time_t	now;
 		if (curh_nb == 0)
 		    {
 #ifdef	DEBUGMODE
-			sendto_flag(SCH_LOCAL,
+			sendto_flag(SCH_NOTICE,
 		       "Channel garbage: live %u (max %u), hist %u (extended)",
 				    cur_nb - 1, max_nb - 1, curh_nb);
 #endif
@@ -3614,7 +3614,7 @@ time_t	now;
 	    }
 
 #ifdef	DEBUGMODE
-	sendto_flag(SCH_LOCAL,
+	sendto_flag(SCH_NOTICE,
 		   "Channel garbage: live %u (max %u), hist %u (removed %u)%s",
 		    cur_nb - 1, max_nb - 1, curh_nb, del - istat.is_hchan,
 		    (split) ? " split detected" : "");

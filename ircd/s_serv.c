@@ -728,7 +728,7 @@ char	*parv[];
 		/* A server can only be introduced by another server. */
 		if (!IsServer(sptr))
 		    {
-			sendto_flag(SCH_LOCAL,
+			sendto_flag(SCH_NOTICE,
 			    "Squitting %s brought by %s (introduced by %s)",
 				    host, get_client_name(cptr, FALSE),
 				    sptr->name);
