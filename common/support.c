@@ -711,8 +711,9 @@ char *make_version()
 	char ver[15];
 
 	sscanf(PATCHLEVEL, "%2d%2d%2d%2d%2d", &ve, &re, &mi, &dv, &pl);
-	sprintf(ver, "%d.%d", ve, re);	/* version & revision */
-	if (mi)	/* minor revision */
+	/* version & revision */
+	sprintf(ver, "%d.%d", ve, (mi == 99) ? re + 1 : re);
+	if (mi && mi != 99)	/* minor revision */
 		sprintf(ver + strlen(ver), ".%d", dv ? mi+1 : mi);
 	if (dv)	/* alpha/beta, note how visual patchlevel is raised above */
 		sprintf(ver + strlen(ver), "%c%d", DEVLEVEL, dv);
