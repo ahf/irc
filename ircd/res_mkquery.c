@@ -53,10 +53,9 @@
  * --Copyright--
  */
 
-#if defined(LIBC_SCCS) && !defined(lint)
-static char sccsid[] = "@(#)res_mkquery.c	8.1 (Berkeley) 6/4/93";
-static char rcsid[] = "$Id$";
-#endif /* LIBC_SCCS and not lint */
+#ifndef lint
+static  char rcsid[] = "@(#)$Id$";
+#endif
 
 #include "config.h"
 #include "sys.h"
@@ -99,7 +98,7 @@ res_mkquery(op, dname, class, type, data, datalen, newrr_in, buf, buflen)
 #endif
 	u_char *dnptrs[20], **dpp, **lastdnptr;
 
-	if ((ircd_res.options & RES_INIT) == 0 && res_init() == -1) {
+	if ((ircd_res.options & RES_INIT) == 0 && ircd_res_init() == -1) {
 		h_errno = NETDB_INTERNAL;
 		return (-1);
 	}

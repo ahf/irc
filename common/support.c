@@ -18,8 +18,7 @@
  */
 
 #ifndef lint
-static  char sccsid[] = "%W% %G% 1990, 1991 Armin Gruner;\
-1992, 1993 Darren Reed";
+static  char rcsid[] = "@(#)$Id$";
 #endif
 
 #include "struct.h"
@@ -27,6 +26,7 @@ static  char sccsid[] = "%W% %G% 1990, 1991 Armin Gruner;\
 #include "sys.h"
 #include "h.h"
 #include "patchlevel.h"
+#include <signal.h>
 
 extern	int errno; /* ...seems that errno.h doesn't define this everywhere */
 #ifndef	CLIENT_COMPILE
@@ -184,8 +184,8 @@ struct in_addr in;
 
 
 #if defined(DEBUGMODE) && !defined(CLIENT_COMPILE)
-void	dumpcore(msg, p1, p2, p3, p4, p5, p6, p7, p8, p9)
-char	*msg, *p1, *p2, *p3, *p4, *p5, *p6, *p7, *p8, *p9;
+void	dumpcore(msg, p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11)
+char	*msg, *p1, *p2, *p3, *p4, *p5, *p6, *p7, *p8, *p9, *p10, *p11;
 {
 	static	time_t	lastd = 0;
 	static	int	dumps = 0;
@@ -216,8 +216,8 @@ char	*msg, *p1, *p2, *p3, *p4, *p5, *p6, *p7, *p8, *p9;
 	(void)rename("core", corename);
 	Debug((DEBUG_FATAL, "Dumped core : core.%d", p));
 	sendto_flag(SCH_ERROR, "Dumped core : core.%d", p);
-	Debug((DEBUG_FATAL, msg, p1, p2, p3, p4, p5, p6, p7, p8, p9));
-	sendto_flag(SCH_ERROR, msg, p1, p2, p3, p4, p5, p6, p7, p8, p9);
+	Debug((DEBUG_FATAL, msg, p1, p2, p3, p4, p5, p6, p7, p8, p9, p10,p11));
+	sendto_flag(SCH_ERROR, msg, p1, p2, p3, p4, p5, p6, p7, p8,p9,p10,p11);
 	(void)s_die();
 }
 #endif
@@ -501,14 +501,15 @@ dgetsreturnbuf:
 /*
  * By Mika
  */
-int	irc_sprintf(outp, formp, i0, i1, i2, i3, i4, i5, i6, i7, i8, i9, i10)
+int	irc_sprintf(outp, formp,
+		    i0, i1, i2, i3, i4, i5, i6, i7, i8, i9, i10, i11)
 char	*outp;
 char	*formp;
-char	*i0, *i1, *i2, *i3, *i4, *i5, *i6, *i7, *i8, *i9, *i10;
+char	*i0, *i1, *i2, *i3, *i4, *i5, *i6, *i7, *i8, *i9, *i10, *i11;
 {
 	/* rp for Reading, wp for Writing, fp for the Format string */
 	/* we could hack this if we know the format of the stack */
-	char	*inp[11];
+	char	*inp[12];
 	Reg	char	*rp, *fp, *wp, **pp = inp;
 	Reg	char	f;
 	Reg	long	myi;
@@ -525,6 +526,7 @@ char	*i0, *i1, *i2, *i3, *i4, *i5, *i6, *i7, *i8, *i9, *i10;
 	inp[8] = i8;
 	inp[9] = i9;
 	inp[10] = i10;
+	inp[11] = i11;
 
 	/*
 	 * just scan the format string and puke out whatever is necessary
@@ -556,7 +558,7 @@ char	*i0, *i1, *i2, *i3, *i4, *i5, *i6, *i7, *i8, *i9, *i10;
 				    {
 					(void)sprintf(outp, formp, i0, i1, i2,
 						      i3, i4, i5, i6, i7, i8,
-						      i9, i10);
+						      i9, i10, i11);
 					return -1;
 				    }
 
@@ -574,7 +576,7 @@ char	*i0, *i1, *i2, *i3, *i4, *i5, *i6, *i7, *i8, *i9, *i10;
 				break;
 			default :
 				(void)sprintf(outp, formp, i0, i1, i2, i3, i4,
-					      i5, i6, i7, i8, i9, i10);
+					      i5, i6, i7, i8, i9, i10, i11);
 				return -1;
 			}
 	*wp = '\0';
