@@ -651,7 +651,7 @@ int	m_server(aClient *cptr, aClient *sptr, int parc, char *parv[])
 	int		hop = 0;
 	int		tmperr;
 
-	if (sptr->user) /* in case NICK hasn't been received yet */
+	if (sptr->user) /* in case NICK has been received already */
             {
                 sendto_one(sptr, replies[ERR_ALREADYREGISTRED], ME, BadTo(parv[0]));
                 return 1;
