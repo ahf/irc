@@ -105,8 +105,9 @@ static	int	pipe_start(u_int cl)
 			if (pp[1] != 2 && pp[1] != 1)
 				(void)close(pp[1]);
 			(void)execlp(cldata[cl].instance->popt,
-				     cldata[cl].instance->popt,
-				     cldata[cl].itsip, cldata[cl].itsport);
+				cldata[cl].instance->popt,
+				cldata[cl].itsip, cldata[cl].itsport,
+				(char *) NULL);
 			_exit(-1);
 		    }
 	    default :
