@@ -259,7 +259,7 @@ long	oline_flags_parse(char *string)
 		switch(*s)
 		{
 		case 'L': tmp |= ACL_LOCOP; break;
-		case 'A': tmp |= ACL_ALL_MASK; break;
+		case 'A': tmp |= (ACL_ALL & ~ACL_LOCOP); break;
 		case 'K': tmp |= ACL_KILL; break;
 		case 'k': tmp |= ACL_KILLLOCAL; break;
 		case 'S': tmp |= ACL_SQUIT; break;
@@ -1630,7 +1630,7 @@ int 	initconf(int opt)
 		{
 			aconf->flags |= oline_flags_parse(tmp3);
 			if (aconf->flags & ACL_LOCOP)
-				aconf->flags &= ACL_LOCOP_MASK;
+				aconf->flags &= ~ACL_ALL_REMOTE;
 #ifdef OPER_KILL
 # ifdef LOCAL_KILL_ONLY
 			aconf->flags &= ~ACL_KILLREMOTE;
