@@ -3211,9 +3211,10 @@ aChannel *chptr;
     if (chptr->users <= 5 && (now - chptr->history > DELAYCHASETIMELIMIT))
 	{
 	    /* few users, no recent split: this is really a small channel */
-	    char mbuf[MAXMODEPARAMS + 1], nbuf[3*(NICKLEN+1)+1];
+	    char mbuf[MAXMODEPARAMS + 1], nbuf[MAXMODEPARAMS*(NICKLEN+1)+1];
 	    int cnt;
 	    
+		mbuf[0] = nbuf[0] = '\0';
 	    lp = chptr->members;
 	    while (lp)
 		{
