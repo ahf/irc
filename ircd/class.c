@@ -234,7 +234,6 @@ void	report_classes(aClient *sptr, char *to)
 int	get_sendq(aClient *cptr, int bursting)
 {
 	Reg	int	sendq = QUEUELEN;
-	Reg	int	bsendq = 2 * QUEUELEN;
 	Reg	Link	*tmp;
 	Reg	aClass	*cl;
 

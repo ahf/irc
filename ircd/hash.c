@@ -37,7 +37,6 @@ static	int	uidhits = 0, uidmiss = 0, uidsize = 0;
 static	int	chhits = 0, chmiss = 0, chsize = 0;
 static	int	sidhits = 0, sidmiss = 0, sidsize = 0;
 static  int     cnhits = 0, cnmiss = 0 ,cnsize = 0;
-static	int	svsize = 0;
 int	_HASHSIZE = 0;
 int	_UIDSIZE = 0;
 int	_CHANNELHASHSIZE = 0;
@@ -1195,7 +1194,6 @@ int	m_hash(aClient *cptr, aClient *sptr, int parc, char *parv[])
 	int shash = -1, i, l;
 	int deepest = 0 , deeplink = 0, totlink = 0, mosthits = 0, mosthit = 0;
 	int tothits = 0, used = 0, used_now = 0, link_pop[11];
-	static int unavailable = -1;
 	
 	struct HashTable_s HashTables[] =
 	{

@@ -326,7 +326,6 @@ int	m_service(aClient *cptr, aClient *sptr, int parc, char *parv[])
 	aServer	*sp = NULL;
 	char	*dist, *server = NULL, *info;
 	int	type, i;
-	char	*mlname;
 
 	if (sptr->user)
 	    {
