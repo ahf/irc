@@ -2431,10 +2431,8 @@ int	 m_lusers(aClient *cptr, aClient *sptr, int parc, char *parv[])
 	
 	sendto_one(sptr, replies[RPL_LUSERME], ME, BadTo(parv[0]), m_clients,
 		   m_services, m_servers);
-        sendto_one(sptr, replies[RPL_LOCALUSERS], ME, BadTo(parv[0]),
-			istat.is_myclnt, istat.is_m_myclnt);
-	sendto_one(sptr, replies[RPL_GLOBALUSERS], ME, BadTo(parv[0]),
-			c_count + i_count, istat.is_m_users);
+        sendto_one(sptr, replies[RPL_LUSERMAX], ME, BadTo(parv[0]),
+			istat.is_m_myclnt, istat.is_m_users);
 	return 2;
 }
 
