@@ -36,7 +36,7 @@ extern int dk_tocheck;
 extern int dk_lastfd;
 #endif
 
-static	void	exit_one_client __P((aClient *,aClient *,aClient *,char *));
+static	void	exit_one_client (aClient *, aClient *, aClient *, char *);
 static	void	exit_server(aClient *cptr, aClient *acptr, char *comment,
 			char *comment2);
 

@@ -58,9 +58,9 @@ static  char rcsid[] = "@(#)$Id$";
 #undef S_CONF_C
 
 #ifdef TIMEDKLINES
-static	int	check_time_interval __P((char *, char *));
+static	int	check_time_interval (char *, char *);
 #endif
-static	int	lookup_confhost __P((aConfItem *));
+static	int	lookup_confhost (aConfItem *);
 
 aConfItem	*conf = NULL;
 aConfItem	*kconf = NULL;

@@ -148,12 +148,12 @@ char	userhost[USERLEN+HOSTLEN+2];
 #define	timeofday	time(NULL)
 #else
 static	char	sender[HOSTLEN+1];
-static	int	cancel_clients __P((aClient *, aClient *, char *));
-static	void	remove_unknown __P((aClient *, char *));
+static	int	cancel_clients (aClient *, aClient *, char *);
+static	void	remove_unknown (aClient *, char *);
 #endif
 
-static	int	find_sender __P((aClient *cptr, aClient **sptr, char *sender,
-			char *buffer));
+static	int	find_sender (aClient *cptr, aClient **sptr, char *sender,
+			char *buffer);
 
 /*
 **  Find a client (server or user) by name.

@@ -31,7 +31,7 @@ static  char rcsid[] = "@(#)$Id$";
 #include "s_externs.h"
 #undef S_USER_C
 
-static void	save_user __P((aClient *, aClient *, char *));
+static void	save_user (aClient *, aClient *, char *);
 
 static char buf[BUFSIZE], buf2[BUFSIZE];
 
