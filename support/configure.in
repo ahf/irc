@@ -1398,5 +1398,5 @@ IRC_STDARG
 IRC_PATH_RESCONF
 IRC_ALPHA_BETA
 
-AC_OUTPUT(Makefile:../support/Makefile.in version.c.SH:../ircd/version.c.SH.in sums:../ircd/crypt/sums.in config.h:../support/config.h.dist)
+AC_OUTPUT(Makefile:../support/Makefile.in version.c.SH:../ircd/version.c.SH.in sums:../support/sums.in config.h:../support/config.h.dist)
 AC_OUTPUT_COMMANDS(chmod a+x version.c.SH)
