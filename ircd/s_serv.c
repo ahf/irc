@@ -1267,7 +1267,8 @@ int	mask;
 	int	*p, port;
 	char	c, *host, *pass, *name;
 	
-	for (tmp = conf; tmp; tmp = tmp->next)
+	for (tmp = (mask & (CONF_KILL|CONF_OTHERKILL)) ? kconf : conf;
+	     tmp; tmp = tmp->next)
 		if (tmp->status & mask)
 		    {
 			for (p = &report_array[0][0]; *p; p += 3)
