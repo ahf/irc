@@ -81,7 +81,7 @@ aClient *cptr;
 	if (!strcmp(cptr->username, cptr->auth))
 	    {
 		MyFree(cptr->auth);
-		cptr->auth = mystrdup(cptr->username);
+		cptr->auth = cptr->username;
 	    }
 	else
 	    {
