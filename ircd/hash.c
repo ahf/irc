@@ -317,7 +317,7 @@ static	void	clear_hostname_hash_table(int size)
 		_HOSTNAMEHASHSIZE, size));
 }
 
-void	inithashtables()
+void	inithashtables(void)
 {
 	Reg int i;
 

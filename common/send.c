@@ -361,7 +361,7 @@ int	send_queued(aClient *to)
 static	anUser	ausr;
 static	aClient	anon;
 
-void initanonymous()
+void initanonymous(void)
 {
 	memset(&ausr, 0, sizeof(anUser));
 	strcpy(ausr.username, "anonymous");

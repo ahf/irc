@@ -183,7 +183,7 @@ int main(int argc, char *argv[])
   return 0;
 }
 
-char *make_des_salt()
+char *make_des_salt(void)
 {
   static char salt[3];
   generate_random_salt(salt, 2);
@@ -332,7 +332,7 @@ char *generate_random_salt(char *salt, int length)
   return(salt);
 }
 
-void full_usage()
+void full_usage(void)
 {
   printf("mkpasswd [-m|-d|-b|-e] [-l saltlength] [-r rounds] [-s salt] [-p plaintext]\n");
   printf("-m Generate an MD5 password\n");
@@ -350,7 +350,7 @@ void full_usage()
   exit(0);
 }
 
-void brief_usage()
+void brief_usage(void)
 {
   printf("mkpasswd - password hash generator\n");
   printf("Standard DES:  mkpasswd [-d] [-s salt] [-p plaintext]\n");

@@ -1645,7 +1645,7 @@ time_t	expire_cache(time_t now)
 /*
  * remove all dns cache entries.
  */
-void	flush_cache()
+void	flush_cache(void)
 {
 	Reg	aCache	*cp;
 

@@ -132,7 +132,7 @@ static	void	init_signals(void)
 #endif
 }
 
-void	write_pidfile()
+void	write_pidfile(void)
 {
 	int fd;
 	char pidbuf[32];

@@ -139,7 +139,7 @@ struct __res_state ircd_res
  *
  * Return 0 if completes successfully, -1 on error
  */
-int	ircd_res_init()
+int	ircd_res_init(void)
 {
 	register FILE *fp;
 	register char *cp, **pp;
@@ -650,7 +650,7 @@ static int	ircd_netinfo_res_init(int *haveenv, int *havesearch)
 }
 #endif	/* NEXT */
 
-u_int	ircd_res_randomid()
+u_int	ircd_res_randomid(void)
 {
 	struct timeval now;
 
