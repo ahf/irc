@@ -2820,7 +2820,7 @@ void	get_my_name(aClient *cptr, char *name, int len)
 			strncpyzt(name, hp->h_name, len);
 		else
 			strncpyzt(name, tmp, len);
-		if (!aconf->passwd)
+		if (BadPtr(aconf->passwd))
 			bcopy(hp->h_addr, (char *)&mysk.SIN_ADDR,
 			      sizeof(struct IN_ADDR));
 		Debug((DEBUG_DEBUG,"local name is %s",
