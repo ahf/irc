@@ -70,7 +70,7 @@ int cl;
     if (mydata->options & OPT_DENY)
 	{
 	    cldata[cl].state |= A_DENY;
-	    sendto_ircd("K %d %s %u ", cl, cldata[cl].itsip,
+	    sendto_ircd("k %d %s %u ", cl, cldata[cl].itsip,
 			cldata[cl].itsport);
 	}
     if (mydata->options & OPT_LOG)
