@@ -331,8 +331,14 @@ read_iauth()
 			    start = end;
 			    continue;
 			}
+#ifndef	INET6
 		    sprintf(tbuf, "%c %d %s %u ", start[0], i,
 			    inetntoa((char *)&cptr->ip), cptr->port);
+#else
+		    sprintf(tbuf, "%c %d %s %u ", start[0], i,
+			    inetntop(AF_INET6, (char *)&cptr->ip, 
+			    mydummy, MYDUMMY_SIZE), cptr->port);
+#endif
 		    if (strncmp(tbuf, start, strlen(tbuf)))
 			{
 			    /* this is fairly common and can be ignored */
