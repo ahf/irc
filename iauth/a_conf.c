@@ -38,7 +38,7 @@ AnInstance *instances = NULL;
 static	void	conf_err(u_int nb, char *msg, char *chk)
 {
 	if (chk)
-		printf("configuration error line %d: %s\n", nb, msg);
+		fprintf(stderr, "configuration error line %d: %s\n", nb, msg);
 	else
 		sendto_log(ALOG_IRCD|ALOG_DCONF, LOG_ERR,
 			   "Configuration error line %d: %s", nb, msg);
