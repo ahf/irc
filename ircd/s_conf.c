@@ -301,7 +301,6 @@ int	attach_Iline(aClient *cptr, struct hostent *hp, char *sockhost)
 				if (!UHConfMatch(aconf->name, uhost, ulen))
 				{
 					namematched = 1;
-					break;
 				}
 			}
 			/* Note: here we could do else (!hp) and try to
