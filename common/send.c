@@ -189,16 +189,8 @@ tryagain:
 	{
 		if (i == -2 && CBurst(to))
 		    {	/* poolsize was exceeded while connect burst */
-			aConfItem	*aconf;
 
-			if (IsServer(to))
-				aconf = to->serv->nline;
-			else
-				aconf = to->confs->value.aconf;
-
-			poolsize -= MaxSendq(aconf->class) >> 1;
-			IncSendq(aconf->class);
-			poolsize += MaxSendq(aconf->class) >> 1;
+			poolsize *= 1.1;
 			sendto_flag(SCH_NOTICE,
 				    "New poolsize %d. (reached)",
 				    poolsize);
