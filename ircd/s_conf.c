@@ -116,6 +116,8 @@ aClient *cptr;
 #ifndef	INET6
 	if (m < 0 || m > 32)
 		goto badmask;
+	if (!m)
+		return 0;       /* x.x.x.x/0 always matches */
 	lmask = htonl((u_long)0xffffffffL << (32 - m));
 	addr.s_addr = inetaddr(mask);
 	return ((addr.s_addr ^ cptr->ip.s_addr) & lmask) ? 1 : 0;
