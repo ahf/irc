@@ -15,6 +15,7 @@ New features in 2.10.0:
 	* added channel mode +I (invitations).
 	* /invite can now be used to override channel bans & limit.
 	* away status is propagated again. (away messages are not).
+	* users need +o (or +v) to speak on a channel where they're banned.
 
 Important configuration changes between 2.9.x and 2.10.x:
 
