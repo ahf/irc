@@ -2488,7 +2488,7 @@ aClient	*cptr, *user;
 			if (match(++mask, cptr->name))
 				continue;
 		clen = strlen(chptr->chname);
-		if (clen > (size_t) BUFSIZE - 7 - len)
+		if ((clen + len) > (size_t) BUFSIZE - 7)
 		    {
 			if (cnt)
 				sendto_one(cptr, "%s", buf);
