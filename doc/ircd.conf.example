@@ -118,8 +118,9 @@ P:/tmp/.ircd:*:*:6666:
 Y:2:90:300:1:600000
 #
 # For client classes, the fields in order are: class number, ping frequency
-# (in seconds), maximum number of links from this [user@]host on the server,
-# maximum number of links in this class, and sendq.
+# (in seconds), unused, maximum number of links in this class, maximum number
+# of links from this [user@]host on the server, and maximum number of
+# user on the net from this [user@]host.
 # 
 Y:1:90:0:20:100000
 #

@@ -597,8 +597,8 @@ Reg	char	*sockn;
  * Ordinary client access check. Look for conf lines which have the same
  * status as the flags passed.
  *  0 = Success
- * -1 = Access denied
- * -2 = Bad socket.
+ * -1 = Bad socket.
+ * -2 = Access denied
  */
 int	check_client(cptr)
 Reg	aClient	*cptr;
@@ -612,7 +612,7 @@ Reg	aClient	*cptr;
 		cptr->name, inetntoa((char *)&cptr->ip)));
 
 	if (check_init(cptr, sockname))
-		return -2;
+		return -1;
 
 	if (!IsUnixSocket(cptr))
 		hp = cptr->hostp;
