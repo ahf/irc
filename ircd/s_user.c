@@ -1148,7 +1148,7 @@ nickkilldone:
 			if (IsRestricted(sptr) && !isdigit(*parv[0]))
 			{
 				sendto_one(sptr,
-					replies[ERR_RESTRICTED], ME, BadTo(nick));
+					replies[ERR_RESTRICTED], ME, BadTo(parv[0]));
 				return 2;
 			}
 			/* Can the user speak on all channels? */
