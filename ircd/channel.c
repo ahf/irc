@@ -1884,7 +1884,7 @@ char	*parv[];
 							   parv[0]), name);
 					continue;
 				    }
-				sprintf(buf, "-%.*s%s", CHIDLEN, get_chid(),
+				sprintf(buf, "!%.*s%s", CHIDLEN, get_chid(),
 					name+2);
 				name = buf;
 			    }

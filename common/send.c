@@ -1124,7 +1124,7 @@ void	sendto_match_servs(aChannel *chptr, aClient *from, char *format, ...)
 			continue;
 		if (!BadPtr(mask) && match(mask, cptr->name))
 			continue;
-		if (*chptr->chname == '-' && !(cptr->serv->version & SV_NJOIN))
+		if (*chptr->chname == '!' && !(cptr->serv->version & SV_NJOIN))
 			continue;
 		if (!len)
 		    {
