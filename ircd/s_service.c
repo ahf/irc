@@ -58,20 +58,25 @@ void	free_service(aClient *cptr)
 	Reg	aService	*serv;
 
 	if ((serv = cptr->service))
-	    {
+	{
 		if (serv->nexts)
 			serv->nexts->prevs = serv->prevs;
 		if (serv->prevs)
 			serv->prevs->nexts = serv->nexts;
 		if (svctop == serv)
 			svctop = serv->nexts;
+		/* It's just the pointer, not even allocated in m_service.
+		 * Why would someone want to destroy that struct here?
+		 * So far commenting it out. --B.
 		if (serv->servp)
 			free_server(serv->servp, cptr);
+		 */
+		/* this is ok, ->server is a string. */
 		if (serv->server)
 			MyFree(serv->server);
 		MyFree(serv);
 		cptr->service = NULL;
-	    }
+	}
 }
 
 
