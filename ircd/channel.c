@@ -1428,6 +1428,10 @@ char	*parv[], *mbuf, *pbuf;
 				if ((host = rindex(user ? user : cp, '@')))
 					*host++ = '\0';
 				cp = make_nick_user_host(cp, user, host);
+				if (user)
+					*(--user) = '!';
+				if (host)
+					*(--host) = '@';
 				break;
 			case MODE_EXCEPTION :
 				c = 'e';
@@ -1437,6 +1441,10 @@ char	*parv[], *mbuf, *pbuf;
 				if ((host = rindex(user ? user : cp, '@')))
 					*host++ = '\0';
 				cp = make_nick_user_host(cp, user, host);
+				if (user)
+					*(--user) = '!';
+				if (host)
+					*(--host) = '@';
 				break;
 			case MODE_INVITE :
 				c = 'I';
@@ -1446,6 +1454,10 @@ char	*parv[], *mbuf, *pbuf;
 				if ((host = rindex(user ? user : cp, '@')))
 					*host++ = '\0';
 				cp = make_nick_user_host(cp, user, host);
+				if (user)
+					*(--user) = '!';
+				if (host)
+					*(--host) = '@';
 				break;
 			case MODE_KEY :
 				c = 'k';
