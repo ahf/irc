@@ -173,6 +173,14 @@ aClient	*cptr;
 		istat.is_auth -= 1;
 		MyFree(cptr->auth);
 	}
+	/* True only for local clients */
+	if (cptr->hopcount == 0)
+	{
+		if (cptr->reason)
+		{
+			MyFree(cptr->reason);
+		}
+	}
 	MyFree((char *)cptr);
 }
 
