@@ -170,6 +170,15 @@ static	void	next_io(int cl, AnInstance *last)
 	    /* sixth, we've got an instance to try */
 	{
 	    int r;
+	    static delayedsent = 0;	/* one fake is enough */
+
+	    if (!delayedsent && cldata[cl].instance->delayed)
+		{
+		    /* fake to ircd that we're done */
+		    sendto_ircd("D %d %s %u ", cl, cldata[cl].itsip,
+				cldata[cl].itsport);
+		    delayedsent = 1;
+		}
 
 	    cldata[cl].timeout = time(NULL) + cldata[cl].instance->timeout;
 	    r = cldata[cl].instance->mod->start(cl);
