@@ -1706,7 +1706,7 @@ static	void	who_find(aClient *sptr, char *mask, int oper)
 		/* allow local opers to see matching clients
 		 * on _LOCAL_ server and show the user himself */
 		if (IsInvisible(acptr) && (acptr != sptr)
-		    && !(MyConnect(sptr) && IsAnOper(sptr))
+		    && !(MyConnect(acptr) && MyConnect(sptr) && IsAnOper(sptr))
 		   )
 		{
 			continue;
