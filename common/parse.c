@@ -389,7 +389,7 @@ aClient *cptr;
     }
 
 
-/* find_serder(): 
+/* find_sender(): 
 ** Find the client structure for the sender of the message we got from cptr
 ** and checks it to be valid.
 ** Stores the result in *sptr.
