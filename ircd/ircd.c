@@ -675,11 +675,6 @@ int	main(int argc, char *argv[])
 	sbrk0 = (char *)sbrk((size_t)0);
 	uid = getuid();
 	euid = geteuid();
-#ifdef	PROFIL
-	(void)monstartup(0, etext);
-	(void)moncontrol(1);
-	(void)signal(SIGUSR1, s_monitor);
-#endif
 
 #ifdef	CHROOTDIR
 	ircd_res_init();
