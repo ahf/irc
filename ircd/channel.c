@@ -1220,7 +1220,7 @@ char	*parv[], *mbuf, *pbuf;
 			    }
 			else if (whatt == MODE_DEL)
 			    {
-				if (ischop || IsServer(cptr))
+				if (*mode->key && (ischop || IsServer(cptr)))
 				    {
 					lp = &chops[opcnt++];
 					lp->value.cp = mode->key;
