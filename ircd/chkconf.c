@@ -146,11 +146,11 @@ int	opt;
 	    {
 		if (aconf)
 		    {
-			if (aconf->host)
+			if (aconf->host && (aconf->host != nullfield))
 				(void)free(aconf->host);
-			if (aconf->passwd)
+			if (aconf->passwd && (aconf->passwd != nullfield))
 				(void)free(aconf->passwd);
-			if (aconf->name)
+			if (aconf->name && (aconf->name != nullfield))
 				(void)free(aconf->name);
 		    }
 		else
