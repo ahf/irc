@@ -177,7 +177,7 @@ void	report_error(char *text, aClient *cptr)
 		cptr->serv && cptr->serv->byuid[0])
 	{
 		bysptr = find_uid(cptr->serv->byuid, NULL);
-		if (!MyConnect(bysptr))
+		if (bysptr && !MyConnect(bysptr))
 		{
 			fmbuf[0] = '\0';
 			strcpy(fmbuf, ":%s NOTICE %s :");
