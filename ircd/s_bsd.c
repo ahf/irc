@@ -2472,7 +2472,7 @@ free_server:
 		if (cptr->fd >= 0)
 			(void)close(cptr->fd);
 		cptr->fd = -2;
-		free_server(cptr->serv, cptr);
+		free_server(cptr->serv);
 		free_client(cptr);
 		return -1;
 	    }
