@@ -697,7 +697,7 @@ char	*argv[];
 		    }
 	    }
 
-#ifndef	CHROOT
+#ifndef	CHROOTDIR
 	if (chdir(dpath))
 	    {
 		perror("chdir");
