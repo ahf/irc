@@ -1541,6 +1541,10 @@ char	*parv[];
 				** Just saving one function call. ;)
 				*/
 				acptr = find_client(mask, NULL);
+				if (acptr && !IsClient(acptr))
+				{
+					acptr = NULL;
+				}
 			}
 			if (acptr)
 			{
