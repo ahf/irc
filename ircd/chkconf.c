@@ -371,6 +371,11 @@ static	aConfItem 	*initconf()
 			case 'y':
 			        aconf->status = CONF_CLASS;
 		        	break;
+#ifdef XLINE
+			case 'X':
+				aconf->status = CONF_XLINE;
+				break;
+#endif
 		    default:
                         (void)fprintf(stderr, "%s:%d\tWARNING: unknown conf line letter (%c)\n",
 				filelist->filename, nr - filelist->min, *tmp);
