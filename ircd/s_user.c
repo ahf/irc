@@ -604,7 +604,7 @@ int	register_user(aClient *cptr, aClient *sptr, char *nick, char *username)
 					   "K-lined");
 		    }
 #ifdef XLINE
-		if (!IsKlineExempt(sptr) && IsXlined(sptr))
+		if (IsXlined(sptr))
 		{
 			sptr->exitc = EXITC_XLINE;
 			return exit_client(cptr, sptr, &me,
