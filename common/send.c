@@ -468,9 +468,11 @@ static	int	vsendpreprep(aClient *to, aClient *from, char *pattern, va_list va)
 			if (!flag && MyConnect(from) && *user->host)
 			    {
 				(void)strcat(psendbuf, "@");
+#ifdef UNIXPORT
 				if (IsUnixSocket(from))
 				    (void)strcat(psendbuf, user->host);
 				else
+#endif
 				    (void)strcat(psendbuf, from->sockhost);
 			    }
 		    }
