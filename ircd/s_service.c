@@ -195,7 +195,7 @@ int	wants;
 			   (wants & SERVICE_WANT_USER) ?
 			   ((wants & SERVICE_WANT_TOKEN) ?
 			    sptr->user->servp->tok : sptr->user->server) : ".",
-			   (wants & SERVICE_WANT_UMODE) ? umode : "+",
+			   (wants & SERVICE_WANT_UMODE | SERVICE_WANT_OPER) ? umode : "+",
 			   (wants & SERVICE_WANT_USER) ? sptr->info : "");
 	else
 		/* old style NICK + USER + UMODE */
