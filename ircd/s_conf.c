@@ -1396,9 +1396,7 @@ int 	initconf(int opt)
 		return -1;
 	    }
 #if defined(CONFIG_DIRECTIVE_INCLUDE)
-	/* Note for a future: do not use fdopen() for its 256 fd limit --B. */
-	close(fd);
-	fdn = fopen(configfile, "r");
+	fdn = fdopen(fd, "r");
 	if (fdn == NULL)
 	{
 		if (serverbooting)
