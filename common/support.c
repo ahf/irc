@@ -776,7 +776,8 @@ char	**make_isupport(void)
 	/* Warning: There must be up to 12 tokens in each string */
 	tis[0] = (char *) MyMalloc(BUFSIZE);
 	sprintf(tis[0],
-		"RFC2812 PREFIX=(ov)@+ CHANTYPES=#&!+ MODES=%d MAXCHANNELS=%d "
+		"RFC2812 PREFIX=(ov)@+ CHANTYPES=#&!+ MODES=%d "
+		"CHANLIMIT=#!+:%d,&: "
 		"NICKLEN=%d TOPICLEN=%d KICKLEN=%d MAXLIST=beI:%d "
 		"CHANNELLEN=%d CHIDLEN=%d CHANMODES=beIR,k,l,imnpstaqr",
 		MAXMODEPARAMS, MAXCHANNELSPERUSER,
