@@ -826,9 +826,28 @@ char	*argv[];
 	    {
 		Debug((DEBUG_FATAL, "Failed in reading configuration file %s",
 			configfile));
+		/* no can do.
 		(void)printf("Couldn't open configuration file %s\n",
 			configfile);
+		*/
 		exit(-1);
+	    }
+	else
+	    {
+		aClient *acptr;
+		int i;
+
+                for (i = 0; i <= highest_fd; i++)
+                    {   
+                        if (!(acptr = local[i]))
+                                continue;
+			if (IsListening(acptr))
+				break;
+			acptr = NULL;
+		    }
+		/* exit if there is nothing to listen to */
+		if (acptr == NULL)
+			exit(-1);
 	    }
 
 	dbuf_init();
