@@ -2700,7 +2700,7 @@ int	m_njoin(aClient *cptr, aClient *sptr, int parc, char *parv[])
 				parv[0], parv[1], nbuf);
 			sendto_match_servs_v(chptr, cptr, SV_UID,
 				":%s NJOIN %s :%s",
-				parv[0], parv[1], uidbuf);
+				sptr->serv->sid, parv[1], uidbuf);
 			*nbuf = '\0'; q = nbuf;
 			*uidbuf = '\0'; u = uidbuf;
 		}
@@ -2805,9 +2805,9 @@ int	m_njoin(aClient *cptr, aClient *sptr, int parc, char *parv[])
 	if (nbuf[0])
 	{
 		sendto_match_servs_notv(chptr, cptr, SV_UID, ":%s NJOIN %s :%s",
-				     parv[0], parv[1], nbuf);
+			parv[0], parv[1], nbuf);
 		sendto_match_servs_v(chptr, cptr, SV_UID, ":%s NJOIN %s :%s",
-				     parv[0], parv[1], uidbuf);
+			sptr->serv->sid, parv[1], uidbuf);
 	}
 
 	return 0;
