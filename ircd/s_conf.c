@@ -1429,8 +1429,8 @@ int	class;
 			    {
 				char rpl[BUFSIZE];
 				
-				irc_sprintf(rpl, rpl_str(RPL_BOUNCE,"unknown"),
-					    aconf->name, aconf->port);
+				SPRINTF(rpl, rpl_str(RPL_BOUNCE,"unknown"),
+					aconf->name, aconf->port);
 				strcat(rpl, "\r\n");
 				send(class, rpl, strlen(rpl), 0);
 				return;
