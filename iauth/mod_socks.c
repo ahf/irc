@@ -195,6 +195,7 @@ AnInstance *self;
 	
 	mydata = (struct socks_private *) malloc(sizeof(struct socks_private));
 	bzero((char *) mydata, sizeof(struct socks_private));
+	mydata->options = 0;
 	mydata->cache = NULL;
 	mydata->lifetime = CACHETIME;
 
