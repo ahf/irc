@@ -3346,7 +3346,7 @@ static void names_channel(aClient *cptr, aClient *sptr, char *to,
 				 * when someone removes +a mode from them.
 				 * (server is member of such channel).
 				 */
-				if (nlen > NICKLEN)
+				if (strchr(acptr->name, '.'))
 				{
 					continue;
 				}
