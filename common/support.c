@@ -161,8 +161,10 @@ char *path;
 {
 	char *lastslash;
 
-	if (lastslash = rindex(path, '/'))
+	if ((lastslash = rindex(path, '/')))
+	{
 		return lastslash + 1;
+	}
 	return path;
 }
 
