@@ -89,7 +89,8 @@ int	*store;
 	if (hash < 0)
 		hash = -hash;
 	*/
-	*store = hash;
+	if (store)
+		*store = hash;
 	hash %= _HASHSIZE;
 	return (hash);
 }
@@ -118,7 +119,8 @@ int	*store;
 		hash <<= 1;
 		hash += hashtab[(u_int)ch] + (i << 1);
 	}
-	*store = hash;
+	if (store)
+		*store = hash;
 	hash %= _CHANNELHASHSIZE;
 	return (hash);
 }
