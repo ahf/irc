@@ -2748,7 +2748,6 @@ char	*parv[];
 		    !IsServer(cptr))
 			ClearOper(sptr);
 		if (!(setflags & FLAGS_LOCOP) && IsLocOp(sptr) &&
-		    !IsServer(cptr))
 			sptr->user->flags &= ~FLAGS_LOCOP;
 		if ((setflags & FLAGS_RESTRICTED) &&
 		    !(sptr->user->flags & FLAGS_RESTRICTED))
