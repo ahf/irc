@@ -136,7 +136,7 @@ int	ircd_res_mkquery(int op, const char *dname, int class, int type,
 		 * Make an additional record for completion domain.
 		 */
 		buflen -= RRFIXEDSZ;
-		n = ircd_dn_comp((char *)data, cp, buflen, dnptrs, lastdnptr);
+		n = ircd_dn_comp(data, cp, buflen, dnptrs, lastdnptr);
 		if (n < 0)
 			return (-1);
 		cp += n;
