@@ -1708,7 +1708,7 @@ char	*parv[];
 	    }
 	if (*buf)
 		sendto_serv_butone(cptr, PartFmt, parv[0], buf, comment);
-	return 2;
+	return 4;
     }
 
 /*
