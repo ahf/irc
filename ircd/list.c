@@ -140,7 +140,7 @@ aClient	*cptr;
 {
 	if (cptr->info != DefInfo)
 		MyFree(cptr->info);
-	if (cptr->auth && *cptr->auth && cptr->auth != cptr->username)
+	if (MyConnect(cptr) && cptr->auth != cptr->username)
 	{
 	    sendto_flag(SCH_ERROR, "Please report to ircd-bug@irc.org about cptr->auth allocated but not free()d!");
 		istat.is_authmem -= strlen(cptr->auth) + 1;
