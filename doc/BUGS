@@ -17,3 +17,6 @@ Anyone with some free time is welcome to fix those =)
 
 * spoofing hostnames is still possible (res.c rewrite needed to split
   cache in two)
+
+* chkconf shows wrong line numbers (and sometimes wrong filenames) when M4
+  is used.
