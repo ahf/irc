@@ -90,7 +90,6 @@ void	outofmemory()
 void	checklists()
 {
 	aServer	*sp;
-	anUser	*up;
 
 	for (sp = svrtop; sp; sp = sp->nexts)
 		if (sp->bcptr->serv != sp)

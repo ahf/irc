@@ -1219,7 +1219,6 @@ static void show_hash_bucket(aClient *sptr, struct HashTable_s *HashTables, int 
 			     int bucket)
 {
 	int j = 1;
-	char *hnext, *vdata, *tmpp;
 	aHashEntry *htab, *tab;
 	aClient *acptr;
 	anUser *auptr;

@@ -1733,7 +1733,9 @@ static void report_myservers(aClient *sptr, char *to)
 	int i;
 	int timeconnected;
 	aClient *acptr;
+#ifdef	HUB
 	aServer *asptr;
+#endif
 	int users = 0, servers = 0;
 
 	for (i = fdas.highest; i >= 0; i--)
@@ -2515,7 +2517,7 @@ char	*parv[];
 				   ME, parv[1], parv[2] ? parv[2] : "",
 				   get_client_name(sptr,FALSE));
 #if defined(USE_SYSLOG) && defined(SYSLOG_CONNECT)
-		syslog(LOG_DEBUG, "CONNECT From %s : %s %d", parv[0],
+		syslog(LOG_DEBUG, "CONNECT From %s : %s %s", parv[0],
 		       parv[1], parv[2] ? parv[2] : "");
 #endif
 	    }
