@@ -1915,7 +1915,8 @@ static	int	read_packet(aClient *cptr, int msg_ready)
 			return exit_client(cptr, cptr, &me, "dbuf_put fail");
 
 		if (IsPerson(cptr) &&
-		    DBufLength(&cptr->recvQ) > CLIENT_FLOOD)
+		    DBufLength(&cptr->recvQ) > CLIENT_FLOOD
+		    && is_allowed(cptr, ACL_CANFLOOD))
 		    {
 			cptr->exitc = EXITC_FLOOD;
 			return exit_client(cptr, cptr, &me, "Excess Flood");
