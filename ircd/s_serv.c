@@ -1041,7 +1041,7 @@ char	*parv[];
 	    {
 		int	qlen = strlen(parv[2]);
 
-		if ((qlen < 4 || qlen < strlen(parv[1]) ||
+		if ((qlen < 4 || qlen < (int)strlen(parv[1]) ||
 		     index(parv[2]+1, '*') || index(parv[2]+1, '?')) &&
 		    IsServer(cptr) && check_link(cptr))
 		    {
