@@ -604,10 +604,8 @@ void	init_sys()
 	if (((bootopt & BOOT_CONSOLE) || isatty(0)) &&
 	    !(bootopt & (BOOT_INETD|BOOT_OPER)))
 	    {
-#ifndef __CYGWIN32__
 		if (fork())
 			exit(0);
-#endif
 #ifdef TIOCNOTTY
 		if ((fd = open("/dev/tty", O_RDWR)) >= 0)
 		    {
