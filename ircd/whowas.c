@@ -373,11 +373,9 @@ char	*parv[];
 
 	for (s = parv[1]; (nick = strtoken(&p, s, ",")); s = NULL)
 	    {
-		wp = wp2 = &was[ww_index - 1];
+		wp = wp2 = &was[(ww_index ? ww_index : ww_size) - 1];
 
 		do {
-			if (wp < was)
-				wp = &was[ww_size - 1];
 			if (mycmp(nick, wp->ww_nick) == 0)
 			    {
 				up = wp->ww_user;
@@ -395,7 +393,10 @@ char	*parv[];
 			    }
 			if (max > 0 && j >= max)
 				break;
-			wp--;
+			if (wp == was)
+				wp = &was[ww_size - 1];
+			else
+				wp--;
 		} while (wp != wp2);
 
 		if (up == NULL)
