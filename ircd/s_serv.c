@@ -3780,3 +3780,15 @@ static void report_listeners(aClient *sptr, char *to)
 			IsListenerInactive(acptr) ? "inactive" : "active" );
 	}
 }
+
+/* allows ENCAPsulation of commands */
+int	m_encap(aClient *cptr, aClient *sptr, int parc, char *parv[])
+{
+	return 0;
+}
+
+/* announces server DIE */
+int	m_sdie(aClient *cptr, aClient *sptr, int parc, char *parv[])
+{
+	return 0;
+}
