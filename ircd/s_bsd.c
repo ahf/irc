@@ -3098,6 +3098,7 @@ static	void	polludp()
 	    }
 	Debug((DEBUG_DEBUG,"udp poll"));
 
+	memset(&from, 0, fromlen);
 	n = recvfrom(udpfd, readbuf, mlen, 0, (SAP)&from, &fromlen);
 	if (n == -1)
 	    {
@@ -3110,7 +3111,14 @@ static	void	polludp()
 
 			sprintf(buf, "udp port recvfrom() from %s to %%s: %%s",
 #ifdef INET6
-				inetntop(AF_INET6, (char *)&from.sin6_addr, mydummy, MYDUMMY_SIZE)
+				from.sin6_addr.s6_addr
+#else
+				from.sin_addr.s_addr
+#endif
+				== 0 ? "unknown" :
+#ifdef INET6
+				inetntop(AF_INET6, (char *)&from.sin6_addr,
+					mydummy, MYDUMMY_SIZE)
 #else
 				inetntoa((char *)&from.sin_addr)
 #endif
