@@ -118,13 +118,10 @@ that from talk(1) to a user's tty.
 The NO_DEFAULT_INVISIBLE define is used to toggle whether
 clients are automatically made invisible when they register.
 
-<sect1>OPER_KILL, OPER_REHASH, OPER_RESTART, OPER_SET, LOCAL_KILL_ONLY
-<p>The three operator only commands, KILL, REHASH,
-RESTART and SET, may all be disabled to ensure that an operator who
-does not have the correct privilidges does not have the
-power to cause untoward things to occur. To further curb the
-actions of guest operators, LOCAL_KILL_ONLY can be defined
-to only allow locally connected clients to be KILLed.
+<sect1>OPER_KILL, OPER_CONNECT, OPER_DIE, OPER_REHASH, OPER_RESTART, OPER_SET...
+<p>Any operator priviledge can be precisely applied to a given user using O:line
+flags. Some admins may prefer to feel more safe by undefining some of above
+thus disabling access to corresponding command at all.
 
 <sect1>ZIP_LINKS, ZIP_LEVEL
 <p>
