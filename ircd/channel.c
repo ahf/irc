@@ -2673,6 +2673,12 @@ char	*parv[];
 			sendto_channel_butserv(chptr, sptr, ":%s TOPIC %s :%s",
 					       parv[0],
 					       chptr->chname, chptr->topic);
+#ifdef USE_SERVICES
+			check_services_butone(SERVICE_WANT_TOPIC,
+					      NULL, sptr, ":%s TOPIC %s :%s",
+					      parv[0], chptr->chname, 
+					      chptr->topic);
+#endif
 			penalty += 2;
 		    }
 		else
