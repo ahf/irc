@@ -242,7 +242,8 @@ aClient	*find_matching_client(char *mask)
 	(void) collapse(mask);
 	
 	/* try to match some servername against mask */
-	for (asptr = svrtop; asptr; asptr = asptr->nexts)
+	/* start from bottom, from ME, to return ourselves first */
+	for (asptr = me.serv; asptr; asptr = asptr->prevs)
 	{
 		if (!match(asptr->bcptr->name, mask) ||
 		    !match(mask, asptr->bcptr->name))
