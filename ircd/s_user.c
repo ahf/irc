@@ -1274,6 +1274,8 @@ int oper;
 		for (lp = acptr->user->channel; lp; lp = lp->next)
 		    {
 			chptr = lp->value.chptr;
+			if (IsAnonymous(chptr))
+				continue;
 			member = IsMember(sptr, chptr);
 			if (isinvis && !member)
 				continue;
@@ -1480,6 +1482,8 @@ char	*parv[];
 			for (lp = user->channel; lp; lp = lp->next)
 			    {
 				chptr = lp->value.chptr;
+				if (IsAnonymous(chptr))
+					continue;
 				member = IsMember(sptr, chptr);
 				if (invis && !member)
 					continue;
