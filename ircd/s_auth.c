@@ -138,7 +138,8 @@ read_iauth()
 			}
 		    if ((cptr = local[i = atoi(start+2)]) == NULL)
 			{
-			    sendto_flag(SCH_DEBUG, "client gone");
+			    sendto_flag(SCH_AUTH, "Client %d is gone.", i);
+			    sendto_iauth("%d E Gone [%s]", i, start);
 			    start = end;
 			    continue;
 			}
@@ -146,7 +147,11 @@ read_iauth()
 			    inetntoa((char *)&cptr->ip), cptr->port);
 		    if (strncmp(tbuf, start, strlen(tbuf)))
 			{
-			    sendto_flag(SCH_DEBUG, "mismatch");
+			    sendto_flag(SCH_AUTH,
+					"Client mismatch: %d [%s] != [%s]",
+					i, start, tbuf);
+			    sendto_iauth("%d E Mismatch [%s] != [%s]", i,
+					 start, tbuf);
 			    start = end;
 			    continue;
 			}
