@@ -285,36 +285,6 @@ long	oline_flags_parse(char *string)
 	}
 	return tmp;
 }
-#ifdef XLINE
-char *xline_flags_to_string(long flags)
-{
-	static char xfsbuf[BUFSIZE];
-	char *s;
-
-	s = xfsbuf;
-	
-	if (flags & XFLAG_WHOLE)
-	{
-		*s++ = 'W';
-	}
-	if (s == xfsbuf)
-	{
-		*s++ = '-';
-	}
-	*s++ = '\0';
-	return xfsbuf;
-}
-long xline_flags_parse(char *string)
-{
-	long tmp = 0;
-	if (index(string, 'W'))
-	{
-		tmp |= XFLAG_WHOLE;
-	}
-	return tmp;
-}
-
-#endif
 /*
  * remove all conf entries from the client except those which match
  * the status field mask.
