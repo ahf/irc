@@ -3683,6 +3683,11 @@ time_t	collect_channel_garbage(time_t now)
 
 			if (IsSplit())
 			{
+				if (chptr->reop > 0)
+				{
+					/* Extend reop */
+					chptr->reop += CHECKFREQ;
+				}
 				continue;
 			}
 			if (chptr->reop == 0 || chptr->reop > now)
