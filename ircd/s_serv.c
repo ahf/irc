@@ -189,8 +189,18 @@ int	m_squit(aClient *cptr, aClient *sptr, int parc, char *parv[])
 			/* remote server is closing it's link */
 			rsquit = 1;
 		}
-		acptr = cptr;
-		server = cptr->sockhost;
+		if (IsServer(cptr))
+		{
+			acptr = cptr;
+			server = cptr->sockhost;
+		}
+		else
+		{
+			sendto_one(cptr, ":%s NOTICE %s :You can QUIT, "
+				"but you cannot SQUIT me.",
+				ME, cptr->name);
+			return 1;
+		}
 	}
 
 	/*
