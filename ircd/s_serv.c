@@ -2431,7 +2431,7 @@ void trace_one(aClient *sptr, aClient *acptr)
 			
 		case STAT_UNKNOWN:
 			sendto_one(sptr, replies[RPL_TRACEUNKNOWN], ME, to,
-				   to, class, name);
+				   class, name);
 			break;
 			
 		case STAT_CLIENT:
