@@ -531,7 +531,7 @@ char	*comment;	/* Reason for the exit */
 			(void)strcpy(comment1, from->name);
 		else
 			/* this is right */
-			(void)strcpy(comment1, sptr->serv->up);
+			(void)strcpy(comment1, sptr->serv->up->name);
  		(void)strcat(comment1, " ");
  		(void)strcat(comment1, sptr->name);
 

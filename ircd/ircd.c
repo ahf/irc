@@ -559,7 +559,7 @@ aClient	*mp;
 	(void) make_user(mp);
 	istat.is_users++;	/* here, cptr->next is NULL, see make_user() */
 	mp->user->flags |= FLAGS_OPER;
-	mp->serv->up = mp->name;
+	mp->serv->up = mp;
 	mp->user->server = find_server_string(mp->serv->snum);
 	strncpyzt(mp->user->username, (p) ? p->pw_name : "unknown",
 		  sizeof(mp->user->username));

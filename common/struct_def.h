@@ -376,7 +376,7 @@ struct	User	{
 
 struct	Server	{
 	anUser	*user;		/* who activated this connection */
-	char	*up;	/* uplink for this server */
+	aClient	*up;	/* uplink for this server */
 	aConfItem *nline;	/* N-line pointer for this server */
 	int	version;        /* version id for local client */
 	int	snum;

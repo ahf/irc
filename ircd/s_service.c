@@ -591,13 +591,13 @@ char	*parv[];
 				 mycmp(acptr->name, acptr->sockhost));
 			if (split)
 				sendto_one(sptr,":%s SERVER %s %d %s :[%s] %s",
-					   acptr->serv->up, acptr->name,
+					   acptr->serv->up->name, acptr->name,
 					   acptr->hopcount+1,
 					   acptr->serv->tok,
 					   acptr->sockhost, acptr->info);
 			else
 				sendto_one(sptr, ":%s SERVER %s %d %s :%s",
-					   acptr->serv->up, acptr->name,
+					   acptr->serv->up->name, acptr->name,
 					   acptr->hopcount+1,
 					   acptr->serv->tok,
 					   acptr->info);
