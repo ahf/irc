@@ -172,7 +172,7 @@ void	free_client(aClient *cptr)
 		MyFree(cptr->auth);
 	}
 	/* True only for local clients */
-	if (cptr->hopcount == 0)
+	if (cptr->hopcount == 0 || (IsServer(cptr) && cptr->hopcount == 1))
 	{
 		if (cptr->reason)
 		{
