@@ -749,8 +749,6 @@ char	*argv[];
 	if (argc > 0)
 		bad_command(); /* This exits out */
 
-	setup_signals();
-
 #ifndef IRC_UID
 	if ((uid != euid) && !euid)
 	    {
@@ -802,6 +800,8 @@ char	*argv[];
 		    }
 		    }
 #endif
+
+	setup_signals();
 
 	/* didn't set debuglevel */
 	/* but asked for debugging output to tty */
