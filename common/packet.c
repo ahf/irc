@@ -170,7 +170,7 @@ Reg	int	length;
 			** Socket is dead so exit (which always returns with
 			** FLUSH_BUFFER here).  - avalon
 			*/
-			if (cptr->flags & FLAGS_DEADSOCKET)
+			if (IsDead(cptr))
 			    {
 				if (cptr->exitc == EXITC_REG)
 					cptr->exitc = EXITC_DEAD;
