@@ -727,6 +727,15 @@ Reg	aClient	*cptr;
 		    }
 		salt[2] = '\0';
 		encr = crypt(cptr->passwd, salt);
+		if (encr == NULL)
+		    {
+			ircstp->is_ref++;
+			sendto_one(cptr, "ERROR :No Access (crypt failed) %s",
+			  	inpath);
+			sendto_flag(SCH_ERROR,
+			    	"Access denied (crypt failed) %s", inpath);
+			return exit_client(cptr, cptr, &me, "Bad Password");
+		    }
 	    }
 	else
 		encr = "";
