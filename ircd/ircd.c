@@ -431,7 +431,7 @@ static	int	delayed_kills(time_t currenttime)
 		}
 		return 0;
 	}
-	return 1;
+	return rehashed;
 }
 
 static	time_t	check_pings(time_t currenttime)
