@@ -633,8 +633,8 @@ know who is authorized to become an operator and what their
 <tag/O/ Specifies Operator record. 
 <tag/Note/If you use small letter (``o'') in it, it specifies
 a global operator. Capital letter (``O'') specifies a local operator. 
-Local operator has basically the same rights except global operator 
-with some restrictions.
+Local and global operator rights can be specified and fine-tuned in config.h
+file.
 <tag/TARGET Host NAME/ Tells IRC which host you have the
 privileges FROM.  This means that you should be logged into
 this host when you ask for the priviliges.  If you specify
