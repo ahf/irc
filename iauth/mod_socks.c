@@ -389,7 +389,7 @@ u_int cl;
 				    cldata[cl].inbuffer[1] != 91)
 				    {
 					sendto_log(ALOG_FLOG, LOG_WARNING,
-				   "socks: unexpected reply: %d %s[%s]",
+				   "socks: unexpected reply: %u %s[%s]",
 						   cldata[cl].inbuffer[1],
 						   cldata[cl].host,
 						   cldata[cl].itsip);
