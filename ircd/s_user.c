@@ -1650,9 +1650,9 @@ char	*parv[];
 		found &= 0x0f;	/* high/boolean, low/counter */
 		(void)collapse(nick);
 		wilds = (index(nick, '?') || index(nick, '*'));
-                /*
+		/*
 		 * We're no longer allowing remote users to generate
-                 * requests with wildcard, nor local users with more
+		 * requests with wildcard, nor local users with more
 		 * than one wildcard target per command.
 		 * Max 3 targets per command allowed.
 		 */
@@ -2269,10 +2269,6 @@ char	*parv[];
     {
 	aConfItem *aconf;
 	char	*name, *password, *encr;
-#ifdef CRYPT_OPER_PASSWORD
-	char	salt[3];
-	extern	char *crypt();
-#endif /* CRYPT_OPER_PASSWORD */
 
 	name = parc > 1 ? parv[1] : NULL;
 	password = parc > 2 ? parv[2] : NULL;
@@ -2311,25 +2307,13 @@ char	*parv[];
 		return 1;
 	    }
 #ifdef CRYPT_OPER_PASSWORD
-	/* use first two chars of the password they send in as salt */
+	/* pass whole aconf->passwd as salt, let crypt() deal with it */
 
-	/* passwd may be NULL. Head it off at the pass... */
-	salt[0] = '\0';
 	if (password && aconf->passwd)
 	    {
-		/* Determine if MD5 or DES */
-		if (strncmp(aconf->passwd, "$1$", 3))
-		    {
-			salt[0] = aconf->passwd[0];
-			salt[1] = aconf->passwd[1];
-		    }
-		else
-		    {
-			salt[0] = aconf->passwd[3];
-			salt[1] = aconf->passwd[4];
-		    }
-		salt[2] = '\0';
-		encr = crypt(password, salt);
+		extern	char *crypt();
+
+		encr = crypt(password, aconf->passwd);
 		if (encr == NULL)
 		    {
 			sendto_flag(SCH_ERROR, "crypt() returned NULL");

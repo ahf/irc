@@ -706,27 +706,13 @@ Reg	aClient	*cptr;
 	    }
 
 #ifdef CRYPT_LINK_PASSWORD
-	/* use first two chars of the password they send in as salt */
+	/* pass whole aconf->passwd as salt, let crypt() deal with it */
 
-	/* passwd may be NULL. Head it off at the pass... */
 	if (*cptr->passwd)
 	    {
-		char    salt[3];
 		extern  char *crypt();
 
-		/* Determine if MD5 or DES */
-                if (strncmp(aconf->passwd, "$1$", 3))
-		    {
-			salt[0] = aconf->passwd[0];
-			salt[1] = aconf->passwd[1];
-		    }
-		else
-		    {
-			salt[0] = aconf->passwd[3];
-			salt[1] = aconf->passwd[4];
-		    }
-		salt[2] = '\0';
-		encr = crypt(cptr->passwd, salt);
+		encr = crypt(cptr->passwd, aconf->passwd);
 		if (encr == NULL)
 		    {
 			ircstp->is_ref++;
