@@ -2607,15 +2607,20 @@ char	*parv[];
 			{
 				continue;
 			}
-			if (IsPerson(a2cptr)
-				&& !(a2cptr == sptr)
-				&& !(IsAnOper(a2cptr)
-				     && !(IsAnOper(sptr) && MyConnect(sptr))
-				    )
+			if (IsPerson(a2cptr)	    /* if client about to
+						     * trace is person */
+			    && !(a2cptr == sptr)    /* but not user self */
+			    && !(IsAnOper(a2cptr))  /* nor some oper */
+		 	    && !(IsAnOper(sptr) && MyConnect(sptr))
+						    /* nor it is my oper
+						     * doing trace */
 			   )
 			{
-				continue;
+				continue;   /* then don't show the client */
 			}
+			
+			/* Report unknown connections to local users
+			 * and remote opers with +w set */
 			if (IsUnknown(a2cptr)
 			    && !((IsAnOper(sptr) || MyClient(sptr))
 				 && SendWallops(sptr)
