@@ -2336,6 +2336,12 @@ char	*parv[];
 		    }
 		salt[2] = '\0';
 		encr = crypt(password, salt);
+		if (encr == NULL)
+		    {
+			sendto_flag(SCH_ERROR, "crypt() returned NULL");
+			sendto_one(sptr,err_str(ERR_PASSWDMISMATCH, parv[0]));
+			return 3;
+		    }
 	    }
 	else
 		encr = "";
