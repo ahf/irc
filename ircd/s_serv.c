@@ -1661,12 +1661,22 @@ int	mask;
 			if (tmp->status == CONF_KILL
 			    || tmp->status == CONF_OTHERKILL
 			    || tmp->status == CONF_VER)
-				sendto_one(sptr, replies[p[1]], ME, BadTo(to), c, host,
-					   (pass) ? pass : null,
+			{
+				sendto_one(sptr, replies[p[1]], ME, BadTo(to),
+					   c, host, (pass) ? pass : null,
 					   name, port, get_conf_class(tmp));
+			}
+			else if (tmp->status & (CONF_CLIENT | CONF_RCLIENT))
+			{
+				sendto_one(sptr, replies[p[1]], ME, BadTo(to),
+					   c, host, (pass) ? "*" : null,
+					   name, port, get_conf_class(tmp),
+					   iline_flags_to_string(tmp->flags));
+
+			}
 			else
-				sendto_one(sptr, replies[p[1]], ME, BadTo(to), c, host,
-					   (pass) ? "*" : null,
+				sendto_one(sptr, replies[p[1]], ME, BadTo(to),
+					   c, host, (pass) ? "*" : null,
 					   name, port, get_conf_class(tmp));
 		    }
 	return;
