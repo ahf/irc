@@ -1480,6 +1480,12 @@ static	int	set_mode(aClient *cptr, aClient *sptr, aChannel *chptr,
 				      sendto_channel_butone(NULL, &me, chptr, ":%s NOTICE %s :Be aware that anonymity on IRC is NOT securely enforced!", ME, chptr->chname);
 				  }
 			  }
+			/* +r coming from server must trigger reop. If not
+			** needed, it will be reset to 0 elsewhere, --B. */
+			if (*ip == MODE_REOP && IsServer(sptr))
+			{
+				chptr->reop = timeofday + LDELAYCHASETIMELIMIT;
+			}
 			*mbuf++ = *(ip+1);
 		    }
 
