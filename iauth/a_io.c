@@ -467,6 +467,16 @@ parse_ircd()
 				break;
 			    }
 			cldata[cl].state |= A_NOH;
+			if (cldata[cl].instance == NULL)
+			    {
+				/* the first pass is already finished. */
+				sendto_ircd("D %d %s %u ", cl,
+					    cldata[cl].itsip,
+					    cldata[cl].itsport);
+				cldata[cl].state |= A_DONE;
+				free(cldata[cl].inbuffer);
+				cldata[cl].inbuffer = NULL;
+			    }
 			break;
 		case 'E': /* error message from ircd */
 			sendto_log(ALOG_DIRCD, LOG_DEBUG,
