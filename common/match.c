@@ -338,7 +338,8 @@ int	n;
 int isvalidusername(char *username)
 {
 	Reg char	*ch;
-	int	an, nan;
+	int	an=0;
+	int	nan=0;
 
 	ch = username;
 	if (*ch == '+' || *ch == '=' || *ch == '-' ||
