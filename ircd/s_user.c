@@ -1642,8 +1642,9 @@ char	*parv[];
 	    }
 
 	parv[1] = canonize(parv[1]);
+	tmp = strdup(parv[1]);
 
-	for (tmp = parv[1]; (nick = strtoken(&p, tmp, ",")); tmp = NULL)
+	for (tmp = canonize(tmp); (nick = strtoken(&p, tmp, ",")); tmp = NULL)
 	    {
 		int	invis, showperson, member, wilds;
 
@@ -1730,6 +1731,8 @@ char	*parv[];
 			p[-1] = ',';
 	    }
 	sendto_one(sptr, rpl_str(RPL_ENDOFWHOIS, parv[0]), parv[1]);
+
+	MyFree(tmp);
 
 	return 2;
 }
