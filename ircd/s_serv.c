@@ -392,7 +392,7 @@ char	*parv[];
 			    "Link %s cancelled, server %s reintroduced by %s",
 				    get_client_name(bcptr, TRUE), host,
 				    get_client_name(cptr, TRUE));
-			(void) exit_client(bcptr, bcptr, &me, "Server Exists")
+			(void) exit_client(bcptr, bcptr, &me, "Server Exists");
 		    }
 	    }
 	if ((acptr = find_person(host, NULL)) && (acptr != cptr))
