@@ -1159,17 +1159,13 @@ aCache	*cachep;
 	/*
 	 * Do the same again for IP#'s.
 	 */
-#ifdef INET6
-	for (s = (char *)rptr->he.h_addr.S_ADDR;
-	     ((struct IN_ADDR *)s)->S_ADDR; s += sizeof(struct IN_ADDR))
-#else
-	for (s = (char *)&rptr->he.h_addr.S_ADDR;
-	     ((struct IN_ADDR *)s)->S_ADDR; s += sizeof(struct IN_ADDR))
-#endif
+	for (j = 0; WHOSTENTP(rptr->he.h_addr_list[j].S_ADDR); j++)
 	    {
 #ifdef INET6
+		s = (char *)rptr->he.h_addr_list[j].S_ADDR;
 		for (i = 0; (t = cp->he.h_addr_list[i]); i++)
 #else
+		s = (char *)&rptr->he.h_addr_list[j].S_ADDR;
 		for (i = 0; (t = cp->he.h_addr_list[i]); i++)
 #endif
 			if (!bcmp(s, t, sizeof(struct IN_ADDR)))
