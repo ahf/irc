@@ -46,8 +46,8 @@ int	numclients = 0;
 ** with tokens (ie. 2.10).
 */
 
-#if CHIDNB == 36 && SIDLEN == 3
-# define MAX210SERVERS 1296
+#if CHIDNB == 36 && SIDLEN == 4
+# define MAX210SERVERS 46656
 #else
 # error Fix MAX210SERVERS.
 #endif
