@@ -865,6 +865,7 @@ time_t	delay;
 		(void)read_message(delay, &fdall);
 		nextc = timeofday + HUB;
 	    }
+/*
 	else
 	    {
 		if (timeofday > nextactive)
@@ -874,12 +875,15 @@ time_t	delay;
 		    }
 		(void)read_message(1, &fdas);
 	    }
+*/
 	timeofday = time(NULL);
+/*
 	if (timeofday > lastl)
 	    {
 		decay_activity();
 		lastl = timeofday;
 	    }
+*/
 #else
 	(void)read_message(delay, &fdall);
 	timeofday = time(NULL);
