@@ -1747,7 +1747,7 @@ static	void	report_myservers(aClient *sptr, char *to)
 #ifdef	HUB
 	aServer *asptr;
 #endif
-	int users = 0, servers = 0;
+	int users, servers;
 
 	for (i = fdas.highest; i >= 0; i--)
 	{
@@ -1762,6 +1762,8 @@ static	void	report_myservers(aClient *sptr, char *to)
 		}
 		timeconnected = timeofday - acptr->firsttime;
 #ifdef HUB
+		servers = 0;
+		users = 0;
 		for (asptr = svrtop; asptr; asptr = asptr->nexts)
 		{
 			if (IsMasked(asptr->bcptr))
