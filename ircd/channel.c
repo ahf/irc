@@ -2282,7 +2282,7 @@ char	*parv[];
 						       sptr->name, parv[1], 
 						       modebuf, mbuf[1],
 						       parabuf, name);
-				if (mbuf[1])
+				if (mbuf[2])
 				    {
 					strcpy(modebuf, mbuf+2);
 					strcpy(parabuf, name);
