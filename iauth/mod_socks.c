@@ -393,7 +393,7 @@ u_int cl;
 						;
 				else if (mydata->options & OPT_PARANOID)
 					open = 1;
-				if (open)
+				if (open == 1)
 					socks_open_proxy(cl);
 				socks_add_cache(cl, open);
 				if (cldata[cl].inbuffer[1] != 90 &&
