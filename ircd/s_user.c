@@ -1369,11 +1369,7 @@ int	m_unick(aClient *cptr, aClient *sptr, int parc, char *parv[])
 	... just remember to change it one day --Beeth */
 	acptr->user->servp = sptr->serv;
 	sptr->serv->refcnt++;
-	/*
-	** shouldn't it be here strdup? let's hope refcnt will
-	** prevent freeing it
-	*/
-	acptr->user->server = sptr->name;
+	acptr->user->server = find_server_string(sptr->serv->snum);
 	if (strlen(realname) > REALLEN)
 	{
 		realname[REALLEN] = '\0';
