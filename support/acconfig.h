@@ -96,3 +96,6 @@
 
 /* Define to enable IPv6 support */
 #undef INET6
+
+/* Define to enable dynamically shared iauth module support */
+#undef USE_DSM

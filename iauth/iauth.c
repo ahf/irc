@@ -147,7 +147,12 @@ char	*argv[];
 
 	if (isatty(0))
 	    {
-		(void)printf("iauth %s\n", make_version());
+		(void)printf("iauth %s", make_version());
+#if defined(USE_DSM)
+			(void)printf(" (with DSM support)\n");
+#else
+			(void)printf("\n");
+#endif
 		if (argc == 3 && !strcmp(argv[1], "-c"))
 		    {
 			(void)printf("\nReading \"%s\"\n\n", argv[2]);
