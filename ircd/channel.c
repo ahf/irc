@@ -193,8 +193,7 @@ char	*modeid;
 				else
 					rpl = RPL_INVITELIST;
 
-				sendto_one(cptr, rpl_str(RPL_BANLIST,
-							 cptr->name),
+				sendto_one(cptr, rpl_str(rpl, cptr->name),
 					   chptr->chname, mode->value.cp);
 				return -1;
 			    }
