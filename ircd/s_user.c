@@ -1641,7 +1641,6 @@ char	*parv[];
 		parv[1] = parv[2];
 	    }
 
-	parv[1] = canonize(parv[1]);
 	tmp = strdup(parv[1]);
 
 	for (tmp = canonize(tmp); (nick = strtoken(&p, tmp, ",")); tmp = NULL)
