@@ -385,7 +385,7 @@ char	*parv[];
 		metric = 0;
 		server = ME;
 		sp = me.serv;
-		if (!do_nick_name(parv[1]))
+		if (!do_nick_name(parv[1], 0))
 		    {
 			sendto_one(sptr, err_str(ERR_ERRONEUSNICKNAME,
 				   parv[0]));
