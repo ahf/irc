@@ -18,6 +18,7 @@ Important changes in 2.11.0 (since 2.10.3p5):
 	* I: have flags now ('F', 'R', 'I', 'E', 'N', 'D'), check INSTALL
 	  file for details.
 	* OPER_REMOTE is removed (and server behaves like it was defined).
+	* stats l/L no longer returns listeners, use stats P.
 
 This is version 2.10.3 of the IRC software.
 ===============================================================================
