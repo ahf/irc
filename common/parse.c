@@ -94,7 +94,7 @@ struct Message msgtab[] = {
   { MSG_RECONECT,m_reconnect,MAXPARA, MSG_LAG|MSG_NOU, 0, 0, 0L},
   { MSG_SERVICE, m_service,  MAXPARA, MSG_LAG|MSG_NOU, 0, 0, 0L},
 #ifdef	USE_SERVICES
-  { MSG_SERVSET, m_servset,  MAXPARA, MSG_LAG|MSG_SVC|MSG_NOU, 0, 0, 0L},
+  { MSG_SERVSET, m_servset,  MAXPARA, MSG_LAG|MSG_SVC, 0, 0, 0L},
 #endif
   { MSG_SQUERY,  m_squery,   MAXPARA, MSG_LAG|MSG_REGU, 0, 0, 0L},
   { MSG_SERVLIST,m_servlist, MAXPARA, MSG_LAG|MSG_REG, 0, 0, 0L},
@@ -638,7 +638,7 @@ char	*buffer, *bufend;
 		return -1;
 	if ((mptr->flags & MSG_REG) && check_registered(from))
 		return -1;
-	if ((mptr->flags & MSG_NOU) && MyPerson(from))
+	if ((mptr->flags & MSG_NOU) && (MyPerson(from) || MyService(from)))
 	    {
 		sendto_one(from, err_str(ERR_ALREADYREGISTRED, para[0]));
 		return-1;
