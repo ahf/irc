@@ -275,7 +275,7 @@ aClient *cptr;
 	return cptr;
     }
 #endif /* CLIENT_COMPILE */
-
+#ifndef CLIENT_COMPILE
 /*
 **  Find a user@host (server or user).
 **
@@ -351,7 +351,7 @@ int	*count;
 **	the old. 'name' is now assumed to be a null terminated
 **	string.
 */
-#ifndef CLIENT_COMPILE
+
 /*
 ** Find a server from hash table, given its name
 */
