@@ -1176,8 +1176,8 @@ nickkilldone:
 			*/
 			if (IsRestricted(sptr) && !isdigit(*parv[0]))
 			{
-				sendto_one(sptr,
-					replies[ERR_RESTRICTED], ME, BadTo(parv[0]));
+				sendto_one(sptr, replies[ERR_RESTRICTED],
+					ME, BadTo(parv[0]));
 				return 2;
 			}
 			/* Can the user speak on all channels? */
@@ -1185,6 +1185,16 @@ nickkilldone:
 				if (can_send(sptr, lp->value.chptr) &&
 				    !IsQuiet(lp->value.chptr))
 					break;
+			/* If (lp), we give bigger penalty at the end. */
+#ifdef DISABLE_NICKCHANGE_WHEN_BANNED
+			if (lp)
+			{
+				sendto_one(sptr, replies[ERR_CANNOTSENDTOCHAN],
+					ME, BadTo(parv[0]),
+					lp->value.chptr->chname);
+				return 2;
+			}
+#endif
 		}
 		/*
 		** Client just changing his/her nick. If he/she is
