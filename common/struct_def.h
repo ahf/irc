@@ -53,7 +53,7 @@ typedef struct        LineItem aExtData;
 #define UIDLEN		9	/* must not be bigger than NICKLEN --Beeth */
 #define	USERLEN		10
 #define	REALLEN	 	50
-#define	TOPICLEN	80
+#define	TOPICLEN	160
 #define	CHANNELLEN	50
 #define	PASSWDLEN 	20
 #define	KEYLEN		23
