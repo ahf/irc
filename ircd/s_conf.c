@@ -296,7 +296,25 @@ int	attach_Iline(aClient *cptr, struct hostent *hp, char *sockhost)
 				}
 			}
 		}
-
+		/* Non empty aconf->name, but no dns to match. */
+		if (*aconf->name && !hp)
+		{
+			/* Give it the last chance. */
+			if (strcmp(aconf->name, "*") == 0 ||
+				strcmp(aconf->name, "*@*") == 0)
+			{
+				namematched = 1;
+			}
+			else
+			{
+				continue;	/* Try another I:line. */
+			}
+		}
+		/* Empty aconf->name, treat like '*', don't care about DNS. */
+		if (!*aconf->name)
+		{
+			namematched = 1;
+		}
 		/* Require name to match before checking addr fields. */
 		if (!namematched)
 			continue;	/* Try another I:line. */
