@@ -661,7 +661,7 @@ aChannel *chptr;
 
 	if (chptr == NULL)
 		return NULL;
-	for (tmp = chptr; tmp; tmp, tmp = tmp->hnextch)
+	for (tmp = chptr; tmp; tmp = tmp->hnextch)
 		if (hv == tmp->hashv && *tmp->chname == '!' &&
 		    mycmp(name, tmp->chname + CHIDLEN + 1) == 0)
 		    {
