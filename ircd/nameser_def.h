@@ -248,7 +248,7 @@
 
 typedef struct {
 	unsigned	id :16;		/* query identification number */
-#if WORDS_BIGENDIAN
+#ifdef WORDS_BIGENDIAN
 			/* fields in third byte */
 	unsigned	qr: 1;		/* response flag */
 	unsigned	opcode: 4;	/* purpose of message */

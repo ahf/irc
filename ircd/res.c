@@ -622,7 +622,7 @@ static	int	proc_answer(ResRQ *rptr, HEADER *hptr, char *buf, char *eob)
 	alias = hp->h_aliases;
 	while (*alias)
 		alias++;
-#if SOLARIS_2 && !defined(__GNUC__) /* brain damaged compiler it seems */
+#if defined(SOLARIS_2) && !defined(__GNUC__) /* brain damaged compiler it seems */
 	for (; hptr->qdcount > 0; hptr->qdcount--)
 #else
 	while (hptr->qdcount-- > 0)
