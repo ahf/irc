@@ -30,7 +30,7 @@ static  char rcsid[] = "@(#)$Id$";
 static unsigned char id_alphabet[CHIDNB+1] =
 	"ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
 
-static unsigned int alphabet_id[256] =
+static signed int alphabet_id[256] =
 	{ -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
 	  -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
 	  -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,
