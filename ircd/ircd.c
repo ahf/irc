@@ -303,9 +303,9 @@ time_t	currenttime;
 		    }
 		if (!iconf.aconnect)
 		{
-			sendto_one(sptr, "Connection to %s deferred. Autoconnect
-					administratively disabled",
-					con_conf->name)
+			sendto_flag(SCH_NOTICE,
+				"Connection to %s deferred. Autoconnect "
+				"administratively disabled", con_conf->name);
 		}
 		else if (connect_server(con_conf, (aClient *)NULL,
 				   (struct hostent *)NULL) == 0)
