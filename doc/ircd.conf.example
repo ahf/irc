@@ -124,9 +124,6 @@ Y:10:90:0:3:100000
 # Wildcards ("*") are permitted. Passwords are also permitted (clients can
 # be configured to send passwords).
 # 
-# Ident (for more information on this, see rfc1413) can also be used by
-# placing a @ in the appropriate fields.
-#
 # Fields are as follows:
 # I:IP-address-mask:optional password:domain-mask:port:connection class (opt)
 #
