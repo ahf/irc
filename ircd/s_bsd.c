@@ -248,6 +248,11 @@ int	inetport(aClient *cptr, char *ip, char *ipmask, int port, int dolisten)
 		return -1;
 	    }
 	(void)set_sock_opts(cptr->fd, cptr);
+#if defined (__CYGWIN32__)
+	/* Can anyone explain why setting nonblock here works and does not
+	** in add_listener after we return from inetport()? --B. */
+	(void)set_non_blocking(cptr->fd, cptr);
+#endif
 	/*
 	 * Bind a port to listen for new connections if port is non-null,
 	 * else assume it is already open and try get something from it.
