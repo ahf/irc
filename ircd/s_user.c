@@ -2121,7 +2121,7 @@ aClient *cptr, *sptr;
 int	parc;
 char	*parv[];
 {
-	aClient *acptr;
+	aClient *acptr = NULL;
 	char	*inpath = get_client_name(cptr,FALSE);
 	char	*user, *path, *killer;
 	int	chasing = 0;
