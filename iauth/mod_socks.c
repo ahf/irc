@@ -242,6 +242,7 @@ AnInstance *self;
 {
 	struct sock_private *mydata = self->data;
 	free(mydata);
+	free(self->popt);
 }
 
 /*
