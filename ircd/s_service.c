@@ -324,7 +324,7 @@ char	*parv[];
 	aServer	*sp = NULL;
 	char	*dist, *server = NULL, *info, *stok;
 	int	type, metric = 0, i;
-	char	mlname[HOSTLEN+1];
+	char	*mlname;
 
 	if (sptr->user)
 	    {
