@@ -1011,9 +1011,7 @@ int	rehash(aClient *cptr, aClient *sptr, int sig)
 			free_conf(tmp2);
 		}
 	
-#ifdef CACHED_MOTD
 	read_motd(IRCDMOTD_PATH);
-#endif
 	if (rehashed == 1)
 	{
 		/* queue another rehash for later */

@@ -902,10 +902,8 @@ int	main(int argc, char *argv[])
 	initstats();
 	initruntimeconf();
 	ircd_readtune(tunefile);
-#ifdef	CACHED_MOTD
 	motd = NULL;
 	read_motd(IRCDMOTD_PATH);
-#endif
 	inithashtables();
 	initlists();
 	initclass();

@@ -33,9 +33,7 @@ typedef	struct	SMode	Mode;
 typedef	struct	fdarray	FdAry;
 typedef	struct	CPing	aCPing;
 typedef	struct	Zdata	aZdata;
-#if defined(CACHED_MOTD)
 typedef struct        LineItem aMotd;
-#endif
 #if defined(USE_IAUTH)
 typedef struct        LineItem aExtCf;
 typedef struct        LineItem aExtData;
