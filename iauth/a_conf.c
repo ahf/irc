@@ -398,7 +398,8 @@ char	*conf_read(char *cfile)
 				(*ttmp)->nextt = NULL;
 			    }
 			if ((*last)->port == 0 &&
-				Mlist[i] == &Module_socks)
+				(Mlist[i] == &Module_webproxy ||
+				Mlist[i] == &Module_socks))
 			{
 				conf_err(lnnb, "port here is mandatory.", cfile);
 			}
