@@ -1991,7 +1991,7 @@ FdAry	*fdp;
 	    {
 		read_iauth();
 		nfds--;
-		CLR_READ_EVENT(udpfd);
+		CLR_READ_EVENT(adfd);
 	    }
 #endif
 
