@@ -430,6 +430,7 @@ struct	Server	{
 	aClient	*maskedby;	/* Pointer to server masking this server.
 				** Self if not masked, *NEVER* NULL. */
 	char	by[NICKLEN+1];
+	char	byuid[UIDLEN + 1];
 	char	tok[7];		/* This is the prepared token we'll be
 				** sending to 2.10 servers.
 				** Note: The size of this depends on the 
