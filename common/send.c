@@ -52,7 +52,7 @@ static	int	sentalong[MAXCONNECTIONS];
 ** dead_link
 **	An error has been detected. The link *must* be closed,
 **	but *cannot* call ExitClient (m_bye) from here.
-**	Instead, mark it with FLAGS_DEADSOCKET. This should
+**	Instead, mark it with FLAGS_DEADSOCK. This should
 **	generate ExitClient from the main loop.
 **
 **	If 'notice' is not NULL, it is assumed to be a format
@@ -67,7 +67,7 @@ static	int	dead_link(to, notice)
 aClient *to;
 char	*notice;
 {
-	to->flags |= FLAGS_DEADSOCKET;
+	SetDead(to);
 	/*
 	 * If because of BUFFERPOOL problem then clean dbufs now so that
 	 * notices don't hurt operators below.
