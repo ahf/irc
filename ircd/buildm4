@@ -26,7 +26,7 @@ INCLUDE=`../support/config.guess`
 IRCDDIR=$1
 M4=$IRCDDIR/ircd.m4
 /bin/rm -f $M4
-egrep "^#def[^P]*PATCHLEVEL" ../include/patchlevel.h | \
+egrep "^#def[^P]*PATCHLEVEL" ../common/patchlevel.h | \
 sed -e 's/[^\"]*\"\([^\"]*\)\"/define(VERSION,\1)/' >>$M4
 DEBUG=`egrep "^#define[		]*DEBUGMODE" config.h`
 if [ -n "$DEBUG" ] ; then
@@ -51,8 +51,8 @@ CONT=`egrep '^#define[ 	]*CONNECTFREQUENCY[ 	]*[0-9]*' ../$INCLUDE/config.h\
 	| sed -e 's/[^0-9]*\([0-9]*\).*/\1/'`
 echo "define(CFREQ,$CONT)" >> $M4
 
-MAXL=`egrep '^#define[ 	]*MAXIMUM_LINKS[ 	]*[0-9]* | head -1'
-../$INCLUDE/config.h | sed -e 's/[^0-9]*\([0-9]*\).*/\1/'`
+MAXL=`egrep '^#define[ 	]*MAXIMUM_LINKS[ 	]*[0-9]* | head -1' \
+	../$INCLUDE/config.h | sed -e 's/[^0-9]*\([0-9]*\).*/\1/'`
 echo "define(MAXLINKS,$MAXL)" >> $M4
 
 DOM=`egrep '^domain' /etc/resolv.conf | \
