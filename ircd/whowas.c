@@ -215,7 +215,6 @@ char	*nick;
 time_t	timelimit;
 {
 	Reg	aName	*wp, *wp2;
-	Reg	int	i = 0;
 
 	wp = wp2 = &was[ww_index];
 	timelimit = timeofday - timelimit;
