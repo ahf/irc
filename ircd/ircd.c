@@ -813,8 +813,11 @@ char	*argv[];
 time_t	io_loop(delay)
 time_t	delay;
 {
+#ifdef PREFER_SERVER
+	static	time_t	nextc = 0;
+#endif
 #ifdef HUB
-	static	time_t	nextc = 0, nextactive = 0, lastl = 0;
+	static	time_t	nextactive = 0, lastl = 0;
 #endif
 
 	/*
