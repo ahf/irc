@@ -381,7 +381,8 @@ struct	User	{
 	char	*server;
 	u_int	hhashv;		/* hostname hash value */
 	struct User *hhnext;	/* next entry in hostname hash */
-	char	sip[40];	/* ip as a string, big enough for ipv6 */
+	char	sip[1];		/* ip as a string, big enough for ipv6
+				 * allocated to real size in make_user */
 
 };
 
