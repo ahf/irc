@@ -839,6 +839,7 @@ typedef	struct	{
 #define	SV_OLDSQUIT	0x1000	/* server uses OLD SQUIT logic */
 
 #define	ST_UID(x)	(IsServer(x) && (x->serv->version & SV_UID))
+#define	ST_NOTUID(x)	(IsServer(x) && !(x->serv->version & SV_UID))
 
 /* used for sendto_flag */
 
