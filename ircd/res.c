@@ -479,7 +479,7 @@ Reg	ResRQ	*rptr;
 	    }
 	else
 	    {
-		(void)sprintf(ipbuf, "%x.%x.%x.%x.%x.%x.%x.%x.%x.%x.%x.%x.%x.%x.%x.%x.%x.%x.%x.%x.%x.%x.%x.%x.%x.%x.%x.%x.%x.%x.%x.%x.ip6.int.",
+		(void)sprintf(ipbuf, "%x.%x.%x.%x.%x.%x.%x.%x.%x.%x.%x.%x.%x.%x.%x.%x.%x.%x.%x.%x.%x.%x.%x.%x.%x.%x.%x.%x.%x.%x.%x.%x.ip6.%s.",
 		(u_int)(cp[15]&0xf), (u_int)(cp[15]>>4),
 		(u_int)(cp[14]&0xf), (u_int)(cp[14]>>4),
 		(u_int)(cp[13]&0xf), (u_int)(cp[13]>>4),
@@ -495,7 +495,11 @@ Reg	ResRQ	*rptr;
 		(u_int)(cp[3]&0xf), (u_int)(cp[3]>>4),
 		(u_int)(cp[2]&0xf), (u_int)(cp[2]>>4),
 		(u_int)(cp[1]&0xf), (u_int)(cp[1]>>4),
-		(u_int)(cp[0]&0xf), (u_int)(cp[0]>>4));
+		(u_int)(cp[0]&0xf), (u_int)(cp[0]>>4),
+#ifdef SIXBONE_HACK
+		(cp[0] == 0x3f && cp[1] == 0xfe) ? "int" :
+#endif
+		"arpa");
 	    }
 #else
 	cp = (u_char *)&numb->s_addr;
