@@ -259,8 +259,13 @@ aClient	*cptr;
 		if (!(cptr->info[4] == '0' &&
 		      (cptr->info[5] == '0' || cptr->info[5] == '1' ||
 		       cptr->info[5] == '2' || cptr->info[5] == '3' ||
-		       cptr->info[5] == '4')))
-			/* the NJOIN command appeared on 2.9.5 */
+		       cptr->info[5] == '4' ||
+		       (cptr->info[5] == '5' && cptr->info[6] == '0' &&
+			cptr->info[7] == '0'))))
+			/*
+			** the NJOIN command appeared on 2.9.5
+			** Unfortunately, m_njoin() has a fatal bug in 2.9.5
+			*/
 			cptr->hopcount |= SV_NJOIN;
 	    }
 	else if (!strncmp(cptr->info, "021", 3) ||
