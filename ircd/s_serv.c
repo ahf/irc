@@ -2459,15 +2459,7 @@ int	m_connect(aClient *cptr, aClient *sptr, int parc, char *parv[])
 	
 	if (parc < 3 || port == 0)
 	{
-		if (tmpport < 0)
-		{
-			port = 0 - tmpport;
-		}
-		else
-		{
-			port = tmpport;
-		}
-
+		port = abs(tmpport);
 		if (port == 0)
 		{
 			sendto_one(sptr,
@@ -2480,6 +2472,7 @@ int	m_connect(aClient *cptr, aClient *sptr, int parc, char *parv[])
 	{
 		sendto_one(sptr, "NOTICE %s :Connect: Illegal port number",
 				  parv[0]);
+		return 0;
 	}
 
 	/*
