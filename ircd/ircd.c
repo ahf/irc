@@ -984,7 +984,6 @@ int	main(int argc, char *argv[])
 	open_debugfile();
 	timeofday = time(NULL);
 	(void)init_sys();
-	logfiles_open();
 
 #ifdef USE_SYSLOG
 	openlog(mybasename(myargv[0]), LOG_PID|LOG_NDELAY, LOG_FACILITY);
@@ -1115,6 +1114,7 @@ int	main(int argc, char *argv[])
 	mysrand(timeofday);
 	
 	daemonize();	
+	logfiles_open();
 	write_pidfile();
 	dbuf_init();
 	
