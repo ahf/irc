@@ -27,7 +27,7 @@ static  char rcsid[] = "@(#)$Id$";
 #include "a_externs.h"
 #undef A_LOG_C
 
-static FILE	*debug, *authlog;
+static FILE	*debug = NULL, *authlog = NULL;
 
 void
 init_filelogs()
