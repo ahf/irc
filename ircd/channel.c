@@ -291,8 +291,9 @@ aChannel *chptr;
 				   pattern will never match anyone */
 				continue;
 			}
-			if (match(mode_nick, cptr->name)
-				|| match(mode_user, cptr->username))
+			if (match(mode_user, cptr->username) != 0 &&
+				(match(mode_nick, cptr->name) != 0 ||
+				match(mode_user, cptr->uid) != 0))
 			{
 				/* client doesn't match them, no point
 				   checking hostname */
