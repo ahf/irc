@@ -355,12 +355,6 @@ static	void	exit_server(aClient *cptr, aClient *acptr, const char *comment,
 	/* Remove all the servers recursively. */
 	while (acptr->serv->down)
 	{
-		if (!IsMasked(acptr->serv->down))
-		{
-			sendto_flag(SCH_SERVER,
-				"Received SQUIT %s from %s (%s)",
-				acptr->serv->down->name, cptr->name, comment);
-		}
 		exit_server(cptr, acptr->serv->down, comment, comment2);
 	}
 	/* Here we should send "Received SQUIT" for last server,
@@ -396,12 +390,16 @@ static	void	exit_server(aClient *cptr, aClient *acptr, const char *comment,
 	if (acptr == cptr)
 	{
 		acptr->flags |= FLAGS_SQUIT;
-		exit_one_client(cptr->from, acptr, &me, comment);
 	}
-	else
+	if (!IsMasked(acptr))
 	{
-		exit_one_client(cptr->from, acptr, &me, comment2);
+		sendto_flag(SCH_SERVER,
+			"Received SQUIT %s from %s (%s)", acptr->name,
+			acptr->serv->up->name,
+			acptr == cptr ? comment : comment2);
 	}
+	exit_one_client(cptr->from, acptr, &me,
+		acptr == cptr ? comment : comment2);
 	
 	return;
 }
