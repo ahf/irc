@@ -59,11 +59,7 @@ vsendto_iauth(char *pattern, va_list va)
 	    sendto_flag(SCH_AUTH, "Aiiie! lost slave authentication process");
 	    close(adfd);
 	    adfd = -1;
-	    /*
-	    ** this should not happen.. but if it does.. shall we try to
-	    ** restart the thing ? (afterall, iauth is almost stateless)
-	    ** (and can now be restarted.. but is it wise?)
-	    */
+	    start_iauth();
 	    return -1;
 	}
     return 0;
@@ -113,6 +109,7 @@ read_iauth()
 			    sendto_flag(SCH_AUTH, "Aiiie! lost slave authentication process (errno = %d)", errno);
 			    close(adfd);
 			    adfd = -1;
+			    start_iauth();
 			}
 		    break;
 		}

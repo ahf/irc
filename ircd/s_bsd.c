@@ -418,6 +418,7 @@ void
 start_iauth()
 {
 #if defined(USE_IAUTH)
+	static time_t last = 0;
 	static char first = 1;
 	int sp[2], fd;
 
@@ -428,7 +429,16 @@ start_iauth()
 		return;
 	    }
 	read_iauth(); /* to reset olen */
-	sendto_flag(SCH_AUTH, "Starting iauth...");
+	if ((time(NULL) - last) > 300)
+	    {
+		sendto_flag(SCH_AUTH, "Starting iauth...");
+		last = time(NULL);
+	    }
+	else
+	    {
+		sendto_flag(SCH_AUTH, "Not restarting iauth.");
+		return;
+	    }
 	if (socketpair(AF_UNIX, SOCK_STREAM, 0, sp) < 0)
 	    {
 		sendto_flag(SCH_ERROR, "socketpair() failed!");
