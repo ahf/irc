@@ -3636,6 +3636,18 @@ int	is_allowed(aClient *cptr, ACL function)
 		break;
 #endif
 
+#ifdef TKLINE
+#ifdef OPER_TKLINE
+	case ACL_TKLINE:
+	case ACL_UNTKLINE:
+# ifndef LOCOP_TKLINE
+		if (IsOper(cptr))
+# endif
+		ret = 0;
+		break;
+#endif
+#endif
+
 	default:
 		ret = 1;
 	}
