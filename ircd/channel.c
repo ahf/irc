@@ -2754,6 +2754,7 @@ int	m_part(aClient *cptr, aClient *sptr, int parc, char *parv[])
 
 	*buf = '\0';
 
+	parv[1] = canonize(parv[1]);
 	for (; (name = strtoken(&p, parv[1], ",")); parv[1] = NULL)
 	    {
 		convert_scandinavian(name, cptr);
