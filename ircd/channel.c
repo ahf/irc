@@ -2297,7 +2297,8 @@ Reg	aClient *cptr, *sptr;
 int	parc;
 char	*parv[];
 {
-	char nbuf[BUFSIZE], *q, *name, *target, *p, mbuf[MAXMODEPARAMS + 1];
+	char nbuf[BUFSIZE], *q, *name, *target, mbuf[MAXMODEPARAMS + 1];
+	char *p = NULL;
 	int chop, cnt = 0, nj = 0;
 	aChannel *chptr = NULL;
 	aClient *acptr;
