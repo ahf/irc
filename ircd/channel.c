@@ -1407,15 +1407,14 @@ static	int	set_mode(aClient *cptr, aClient *sptr, aChannel *chptr,
 				else if (((*ip == MODE_ANONYMOUS &&
 					   whatt == MODE_ADD &&
 					   *chptr->chname == '#') ||
-					  (*ip == MODE_REOP &&
+					  (*ip == MODE_REOP && whatt == MODE_ADD &&
 					   *chptr->chname != '!')) &&
 					 !IsServer(sptr))
 					sendto_one(cptr,
 						   replies[ERR_UNKNOWNMODE],
 						   ME, BadTo(sptr->name), *curr,
 						   chptr->chname);
-				else if ((*ip == MODE_REOP ||
-					  *ip == MODE_ANONYMOUS) &&
+				else if (*ip == MODE_ANONYMOUS &&
 					 !IsServer(sptr) &&
 					 !(is_chan_op(sptr,chptr) &CHFL_UNIQOP)
 					 && *chptr->chname == '!')
