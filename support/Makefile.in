@@ -42,7 +42,7 @@ O_CFLAGS = @CFLAGS@ -I. -I../common -DCONTRIB_COMPILE
 LDFLAGS = @LDFLAGS@
 # required libraries, except zlib and curses/termcap
 LIBS = @LIBS@
-MATHLIBS = -lm
+MATHLIBS = @MATHLIBS@
 # zlib, eventually
 ZLIBS = @IRC_ZLIB_LIBRARY@
 # for DSM support (dlopen(), dlsym(), dlclose())
