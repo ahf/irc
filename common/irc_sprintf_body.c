@@ -47,7 +47,7 @@
 	assert( buf != NULL );
 	assert( format != NULL );
 # ifdef IRC_SPRINTF_SN
-	assert( size > BUFSIZE );
+	assert( size <= BUFSIZE );
 # endif
 #endif
 
@@ -555,7 +555,7 @@ numbers:
 farend:
 		if ( count >= size )
 		{
-			bufstart[size+1] = '\0';
+			bufstart[size-1] = '\0';
 			count = size;
 			break;
 		}
@@ -573,7 +573,7 @@ farend:
 #endif
 #ifdef IRC_SPRINTF_DEBUG
 	*(bufstart+count)='\0';
-	fprintf(stderr, "output:>%f<\n", bufstart);
+	fprintf(stderr, "output:>%s<\n", bufstart);
 	fprintf(stderr, "fcount:>%d<\n", count);
 #endif
 	return count;

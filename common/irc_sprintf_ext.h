@@ -17,8 +17,13 @@
 #define EXTERN
 #endif /* IRC_SPRINTF_C */
 
-EXTERN int irc_sprintf(aClient *target, char *buf, char *format, ...)
-EXTERN int irc_vsprintf(aClient *target, char *buf, char *format, va_list ap)
+EXTERN int irc_sprintf(aClient *target, char *buf, char *format, ...);
+EXTERN int irc_vsprintf(aClient *target, char *buf, char *format, va_list ap);
+
+#if 0
+EXTERN int irc_snprintf(aClient *target, char *buf, size_t size, char *format, ...);
+EXTERN int irc_vsnprintf(aClient *target, char *buf, size_t size, char *format, va_list ap);
+#endif
 
 #ifdef IRC_SPRINTF_C
 #undef IRC_SPRINTF_SNPRINTF
