@@ -2729,6 +2729,9 @@ char	*parv[];
 				penalty += 2;
 				if (penalty >= MAXPENALTY && MyPerson(sptr))
 					break;
+				/* user kicked himself out */
+				if (MyPerson(sptr) && who == sptr)
+					break;
 			    }
 			else
 				sendto_one(sptr,
