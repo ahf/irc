@@ -3194,6 +3194,8 @@ static	void	do_dns_async()
 						sendto_iauth("%d N %s",
 							cptr->fd, hp->h_name);
 				    }
+				else
+					sendto_iauth("%d d", cptr->fd);
 #endif
 			    }
 			break;
