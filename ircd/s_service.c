@@ -583,7 +583,7 @@ int	m_servset(aClient *cptr, aClient *sptr, int parc, char *parv[])
 	if (strcmp(sptr->service->dist, "*"))
 		sptr->service->wants &= ~SERVICE_MASK_GLOBAL;
 	/* allow options */
-	sptr->service->wants |= (atoi(parv[1]) & ~SERVICE_MASK_ALL);
+	sptr->service->wants |= (strtol(parv[1], NULL, 0) & ~SERVICE_MASK_ALL);
 	/* send accepted SERVSET */
 	sendto_one(sptr, ":%s SERVSET %s :%d", sptr->name, sptr->name,
 		   sptr->service->wants);
