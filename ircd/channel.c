@@ -2884,7 +2884,7 @@ char	*parv[];
 	char	*name, *p = NULL;
 	int	rlen = 0;
 
-	if (parc > 1 &&
+	if (parc > 2 &&
 	    hunt_server(cptr, sptr, ":%s LIST %s %s", 2, parc, parv))
 		return 10;
 	if (BadPtr(parv[1]))
@@ -2965,7 +2965,7 @@ char	*parv[];
 	int	idx, flag, len, mlen, rlen = 0;
 	char	*s, *para = parc > 1 ? parv[1] : NULL;
 
-	if (parc > 1 &&
+	if (parc > 2 &&
 	    hunt_server(cptr, sptr, ":%s NAMES %s %s", 2, parc, parv))
 		return 10;
 
