@@ -315,7 +315,7 @@ char	*msg, *p1, *p2, *p3, *p4, *p5, *p6, *p7, *p8, *p9, *p10, *p11;
 	if (!lastd)
 		lastd = now;
 	else if (now - lastd < 60 && dumps > 2)
-		(void)s_die();
+		(void)s_die(0);
 	if (now - lastd > 60)
 	    {
 		lastd = now;
@@ -335,7 +335,7 @@ char	*msg, *p1, *p2, *p3, *p4, *p5, *p6, *p7, *p8, *p9, *p10, *p11;
 	sendto_flag(SCH_ERROR, "Dumped core : core.%d", p);
 	Debug((DEBUG_FATAL, msg, p1, p2, p3, p4, p5, p6, p7, p8, p9, p10,p11));
 	sendto_flag(SCH_ERROR, msg, p1, p2, p3, p4, p5, p6, p7, p8,p9,p10,p11);
-	(void)s_die();
+	(void)s_die(0);
 }
 #endif
 
