@@ -1232,11 +1232,11 @@ int 	initconf(int opt)
 				++ncount;
 				aconf->status = CONF_NOCONNECT_SERVER;
 				break;
-			case 'O':
+			case 'o':
 				aconf->status = CONF_OPERATOR;
 				break;
 			/* Local Operator, (limited privs --SRB) */
-			case 'o':
+			case 'O':
 				aconf->status = CONF_LOCOP;
 				break;
 			case 'P': /* listen port line */
