@@ -1763,7 +1763,7 @@ FdAry	*fdp;
 
 #ifdef	_DO_POLL_
 		if ( auth == 0 )
-			bzero((char *) &authclnts, sizeof( authclnts ));
+			bzero((char *) authclnts, sizeof( authclnts ));
 #endif
 		for (i = fdp->highest; i >= 0; i--)
 		    {
