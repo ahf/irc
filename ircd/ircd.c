@@ -415,7 +415,7 @@ static	time_t	check_pings(time_t currenttime)
 		** Once per TIMEDKLINES seconds.
 		** (1 minute is minimum resolution in K-line field)
 		*/
-		if ((currenttime - lkill > TIMEDKLINES) ||
+		if ((currenttime - lkill > TIMEDKLINES)
 			&& IsPerson(cptr) && !IsKlineExempt(cptr))
 		{
 			kflag = find_kill(cptr, 1, &reason);
