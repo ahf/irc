@@ -726,7 +726,8 @@ Reg	aClient	*cptr;
 		if (bconf->passwd[0])
 #ifndef	ZIP_LINKS
 			sendto_one(cptr, "PASS %s %s IRC|%s %s", bconf->passwd,
-				   pass_version, serveropts,				   (bootopt & BOOT_STRICTPROT) ? "P" : "");
+				   pass_version, serveropts,
+				   (bootopt & BOOT_STRICTPROT) ? "P" : "");
 #else
 			sendto_one(cptr, "PASS %s %s IRC|%s %s%s",
 				   bconf->passwd, pass_version, serveropts,
