@@ -576,9 +576,9 @@ int	parse(aClient *cptr, char *buffer, char *bufend)
 	Reg	int	len, i, numeric = 0, paramcount;
 	Reg	struct	Message *mptr = NULL;
 	int	ret;
-	int	status;
+	int	status = STAT_UNREG;
 	struct Cmd	*handler;
-	CmdHandler	fhandler;
+	CmdHandler	fhandler = m_nop;
 
 	Debug((DEBUG_DEBUG, "Parsing %s: %s",
 		get_client_name(cptr, FALSE), buffer));
