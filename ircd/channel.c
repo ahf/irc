@@ -238,6 +238,22 @@ aChannel *chptr;
 	for (tmp = chptr->banlist; tmp; tmp = tmp->next)
 		if (match(tmp->value.cp, s) == 0)
 			break;
+
+	if (!tmp)
+	    {
+		char *ip = inetntoa((char *)&cptr->ip);
+
+		if (strcmp(ip, cptr->user->host))
+		    {
+			s = make_nick_user_host(cptr->name,
+						cptr->user->username, ip);
+	    
+			for (tmp = chptr->banlist; tmp; tmp = tmp->next)
+				if (match(tmp->value.cp, s) == 0)
+					break;
+		    }
+	  }
+
 	return (tmp);
 }
 
