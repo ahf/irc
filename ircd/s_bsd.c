@@ -1165,9 +1165,9 @@ check_serverback:
 	/*
 	 * attach the C and N lines to the client structure for later use.
 	 */
+	(void)attach_confs(cptr, name, CONF_HUB|CONF_LEAF);
 	(void)attach_conf(cptr, n_conf);
 	(void)attach_conf(cptr, c_conf);
-	(void)attach_confs(cptr, name, CONF_HUB|CONF_LEAF);
 	if (IsIllegal(n_conf) || IsIllegal(c_conf))
 	{
 		sendto_flag(SCH_DEBUG, "Illegal class!");
