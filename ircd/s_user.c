@@ -2497,12 +2497,11 @@ char	*parv[];
 		    !IsServer(cptr))
 			sptr->user->flags &= ~FLAGS_LOCOP;
 		if ((setflags & FLAGS_RESTRICTED) &&
-		    !(sptr->user->flags & FLAGS_RESTRICTED) &&
-		    (what == MODE_DEL))
+		    !(sptr->user->flags & FLAGS_RESTRICTED))
 		    {
 			sendto_one(sptr, err_str(ERR_RESTRICTED, parv[0]));
 			SetRestricted(sptr);
-			return 1;
+			/* Can't return; here since it could mess counters */
 		    }
 		if ((setflags & (FLAGS_OPER|FLAGS_LOCOP)) && !IsAnOper(sptr) &&
 		    MyConnect(sptr))
