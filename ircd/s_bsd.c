@@ -226,14 +226,15 @@ int	port;
 	if (port)
 	    {
 		server.SIN_FAMILY = AFINET;
-		if (!ip || !isdigit(*ip))
 #ifdef INET6
+		if (!ip || (!isxdigit(*ip) && *ip != ':'))
 			server.sin6_addr = in6addr_any;
 		else
 			if(!inet_pton(AF_INET6, ip, server.sin6_addr.s6_addr))
 				bcopy(minus_one, server.sin6_addr.s6_addr,
 				      IN6ADDRSZ);
 #else
+		if (!ip || !isdigit(*ip))
 			server.sin_addr.s_addr = INADDR_ANY;
 		else
 			server.sin_addr.s_addr = inetaddr(ip);
