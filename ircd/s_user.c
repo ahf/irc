@@ -926,7 +926,13 @@ badparamcountkills:
 	{
 		/* Allow registering with nick "0", this will be
 		** overwritten in register_user() */
+#ifdef DISABLE_NICK0_REGISTRATION
+		sendto_one(sptr, replies[ERR_ERRONEOUSNICKNAME], ME,
+			BadTo(parv[0]), nick);
+		return 2;
+#else
 		goto nickkilldone;
+#endif
 	}
 
 	/* do_nick_name() can change "nick" (like: drop scandinavian
