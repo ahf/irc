@@ -2721,17 +2721,14 @@ static	void	trace_one(aClient *sptr, aClient *acptr)
 				   class, name);
 			break;
 			
-		case STAT_CLIENT:
-			if (IsAnOper(acptr))
-			{
+		case STAT_OPER:
 				sendto_one(sptr, replies[RPL_TRACEOPERATOR], ME,
 					to, class, name);
-			}
-			else
-			{
+			break;
+
+		case STAT_CLIENT:
 				sendto_one(sptr, replies[RPL_TRACEUSER], ME,
 					to, class, name);
-			}
 			break;
 			
                 case STAT_SERVER:
