@@ -2660,9 +2660,11 @@ char	*parv[];
 	    {
 		sendto_one(sptr, rpl_str(RPL_INVITING, parv[0]),
 			   acptr->name, ((chptr) ? (chptr->chname) : parv[2]));
-		if (acptr->user->away)
+		if (acptr->user->flags & FLAGS_AWAY)
 			sendto_one(sptr, rpl_str(RPL_AWAY, parv[0]),
-				   acptr->name, acptr->user->away);
+				   acptr->name,
+				   (acptr->user->away) ? acptr->user->away :
+				   "Gone");
 	    }
 	if (MyConnect(acptr))
 		if (chptr && /* (chptr->mode.mode & MODE_INVITEONLY) && */
