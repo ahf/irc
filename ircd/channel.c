@@ -2102,7 +2102,7 @@ char	*parv[];
 	if (!BadPtr(para))
 	    {
 		s = index(para, ',');
-		if (s && MyConnect(sptr))
+		if (s && MyConnect(sptr) && s != para)
 		    {
 			parv[1] = ++s;
 			(void)m_names(cptr, sptr, parc, parv);
