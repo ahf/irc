@@ -706,6 +706,7 @@ void	sendto_channel_butone(aClient *one, aClient *from, aChannel *chptr, char *p
 
 	if (one != from && MyConnect(from) && IsRegisteredUser(from))
 	    {
+		/* useless junk? */
 #if ! USE_STDARG
 		sendto_prefix_one(from, from, pattern, p1, p2, p3, p4,
 				  p5, p6, p7, p8, p9, p10, p11);
@@ -1122,6 +1123,8 @@ void	sendto_match_servs(aChannel *chptr, aClient *from, char *format, ...)
 		    IsMe(cptr))
 			continue;
 		if (!BadPtr(mask) && match(mask, cptr->name))
+			continue;
+		if (*chptr->chname == '-' && !(cptr->serv->version & SV_NJOIN))
 			continue;
 		if (!len)
 		    {

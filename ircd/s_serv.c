@@ -265,7 +265,7 @@ aClient	*cptr;
 	    }
 	else if (!strncmp(cptr->info, "021", 3) ||
 		 !strncmp(cptr->info, "020999", 6))
-		cptr->hopcount = SV_29|SV_NJOIN|SV_NMODE;
+		cptr->hopcount = SV_29|SV_NJOIN|SV_NMODE|SV_NCHAN;
 	else
 		cptr->hopcount = SV_OLD;
 

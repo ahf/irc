@@ -53,7 +53,7 @@ static	Numeric	numeric_errors[] = {
 /* 405 */	{ ERR_TOOMANYCHANNELS, "%s :You have joined too many channels" },
 /* 406 */	{ ERR_WASNOSUCHNICK, "%s :There was no such nickname" },
 /* 407 */	{ ERR_TOOMANYTARGETS,
-		"%s :%s recipients. No message delivered" },
+		"%s :%s recipients. %s" },
 /* 408 */	{ ERR_NOSUCHSERVICE, "%s :No such service" },
 /* 409 */	{ ERR_NOORIGIN, ":No origin specified" },
 		{ 0, (char *)NULL },

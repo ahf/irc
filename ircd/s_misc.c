@@ -800,13 +800,28 @@ char	*comment;
 				** close_connection() has already been called,
 				** it makes MyConnect == False - krys
 				*/
-				if (sptr != cptr
+				if (sptr != cptr)
+					if (*lp->value.chptr->chname == '-')
+					    {
+						if (!(sptr->flags &FLAGS_QUIT))
+							lp->value.chptr->history = timeofday + LDELAYCHASETIMELIMIT;
+					    }
+					else if (
 #ifndef BETTER_CDELAY
-				    && !(sptr->flags & FLAGS_QUIT)
+						 !(sptr->flags & FLAGS_QUIT) &&
 #endif
-				    && is_chan_op(sptr, lp->value.chptr))
-					lp->value.chptr->history = timeofday + 
-							   DELAYCHASETIMELIMIT;
+						 is_chan_op(sptr, lp->value.chptr))
+						lp->value.chptr->history = timeofday + DELAYCHASETIMELIMIT;
+				/*
+				 * if a chanop leaves (no matter how), record
+				 * the time to be able to later massreop if
+				 * necessary.
+				 */
+/*
+				if (*lp->value.chptr->chname == '-' &&
+				    is_chan_op(sptr, lp->value.chptr))
+					lp->value.chptr->massop = timeofday + LDELAYCHASETIMELIMIT;
+*/
 				remove_user_from_channel(sptr,lp->value.chptr);
 			    }
 

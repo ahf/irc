@@ -575,8 +575,9 @@ int	debug;
 			   d_cl*sizeof(aClass));
 
 	sendto_one(cptr,
-		   ":%s %d %s :Channels %d(%d) Modes %d(%d) History %d(%d)",
-		   me.name, RPL_STATSDEBUG, nick, ch, chm, chb, chbm,chh,chhm);
+   ":%s %d %s :Channels %d(%d) Modes %d(%d) History %d(%d) Cache %d(%d)",
+		   me.name, RPL_STATSDEBUG, nick, ch, chm, chb, chbm, chh,
+		   chhm, istat.is_cchan, istat.is_cchanmem);
 	if (debug && (ch != d_ch || chm != d_chm || chb != d_chb
 		      || chbm != d_chbm || chh != d_chh || chhm != d_chhm))
 		sendto_one(cptr,
