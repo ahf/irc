@@ -387,7 +387,11 @@ void	free_server(aServer *serv, aClient *cptr)
 void	remove_client_from_list(aClient *cptr)
 {
 	checklist();
-	if (cptr->hopcount == 0) /* is there another way, at this point? */
+	/* is there another way, at this point? */
+	/* servers directly connected have hopcount=1, but so do their
+	 * users, hence the check for IsServer --B. */
+	if (cptr->hopcount == 0 ||
+		(cptr->hopcount == 1 && IsServer(cptr)))
 		istat.is_localc--;
 	else
 		istat.is_remc--;
