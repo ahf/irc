@@ -172,6 +172,9 @@ char	*mask, *name;
 	char	*ma = mask, *na = name;
 	int	wild = 0, q = 0, calls = 0;
 
+	if (!*mask)
+		return 1;
+
 	while (1)
 	    {
 #ifdef	MAX_ITERATIONS
@@ -270,7 +273,7 @@ char	*pattern;
 
 
 /*
-**  Case insensitive comparison of two NULL terminated strings.
+**  Case insensitive comparison of two null terminated strings.
 **
 **	returns	 0, if s1 equal to s2
 **		<0, if s1 lexicographically less than s2
