@@ -169,8 +169,6 @@ char	*sockhost;
 			add_local_domain(uhost, sizeof(uhost) - strlen(uhost));
 		    }
 attach_iline:
-		if (index(uhost, '@'))
-			cptr->flags |= FLAGS_DOID;
 		if (aconf->status & CONF_RCLIENT)
 			SetRestricted(cptr);
 		get_sockhost(cptr, uhost);
