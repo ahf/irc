@@ -738,13 +738,13 @@ char	*argv[];
 	if (argc > 0)
 		bad_command(); /* This exits out */
 
+	initstats();
 	ircd_readtune(tunefile);
 	timeofday = time(NULL);
 #ifdef	CACHED_MOTD
 	motd = NULL;
 	read_motd(MPATH);
 #endif
-	initstats();
 	inithashtables();
 	initlists();
 	initclass();
