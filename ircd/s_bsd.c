@@ -498,7 +498,7 @@ void	init_sys()
 	if (((bootopt & BOOT_CONSOLE) || isatty(0)) &&
 	    !(bootopt & (BOOT_INETD|BOOT_OPER)))
 	    {
-#ifndef _WIN32
+#ifndef __CYGWIN32__
 		if (fork())
 			exit(0);
 #endif

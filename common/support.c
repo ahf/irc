@@ -35,10 +35,6 @@ static  char rcsid[] = "@(#)$Id$";
 #endif
 #undef SUPPORT_C
 
-#ifdef _WIN32
-int w32_h_errno = 0;
-#endif
-
 char	*mystrdup(s)
 char	*s;
 {
@@ -733,7 +729,7 @@ char *make_version()
  */
 int truncate(path, length)
 const char *path;
-size_t length;
+off_t length;
 {
 	int fd, res;
 	fd = open(path, O_WRONLY);
