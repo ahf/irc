@@ -2647,8 +2647,6 @@ int	m_kill(aClient *cptr, aClient *sptr, int parc, char *parv[])
 		    {
 			sendto_serv_v(cptr, SV_UID, ":%s KILL %s :%s!%s",
 				      parv[0], acptr->user->uid, inpath, path);
-			sendto_serv_notv(cptr, SV_UID, ":%s KILL %s :%s!%s",
-					   parv[0], acptr->name, inpath, path);
 		    }
 		else
 			sendto_serv_butone(cptr, ":%s KILL %s :%s!%s",
@@ -3468,8 +3466,6 @@ static	void	save_user(aClient *cptr, aClient *sptr, char *path)
 	check_services_butone(SERVICE_WANT_NICK, sptr->user->server, sptr,
 			      ":%s NICK :%s", sptr->name, sptr->user->uid);
 #endif
-	sendto_serv_notv(cptr, SV_UID, ":%s NICK :%s",
-			 sptr->name, sptr->user->uid);
 	sendto_serv_v(cptr, SV_UID, ":%s SAVE %s :%s%c%s", 
 		cptr ? cptr->name : ME, sptr->user->uid, 
 		cptr ? cptr->name : ME, cptr ? '!' : ' ', path);
