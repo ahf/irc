@@ -4,7 +4,10 @@
 # $Id$
 #
 
-# Have the IRC server reject user connections if iauth is unavailable
+# If iauth timeouts, then reject user
+notimeout
+# This makes the IRC server require that iauth performs the authentication
+# in order for a new user connection to be accepted
 required
 
 # Perform ident lookups
