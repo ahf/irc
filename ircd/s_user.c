@@ -2065,11 +2065,9 @@ char	*parv[];
 	    {
 		if ((killer = index(path, ' ')))
 		    {
-			while (*killer && *killer != '!')
+			while (killer > path && *killer != '!')
 				killer--;
-			if (!*killer)
-				killer = path;
-			else
+			if (killer != path)
 				killer++;
 		    }
 		else
