@@ -146,6 +146,7 @@ attach_iline:
 			find_bounce(cptr, ConfClass(aconf));
 		return i;
 	    }
+	find_bounce(cptr, -1); /* -1 isn't a good way to do this */
 	return -1;
 }
 
