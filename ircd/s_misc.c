@@ -196,14 +196,15 @@ char	*get_client_name(aClient *sptr, int showip)
 				(void)sprintf(nbuf, "%s[%.*s@%s]",
 					sptr->name, USERLEN,
 					(!(sptr->flags & FLAGS_GOTID)) ? "" :
-					sptr->auth,
+					sptr->auth, sptr->user ? sptr->user->sip :
 #ifdef INET6 
 					      inetntop(AF_INET6,
 						       (char *)&sptr->ip,
-						       mydummy, MYDUMMY_SIZE));
+						       mydummy, MYDUMMY_SIZE)
 #else
-					      inetntoa((char *)&sptr->ip));
+					      inetntoa((char *)&sptr->ip)
 #endif
+					);
 			else
 			    {
 				if (mycmp(sptr->name, sptr->sockhost))
@@ -215,6 +216,7 @@ char	*get_client_name(aClient *sptr, int showip)
 						IsPerson(sptr) ?
 							sptr->user->username :
 							sptr->auth,
+						IsPerson(sptr) ? sptr->user->host :
 						sptr->sockhost);
 				else
 					return sptr->name;
