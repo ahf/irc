@@ -57,7 +57,7 @@ char *cfile;
 	AnInstance **last = &instances, *itmp;
 	FILE *cfh;
 
-	cfh = fopen((cfile) ? cfile : QPATH, "r");
+	cfh = fopen((cfile) ? cfile : IAUTHCONF_PATH, "r");
 	if (cfh)
 	    {
 		while (fgets(buffer, 160, cfh))

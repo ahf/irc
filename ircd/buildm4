@@ -23,8 +23,8 @@
 # If only this was a perl script...*sigh*
 #
 INCLUDE=`../support/config.guess`
-IRCDDIR=$1
-M4=$IRCDDIR/ircd.m4
+# Installation with absolute path now (Kratz)
+M4=$1
 /bin/rm -f $M4
 egrep "^#def[^P]*PATCHLEVEL" ../common/patchlevel.h | \
 sed -e 's/[^\"]*\"\([^\"]*\)\"/define(VERSION,\1)/' >>$M4

@@ -27,10 +27,12 @@ to /usr/local
 <tag/--sbindir=DIR/ changes the default directory where the
 system admin executable files will go. It is important to
 set this properly. (default is prefix/sbin)
-<tag/--libdir=DIR/ changes the default directory where most
-irc files will go. (default is prefix/lib/ircd)
 <tag/--logdir=DIR/ changes the default directory where the
-irc log files will go. (default is prefix/lib/ircd)
+irc log files will go. (default is prefix/var/log/ircd)
+<tag/--sysconfdir=DIR/ changes the default directory where
+the irc server configuration files will go. (default is prefix/etc)
+<tag/--localstatedir=DIR/ changes the default directory
+where the irc server state files will go. (default is prefix/var/run)
 <tag/--resconf=FILE/ defines the file to be used by ircd to
 initialize its resolver.  (default is /etc/resolv.conf)
 <tag/--zlib-include=DIR/ specifies in which directory the

@@ -35,7 +35,7 @@ int	*port;
 	FILE	*fd;
 	char	line[256], *tmp;
 
-	if ((fd = fopen(CONFIGFILE,"r")) == NULL)
+	if ((fd = fopen(IRCDCONF_PATH, "r")) == NULL)
 		return /* (-1) */ ;
 	while (fgets(line,255,fd)) {
 		if (line[0] == '#' || line[0] == '\n' ||

@@ -35,10 +35,11 @@ init_filelogs()
 #if defined(IAUTH_DEBUG)
 	if (debug)
 		fclose(debug);
-	debug = fopen(OPATH, "w");
+	debug = fopen(IAUTHDBG_PATH, "w");
 # if defined(USE_SYSLOG)
 	if (!debug)
-		syslog(LOG_ERR, "Failed to open \"%s\" for writing", OPATH);
+		syslog(LOG_ERR, "Failed to open \"%s\" for writing",
+		       IAUTHDBG_PATH);
 # endif
 #endif /* IAUTH_DEBUG */
 	if (authlog)

@@ -2244,7 +2244,7 @@ char	*parv[];
 	 * 3 seconds. -avalon (curtesy of wumpus)
 	 */
 	(void)alarm(3);
-	fd = open(MPATH, O_RDONLY);
+	fd = open(IRCDMOTD_PATH, O_RDONLY);
 	(void)alarm(0);
 	if (fd == -1)
 	    {
