@@ -253,8 +253,8 @@ int	m_squit(aClient *cptr, aClient *sptr, int parc, char *parv[])
 		    {
 			/* better server: just propagate upstream */
 			sendto_one(acptr->from, ":%s SQUIT %s :%s",
-				    ST_UID(acptr->from) ? sptr->serv->sid :
-				    sptr->name,
+				    IsServer(sptr) && ST_UID(acptr->from) ?
+				    sptr->serv->sid : sptr->name,
 				    ST_UID(acptr->from) ?
 				    acptr->serv->sid : acptr->name, comment);
 			
