@@ -299,8 +299,9 @@ char *strver;
 			{
 			    if (cldata[cl].mod_status == ST_V5)
 				{
-				    if ((u_char)cldata[cl].inbuffer[1] > 2 &&
-					(u_char)cldata[cl].inbuffer[1] != 255)
+				    if ((u_char)cldata[cl].inbuffer[1] == 4 ||
+					((u_char)cldata[cl].inbuffer[1] > 9 &&
+					(u_char)cldata[cl].inbuffer[1] != 255))
 					    state = PROXY_UNEXPECTED;
 				}
 			    else /* ST_V5b */
