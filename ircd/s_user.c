@@ -397,8 +397,11 @@ char	*nick, *username;
 			time_t last = 0;
 
 			if (timeofday - last > 300)
+			    {
 				sendto_flag(SCH_AUTH, 
 			    "iauth not running! (refusing new connections)");
+				last = timeofday;
+			    }
 			sptr->exitc = EXITC_AUTHFAIL;
 			return ereject_user(cptr, "No iauth!",
 					    "Authentication failure!");
