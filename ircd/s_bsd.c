@@ -1184,7 +1184,7 @@ void	close_connection(cptr)
 aClient *cptr;
 {
 	Reg	aConfItem *aconf;
-	Reg	int	i,j;
+	Reg	int	i;
 #ifdef SO_LINGER
 	struct 	linger	sockling;
 
