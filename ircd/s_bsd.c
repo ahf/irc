@@ -1002,9 +1002,6 @@ aClient	*cptr;
 	if (!aconf->port)
 		return -1;
 
-	if (cptr->serv->version == SV_OLD)
-		return -1;
-
 	fd = socket(AF_INET, SOCK_STREAM, 0);
 
 	if (fd >= MAXCLIENTS)

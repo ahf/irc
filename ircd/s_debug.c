@@ -140,12 +140,6 @@ char	serveropts[] = {
 #ifdef MIRC_KLUDGE
 '$',
 #endif
-'_',
-'V',
-#ifndef NoV28Links
-'0',
-#endif
-'1',
 '\0'};
 
 #include "common.h"
