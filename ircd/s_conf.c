@@ -1708,6 +1708,9 @@ int 	initconf(int opt)
 		if (tmp3 && (aconf->status & CONF_OPERATOR))
 		{
 			aconf->flags |= oline_flags_parse(tmp3);
+			/* remove this when removing o: lines --B. */
+			if (aconf->flags & ACL_LOCOP)
+				aconf->flags &= ~ACL_ALL_REMOTE;
 		}
 		if (aconf->status & CONF_SERVER_MASK)
 		    {
