@@ -3088,6 +3088,8 @@ char	*parv[];
 	{
 		sendto_serv_v(sptr, SV_UID, ":%s EOB", sptr->serv->sid);
 	}
+
+	check_split();
 	
 	return 1;
 }
@@ -3497,5 +3499,6 @@ void do_emulated_eob(aClient *sptr)
 
 		}
 	}
+	check_split();
 	return;
 }
