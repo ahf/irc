@@ -88,6 +88,9 @@ char	serveropts[] = {
 'K',
 # endif
 #endif
+#ifdef FAILED_OPERLOG
+'l',
+#endif
 #ifdef	LEAST_IDLE
 'L',
 #endif
