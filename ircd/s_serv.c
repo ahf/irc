@@ -125,7 +125,7 @@ int	m_squit(aClient *cptr, aClient *sptr, int parc, char *parv[])
 	char	*server;
 	Reg	aClient	*acptr = NULL;
 	int	rsquit = 0;
-	char	*comment = (parv > 2 && parv[2]) ? parv[2] : "no reason";
+	char	*comment = (parc > 2 && parv[2]) ? parv[2] : "no reason";
 	static char	comment2[TOPICLEN+1];
 
 	if (parc > 1)
