@@ -249,8 +249,6 @@ time_t	now;
 					sendto_iauth("%d d", cptr->fd);
 #endif
 					ClearDNS(cptr);
-					if (!DoingAuth(cptr))	/* XAuth? */
-						SetAccess(cptr); /* unused */
 					break;
 				case ASYNC_CONNECT :
 					sendto_flag(SCH_ERROR,
