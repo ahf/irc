@@ -292,10 +292,6 @@ static	int	del_modeid(int type, aChannel *chptr, aListItem *modeid)
 			break;
 		}
 	}
-	if (modeid)
-	{
-		free_bei(modeid);
-	}
 	return 0;
 }
 
@@ -1763,13 +1759,15 @@ static	int	set_mode(aClient *cptr, aClient *sptr, aChannel *chptr,
 					(void)strcat(upbuf, " ");
 					len++;
 					ulen++;
+					if ((whatt & MODE_DEL))
+						free_bei(lp->value.alist);
 				}
 				else
 				{
 					/* We have to free lp->value.alist
 					** allocated by make_bei, otherwise
 					** it is memleak. del_modeid always
-					** succeeds, so free_bei is there.
+					** succeeds, so it is freed above.
 					** If add_modeid succeeds, it uses
 					** pointer, if not, we free it here.
 					** This also covers all other cases,
