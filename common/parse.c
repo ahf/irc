@@ -538,7 +538,7 @@ aClient	*find_target(char *name, aClient *cptr)
 			aServer *asptr;
 			asptr = find_tokserver(idtol(name + 1, SIDLEN - 1),
 				cptr, NULL);
-			if (acptr)
+			if (asptr)
 			{
 				acptr = asptr->bcptr;
 			}
