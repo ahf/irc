@@ -180,12 +180,9 @@ int	send_message(aClient *to, char *msg, int len)
 	if (to->flags & FLAGS_ZIP)
 		msg = zip_buffer(to, msg, &len, 0);
 
+# endif	/* ZIP_LINKS */
 tryagain:
 	if (len && (i = dbuf_put(&to->sendQ, msg, len)) < 0)
-# else 	/* ZIP_LINKS */
-tryagain:
-	if ((i = dbuf_put(&to->sendQ, msg, len)) < 0)
-# endif	/* ZIP_LINKS */
 	{
 		if (i == -2 && CBurst(to))
 		    {	/* poolsize was exceeded while connect burst */
