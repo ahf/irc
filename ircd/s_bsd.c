@@ -1265,26 +1265,28 @@ aClient	*cptr;
 	 * Method borrowed from Wietse Venema's TCP wrapper.
 	 */
 	{
-	u_char	opbuf[256], *t = opbuf;
-	char	*s = readbuf;
-
-	opt = sizeof(readbuf) / 16;
-	if (!IsUnixSocket(cptr) && !IsListening(cptr))
-	    {
-		if (GETSOCKOPT(fd, IPPROTO_IP, IP_OPTIONS, t, &opt) == -1)
-			report_error("getsockopt(IP_OPTIONS) %s:%s", cptr);
-		else if (opt > 0)
-		    {
-			for (; opt > 0; opt--, s+= 3)
-				(void)sprintf(s, " %02x", *t++);
-			*s = '\0';
-			sendto_flag(SCH_NOTICE, "Connection %s with IP opts%s",
-				    get_client_name(cptr, TRUE), readbuf);
-			Debug((DEBUG_NOTICE, "Connection %s with IP opts%s",
-				    get_client_name(cptr, TRUE), readbuf));
-			ret = -1;
-		    }
-	    }
+	    if (!IsUnixSocket(cptr) && !IsListening(cptr))
+		{
+		    u_char	opbuf[256], *t = opbuf;
+		    char	*s = readbuf;
+	      
+		    opt = sizeof(opbuf);
+		    if (GETSOCKOPT(fd, IPPROTO_IP, IP_OPTIONS, t, &opt) == -1)
+			    report_error("getsockopt(IP_OPTIONS) %s:%s", cptr);
+		    else if (opt > 0)
+			{
+			    for (; opt > 0; opt--, s+= 3)
+				    (void)sprintf(s, " %02x", *t++);
+			    *s = '\0';
+			    sendto_flag(SCH_NOTICE,
+					"Connection %s with IP opts%s",
+					get_client_name(cptr, TRUE), readbuf);
+			    Debug((DEBUG_NOTICE,
+				   "Connection %s with IP opts%s",
+				   get_client_name(cptr, TRUE), readbuf));
+			    ret = -1;
+			}
+		}
 	}
 #endif
 	return ret;
