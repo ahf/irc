@@ -3058,7 +3058,29 @@ int	m_kick(aClient *cptr, aClient *sptr, int parc, char *parv[])
 				}
 				strcat(obuf, who->name);
 
-				remove_user_from_channel(who,chptr);
+				/* kicking last one out may destroy chptr */
+				if (chptr->users == 1)
+				{
+					if (*nbuf)
+					{
+						sendto_match_servs_v(chptr, 
+							cptr, SV_UID,
+							":%s KICK %s %s :%s",
+							sender, name,
+							nbuf, comment);
+						nbuf[0] = '\0';
+					}
+					if (*obuf)
+					{
+						sendto_match_servs_notv(chptr,
+							cptr, SV_UID,
+							":%s KICK %s %s :%s",
+							sptr->name, name,
+							obuf, comment);
+						obuf[0] = '\0';
+					}
+				}
+				remove_user_from_channel(who, chptr);
 				penalty += 2;
 				if (MyPerson(sptr) &&
 					/* penalties, obvious */
