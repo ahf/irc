@@ -950,6 +950,7 @@ int	rehash(aClient *cptr, aClient *sptr, int sig)
 	{
 		rehashed = 1;
 	}
+	srand(now);
 	return ret;
 }
 
@@ -1907,7 +1908,7 @@ aConfItem	*find_denied(char *name, int class)
 				    continue;
 			    if (!aconf2->class || ConfClass(aconf2) != ck)
 				    continue;
-			    if (find_client(aconf2->host, NULL))
+			    if (find_client(aconf2->name, NULL))
 				    return aconf2;
 			}
 		}
