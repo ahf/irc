@@ -214,7 +214,7 @@ char *strver;
 	    cldata[cl].wfd = 0;
 	    return -1;
 	}
-    if (cldata[cl].mod_status == 4)
+    if (cldata[cl].mod_status == ST_V4)
 	{
 	    query[0] = 4; query[1] = 1;
 	    query[2] = ((cldata[cl].ourport & 0xff00) >> 8);
