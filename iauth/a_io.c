@@ -464,6 +464,10 @@ static	void	parse_ircd(void)
 			sendto_log(ALOG_DIRCD, LOG_DEBUG,
 				   "Error from ircd: %s", chp);
 			break;
+		case 'M':
+			/* RPL_HELLO to be exact, but who cares. */
+			strConnLen = sprintf(strConn, ":%s 020 * :", chp+2);
+			break;
 		default:
 			sendto_log(ALOG_IRCD, LOG_ERR, "Unexpected data [%s]",
 				   chp);
