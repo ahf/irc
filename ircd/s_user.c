@@ -255,7 +255,7 @@ int	server;
 	if (!strcasecmp(nick, "anonymous"))
 		return 0;
 
-	for (ch = nick; *ch && (ch - nick) < NICKLEN; ch++)
+	for (ch = nick; *ch && (ch - nick) < (server?NICKLEN:ONICKLEN); ch++)
 	{
 		/* Transition period. Until all 2.10 are gone, disable
 		** these chars in nicks for users. --B. */
