@@ -84,7 +84,9 @@ int s;
 {
 #ifdef	USE_SYSLOG
 	(void)syslog(LOG_CRIT, "Server Killed By SIGTERM");
+	(void)closelog();
 #endif
+	logfiles_close();
 	ircd_writetune(tunefile);
 	flush_connections(me.fd);
 	exit(-1);
@@ -171,6 +173,7 @@ void	server_reboot()
 #ifdef USE_SYSLOG
 	(void)closelog();
 #endif
+	logfiles_close();
 	for (i = 3; i < MAXCONNECTIONS; i++)
 		(void)close(i);
 	if (!(bootopt & (BOOT_TTY|BOOT_DEBUG)))
@@ -858,6 +861,7 @@ char	*argv[];
 	open_debugfile();
 	timeofday = time(NULL);
 	(void)init_sys();
+	logfiles_open();
 
 #ifdef USE_SYSLOG
 	openlog(myargv[0], LOG_PID|LOG_NDELAY, LOG_FACILITY);
