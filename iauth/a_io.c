@@ -65,7 +65,8 @@ vsendto_ircd(char *pattern, va_list va)
 	strcat(ibuf, "\n");
 	if (write(0, ibuf, strlen(ibuf)) != strlen(ibuf))
 	    {
-		sendto_log(ALOG_DMISC, LOG_NOTICE, "Daemon exiting. [w]");
+		sendto_log(ALOG_DMISC, LOG_NOTICE, "Daemon exiting. [w %s]",
+			   strerror(errno));
 		exit(0);
 	    }
 }
