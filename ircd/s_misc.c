@@ -823,7 +823,7 @@ void	initstats()
 {
 	bzero((char *)&istat, sizeof(istat));
 	istat.is_serv = 1;
-	istat.is_remc = 1;	/* don't ask me why, I forgot. */
+	istat.is_localc = 1;	/* &me */
 	bzero((char *)&ircst, sizeof(ircst));
 }
 
