@@ -2024,6 +2024,7 @@ char	*parv[];
 	char	killer[HOSTLEN * 2 + USERLEN + 5];
 
 	strcpy(killer, get_client_name(sptr, TRUE));
+	SPRINTF(buf, "RESTART by %s", get_client_name(sptr, TRUE));
 	for (i = 0; i <= highest_fd; i++)
 	    {
 		if (!(acptr = local[i]))
@@ -2045,7 +2046,6 @@ char	*parv[];
 	    }
 	flush_connections(me.fd);
 
-	SPRINTF(buf, "RESTART by %s", get_client_name(sptr, TRUE));
 	restart(buf);
 	/*NOT REACHED*/
 	return 0;
