@@ -83,13 +83,18 @@ struct socks_private
 static void socks_open_proxy(int cl, char *strver)
 {
 	struct socks_private *mydata = cldata[cl].instance->data;
+	char *reason = cldata[cl].instance->reason;
 
+	if (!reason)
+	{
+		reason = "Denied access (open SOCKS proxy found)";
+	}
 	/* open proxy */
 	if (mydata->options & OPT_DENY)
 	{
 		cldata[cl].state |= A_DENY;
-		sendto_ircd("k %d %s %u ", cl, cldata[cl].itsip,
-			cldata[cl].itsport);
+		sendto_ircd("k %d %s %u :%s", cl, cldata[cl].itsip,
+			cldata[cl].itsport, reason);
 	}
 	if (mydata->options & OPT_LOG)
 	{
