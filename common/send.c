@@ -1109,6 +1109,9 @@ static	SChan	svchans[SCH_MAX] = {
 	{ SCH_AUTH,	"&AUTH",	NULL },
 	{ SCH_SAVE,	"&SAVE",	NULL },
 	{ SCH_WALLOP,	"&WALLOPS",	NULL },
+#ifdef CLIENTS_CHANNEL
+	{ SCH_CLIENT,	"&CLIENTS",	NULL },
+#endif
 };
 
 

@@ -881,6 +881,9 @@ typedef enum ServerChannels {
 	SCH_AUTH,
 	SCH_SAVE,
 	SCH_WALLOP,
+#ifdef CLIENTS_CHANNEL
+	SCH_CLIENT,
+#endif
 	SCH_MAX	
 } ServerChannels;
 
