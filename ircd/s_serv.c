@@ -3183,6 +3183,11 @@ int	m_eob(aClient *cptr, aClient *sptr, int parc, char *parv[])
 	return 1;
 }
 
+int	m_eoback(aClient *cptr, aClient *sptr, int parc, char *parv[])
+{
+	return 0;
+}
+
 
 #if defined(OPER_DIE) || defined(LOCOP_DIE)
 int	m_die(aClient *cptr, aClient *sptr, int parc, char *parv[])
