@@ -253,6 +253,11 @@ typedef enum Status {
 #define	ClearXAuth(x)		((x)->flags &= ~FLAGS_XAUTH)
 #define	ClearWXAuth(x)		((x)->flags &= ~FLAGS_WXAUTH)
 #define ClearListenerInactive(x) ((x)->flags &= ~FLAGS_LISTENINACTIVE)
+#ifdef XLINE
+#define IsXlined(x)		((x)->user && (x)->user->flags & FLAGS_XLINED)
+#define SetXlined(x)		((x)->user->flags |= FLAGS_XLINED)
+#endif
+
 
 /*
  * defined debugging levels
@@ -368,13 +373,6 @@ struct	ListItem	{
 
 #define PFLAG_DELAYED		0x00001
 #define PFLAG_SERVERONLY	0x00002
-
-#ifdef XLINE
-#define XFLAG_WHOLE		0x00001
-#define IsConfXlineWhole(x)	((x)->flags & XFLAG_WHOLE)
-#define IsXlined(x)		((x)->user && (x)->user->flags & FLAGS_XLINED)
-#define SetXlined(x)		((x)->user->flags |= FLAGS_XLINED)
-#endif
 
 #define IsConfDelayed(x)	((x)->flags & PFLAG_DELAYED)
 #define IsConfServeronly(x)	((x)->flags & PFLAG_SERVERONLY)
@@ -932,10 +930,10 @@ typedef enum ServerChannels {
 #define EXITC_AREF	'U'	/* Unauthorized by iauth */
 #define EXITC_AREFQ	'u'	/* Unauthorized by iauth, be quiet */
 #define EXITC_VIRUS	'v'	/* joined a channel used by PrettyPark virus */
-#define EXITC_YLINEMAX	'Y'	/* Y:line max clients limit */
 #ifdef XLINE
 #define EXITC_XLINE	'X'	/* Forbidden GECOS */
 #endif
+#define EXITC_YLINEMAX	'Y'	/* Y:line max clients limit */
 
 /* eXternal authentication slave OPTions */
 #define	XOPT_REQUIRED	0x01	/* require authentication be done by iauth */
