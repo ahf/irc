@@ -2745,7 +2745,11 @@ int check_servername(hostname)
 char *hostname;
 {
 	register char *ch;
-	int dots, chars, rc = 0;
+	int dots, chars, rc;
+
+	dots = 0;
+	chars = 0;
+	rc = 0;
 
 	if (strlen(hostname) > HOSTLEN)
 	{
