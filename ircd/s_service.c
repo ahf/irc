@@ -218,7 +218,7 @@ int	wants;
 				   (wants & SERVICE_WANT_TOKEN)?
 				   sptr->user->servp->tok : sptr->user->server,
 				   sptr->info);
-		if (wants & SERVICE_WANT_UMODE)
+		if (wants & SERVICE_WANT_UMODE|SERVICE_WANT_OPER)
 			sendto_one(cptr, ":%s MODE %s %s", prefix, sptr->name,
 				   umode);
 	    }
@@ -613,6 +613,9 @@ char	*parv[];
 					continue;
 				if (burst & SERVICE_WANT_UMODE)
 					send_umode(NULL, acptr, 0, SEND_UMODES,
+						   buf);
+				else if (burst & SERVICE_WANT_OPER)
+					send_umode(NULL, acptr, 0, FLAGS_OPER,
 						   buf);
 				sendnum_toone(sptr, burst, acptr, buf);
 			    }
