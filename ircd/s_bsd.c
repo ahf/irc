@@ -2214,9 +2214,9 @@ deadsocket:
 				if (TST_READ_EVENT(fd))
 					CLR_READ_EVENT(fd);
 				if (cptr->exitc =! EXITC_UNDEF)
-					sendto_flags(SCH_DEBUG,
-						     "EXITC overwritten: %c",
-						     cptr->exitc);
+					sendto_flag(SCH_DEBUG,
+						    "EXITC overwritten: %c",
+						    cptr->exitc);
 				cptr->exitc = EXITC_ERROR;
 				(void)exit_client(cptr, cptr, &me,
 						  strerror(get_sockerr(cptr)));
