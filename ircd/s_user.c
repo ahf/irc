@@ -2990,7 +2990,11 @@ int	m_oper(aClient *cptr, aClient *sptr, int parc, char *parv[])
 		 */
 		(void)alarm(3);
 		if (IsPerson(sptr) &&
-		    (logfile = open(FNAME_OPERLOG, O_WRONLY|O_APPEND)) != -1)
+		    (logfile = open(FNAME_OPERLOG, O_WRONLY|O_APPEND
+#ifdef LOGFILES_ALWAYS_CREATE
+					|O_CREAT, S_IRUSR|S_IWUSR
+#endif
+			)) != -1)
 		{
 			(void)alarm(0);
 		  	sprintf(buf, "%s %sOPER (%s) by (%s!%s@%s)"
