@@ -772,6 +772,14 @@ char	*argv[];
 	if (argc > 0)
 		bad_command(); /* This exits out */
 
+#if defined(USE_IAUTH) && defined(__CYGWIN32__)
+	if ((bootopt & BOOT_NOIAUTH) == 0)
+	    {
+		bootopt |= BOOT_NOIAUTH;
+		(void)fprintf(stderr, "WARNING: Assuming -s option.\n");
+	    }
+#endif
+	
 #ifndef IRC_UID
 	if ((uid != euid) && !euid)
 	    {
