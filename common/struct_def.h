@@ -393,6 +393,7 @@ struct	Server	{
 	int	refcnt;		/* Number of times this block is referenced
 				** from anUser (field servp), aService (field
 				** servp) and aClient (field serv) */
+	int	usercnt[3];	/* # of clients - visible, invisible, opers */
 	struct	Server	*nexts, *prevs, *shnext;
 	aClient	*bcptr;
 	aClient	*maskedby;	/* Pointer to server masking this server.
