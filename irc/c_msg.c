@@ -153,6 +153,8 @@ char	*parv[];
 	sprintf(mybuf,"*** %s <%s> joined channel %s", 
 		parv[0], userhost, parv[1]);
 	putline(mybuf);
+	free(querychannel);
+	querychannel = mystrdup(parv[1]);
   return 0;
 }
 
