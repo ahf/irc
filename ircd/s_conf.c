@@ -930,7 +930,7 @@ int	sig;
 			** that it will be deleted when the last client
 			** exits...
 			*/
-			if (!(tmp2->status & (CONF_LISTEN_PORT|CONF_CLIENT)))
+			if (!(tmp2->status & (CONF_LISTEN_PORT|CONF_CLIENT|CONF_RCLIENT)))
 			    {
 				*tmp = tmp2->next;
 				tmp2->next = NULL;
