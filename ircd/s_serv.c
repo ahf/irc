@@ -3377,6 +3377,9 @@ static	int	check_link(aClient *cptr)
 {
     if (MyClient(cptr))
 	    return 0;
+    /* Oh well... free opers from RPL_TRYAGAIN. */
+    if (IsOper(cptr))
+	    return 0;
     if (!(bootopt & BOOT_PROT))
 	    return 0;
 
