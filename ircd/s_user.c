@@ -1514,7 +1514,7 @@ char	*parv[];
 					if (is_chan_op(acptr, chptr))
 						*(buf + len++) = '@';
 					else if (has_voice(acptr, chptr))
-						*(buf + len++) = '!';
+						*(buf + len++) = '+';
 					if (len)
 						*(buf + len) = '\0';
 					(void)strcpy(buf + len, chptr->chname);

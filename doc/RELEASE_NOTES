@@ -18,7 +18,6 @@ New features:
 	* B lines created. (client redirection)
 	* k lines created. (OTHER ident)
 	* V lines created. (restrict peers' compile time options)
-	* whois reply uses ! instead of + for the +v(oice) mode.
 	* new type of client: services.
 
 Important configuration changes:
