@@ -943,9 +943,11 @@ int	opt;
                 */
 		if (aconf->status & CONF_CLASS)
 		    {
-			add_class(atoi(aconf->host), atoi(aconf->passwd),
-				  atoi(aconf->name), aconf->port,
-				  tmp ? atoi(tmp) : 0);
+			if (atoi(aconf->host) >= 0)
+				add_class(atoi(aconf->host),
+					  atoi(aconf->passwd),
+					  atoi(aconf->name), aconf->port,
+					  tmp ? atoi(tmp) : 0);
 			continue;
 		    }
 		/*
