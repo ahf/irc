@@ -94,6 +94,7 @@ aClient *cptr;
 	char	*p;
 	struct  IN_ADDR addr;
 	char	dummy[128];
+	char	omask = mask;
 	u_long	lmask;
 #ifdef	INET6
 	int	j;
@@ -157,7 +158,7 @@ aClient *cptr;
 	return 0;
 #endif
 badmask:
-	sendto_flag(SCH_ERROR, "Ignoring bad mask: %s", mask);
+	sendto_flag(SCH_ERROR, "Ignoring bad mask: %s", omask);
 	return -1;
 }
 
