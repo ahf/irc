@@ -209,6 +209,15 @@ char	*parv[];
 		sendto_one(sptr, err_str(ERR_NOPRIVILEGES, parv[0]));
 		return 1;
 	    }
+	if (MyPerson(sptr))
+	{
+		char bufn[HOSTLEN+7];
+
+		sprintf(bufn, " (by %s)", sptr->name);
+		if (strlen(comment) > TOPICLEN)
+			comment[TOPICLEN] = '\0';
+		strcat(comment, bufn);
+	}
 	if (!MyConnect(acptr) && (cptr != acptr->from))
 	    {
 		/*
