@@ -2458,13 +2458,17 @@ int	m_user(aClient *cptr, aClient *sptr, int parc, char *parv[])
 	SetInvisible(sptr);
 #endif
 	/* parse desired user modes sent in USER */
-	/* old behaviour - bits */
-	if ((i = atoi(host)))
+	/* rfc behaviour - bits */
+	if (isdigit(*host))
 	{
-		/* allows only umodes specified in UFLAGS - see above */
-		sptr->user->flags |= (UFLAGS & atoi(host));
+		for (s = host+1; *s; s++)
+			if (!isdigit(*s))
+				break;
+		if (*s == '\0')
+			/* allows only umodes specified in UFLAGS - see above */
+			sptr->user->flags |= (UFLAGS & atoi(host));
 	}
-	else
+	else	/* new behaviour */
 	{
 		/* 0 here is intentional. User MUST specify + or -,
 		 * as we don't want to restrict clients which send
