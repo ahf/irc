@@ -2414,7 +2414,8 @@ int	*lenp;
 		sizeof(struct in_addr));
 	bcopy((char *)&aconf->ipnum, (char *)&cptr->ip,
 		sizeof(struct in_addr));
-	server.sin_port = htons((aconf->port > 0) ? aconf->port : portnum);
+	cptr->port = (aconf->port > 0) ? aconf->port : portnum;
+	server.sin_port = htons(cptr->port);
 	/*
 	 * Look for a duplicate IP#,port pair among already open connections
 	 * (This caters for unestablished connections).
