@@ -405,11 +405,12 @@ int	find_sender(aClient *cptr, aClient **sptr, char *sender, char *buffer)
 {
 	aClient *from = NULL;
 
+#ifndef	CLIENT_COMPILE
 	if (ST_UID(cptr))
 	{
 		if (isdigit(*sender))
 		{
-			if (sender[SIDLEN] == '\0')
+			if (strlen(sender) == SIDLEN)
 			{
 				/* SID */
 				from = find_sid(sender, NULL);
@@ -433,7 +434,7 @@ int	find_sender(aClient *cptr, aClient **sptr, char *sender, char *buffer)
 			}
 		}
 	}
-
+#endif
 	if (!from)
 	{
 		from = find_client(sender, (aClient *) NULL);
@@ -460,13 +461,12 @@ int	find_sender(aClient *cptr, aClient **sptr, char *sender, char *buffer)
 	{
 		from = find_mask(sender, (aClient *) NULL);
 	}
-#endif
-
 	if (isdigit(sender[0]) || sender[0] == '$')
 	{
 		para[0] = from->name;
 	}
 	else
+#endif
 	{
 		para[0] = sender;
 	}
