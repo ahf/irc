@@ -329,9 +329,6 @@ esendto_match_servs(aClient *orig, char *imsg, aChannel *chptr, char *fmt, ...)
 		    continue;
 	    if (!BadPtr(mask) && match(mask, cptr->name))
 		    continue;
-	    if (chptr && *chptr->chname == '!' && !ST_NJOIN(cptr))
-		    continue;
-
 	    if (newplen == 0 && ST_UID(cptr))
 		    build_new_prefix(orig, imsg, NULL, chptr->chname);
 	    if (oldplen == 0 && (!ST_UID(cptr) || newplen <= 0))

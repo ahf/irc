@@ -1073,9 +1073,6 @@ void	sendto_match_servs(aChannel *chptr, aClient *from, char *format, ...)
 			continue;
 		if (!BadPtr(mask) && match(mask, cptr->name))
 			continue;
-		if (chptr &&
-		    *chptr->chname == '!' && !(cptr->serv->version & SV_NJOIN))
-			continue;
 		if (!len)
 		    {
 #if ! USE_STDARG
@@ -1127,9 +1124,6 @@ sendto_match_servs_v(aChannel *chptr, aClient *from, int ver,
 		    IsMe(cptr))
 			continue;
 		if (!BadPtr(mask) && match(mask, cptr->name))
-			continue;
-		if (chptr &&
-		    *chptr->chname == '!' && !(cptr->serv->version & SV_NJOIN))
 			continue;
 		if ((ver & cptr->serv->version) == 0)
 		    {
@@ -1188,9 +1182,6 @@ sendto_match_servs_notv(aChannel *chptr, aClient *from, int ver,
 		    IsMe(cptr))
 			continue;
 		if (!BadPtr(mask) && match(mask, cptr->name))
-			continue;
-		if (chptr &&
-		    *chptr->chname == '!' && !(cptr->serv->version & SV_NJOIN))
 			continue;
 		if ((ver & cptr->serv->version) != 0)
 		    {
