@@ -329,7 +329,7 @@ AC_MSG_RESULT(no))
 AC_DEFUN(IRC_ALPHA_BETA,
 [AC_MSG_CHECKING(whether this is an alpha/beta release)
 AC_CACHE_VAL(irc_cv_alpha_beta,
-[AC_EGREP_CPP(^\"......00,
+[AC_EGREP_CPP(^ *\"......00,
 [#include "../common/patchlevel.h"
 #ifdef PATCHLEVEL
 PATCHLEVEL
