@@ -2218,6 +2218,7 @@ int	m_join(aClient *cptr, aClient *sptr, int parc, char *parv[])
 		if (*name == '0' && !atoi(name))
 		{
 			(void)strcpy(jbuf, "0");
+			i = 1;
 			continue;
 		}
 		clean_channelname(name);
