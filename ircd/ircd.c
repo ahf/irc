@@ -1075,7 +1075,7 @@ static	void	io_loop(void)
 		nextconnect = try_connections(timeofday);
 	/*
 	** Every once in a while, hunt channel structures that
-	** can be freed.
+	** can be freed. Reop channels while at it, too.
 	*/
 	if (timeofday >= nextgarbage)
 		nextgarbage = collect_channel_garbage(timeofday);
