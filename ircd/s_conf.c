@@ -141,6 +141,10 @@ char	*iline_flags_to_string(long flags)
 	{
 		*s++ = 'F';
 	}
+	if (s == ifsbuf)
+	{
+		*s++ = '-';
+	}
 	*s++ = '\0';
 	
 	return ifsbuf;
