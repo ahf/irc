@@ -1696,6 +1696,14 @@ static	int	set_mode(aClient *cptr, aClient *sptr, aChannel *chptr,
 				case MODE_REOPLIST :
 					tmp_chfl = CHFL_REOPLIST; break;
 				}
+				/* XXX: remove this in 2.11.1 */
+				if ((whatt & MODE_ADD) &&
+					tmp_chfl == CHFL_REOPLIST &&
+					MyClient(sptr))
+				{
+					/* ignore +R from a local client. */
+					break;
+				}
 				if (ischop &&
 					(((whatt & MODE_ADD) &&
 					!add_modeid(tmp_chfl, sptr, chptr,
