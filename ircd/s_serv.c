@@ -263,8 +263,9 @@ aClient	*cptr;
 			/* the NJOIN command appeared on 2.9.5 */
 			cptr->hopcount |= SV_NJOIN;
 	    }
-	else if (!strncmp(cptr->info, "021", 3))
-		cptr->hopcount = SV_29|SV_NJOIN;
+	else if (!strncmp(cptr->info, "021", 3) ||
+		 !strncmp(cptr->info, "020999", 6))
+		cptr->hopcount = SV_29|SV_NJOIN|SV_NMODE;
 	else
 		cptr->hopcount = SV_OLD;
 
