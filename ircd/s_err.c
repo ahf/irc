@@ -41,6 +41,7 @@ static	Numeric	local_replies[] = {
 /* 002 */	RPL_YOURHOST, ":Your host is %s, running version %s",
 /* 003 */	RPL_CREATED, ":This server was created %s",
 /* 004 */	RPL_MYINFO, "%s %s oirw abiklmnopqstv",
+/* 005 */	RPL_BOUNCE, ":Try server %s, port %d",
 		0, (char *)NULL
 };
 
@@ -310,7 +311,7 @@ char	*to;
 	Reg	Numeric	*nptr;
 	Reg	int	num = numeric;
 
-	if (num > 4)
+	if (num > 5)
 		num -= (num > 300) ? 300 : 100;
 
 	if (BadPtr(to))		/* for unregistered clients */

@@ -951,8 +951,10 @@ char	*name;
 		   ME, RPL_STATSDEBUG, name, sp->is_num, sp->is_fake);
 	sendto_one(cptr, ":%s %d %s :auth: successes %u fails %u",
 		   ME, RPL_STATSDEBUG, name, sp->is_asuc, sp->is_abad);
-	sendto_one(cptr, ":%s %d %s :local connections %u udp packets %u",
-		   ME, RPL_STATSDEBUG, name, sp->is_loc, sp->is_udp);
+	sendto_one(cptr,":%s %d %s :local connections %u udp packets %u",
+		   ME, RPL_STATSDEBUG, name, sp->is_loc, sp->is_udpok);
+	sendto_one(cptr,":%s %d %s :udp errors %u udp dropped %u",
+		   ME, RPL_STATSDEBUG, name, sp->is_udperr, sp->is_udperr);
 	if (sp->is_wwcnt)
 		sendto_one(cptr, ":%s %d %s :whowas turnover %u/%u/%u [%u]",
 			   ME, RPL_STATSDEBUG, name, sp->is_wwmt,
