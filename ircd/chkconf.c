@@ -61,8 +61,11 @@ static	struct	wordcount *files;
 
 int	main(int argc, char *argv[])
 {
+#ifdef DEBUGMODE
 	struct wordcount *filelist = files;
+#endif
 	aConfItem *result;
+
 	if (argc > 1 && !strncmp(argv[1], "-h", 2))
 	{
 		(void)fprintf(stderr, "Usage: %s [-h] [-d[#]] [%s]\n",
