@@ -777,8 +777,6 @@ static	void	exit_one_client(aClient *cptr, aClient *sptr, aClient *from,
 				      ":%s SQUIT %s :%s", from->name,
 				      sptr->name, comment);
 #endif
-		(void) del_from_server_hash_table(sptr->serv, cptr ? cptr :
-						  sptr->from);
 		del_from_sid_hash_table(sptr->serv);
 		remove_server_from_tree(sptr);
 		/* remove server from svrtop */
