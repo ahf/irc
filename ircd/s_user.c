@@ -800,6 +800,15 @@ badparamcountkills:
 		else
 			user = host = "";
 	}
+	
+	/* Special case - user changing his nick to UID */
+	if (MyPerson(sptr) && ((nick[0] == '0' && nick[1] == '\0') ||
+		!mycmp(nick, sptr->user->uid)))
+	{
+		strncpyzt(nick, sptr->user->uid, UIDLEN + 1);
+		goto nickkilldone;
+	}
+	
 	/*
 	 * if do_nick_name() returns a null name OR if the server sent a nick
 	 * name and do_nick_name() changed it in some way (due to rules of nick
