@@ -134,9 +134,6 @@ char	*str;
 		writeb[0]++;
 		Debug((DEBUG_ERROR,"write error (%s) to %s",
 			strerror(errno), cptr->name));
-#ifndef	CLIENT_COMPILE
-		hold_server(cptr);
-#endif
 	} else if (retval == 0)
 		writeb[1]++;
 	else if (retval < 16)
