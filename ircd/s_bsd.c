@@ -1607,7 +1607,7 @@ add_con_refuse:
 			    (acptr->hostp) ? acptr->hostp->h_name :
 			    acptr->sockhost);
 		del_queries((char *)acptr);
-		(void)send(acptr->fd,
+		(void)send(fd,
 			   "ERROR :Too rapid connections from your host\r\n",
 			   46, 0);
 		goto add_con_refuse;
