@@ -3614,9 +3614,18 @@ int	is_allowed(aClient *cptr, long function)
 {
 	Link	*tmp;
 
-	/* We cannot judge not our users. Yet. */
-	if (!MyClient(cptr))
+	/* We cannot judge not our clients. Yet. */
+	if (!MyConnect(cptr) || IsServer(cptr))
 		return 0;
+
+	/* minimal control, but nothing else service can do anyway. */
+	if (IsService(cptr))
+	{
+		if (function == ACL_TKLINE &&
+			(cptr->service->wants & SERVICE_WANT_TKLINE))
+			return 0;
+		return 1;
+	}
 
 	for (tmp = cptr->confs; tmp; tmp = tmp->next)
 	{
