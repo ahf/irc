@@ -1414,7 +1414,7 @@ static	int	set_mode(aClient *cptr, aClient *sptr, aChannel *chptr,
 						   replies[ERR_UNKNOWNMODE],
 						   ME, BadTo(sptr->name), *curr,
 						   chptr->chname);
-				else if (*ip == MODE_ANONYMOUS &&
+				else if (*ip == MODE_ANONYMOUS && whatt == MODE_ADD &&
 					 !IsServer(sptr) &&
 					 !(is_chan_op(sptr,chptr) &CHFL_UNIQOP)
 					 && *chptr->chname == '!')
