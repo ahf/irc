@@ -22,7 +22,7 @@
 #
 # If only this was a perl script...*sigh*
 #
-INCLUDE=`../support/rev.sh`
+INCLUDE=`../support/config.guess`
 IRCDDIR=$1
 M4=$IRCDDIR/ircd.m4
 /bin/rm -f $M4
