@@ -495,7 +495,7 @@ int	find_sender(aClient *cptr, aClient **sptr, char *sender, char *buffer)
 	}
 
 	*sptr = from;
-	return 0;
+	return 1;
 }
 
 /*
