@@ -1834,7 +1834,7 @@ char	*parv[];
 	if (!aconf)
 	    {
 	      sendto_one(sptr,
-			 "NOTICE %s :Connect: Host %s not listed in irc.conf",
+			 "NOTICE %s :Connect: Host %s not listed in ircd.conf",
 			 parv[0], parv[1]);
 	      return 0;
 	    }
