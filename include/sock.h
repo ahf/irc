@@ -32,7 +32,7 @@
 # endif
 
 # if (MAXCONNECTIONS > FD_SETSIZE)
-#  error FD_SETSIZE must be bigger than MAXCONNECTIONS
+error FD_SETSIZE must be bigger than MAXCONNECTIONS
 # endif
 
 #endif /* _DO_POLL_ */
