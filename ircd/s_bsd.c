@@ -53,13 +53,13 @@ FdAry	fdas, fdall;
 int	highest_fd = 0, readcalls = 0, udpfd = -1, resfd = -1, adfd = -1;
 time_t	timeofday;
 static	struct	SOCKADDR_IN	mysk;
-static	void	polludp();
+static	void	polludp(void);
 
 static	struct	SOCKADDR *connect_inet __P((aConfItem *, aClient *, int *));
 static	int	completed_connection __P((aClient *));
 static	int	check_init __P((aClient *, char *));
 static	int	check_ping __P((char *, int));
-static	void	do_dns_async __P(());
+static	void	do_dns_async __P((void));
 static	int	set_sock_opts __P((int, aClient *));
 #ifdef	UNIXPORT
 static	struct	SOCKADDR *connect_unix __P((aConfItem *, aClient *, int *));

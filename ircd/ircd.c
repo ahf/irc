@@ -31,7 +31,7 @@ static  char rcsid[] = "@(#)$Id$";
 aClient me;			/* That's me */
 aClient *client = &me;		/* Pointer to beginning of Client list */
 
-static	void	open_debugfile(), setup_signals(), io_loop();
+static	void	open_debugfile(void), setup_signals(void), io_loop(void);
 
 #if defined(USE_IAUTH)
 static	RETSIGTYPE	s_slave(int s);
