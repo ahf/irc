@@ -554,7 +554,12 @@ aClient	*mp;
 	mp->user = NULL;
 	mp->fd = -1;
 	SetMe(mp);
-	(void) make_server(mp, TRUE);
+	if (!make_server(mp))
+	{
+		/* if make_server returns NULL here,
+		** we are completely stuck, abort mission! */
+		abort();
+	}
 	mp->serv->snum = find_server_num (ME);
 	(void) make_user(mp);
 	istat.is_users++;	/* here, cptr->next is NULL, see make_user() */
