@@ -366,6 +366,7 @@ char *cfile;
 
 			last = &((*last)->nexti);
 		    }
+		fclose(cfh);
 	    }
 
 	if (ident == NULL)
