@@ -1821,12 +1821,6 @@ static	int	set_mode(aClient *cptr, aClient *sptr, aChannel *chptr,
 
 		sendto_match_servs_v(chptr, cptr, SV_UID,
 			":%s MODE %s %s %s", s, chptr->chname, mbuf, upbuf);
-		if (modebuf[1] != 'R') /* don't send +R list to old servers */
-		{
-			sendto_match_servs_notv(chptr, cptr, SV_UID, 
-				":%s MODE %s %s %s", sptr->name, chptr->chname,
-				mbuf, pbuf);
-		}
 
 		if ((IsServer(cptr) && !IsServer(sptr) && !ischop))
 		{
