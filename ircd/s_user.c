@@ -969,7 +969,7 @@ int	parc, notice;
 	Reg	aClient	*acptr;
 	Reg	char	*s;
 	aChannel *chptr;
-	char	*nick, *server, *p, *cmd, *host;
+	char	*nick, *server, *p, *cmd, *user, *host;
 	int	count = 0, penalty = 0;
 
 	cmd = notice ? MSG_NOTICE : MSG_PRIVATE;
@@ -1070,7 +1070,29 @@ int	parc, notice;
 					    cmd, nick, parv[2]);
 			continue;
 		    }
-	
+		
+		/*
+		** nick!user@host addressed?
+		*/
+		if ((user = (char *)index(nick, '!')) &&
+		    (host = (char *)index(nick, '@')))
+		    {
+			*user = '\0';
+			*host = '\0';
+			if ((acptr = find_person(nick, NULL)) &&
+			    !mycmp(user+1, acptr->user->username) &&
+			    !mycmp(host+1, acptr->user->host))
+			    {
+				sendto_prefix_one(acptr, sptr, ":%s %s %s :%s",
+						  parv[0], cmd, nick, parv[2]);
+				*user = '!';
+				*host = '@';
+				continue;
+			    }
+			*user = '!';
+			*host = '@';
+		    }
+
 		/*
 		** user[%host]@server addressed?
 		*/
