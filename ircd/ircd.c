@@ -355,12 +355,15 @@ time_t	currenttime;
 		    IsHeld(cptr))
 			continue;
 
-#if defined(TIMEDKLINES) || ( defined(R_LINES) && defined(R_LINES_OFTEN) )
 		/*
 		 * K and R lines once per minute, max.  This is the max.
 		 * granularity in K-lines anyway (with time field).
 		 */
-		if ((currenttime - lkill > TIMEDKLINES) || rehashed)
+		if (
+#if defined(TIMEDKLINES) || ( defined(R_LINES) && defined(R_LINES_OFTEN) )
+			(currenttime - lkill > TIMEDKLINES) || 
+#endif /* TIMEDKLINES */
+			rehashed)
 		    {
 			if (IsPerson(cptr))
 			    {
@@ -375,7 +378,6 @@ time_t	currenttime;
 				reason = NULL;
 			    }
 		    }
-#endif /* TIMEDKLINES */
 		ping = IsRegistered(cptr) ? get_client_ping(cptr) :
 					    ACCEPTTIMEOUT;
 		Debug((DEBUG_DEBUG, "c(%s) %d p %d k %d r %d a %d",
