@@ -594,6 +594,14 @@ int	exit_client(aClient *cptr, aClient *sptr, aClient *from,
 			** give the right quit reason for clients. */
 			strncpyzt(comment1, comment, sizeof(comment1));
 		}
+		/* cptr != sptr means non-local server */
+		if (cptr != sptr && 
+			nextconnect == 0 && find_conf_name(sptr->name,
+			(CONF_CONNECT_SERVER|CONF_ZCONNECT_SERVER)))
+		{
+			/* try AC */
+			nextconnect = timeofday + HANGONRETRYDELAY;
+		}
 		exit_server(sptr, sptr, from, comment, comment1);
 		check_split();
 		if ((cptr == sptr))
@@ -603,13 +611,6 @@ int	exit_client(aClient *cptr, aClient *sptr, aClient *from,
 				cptr->name, comment);
 			*/
 			return FLUSH_BUFFER;
-		}
-		/* being here means non-local server exited */
-		if (nextconnect == 0 && find_conf_name(sptr->name,
-			(CONF_CONNECT_SERVER|CONF_ZCONNECT_SERVER)))
-		{
-			/* try AC */
-			nextconnect = timeofday + HANGONRETRYDELAY;
 		}
 		return 0;
  	}
