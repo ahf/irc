@@ -360,7 +360,7 @@ static	char	*proxy_init(AnInstance *self)
 
 	if ((ch = strstr(self->opt, "cache=")))
 	{
-		mydata->lifetime = atoi(ch+7);
+		mydata->lifetime = atoi(ch+6);
 	}
 	sprintf(cbuf, ",cache=%d", mydata->lifetime);
 	strcat(tmpbuf, cbuf);
