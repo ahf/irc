@@ -417,10 +417,6 @@ char	*parv[];
 				sendto_one(sptr, rpl_str(RPL_WHOISSERVER,
 					   parv[0]), wp->ww_nick, up->server,
 					   myctime(wp->ww_logout));
-				if (up->away)
-					sendto_one(sptr, rpl_str(RPL_AWAY,
-						   parv[0]),
-						   wp->ww_nick, up->away);
 				j++;
 			    }
 			if (max > 0 && j >= max)
