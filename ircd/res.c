@@ -1656,6 +1656,9 @@ int	m_dns(aClient *cptr, aClient *sptr, int parc, char *parv[])
 	Reg	aCache	*cp;
 	Reg	int	i;
 
+	if (is_allowed(sptr, ACL_DNS))
+		return m_nopriv(cptr, sptr, parc, parv);
+
 	if (parv[1] && *parv[1] == 'l') {
 		for(cp = cachetop; cp; cp = cp->list_next)
 		    {

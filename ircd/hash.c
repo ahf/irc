@@ -1296,13 +1296,9 @@ int	m_hash(aClient *cptr, aClient *sptr, int parc, char *parv[])
 			&_HOSTNAMEHASHSIZE, hash_host_name},
 		{0, NULL, NULL, NULL, NULL, NULL, NULL, NULL}
 	};
-	
-	if (!IsAnOper(sptr))
-	{
-		sendto_one(sptr, replies[ERR_NOPRIVILEGES], ME, BadTo(parv[0]));
 
-		return 2;
-	}
+	if (is_allowed(sptr, ACL_HAZH))
+		return m_nopriv(cptr, sptr, parc, parv);
 	
 	if (parc < 2)
 	{
