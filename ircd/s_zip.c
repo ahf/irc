@@ -151,7 +151,7 @@ char	*unzip_packet(aClient *cptr, char *buffer, int *length)
 	    }
 	zin->next_out = (Bytef *) unzipbuf;
 	zin->avail_out = UNZIP_BUFFER_SIZE;
-	switch (r = inflate(zin, Z_PARTIAL_FLUSH))
+	switch (r = inflate(zin, Z_SYNC_FLUSH))
 	  {
 	  case Z_OK:
 		cptr->flags &= ~FLAGS_ZIPRQ;
@@ -228,7 +228,7 @@ char	*zip_buffer(aClient *cptr, char *buffer, int *length, int flush)
 	zout->next_out = (Bytef *) zipbuf;
 	zout->avail_out = ZIP_BUFFER_SIZE;
 
-	switch (r = deflate(zout, Z_PARTIAL_FLUSH))
+	switch (r = deflate(zout, Z_SYNC_FLUSH))
 	  {
 	  case Z_OK:
 	    if (zout->avail_in)
