@@ -230,21 +230,23 @@ void	report_classes(aClient *sptr, char *to)
 	}
 }
 
-int	get_sendq(aClient *cptr)
+int	get_sendq(aClient *cptr, int bursting)
 {
 	Reg	int	sendq = QUEUELEN;
+	Reg	int	bsendq = 2 * QUEUELEN;
 	Reg	Link	*tmp;
 	Reg	aClass	*cl;
 
 	if (cptr->serv && cptr->serv->nline)
-		sendq = MaxSendq(cptr->serv->nline->class);
+		sendq = bursting ? MaxBSendq(cptr->serv->nline->class) :
+			MaxSendq(cptr->serv->nline->class);
 	else if (cptr && !IsMe(cptr)  && (cptr->confs))
 		for (tmp = cptr->confs; tmp; tmp = tmp->next)
 		    {
 			if (!tmp->value.aconf ||
 			    !(cl = tmp->value.aconf->class))
 				continue;
-			sendq = MaxSendq(cl);
+			sendq = bursting ? MaxBSendq(cl) : MaxSendq(cl);
 			break;
 		    }
 	return sendq;
