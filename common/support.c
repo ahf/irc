@@ -876,11 +876,15 @@ char **make_isupport()
 	SPRINTF(tis[0],
 	"RFC2812 PREFIX=(ov)@+ CHANTYPES=#&!+ MODES=%d MAXCHANNELS=%d "
 	"NICKLEN=%d TOPICLEN=%d KICKLEN=%d MAXBANS=%d CHANNELLEN=%d CHIDLEN=%d "
-	"NETWORK=%s CHANMODES=beI,k,l,imnpstaqr",
+	"CHANMODES=beI,k,l,imnpstaqr",
 	MAXMODEPARAMS,MAXCHANNELSPERUSER,
-	NICKLEN,TOPICLEN,TOPICLEN,MAXBANS,CHANNELLEN,CHIDLEN,
-	NETWORK_NAME);
+	NICKLEN,TOPICLEN,TOPICLEN,MAXBANS,CHANNELLEN,CHIDLEN);
 
+	if (networkname)
+	{
+		strcat(tis[0], " NETWORK=");
+		strcat(tis[0], networkname);
+	}
 	tis[1] = (char *) MyMalloc(BUFSIZE);
 	SPRINTF(tis[1],	"PENALTY FNC EXCEPTS INVEX");
 
