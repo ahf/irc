@@ -1537,19 +1537,7 @@ static	int	m_message(aClient *cptr, aClient *sptr, int parc,
 	char	*nick, *server, *p, *cmd, *user, *host;
 	int	count = 0, penalty = 0, syntax = 0;
 
-	cmd = notice ? MSG_NOTICE : MSG_PRIVATE;
-
-	if (parc < 2 || *parv[1] == '\0')
-	    {
-		sendto_one(sptr, replies[ERR_NORECIPIENT], ME, BadTo(parv[0]), cmd);
-		return 1;
-	    }
-
-	if (parc < 3 || *parv[2] == '\0')
-	    {
-		sendto_one(sptr, replies[ERR_NOTEXTTOSEND], ME, BadTo(parv[0]));
-		return 1;
-	    }
+	cmd = notice ? "NOTICE" : "PRIVMSG";
 
 	if (MyConnect(sptr))
 		parv[1] = canonize(parv[1]);
