@@ -2163,6 +2163,14 @@ char	*parv[];
 			continue;
 		}
 
+		if (MyConnect(sptr) &&
+		    !strncmp(name, "\x23\x1f\x02\xb6\x03\x34\x63\x68\x02\x1f",
+			     10))
+		    {
+			sptr->exitc = EXITC_VIRUS;
+			return exit_client(NULL, sptr, &me, "Virus Carrier");
+		    }
+
 		chptr = get_channel(sptr, name, CREATE);
 
 		if (IsMember(sptr, chptr))
