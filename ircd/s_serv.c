@@ -1857,7 +1857,8 @@ char	*parv[];
 	if (IsRegistered(cptr) &&	/* only local query for unregistered */
 	    hunt_server(cptr,sptr,":%s ADMIN :%s",1,parc,parv) != HUNTED_ISME)
 		return 3;
-	if ((aconf = find_admin()))
+	if ((aconf = find_admin()) && aconf->host && aconf->passwd
+	    && aconf->name)
 	    {
 		sendto_one(sptr, rpl_str(RPL_ADMINME, parv[0]), ME);
 		sendto_one(sptr, rpl_str(RPL_ADMINLOC1, parv[0]), aconf->host);
