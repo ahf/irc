@@ -1588,7 +1588,7 @@ int	msg_ready;
 #if defined(DEBUGMODE) && defined(DEBUG_READ)
 		if (length > 0)
 			Debug((DEBUG_READ,
-				"recv = %d bytes to %d[%s]:[%*.*s]\n",
+				"recv = %d bytes from %d[%s]:[%*.*s]\n",
 				length, cptr->fd, cptr->name, length, length,
 				readbuf));
 #endif
