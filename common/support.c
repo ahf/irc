@@ -35,6 +35,10 @@ static  char rcsid[] = "@(#)$Id$";
 #endif
 #undef SUPPORT_C
 
+#ifdef _WIN32
+int w32_h_errno = 0;
+#endif
+
 char	*mystrdup(s)
 char	*s;
 {
@@ -720,6 +724,26 @@ char *make_version()
 		sprintf(ver + strlen(ver), "p%d", pl);
 	return mystrdup(ver);
 }
+
+#ifndef HAVE_TRUNCATE
+/* truncate: set a file to a specified length
+ * I don't know of any UNIX that doesn't have truncate, but CYGWIN32 beta18
+ * doesn't have it.  -krys
+ * Replacement version from Dave Miller.
+ */
+int truncate(path, length)
+const char *path;
+size_t length;
+{
+	int fd, res;
+	fd = open(path, O_WRONLY);
+	if (fd == -1)
+		return -1;
+	res = ftruncate(fd, length);
+	close(fd);
+	return res;
+}
+#endif /* HAVE_TRUNCATE */
 
 #if SOLARIS_2_3
 /* 
