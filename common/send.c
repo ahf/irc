@@ -948,6 +948,7 @@ static	SChan	svchans[SCH_MAX] = {
 	{ SCH_SERVER,	"&SERVERS",	NULL },
 	{ SCH_HASH,	"&HASH",	NULL },
 	{ SCH_LOCAL,	"&LOCAL",	NULL },
+	{ SCH_DEBUG,	"&DEBUG",	NULL },
 };
 
 
