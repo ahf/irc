@@ -871,7 +871,7 @@ aClient *sptr;
 int	parc;
 char	*parv[];
 {
-	int	mcount = 0, chanop;
+	int	mcount = 0;
 	int	penalty = 0;
 	aChannel *chptr;
 	char	*name, *p = NULL;
@@ -907,8 +907,6 @@ char	*parv[];
 			penalty += 1;
 			continue;
 		    }
-		chanop = is_chan_op(sptr, chptr) || IsServer(sptr);
-
 		if (parc < 3)	/* Only a query */
 		    {
 			*modebuf = *parabuf = '\0';
