@@ -188,3 +188,21 @@ collect_chid()
 		    chptr = &((*chptr)->nextch);
 	}
 }
+
+/* checks wether the ID is valid */
+int
+cid_ok(name)
+char *name;
+{
+    int l = 1;
+
+    while (l <= CHIDLEN)
+	{
+	    if (alphabet_id[name[l]] == -1)
+		    return 0;
+	    l += 1;
+	}
+    if (l == CHIDLEN+1)
+	    return 0;
+    return 1;
+}
