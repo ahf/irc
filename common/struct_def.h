@@ -283,6 +283,7 @@ struct	ConfItem	{
 	u_int	pref;		/* preference value */
 	struct	CPing	*ping;
 	time_t	hold;	/* Hold action until this time (calendar time) */
+	char	*source_ip;
 #ifndef VMSP
 	aClass	*class;  /* Class of connection */
 #endif
