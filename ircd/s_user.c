@@ -250,8 +250,7 @@ int	do_nick_name(char *nick, int server)
 	if (isdigit(*nick) && !server) /* first character in [0..9] */
 		return 0;
 
-	/* since we can have longer nicks, check exactly */
-	if (nick[9] == '\0' && !strcasecmp(nick, "anonymous"))
+	if (strcasecmp(nick, "anonymous") == 0)
 		return 0;
 
 	for (ch = nick; *ch && (ch - nick) < (server?NICKLEN:ONICKLEN); ch++)
