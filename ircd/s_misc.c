@@ -1165,6 +1165,10 @@ void	check_split(void)
 			sendto_flag(SCH_NOTICE,
 				"Network rejoined, split mode deactivated");
 			iconf.split = 0;
+			if (!firstrejoin)
+			{
+				firstrejoin = 1;
+			}
 		}
 	}
 }
