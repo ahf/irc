@@ -3551,7 +3551,7 @@ int	is_allowed(aClient *cptr, long function)
 	if (!MyClient(cptr))
 		return 0;
 
-	for (tmp = cptr->confs; tmp; tmp->next)
+	for (tmp = cptr->confs; tmp; tmp = tmp->next)
 	{
 		if (tmp->value.aconf->status & CONF_OPERATOR)
 			break;
