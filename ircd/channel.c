@@ -1074,6 +1074,9 @@ char	*parv[], *mbuf, *pbuf;
 				else if (ischop &&
 				    (!*mode->key || IsServer(cptr)))
 				    {
+					if (**parv == ':')
+						/* this won't propagate right*/
+						break;
 					lp = &chops[opcnt++];
 					lp->value.cp = *parv;
 					if (strlen(lp->value.cp) >
