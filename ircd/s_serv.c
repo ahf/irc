@@ -3781,14 +3781,21 @@ int	m_map(aClient *cptr, aClient *sptr, int parc, char *parv[])
 static void report_listeners(aClient *sptr, char *to)
 {
 	aConfItem *tmp;
+	aClient	*acptr;
+	int	i;
 
-	for (tmp = conf; tmp; tmp = tmp->next)
+	for (i = 0; i <= highest_fd; i++)
 	{
-		if ((tmp->status & CONF_LISTEN_PORT))
-		{
-			sendto_one(sptr, ":%s %d %s :%s %d %d", ME,
-				RPL_STATSDEFINE, to, BadTo(tmp->host), tmp->port,
-				tmp->clients);
-		}
+		if (!(acptr = listeners[i]))
+			continue;
+		tmp = acptr->confs->value.aconf;
+		sendto_one(sptr, ":%s %d %s %d %s %u %lu %llu %lu %llu %u %u",
+			ME, RPL_STATSLINKINFO, to,
+			tmp->port, BadTo(tmp->host),
+			(uint)DBufLength(&acptr->sendQ),
+			acptr->sendM, acptr->sendB,
+			acptr->receiveM, acptr->receiveB,
+			timeofday - acptr->firsttime,
+			acptr->confs->value.aconf->clients);
 	}
 }
