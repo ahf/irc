@@ -195,7 +195,7 @@ int	opt;
 				if (!*(tmp+1))
 					break;
 				else
-					for (s = tmp; (*s = *++s); )
+					for (s = tmp; (*s = *(s+1)); s++)
 						;
 				tmp++;
 			    }
