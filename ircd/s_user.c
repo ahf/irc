@@ -808,8 +808,9 @@ badparamcountkills:
 			user = parv[3];
 			host = parv[4];
 		}
-		else /* :old NICK new */
+		else /* parc == 2 */
 		{
+			/* :old NICK new */
 			user = sptr->user->username;
 			host = sptr->user->host;
 		}
