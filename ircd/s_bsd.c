@@ -1706,6 +1706,14 @@ int	fd;
 	add_client_to_list(acptr);
 	set_non_blocking(acptr->fd, acptr);
 	(void)set_sock_opts(acptr->fd, acptr);
+# if defined(USE_IAUTH)
+	/*
+	** iauth protocol and iauth itself should be extended to alllow
+	** dealing with this type of connection.
+	*/
+	sendto_iauth("%d O", acptr->fd);
+	SetDoneXAuth(acptr);
+# endif
 	return;
 }
 #endif
