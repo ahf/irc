@@ -650,14 +650,22 @@ HEADER	*hptr;
 		len = strlen(hostbuf);
 		/* name server never returns with trailing '.' */
 		if (!index(hostbuf,'.') && (ircd_res.options & RES_DEFNAMES))
-		    {
-			(void)strcat(hostbuf, dot);
-			len++;
-			(void)strncat(hostbuf, ircd_res.defdname,
-				sizeof(hostbuf) - 1 - len);
-			len = MIN(len + strlen(ircd_res.defdname),
-				  sizeof(hostbuf) - 1);
-		    }
+		{
+			int tmplen = strlen(ircd_res.defdname);
+
+			if (len + 1 /* dot */ + tmplen + 1 /* \0 */
+				>= sizeof(hostbuf))
+			{
+				/* some SCH_ERROR perhaps? */
+				return -1;
+			}
+			if (len)
+			{
+				hostbuf[len++] = '.';
+			}
+			strcpy(hostbuf + len, ircd_res.defdname);
+			len += strlen(ircd_res.defdname);
+		}
 
 		/* Check that it's a possible reply to the request we send. */
 		if (rptr->type != type && type != T_CNAME)
