@@ -874,7 +874,7 @@ time_t	delay;
 	if (timeofday > nextc)
 	    {
 		(void)read_message(delay, &fdall);
-		nextc = timeofday + HUB;
+		nextc = timeofday;
 	    }
 /*
 	else
