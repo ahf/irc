@@ -1381,9 +1381,9 @@ char	*parv[];
 			else
 				penalty += 5;
 		    }
+		sendto_one(sptr, rpl_str(RPL_ENDOFWHO, parv[0]),
+			   BadPtr(mask) ?  "*" : mask);
 	    }
-	sendto_one(sptr, rpl_str(RPL_ENDOFWHO, parv[0]),
-		   BadPtr(mask) ?  "*" : mask);
 	return penalty;
 }
 
