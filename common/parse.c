@@ -176,6 +176,18 @@ Reg	aClient *cptr;
 	return acptr;
     }
 
+aClient *find_sid(sid, cptr)
+char	*sid;
+Reg	aClient *cptr;
+    {
+	aClient *acptr = cptr;
+
+	if (uid && isdigit(*sid))
+		acptr = hash_find_sid(sid, cptr);
+
+	return acptr;
+    }
+
 aClient *find_sid(char *sid, aClient *cptr)
 {
 	if (sid && isdigit(*sid))
