@@ -232,7 +232,7 @@ void	report_classes(aClient *sptr, char *to)
 
 int	get_sendq(aClient *cptr)
 {
-	Reg	int	sendq = QUEUELEN, retc = BAD_CLIENT_CLASS;
+	Reg	int	sendq = QUEUELEN;
 	Reg	Link	*tmp;
 	Reg	aClass	*cl;
 
@@ -244,8 +244,8 @@ int	get_sendq(aClient *cptr)
 			if (!tmp->value.aconf ||
 			    !(cl = tmp->value.aconf->class))
 				continue;
-			if (Class(cl) > retc)
-				sendq = MaxSendq(cl);
+			sendq = MaxSendq(cl);
+			break;
 		    }
 	return sendq;
 }
