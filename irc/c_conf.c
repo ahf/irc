@@ -28,9 +28,7 @@ static  char rcsid[] = "@(#)$Id$";
 #include "c_externs.h"
 #undef C_CONF_C
 
-initconf(host, passwd, myname, port)
-char	*host, *passwd, *myname;
-int	*port;
+void	initconf(char *host, char *passwd, char *myname, int *port)
 {
 	FILE	*fd;
 	char	line[256], *tmp;

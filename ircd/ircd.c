@@ -787,13 +787,17 @@ char	*argv[];
 		int	flag = *p++;
 
 		if (flag == '\0' || *p == '\0')
+		{
 			if (argc > 1 && argv[1][0] != '-')
-			    {
+			{
 				p = *++argv;
 				argc -= 1;
-			    }
+			}
 			else
+			{
 				p = "";
+			}
+		}
 
 		switch (flag)
 		    {

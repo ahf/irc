@@ -289,7 +289,7 @@ char *	replies[] = {
 /* 253 RPL_LUSERUNKNOWN */	":%s 253 %s %d :unknown connections",
 /* 254 RPL_LUSERCHANNELS */	":%s 254 %s %d :channels formed",
 #if 0
-/* one day...
+/* one day... */
 /* 255 RPL_LUSERME */	":%s 255 %s %d %d %d :local users, services, servers",
 #else
 /* 255 RPL_LUSERME */	":%s 255 %s :I have %d users, %d services and %d servers",
