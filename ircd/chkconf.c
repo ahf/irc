@@ -246,6 +246,10 @@ int	opt;
 				ccount++;
 				aconf->status = CONF_CONNECT_SERVER;
 				break;
+			case 'D': /* auto connect restrictions */
+			case 'd':
+				aconf->status = CONF_DENY;
+				break;
 			case 'H': /* Hub server line */
 			case 'h':
 				aconf->status = CONF_HUB;
