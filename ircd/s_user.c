@@ -2043,7 +2043,7 @@ char	*parv[];
 	    {
 		if ((acptr = find_client(destination, NULL)) ||
 		    (acptr = find_server(destination, NULL))) {
-			if (MyClient(sptr) && !mycmp(origin, sptr->name))
+			if (MyClient(sptr) && mycmp(origin, sptr->name))
 				sendto_flag(SCH_ERROR, "PONG origin %s by %s",
 					    origin,
 					    get_client_name(sptr, TRUE));
