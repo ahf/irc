@@ -498,6 +498,7 @@ dgetsreturnbuf:
 	goto dgetsagain;
 }
 
+#ifndef USE_STDARG
 /*
  * By Mika
  */
@@ -582,6 +583,7 @@ char	*i0, *i1, *i2, *i3, *i4, *i5, *i6, *i7, *i8, *i9, *i10, *i11;
 	*wp = '\0';
 	return wp - outp;
 }
+#endif
 
 /*
  * Make 'readable' version string.

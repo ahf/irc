@@ -165,7 +165,7 @@ aClient	*cptr;
 		goto authsenderr;
 	    }
 
-	(void)irc_sprintf(authbuf, "%u , %u\r\n",
+	SPRINTF(authbuf, "%u , %u\r\n",
 		(unsigned int)ntohs(them.sin_port),
 		(unsigned int)ntohs(us.sin_port));
 
