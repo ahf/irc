@@ -757,11 +757,20 @@ char	*comment;
 		if (sptr->user)
 		    {
 			if (IsInvisible(sptr))
+			{
 				istat.is_user[1]--;
+				sptr->user->servp->usercnt[1]--;
+			}
 			else
+			{
 				istat.is_user[0]--;
+				sptr->user->servp->usercnt[0]--;
+			}
 			if (IsAnOper(sptr))
+			{
+				sptr->user->servp->usercnt[2]--;
 				istat.is_oper--;
+			}
 			sendto_common_channels(sptr, ":%s QUIT :%s",
 						sptr->name, comment);
 
