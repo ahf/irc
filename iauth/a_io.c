@@ -360,6 +360,15 @@ parse_ircd()
 				free(cldata[ncl].authuser);
 				cldata[ncl].authuser = NULL;
 			    }
+			if (cldata[ncl].inbuffer)
+			    {
+				/* shouldn't be here - hmmpf */
+				sendto_log(ALOG_IRCD|ALOG_DIO, LOG_WARNING,
+					   "Unreleased buffer [%c %d]!",
+					   chp[0], ncl);
+				free(cldata[ncl].inbuffer);
+				cldata[ncl].inbuffer = NULL;
+			    }
 			bcopy(cldata+cl, cldata+ncl, sizeof(anAuthData));
 
 			cldata[cl].state = 0;
