@@ -22,17 +22,9 @@ static  char rcsid[] = "@(#)$Id$";
 #endif
 
 #include "os.h"
-#ifndef CLIENT_COMPILE
-# include "s_defines.h"
-#else
-# include "c_defines.h"
-#endif
+#include "s_defines.h"
 #define SUPPORT_C
-#ifndef CLIENT_COMPILE
-# include "s_externs.h"
-#else
-# include "c_externs.h"
-#endif
+#include "s_externs.h"
 #undef SUPPORT_C
 
 unsigned char minus_one[]={ 255, 255, 255, 255, 255, 255, 255, 255, 255,

@@ -22,17 +22,9 @@ static  char rcsid[] = "@(#)$Id$";
 #endif
 
 #include "os.h"
-#ifndef CLIENT_COMPILE
-# include "s_defines.h"
-#else
-# include "c_defines.h"
-#endif
+#include "s_defines.h"
 #define MATCH_C
-#ifndef CLIENT_COMPILE
-# include "s_externs.h"
-#else
-# include "c_externs.h"
-#endif
+#include "s_externs.h"
 #undef MATCH_C
 
 unsigned char tolowertab[] =
