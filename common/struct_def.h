@@ -42,7 +42,7 @@ typedef struct        LineItem aExtData;
 #define	HOSTLEN		63	/* Length of hostname.  Updated to         */
 				/* comply with RFC1123                     */
 
-#define	NICKLEN		12
+#define	NICKLEN		15
 #define ONICKLEN	9	/* this is compatibility NICKLEN, allowed
 				** from local clients; we are prepared for
 				** longer nicks (longer NICKLEN), but do not
