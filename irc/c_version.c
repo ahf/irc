@@ -41,6 +41,6 @@ char *infotext[] =
 char *HEADEROLD = 
 "*Internet Relay Chat* Type /help to get help * Client v%s *                 ";
 
-char *HEADER =
+char *IRCHEADER =
 " *IRC Client v%s* %10.10s on %10.10s */help for help*      ";
 
