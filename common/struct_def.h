@@ -21,6 +21,7 @@
  */
 
 typedef	struct	ConfItem aConfItem;
+typedef	struct	ListItem aListItem;
 typedef	struct 	Client	aClient;
 typedef	struct	Channel	aChannel;
 typedef	struct	User	anUser;
@@ -288,6 +289,12 @@ struct	ConfItem	{
 	aClass	*class;  /* Class of connection */
 #endif
 	struct	ConfItem *next;
+};
+
+struct	ListItem	{
+	char	*nick;
+	char	*user;
+	char	*host;
 };
 
 #define	CONF_ILLEGAL		0x80000000
@@ -600,6 +607,7 @@ struct	SLink	{
 		aClient	*cptr;
 		aChannel *chptr;
 		aConfItem *aconf;
+		aListItem *alist;
 		char	*cp;
 		int	i;
 	} value;

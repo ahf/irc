@@ -1851,7 +1851,7 @@ char	*parv[];
 	name = (parc > 2) ? parv[2] : ME;
 	cm = (parc > 3) ? parv[3]: name;
 	doall = !match(name, ME) && !match(cm, ME);
-	wilds = index(cm, '*') || index(cm, '?');
+	wilds = index(cm, '*') || index(cm, '?') || index(cm, '#');
 
 	if (parc > 1 && parv[1][1] != '\0')
 	{
