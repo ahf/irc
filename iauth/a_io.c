@@ -301,7 +301,7 @@ parse_ircd()
 				exit(1);
 			    }
 			/* we should really be using a pool of buffer here */
-			cldata[cl].inbuffer = malloc(INBUFSIZE);
+			cldata[cl].inbuffer = malloc(INBUFSIZE+1);
 			if (cl > cl_highest)
 				cl_highest = cl;
 			next_io(cl, NULL); /* get started */
