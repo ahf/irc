@@ -455,7 +455,7 @@ static	int	find_sender(aClient *cptr, aClient **sptr, char *sender,
 	{
 		from = find_mask(sender, (aClient *) NULL);
 	}
-	if (from && (isdigit(sender[0]) || sender[0] == '$'))
+	if (from && isdigit(sender[0]))
 	{
 		para[0] = from->name;
 	}
