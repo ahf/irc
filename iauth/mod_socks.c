@@ -261,7 +261,7 @@ AnInstance *self;
 	struct socks_private *mydata = self->data;
 
 	sendto_ircd("S socks open[%u/%u] closed[%u/%u] cache miss %u (%u < %u)",
-		    mydata->open, ,mydata->chit, mydata->closed, mydata->chit2,
+		    mydata->open, mydata->chit, mydata->closed, mydata->chit2,
 		    mydata->cmiss, mydata->cnow, mydata->cmax);
 }
 
