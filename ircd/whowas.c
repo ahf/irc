@@ -252,7 +252,6 @@ int	find_history(char *nick, time_t timelimit)
 {
 	Reg     aName   *wp, *wp2;
 	Reg	aLock	*lp, *lp2;
-	Reg     int     i = 0;
 	
 	wp = wp2 = &was[ww_index];
 #ifdef RANDOM_NDELAY	
@@ -280,7 +279,6 @@ int	find_history(char *nick, time_t timelimit)
 	} while (wp != wp2);
 
 	lp = lp2 = &locked[lk_index];
-	i = 0;
 	do
 	{
 		if (lp == locked)

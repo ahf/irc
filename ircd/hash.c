@@ -1107,10 +1107,10 @@ aServer	*hash_find_stoken(int tok, aClient *cptr, void *mydummy)
 {
 	Reg	aServer	*tmp, *prv = NULL;
 	Reg	aHashEntry	*tmp3;
-	u_int	hashv, hv;
+	u_int	hashv;
 	int	count = 0;
 
-	hv = hashv = tok * 15053;
+	hashv = tok * 15053;
 	hashv %= _SERVERSIZE;
 	tmp3 = &serverTable[hashv];
 

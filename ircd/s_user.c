@@ -351,7 +351,6 @@ int	register_user(aClient *cptr, aClient *sptr, char *nick, char *username)
 {
 	Reg	aConfItem *aconf;
 	aClient	*acptr;
-	aServer	*sp = NULL;
 	anUser	*user = sptr->user;
 	char	*parv[3];
 #ifndef NO_PREFIX
@@ -612,7 +611,6 @@ int	register_user(aClient *cptr, aClient *sptr, char *nick, char *username)
 				XLINE_EXIT_REASON);
 		}
 #endif
-		sp = user->servp;
 	    }
 	else
 		strncpyzt(user->username, username, USERLEN+1);
@@ -828,7 +826,7 @@ int	register_user(aClient *cptr, aClient *sptr, char *nick, char *username)
 #endif
 	add_to_hostname_hash_table(user->host, user);
 	return 1;
-    }
+}
 
 /*
 ** m_nick

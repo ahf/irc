@@ -1108,7 +1108,7 @@ void	sendto_flag(u_int chan, char *pattern, ...)
 	SChan	*shptr;
 	char	nbuf[1024];
 
-	if (chan < 0 || chan >= SCH_MAX)
+	if (chan >= SCH_MAX)
 		chan = SCH_NOTICE;
 	shptr = svchans + chan;
 
