@@ -1686,7 +1686,7 @@ char	**comment;
 			ME, cptr->name,
 			BadPtr(tmp->name) ? "*" : tmp->name,
 			BadPtr(tmp->host) ? "*" : tmp->host,
-			*comment ? ":" : "",
+			*comment ? ": " : "",
 			*comment ? *comment : "");
 	}
 
