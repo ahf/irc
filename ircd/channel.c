@@ -2395,7 +2395,7 @@ char	*parv[];
 		/* build MODE for local users on channel, eventually send it */
 		if (*mbuf)
 		    {
-			if (UseModes(parv[1]))
+			if (!UseModes(parv[1]))
 			    {
 				sendto_one(cptr, err_str(ERR_NOCHANMODES,
 							 parv[0]), parv[1]);
