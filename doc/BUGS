@@ -5,5 +5,5 @@ Anyone with some free time is welcome to fix those =)
 
 * The server still occasionnally crashes because of some bug
   in the hash tables. (Vesa already fixed this bug several
-  times but it keeps crashing :^)
+  times but it keeps crashing :^) [We haven't seen this for ages.]
 
