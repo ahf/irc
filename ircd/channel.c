@@ -2546,7 +2546,8 @@ int	m_njoin(aClient *cptr, aClient *sptr, int parc, char *parv[])
 
 	if (parc < 3 || *parv[2] == '\0')
 	    {
-		sendto_one(sptr, replies[ERR_NEEDMOREPARAMS], ME, BadTo(parv[0]),"NJOIN");
+		sendto_one(sptr, replies[ERR_NEEDMOREPARAMS], ME,
+			BadTo(parv[0]), "NJOIN");
 		return 1;
 	    }
 	*nbuf = '\0'; q = nbuf;
