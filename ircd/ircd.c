@@ -233,10 +233,6 @@ static	time_t	try_connections(time_t currenttime)
 		/* at least one candidate not held for future, good */
 		allheld = 0;
 
-		/* send (udp) pings for all AC-able C-lines, we'll use it to
-		** calculate preferences */
-		send_ping(aconf);
-
 		cltmp = Class(aconf);
 		/* see if another link in this conf is allowed */
 		if (Links(cltmp) >= MaxLinks(cltmp))
@@ -319,6 +315,18 @@ time_t calculate_preference(time_t currenttime)
 
 	for (aconf = conf; aconf; aconf = aconf->next)
 	{
+		/* not a C-line */
+		if (!(aconf->status & (CONF_CONNECT_SERVER|CONF_ZCONNECT_SERVER)))
+			continue;
+
+		/* not a candidate for AC */
+		if (aconf->port <= 0)
+			continue;
+
+		/* send (udp) pings for all AC-able C-lines, we'll use it to
+		** calculate preferences */
+		send_ping(aconf);
+
 		if (!(cp = aconf->ping) || !cp->seq || !cp->recvd)
 		{
 			aconf->pref = -1;
