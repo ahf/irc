@@ -661,7 +661,7 @@ char	*nick, *username;
 			   ME, version);
 		
 		isup = isupport;
-		while (**isup)
+		while (*isup)
 		{
 			sendto_one(sptr,replies[RPL_ISUPPORT], ME,
 			BadTo(parv[0]),	*isup);
