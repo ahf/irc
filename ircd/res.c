@@ -617,13 +617,13 @@ HEADER	*hptr;
 
 		cp += n;
 		type = (int)ircd_getshort((u_char *)cp);
-		cp += sizeof(short);
+		cp += 2; /* INT16SZ */
 		class = (int)ircd_getshort((u_char *)cp);
-		cp += sizeof(short);
+		cp += 2; /* INT16SZ */
 		rptr->ttl = ircd_getlong((u_char *)cp);
-		cp += sizeof(rptr->ttl);
+		cp += 4; /* INT32SZ */
 		dlen =  (int)ircd_getshort((u_char *)cp);
-		cp += sizeof(short);
+		cp += 2; /* INT16SZ */
 		rptr->type = type;
 
 		len = strlen(hostbuf);
