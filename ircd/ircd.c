@@ -325,6 +325,11 @@ static	time_t	try_connections(time_t currenttime)
 					*pconf = aconf->next;
 			(*pconf = con_conf)->next = 0;
 		}
+
+		/* "Penalty" for being the best, so in next call of
+		 * try_connections() other servers have chance. --B. */
+		con_conf->hold += get_con_freq(Class(con_conf));
+
 		if (!iconf.aconnect)
 		{
 			sendto_flag(SCH_NOTICE,
