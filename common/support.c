@@ -238,7 +238,7 @@ size_t the_size;
 		    }
 		if (*(op-1)==':') *op++ = '0';
 		*op = '\0';
-#ifdef	CLIENT_COMPILE
+#ifndef	CLIENT_COMPILE
 		Debug((DEBUG_DNS,"Expanding `%s' -> `%s'", local_dummy,
 		       out));
 #endif
