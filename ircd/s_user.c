@@ -1300,6 +1300,16 @@ int	m_unick(aClient *cptr, aClient *sptr, int parc, char *parv[])
 	if (acptr)
 	    {
 		/*
+		** If the older one is "non-person", the new entry is just
+		** allowed to overwrite it. Just silently drop non-person,
+		** and proceed with the unick.
+		*/
+		if (IsUnknown(acptr) && MyConnect(acptr))
+		{
+			(void) exit_client(acptr, acptr, &me, "Overridden");
+		}
+		else
+		/*
 		** Ouch, this new client is trying to take an already
 		** existing nickname..
 		*/
