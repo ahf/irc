@@ -1396,7 +1396,9 @@ int	m_server_estab(aClient *cptr, char *sid, char *versionbuf)
 			    match(mlname, acptr->user->server) == 0)
 				stok = me.serv->tok;
 			else
-				stok = acptr->user->servp->tok;
+				stok = ST_UID(cptr) ?
+					acptr->user->servp->tok :
+					acptr->user->servp->maskedby->serv->tok;
 			send_umode(NULL, acptr, 0, SEND_UMODES, buf);
 			if (ST_UID(cptr) && *acptr->user->uid)
 				sendto_one(cptr,
