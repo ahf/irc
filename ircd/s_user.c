@@ -735,10 +735,7 @@ char	*parv[];
 	** it has been free for a while here
 	*/
 	if (!(acptr = find_client(nick, NULL)) &&
-	    (IsServer(cptr) ||
-#ifndef	BIG_NET
-	     !ircstp->is_bignet ||
-#endif
+	    (IsServer(cptr) || !(bootopt & BOOT_PROT) ||
 	     !(delayed = find_history(nick, (long)DELAYCHASETIMELIMIT))))
 		goto nickkilldone;  /* No collisions, all clear... */
 	/*

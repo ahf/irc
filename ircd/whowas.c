@@ -42,7 +42,6 @@ static	void	grow_history()
 {
 	int	osize = ww_size;
 
-	ircstp->is_bignet = 1;
 	Debug((DEBUG_ERROR, "Whowas/grow_history ww:%d, lk:%d, #%d, %#x/%#x",
 			    ww_size, lk_size, numclients, was, locked));
 	ww_size = (int)((float)numclients * 1.1);
