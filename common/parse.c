@@ -152,6 +152,9 @@ static	int	cancel_clients __P((aClient *, aClient *, char *));
 static	void	remove_unknown __P((aClient *, char *));
 #endif
 
+static	int	find_sender __P((aClient *cptr, aClient **sptr, char *sender,
+			char *buffer));
+
 /*
 **  Find a client (server or user) by name.
 **
@@ -498,7 +501,8 @@ aClient *cptr;
 **	-2 (FLUSH_BUFFER) when we removed a local client (server).
 **	-3 when client not found.
 */
-int	find_sender(aClient *cptr, aClient **sptr, char *sender, char *buffer)
+static	int	find_sender(aClient *cptr, aClient **sptr, char *sender,
+			char *buffer)
 {
 	aClient *from = NULL;
 

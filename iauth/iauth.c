@@ -29,8 +29,7 @@ static  char rcsid[] = "@(#)$Id$";
 
 static int do_log = 0;
 
-RETSIGTYPE dummy(s)
-int s;
+static	RETSIGTYPE	dummy(int s)
 {
 	/* from common/bsd.c */
 #ifndef HAVE_RELIABLE_SIGNALS
@@ -62,8 +61,7 @@ int s;
 #endif
 }
 
-RETSIGTYPE s_log(s)
-int s;
+static	RETSIGTYPE	s_log(int s)
 {
 # if POSIX_SIGNALS
         struct  sigaction act;
@@ -79,8 +77,7 @@ int s;
         do_log = 1;
 }
 
-void
-init_signals()
+static	void	init_signals()
 {
 	/* from ircd/ircd.c setup_signals() */
 #if POSIX_SIGNALS

@@ -33,6 +33,10 @@ aClient *client = &me;		/* Pointer to beginning of Client list */
 
 static	void	open_debugfile(), setup_signals(), io_loop();
 
+#if defined(USE_IAUTH)
+static	RETSIGTYPE	s_slave(int s);
+#endif
+
 istat_t	istat;
 iconf_t iconf;
 char	**myargv;
@@ -100,8 +104,7 @@ int s;
 }
 
 #if defined(USE_IAUTH)
-RETSIGTYPE s_slave(s)
-int s;
+static	RETSIGTYPE	s_slave(int s)
 {
 # if POSIX_SIGNALS
 	struct	sigaction act;
