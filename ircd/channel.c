@@ -516,7 +516,7 @@ aClient	*mp;
 	chptr = get_channel(mp, "&DEBUG", CREATE);
 	strcpy(chptr->topic, "SERVER MESSAGES: debug messages [you shouldn't be here! ;)]");
 	add_user_to_channel(chptr, mp, CHFL_CHANOP);
-	chptr->mode.mode = smode|MODE_PRIVATE;
+	chptr->mode.mode = smode|MODE_SECRET;
 
 	setup_svchans();
 }
