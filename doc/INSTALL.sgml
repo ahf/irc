@@ -188,7 +188,7 @@ pretty much self explanatory in the config.h file.  It is
 This package now uses GNU autoconf to probe your system and
 generate the correct Makefile.  However you need to edit it
 to specify specific information, such as ``prefix'',
-``irc_mode'', ``ircd_mode'' and ``irc_dir''.
+``irc_mode'', ``ircd_mode'' and ``ircd_dir''.
 <p>
 Now to build the package, type ``make''.  If everything
 goes will, you can then install it by typing ``make install''.
