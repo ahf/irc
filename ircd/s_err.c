@@ -79,7 +79,7 @@ static	Numeric	numeric_errors[] = {
 		{ 0, (char *)NULL },
 		{ 0, (char *)NULL },
 /* 431 */	{ ERR_NONICKNAMEGIVEN, ":No nickname given" },
-/* 432 */	{ ERR_ERRONEUSNICKNAME, "%s :Erroneous Nickname" },
+/* 432 */	{ ERR_ERRONEOUSNICKNAME, "%s :Erroneous Nickname" },
 /* 433 */	{ ERR_NICKNAMEINUSE, "%s :Nickname is already in use." },
 /* 434 */	{ ERR_SERVICENAMEINUSE, (char *)NULL },
 /* 435 */	{ ERR_SERVICECONFUSED, (char *)NULL },

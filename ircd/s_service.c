@@ -389,7 +389,7 @@ char	*parv[];
 		sp = me.serv;
 		if (!do_nick_name(parv[1], 0))
 		    {
-			sendto_one(sptr, err_str(ERR_ERRONEUSNICKNAME,
+			sendto_one(sptr, err_str(ERR_ERRONEOUSNICKNAME,
 				   parv[0]), parv[1]);
 			return 1;
 		    }

@@ -746,7 +746,7 @@ char	*parv[];
 	if (do_nick_name(nick, IsServer(cptr)) == 0 ||
 	    (IsServer(cptr) && strcmp(nick, parv[1])))
 	    {
-		sendto_one(sptr, err_str(ERR_ERRONEUSNICKNAME, parv[0]),
+		sendto_one(sptr, err_str(ERR_ERRONEOUSNICKNAME, parv[0]),
 			   parv[1]);
 
 		if (IsServer(cptr))
