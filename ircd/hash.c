@@ -553,7 +553,7 @@ char	*server;
 aClient *cptr;
 {
 	Reg	aClient	*tmp, *prv = NULL;
-	Reg	char	*t, *s;
+	Reg	char	*t;
 	Reg	char	ch;
 	aHashEntry	*tmp3;
 	u_int	hashv, hv;
