@@ -334,12 +334,14 @@ struct	ListItem	{
 #define CFLAG_KEXEMPT		0x00008
 #define CFLAG_NORESOLVE		0x00010
 #define CFLAG_FALL		0x00020
+#define CFLAG_NORESOLVEMATCH	0x00040
 
 #define IsConfRestricted(x)	((x)->flags & CFLAG_RESTRICTED)
 #define IsConfRNoDNS(x)		((x)->flags & CFLAG_RNODNS)
 #define IsConfRNoIdent(x)	((x)->flags & CFLAG_RNOIDENT)
 #define IsConfKlineExempt(x)	((x)->flags & CFLAG_KEXEMPT)
 #define IsConfNoResolve(x)	((x)->flags & CFLAG_NORESOLVE)
+#define IsConfNoResolveMatch(x)	((x)->flags & CFLAG_NORESOLVEMATCH)
 #define IsConfFallThrough(x)	((x)->flags & CFLAG_FALL)
 
 #define	IsIllegal(x)	((x)->status & CONF_ILLEGAL)
