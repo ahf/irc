@@ -148,9 +148,6 @@ char	serveropts[] = {
 #ifdef	ZIP_LINKS
 'Z',
 #endif
-#ifdef MIRC_KLUDGE
-'$',
-#endif
 '\0'};
 
 #ifdef DEBUGMODE
