@@ -27,10 +27,10 @@
 #define FLAG_ROUNDS  0x00000040
 #define FLAG_EXT     0x00000080
 
-extern char *getpass();
-extern char *crypt();
+extern char *getpass(void);
+extern char *crypt(void);
 
-char *make_des_salt();
+char *make_des_salt(void);
 char *make_ext_salt(int);
 char *make_ext_salt_para(int, char *);
 char *make_md5_salt(int);
@@ -41,8 +41,8 @@ char *int_to_base64(int);
 char *generate_random_salt(char *, int);
 char *generate_poor_salt(char *, int);
 
-void full_usage();
-void brief_usage();
+void full_usage(void);
+void brief_usage(void);
 
 static char saltChars[] =
        "./0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";

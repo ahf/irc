@@ -32,10 +32,10 @@ static  char rcsid[] = "@(#)$Id$";
 
 static	void	new_class(int);
 static	char	*getfield(char *), confchar(u_int);
-static	int	openconf(), validate(aConfItem *);
+static	int	openconf(void), validate(aConfItem *);
 static	int	dgets(int, char *, int);
 static	aClass	*get_class(int, int);
-static	aConfItem	*initconf();
+static	aConfItem	*initconf(void);
 
 struct	wordcount {
 	char *filename;
@@ -43,7 +43,7 @@ struct	wordcount {
 	int max;
 	struct wordcount *next;
 };
-static	void	mywc();
+static	void	mywc(void);
 static	int	checkSID(char *, int);
 static  struct	wordcount *	findConfLineNumber(int);
 #ifdef M4_PREPROC
