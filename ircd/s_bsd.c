@@ -1630,6 +1630,7 @@ static	aClient	*add_unixconnection(aClient *cptr, int fd)
 static	void	read_listener(aClient *cptr)
 {
 	int fdnew, max = 10;
+	aClient	*acptr;
 
 #if defined(SLOW_ACCEPT)
 	max = 1;
@@ -1665,17 +1666,17 @@ static	void	read_listener(aClient *cptr)
 			(void)close(fdnew);
 			continue;
 		    }
-		/*
-		 * Use of add_connection (which never fails :) meLazy
-		 * Never say never. MrMurphy visited here. -Vesa
-		 */
 #ifdef	UNIXPORT
 		if (IsUnixSocket(cptr))
-			add_unixconnection(cptr, fdnew);
+			acptr = add_unixconnection(cptr, fdnew);
 		else
 #endif
-			if (!add_connection(cptr, fdnew))
-				continue;
+		acptr = add_connection(cptr, fdnew);
+
+		if (acptr == NULL)
+		{
+			continue;
+		}
 		nextping = timeofday; /* isn't this abusive? -kalt */
 		istat.is_unknown++;
 	    }
