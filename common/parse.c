@@ -1020,8 +1020,10 @@ static	void	remove_unknown(aClient *cptr, char *sender)
 	 * squit if it is a server because it means something is really
 	 * wrong.
 	 */
-	if (index(sender, '.') /* <- buggy, it could be a service! */
-	    && !index(sender, '@')) /* better.. */
+	/* Trying to find out if it's server prefix (contains '.' but no '@'
+	 * (services) or is valid SID. --B. */
+	if ((index(sender, '.') && !index(sender, '@'))
+		|| sid_valid(sender))
 	    {
 		sendto_flag(SCH_NOTICE, "Squitting unknown %s brought by %s.",
 			    sender, get_client_name(cptr, FALSE));
