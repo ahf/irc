@@ -1035,6 +1035,7 @@ int	main(int argc, char *argv[])
 	mysrand(timeofday);
 	
 	daemonize();	
+	write_pidfile();
 	dbuf_init();
 	
 	serverbooting = 0;
