@@ -429,6 +429,7 @@ time_t	currenttime;
 				ClearXAuth(cptr);
 				SetAccess(cptr);
 				cptr->firsttime = currenttime;
+				cptr->lasttime = currenttime;
 				continue;
 			    }
 			if (IsServer(cptr) || IsConnecting(cptr) ||
