@@ -238,16 +238,17 @@ int cid_ok(char *name, int n)
 **
 ** Check that the sid is a valid sid.  The first char should be a number in
 ** range of [0-9], the rest should be a char in the range of [0-9A-Z].
+** We also accept fake sids, generated for old servers; they begin with '$'.
 ** It returns 1 if it's a valid sid, 0 if not.
 */
 int	sid_valid(char *sid)
 {
-	if (!isdigit(sid[0]))
+	if ((isdigit(sid[0]) || sid[0] == '$')
+		&& sid[SIDLEN] == '\0')
 	{
-		return 0;
+		return cid_ok(sid, SIDLEN - 1);
 	}
-
-	return cid_ok(sid, SIDLEN - 1);
+	return 0;
 }
 
 #if 0
