@@ -2561,7 +2561,7 @@ char	*parv[];
 {
 	Reg	aClient *acptr;
 	Reg	char	*s, **pav = parv;
-	Reg	int	len = 0;
+	Reg	int	len = 0, i;
 	char	*p = NULL;
 
 	if (parc < 2)
@@ -2576,8 +2576,14 @@ char	*parv[];
 	for (s = strtoken(&p, *++pav, " "); s; s = strtoken(&p, NULL, " "))
 		if ((acptr = find_person(s, NULL)))
 		    {
+			i = strlen(acptr->name);
+			if (len + i > sizeof(buf) - 4)	
+			{
+				/* leave room for " \r\n\0" */
+				break;
+			}
 			(void) strcpy(buf + len, acptr->name);
-			len += strlen(acptr->name);
+			len += i;
 			(void) strcpy(buf + len++, " ");
 		    }
 	sendto_one(sptr, "%s", buf);
