@@ -785,6 +785,7 @@ int	attach_conf(aClient *cptr, aConfItem *aconf)
 	lp->next = cptr->confs;
 	lp->value.aconf = aconf;
 	cptr->confs = lp;
+	cptr->ping = get_client_ping(cptr);
 	aconf->clients++;
 	if (aconf->status & CONF_CLIENT_MASK)
 		ConfLinks(aconf)++;

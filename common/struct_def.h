@@ -543,6 +543,7 @@ struct Client	{
 	time_t	since;		/* last time we parsed something */
 	aClient	*acpt;		/* listening client which we accepted from */
 	Link	*confs;		/* Configuration record associated */
+	int	ping;
 	int	authfd;		/* fd for rfc931 authentication */
 	char	*auth;
 	u_short	port;		/* and the remote port# too :-) */

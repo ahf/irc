@@ -512,8 +512,7 @@ static	time_t	check_pings(time_t currenttime)
 			kflag = find_kill(cptr, 1, &reason);
 		}
 #endif
-		ping = IsRegistered(cptr) ? get_client_ping(cptr) :
-					    ACCEPTTIMEOUT;
+		ping = IsRegistered(cptr) ? cptr->ping : ACCEPTTIMEOUT;
 		Debug((DEBUG_DEBUG, "c(%s) %d p %d k %d a %d",
 			cptr->name, cptr->status, ping, kflag,
 			currenttime - cptr->lasttime));
