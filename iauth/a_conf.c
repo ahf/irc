@@ -255,6 +255,7 @@ char	*conf_read(char *cfile)
 			(*last)->timeout = timeout;
 			(*last)->reason	= NULL;
 			(*last)->delayed = o_del;
+			(*last)->port = 0;
 			if (Mlist[i] == &Module_rfc931)
 				ident = *last;
 
