@@ -555,7 +555,7 @@ char	*nick, *username;
 		/*
 		 * following block for the benefit of time-dependent K:-lines
 		 */
-		if (find_kill(sptr, 1, &reason))
+		if (!IsKlineExempt(sptr) && find_kill(sptr, 1, &reason))
 		    {
 			/*char buf[100];*/
 
