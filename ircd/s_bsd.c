@@ -1144,7 +1144,7 @@ aClient *cptr;
 	if ((i = cptr->fd) >= 0)
 	    {
 		flush_connections(i);
-		if (IsServer(cptr))
+		if (IsServer(cptr) || IsListening(cptr))
 		    {
 			del_fd(i, &fdas);
 #ifdef	ZIP_LINKS
