@@ -1614,6 +1614,10 @@ static	int	set_mode(aClient *cptr, aClient *sptr, aChannel *chptr,
 				if ((host = rindex(user ? user : cp, '@')))
 					*host++ = '\0';
 				lp->value.alist = make_bei(cp, user, host);
+				if (user)
+					user[-1] = '!';
+				if (host)
+					host[-1] = '@';
 				break;
 			case MODE_KEY :
 				c = 'k';
