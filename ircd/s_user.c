@@ -440,6 +440,7 @@ char	*nick, *username;
 					prefix = '+';
 			*user->username = prefix;
 			strncpy(&user->username[1], buf2, USERLEN);
+			user->username[USERLEN] = '\0';
 		    }
 #endif
 
