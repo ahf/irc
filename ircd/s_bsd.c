@@ -1384,10 +1384,11 @@ aClient	*cptr;
 	 * early returns from select()/poll().  It shouldn't delay sending
 	 * data, provided that io_loop() combines read_message() and
 	 * flush_fdary/connections() calls properly. -kalt
+	 * This call isn't always implemented, even when defined.. so be quiet
+	 * about errors. -kalt
 	 */
 	opt = 8192;
-	if (SETSOCKOPT(fd, SOL_SOCKET, SO_SNDLOWAT, &opt, opt) < 0)
-		report_error("setsockopt(SO_SNDLOWAT) %s:%s", cptr);
+	SETSOCKOPT(fd, SOL_SOCKET, SO_SNDLOWAT, &opt, opt);
 # endif
 #endif
 #if defined(IP_OPTIONS) && defined(IPPROTO_IP) && !defined(AIX) && \
