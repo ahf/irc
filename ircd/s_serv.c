@@ -2656,6 +2656,7 @@ char	*parv[];
 	sendto_one(sptr, replies[RPL_CLOSEEND], ME, BadTo(parv[0]), closed);
 	return 1;
 }
+
 /* End Of Burst command
 ** parv[0] - server sending the SQUIT
 ** parv[1] - optional comma separated list of servers for which this EOB
@@ -2715,7 +2716,7 @@ char	*parv[];
 		{
 			aServer *asptr;
 			/* Fake sid (comes from EOB emulation */
-			asptr = find_tokserver(idtol(sid), cptr, NULL);
+			asptr = find_tokserver(idtol(sid + 1), cptr, NULL);
 			if (asptr)
 			{
 				acptr = asptr->bcptr;
