@@ -198,7 +198,7 @@ char	*modeid;
 				return -1;
 			    }
 		    }
-		else if (!mycmp(mode->value.cp, modeid))
+		else if (type == mode->flags && !mycmp(mode->value.cp, modeid))
 			return -1;
 		
 	    }
