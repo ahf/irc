@@ -387,10 +387,10 @@ char	*parv[];
 			** which we got the SERVER message.  Thus we canNOT
 			** `return' yet! -krys
 			*/
+			strcpy(buf, get_client_name(bcptr, TRUE));
 			sendto_flag(SCH_ERROR,
 			    "Link %s cancelled, server %s reintroduced by %s",
-				    get_client_name(bcptr, TRUE), host,
-				    get_client_name(cptr, TRUE));
+				    buf, host, get_client_name(cptr, TRUE));
 			(void) exit_client(bcptr, bcptr, &me, "Server Exists");
 		    }
 	    }
