@@ -801,6 +801,10 @@ typedef	struct	{
 	u_long	is_m_myservice;	/* maximum local services */
 	u_long	is_l_myclnt;	/* last local user count */
 	time_t	is_l_myclnt_t;	/* timestamp for last count */
+#ifdef DELAY_CLOSE
+	u_long	is_delayclose;	/* number of fds that got delayed close() */
+	u_int	is_delayclosewait;	/* number of fds that wait for delayed close() */
+#endif
 } istat_t;
 
 /* String manipulation macros */
