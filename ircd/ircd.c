@@ -1113,6 +1113,7 @@ int	main(int argc, char *argv[])
 	timeofday = time(NULL);
 	mysrand(timeofday);
 	
+	/* daemonize() closes 0,1,2 -- make sure you don't have any fd open */
 	daemonize();	
 	logfiles_open();
 	write_pidfile();
