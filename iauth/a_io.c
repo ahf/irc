@@ -196,6 +196,8 @@ AnInstance *last;
 	    if (r != 1)
 		    /* started, or nothing to do or failed: don't try again */
 		    SetBit(cldata[cl].idone, cldata[cl].instance->in);
+	    if (r == 1)
+		    cldata[cl].ileft += 1;
 	    if (r != 0)
 		    /* start() didn't start something */
 		    next_io(cl, cldata[cl].instance);
