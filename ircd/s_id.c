@@ -167,7 +167,7 @@ collect_chid()
 	    if (close_chid((*chptr)->chname) == 0)
 		{
 		    del = *chptr;
-		    chptr = &(del->nextch);
+		    *chptr = del->nextch;
 		    istat.is_cchan--;
 		    istat.is_cchanmem -= sizeof(aChannel) +strlen(del->chname);
 		    MyFree((char *)del);
