@@ -131,7 +131,7 @@ void	check_services_butone(long action, char *server, aClient *cptr,
 				char	buf[2048];
 				va_list	va;
 				va_start(va, fmt);
-				va_arg(va, char *);
+				(void)va_arg(va, char *);
 				vsprintf(buf, fmt+3, va);
 				va_end(va);
 				sprintf(nbuf, "%s!%s@%s", cptr->name,
