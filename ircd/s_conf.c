@@ -979,6 +979,8 @@ int	opt;
 				 aconf->status == CONF_LISTEN_PORT)
 				(void)add_listener(aconf);
 		    }
+		if (aconf->status & CONF_SERVICE)
+			aconf->port &= SERVICE_MASK_ALL;
 		if (aconf->status & (CONF_SERVER_MASK|CONF_SERVICE))
 			if (ncount > MAXCONFLINKS || ccount > MAXCONFLINKS ||
 			    !aconf->host || index(aconf->host, '*') ||
