@@ -811,14 +811,16 @@ int	check_client(aClient *cptr)
 
 #ifdef INET6
 	if (IN6_IS_ADDR_LOOPBACK(&cptr->ip) || IsUnixSocket(cptr) ||
-	    !memcmp(cptr->ip.s6_addr, mysk.sin6_addr.s6_addr, 8) 
+	    /* If s6_addr32 was standard, we could just compare them,
+	     * not memcmp. --B. */
+	    !memcmp(cptr->ip.s6_addr, mysk.sin6_addr.s6_addr, 16) 
 /* ||
 	    IN6_ARE_ADDR_SAMEPREFIX(&cptr->ip, &mysk.SIN_ADDR))
  about the same, I think              NOT */
                                                               )
 #else
         if (inetnetof(cptr->ip) == IN_LOOPBACKNET || IsUnixSocket(cptr) ||
-            inetnetof(cptr->ip) == inetnetof(mysk.SIN_ADDR))
+            cptr->ip.S_ADDR == mysk.SIN_ADDR.S_ADDR)
 #endif
 	    {
 
