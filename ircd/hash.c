@@ -128,6 +128,28 @@ int	*store;
 }
 
 /*
+** hash_sid
+*/
+static	u_int	hash_sid(char *sid, u_int *store)
+{
+	Reg	u_char	*id = (u_char *)sid;
+	Reg	u_char	ch;
+	Reg	u_int	hash = 1;
+
+	for (; (ch = *sid); sid++)
+	{
+		hash <<= 1;
+		hash += hashtab[(int)ch];
+	}
+	if (store)
+	{
+		*store = hash;
+	}
+	hash %= _SIDSIZE;
+	return (hash);
+}
+
+/*
  * hash_channel_name
  *
  * calculate a hash value on at most the first 30 characters of the channel
@@ -501,7 +523,7 @@ int	add_to_sid_hash_table(char *sid, aClient *cptr)
 {
 	Reg	u_int	hashv;
 
-	hashv = hash_uid(sid, &cptr->serv->sidhashv);
+	hashv = hash_sid(sid, &cptr->serv->sidhashv);
 	cptr->serv->sidhnext = (aServer *)sidTable[hashv].list;
 	sidTable[hashv].list = (void *)cptr->serv;
 	sidTable[hashv].links++;
@@ -1006,7 +1028,7 @@ aClient	*hash_find_sid(char *sid, aClient *cptr)
 	Reg     aHashEntry      *tmp3;
 	u_int   hashv, hv;
 
-	hashv = hash_uid(sid, &hv);
+	hashv = hash_sid(sid, &hv);
 	tmp3 = &sidTable[hashv];
 
 	for (tmp = (aServer *)tmp3->list; tmp; prv = tmp, tmp = tmp->sidhnext)
