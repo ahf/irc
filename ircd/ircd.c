@@ -699,6 +699,7 @@ static	void	setup_me(aClient *mp)
 	mp->user->flags |= FLAGS_OPER;
 	mp->serv->up = mp;
 	mp->serv->maskedby = mp;
+	mp->serv->version |= SV_UID;
 	mp->user->server = find_server_string(mp->serv->snum);
 	strncpyzt(mp->user->username, (p) ? p->pw_name : "unknown",
 		  sizeof(mp->user->username));
