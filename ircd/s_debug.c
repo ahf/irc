@@ -311,8 +311,8 @@ char	*nick;
 {
 #ifdef HUB
     	sendto_one(cptr, 
-	   ":%s %d %s :HUB:%d LQ:%d MXC:%d TS:%d HRD:%d HGL:%d WWD:%d CTO:%d",
-		   ME, RPL_STATSDEFINE, nick, HUB, LISTENQUEUE, 
+   ":%s %d %s :HUB:%d MS:%d LQ:%d MXC:%d TS:%d HRD:%d HGL:%d WWD:%d CTO:%d",
+		   ME, RPL_STATSDEFINE, nick, HUB, MAXSERVERS, LISTENQUEUE, 
 		   MAXCONNECTIONS, TIMESEC, HANGONRETRYDELAY, HANGONGOODLINK,
 		   WRITEWAITDELAY, CONNECTTIMEOUT);
 #else
