@@ -3765,6 +3765,11 @@ static int	reop_channel(time_t now, aChannel *chptr, int reopmode)
 
 		for (lp = chptr->members; lp; lp = lp->next)
 		{
+			/* not restricted */
+			if (IsRestricted(lp->value.cptr))
+			{
+				continue;
+			}
 			if (lp->flags & CHFL_CHANOP)
 			{
 				chptr->reop = 0;
@@ -3772,11 +3777,6 @@ static int	reop_channel(time_t now, aChannel *chptr, int reopmode)
 			}
 			/* Our client */
 			if (!MyConnect(lp->value.cptr))
-			{
-				continue;
-			}
-			/* not restricted */
-			if (IsRestricted(lp->value.cptr))
 			{
 				continue;
 			}
