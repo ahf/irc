@@ -144,7 +144,7 @@ aClient	*from;
 		cptr->sockhost[0] = '\0';
 		cptr->buffer[0] = '\0';
 		cptr->authfd = -1;
-		cptr->auth = cptr->username;
+		cptr->auth = mystrdup(cptr->username);
 		cptr->exitc = EXITC_UNDEF;
 #ifdef	ZIP_LINKS
 		cptr->zip = NULL;
@@ -185,9 +185,6 @@ aClient *cptr;
 		user->invited = NULL;
 		user->uwas = NULL;
 		cptr->user = user;
-		user->hashv = 0;
-		user->uhnext = NULL;
-		user->uid[0] = '\0';
 		user->servp = NULL;
 		user->bcptr = cptr;
 		if (cptr->next)	/* the only cptr->next == NULL is me */
