@@ -321,6 +321,10 @@ void	send_defines(aClient *cptr, char *nick)
 	sendto_one(cptr, ":%s %d %s :AC:%s SS:%d SU:%d", ME, RPL_STATSDEFINE,
 		   nick, (iconf.aconnect == 1) ? "ON" : "OFF",
 		   iconf.split_minservers, iconf.split_minusers);
+#ifdef CLIENTS_CHANNEL
+	sendto_one(cptr, ":%s %d %s :CCL:0x%X", ME, RPL_STATSDEFINE, nick,
+		CLIENTS_CHANNEL_LEVEL);
+#endif
 }
 
 void	count_memory(aClient *cptr, char *nick, int debug)
