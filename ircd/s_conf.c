@@ -1399,12 +1399,7 @@ int 	initconf(int opt)
 	fdn = fdopen(fd, "r");
 	if (fdn == NULL)
 	{
-		if (serverbooting)
-		{
-			fprintf(stderr,
-			"Fatal Error: Can not open configuration file %s (%s)\n",
-			configfile,strerror(errno));
-		}
+		close(fd);
 		return -1;
 	}
 	ConfigTop = config_read(fdn, 0, new_config_file(configfile, NULL, 0));
@@ -1635,8 +1630,6 @@ int 	initconf(int opt)
 					  atoi(aconf->passwd),
 					  atoi(aconf->name), aconf->port,
 					  tmp ? atoi(tmp) : 0,
-					  (tmp && index(tmp, '.')) ?
-					  atoi(index(tmp, '.') + 1) : 0,
 					  tmp3 ? atoi(tmp3) : 1,
 					  (tmp3 && index(tmp3, '.')) ?
 					  atoi(index(tmp3, '.') + 1) : 1,

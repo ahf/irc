@@ -12,7 +12,7 @@
 #define MAXDEPTH 13
 
 #if defined(__sun) || defined(__sun__) || defined(sun)
-/* Sun has a buggy implementation of FILE functions 
+/* Sun has a buggy implementation of FILE functions
 ** (they do not work when fds 0-255 are already used).
 ** ircd-ratbox 1.5-3 had a nice reimplementation, so I took it. --B. */
 #define FILE FBFILE
