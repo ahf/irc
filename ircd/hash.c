@@ -638,17 +638,29 @@ aChannel *chptr;
  *
  * look up matches for !?????name instead of a real match.
  */
-aChannel	*hash_find_channels(name)
+aChannel	*hash_find_channels(name, chptr)
 char	*name;
+aChannel *chptr;
 {
 	Reg	aChannel	*tmp, *prv = NULL;
 	Reg	aHashEntry	*tmp3;
 	u_int	hashv, hv;
 
-	hashv = hash_channel_name(name, &hv);
-	tmp3 = &channelTable[hashv];
+	if (chptr == NULL)
+	    {
+		hashv = hash_channel_name(name, &hv);
+		tmp3 = &channelTable[hashv];
+		chptr = (aChannel *) tmp3->list;
+	    }
+	else
+	    {
+		hv = chptr->hashv;
+		chptr = chptr->hnextch;
+	    }
 
-	for (tmp = (aChannel *)tmp3->list; tmp; prv = tmp, tmp = tmp->hnextch)
+	if (chptr == NULL)
+		return NULL;
+	for (tmp = chptr; tmp; prv = tmp, tmp = tmp->hnextch)
 		if (hv == tmp->hashv && *tmp->chname == '!' &&
 		    mycmp(name, tmp->chname + CHIDLEN + 1) == 0)
 		    {
