@@ -409,8 +409,8 @@ char	*nick, *username;
 
 		if (sptr->exitc == EXITC_AREF)
 		    {
-			sendto_flag(SCH_LOCAL, "Denied connection from %s.",
-				    get_client_host(sptr));
+			sendto_flag(SCH_LOCAL, "K-lined %s@%s.",
+				    user->username, sptr->sockhost);
 #if defined(USE_SYSLOG) && defined(SYSLOG_CONN)
 			syslog(LOG_NOTICE, "%s ( %s ): <none>@%s [%s] %c\n",
 			       myctime(sptr->firsttime), " Denied  ",
