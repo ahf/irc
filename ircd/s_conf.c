@@ -1189,6 +1189,7 @@ int	rehash(aClient *cptr, aClient *sptr, int sig)
 #endif
 	(void) initconf(0);
 	close_listeners();
+	reopen_listeners();
 
 	/*
 	 * Flush *unused* config entries.
