@@ -946,6 +946,8 @@ char	*parv[], *mbuf, *pbuf;
 							*s++ &= 0x7f;
 						else
 							*s = '\0';
+					else
+						s++;
 			}
 
 			if (!**parv)
