@@ -62,12 +62,9 @@ int d;
 		    sendto_flag(SCH_DEBUG, "dog #0: %d", slowness);
 	    return;
 	}
-    if (pain)
-	    sendto_flag(SCH_DEBUG, "dog awareness: %d", pain);
     if (slowness > 0)
 	{
 	    if (slowness > 1 || pain)
-		    sendto_flag(SCH_DEBUG, "dog #%d: %d", d, slowness);
 	    if (slowness == 1)
 		    ;
 	    else if (slowness == 2)
@@ -81,6 +78,8 @@ int d;
 	    pain -= 1;
     time_origin = timeofday;
     last = d;
+    if (pain || slowness > 1)
+	    sendto_flag(SCH_DEBUG, "dog #%d: %d -> %d", d, slowness, pain);
 }
 
 /*

@@ -2209,12 +2209,7 @@ int	ro;
 #endif
 
 	if (fdp == &fdall)
-	    {
 		incr = dog_incr();
-		if (ro && incr < 500)
-			sendto_flag(SCH_DEBUG, "RO: %d %d %d",
-				    fdp->highest, nfds, incr);
-	    }
 #if ! USE_POLL
 	for (i = fdp->highest; i >= 0; i--)
 #else
@@ -2375,16 +2370,16 @@ deadsocket:
 	    {
 		if (uncomplete_date == 0)
 			uncomplete_date = timeofday;
-		sendto_flag(SCH_DEBUG, "Skipped %d at %u [%d,%d,%d]", skipped,
-			    uncomplete_date, ret, nfds, i);
+		sendto_flag(SCH_DEBUG, "Skipped %d [%d,%d,%d]", skipped,
+			    ret, nfds, i);
 		dog_done();
 	    }
 	else if (fdp == &fdall)
 	    {
 		if (uncomplete_date)
 			sendto_flag(SCH_DEBUG,
-				    "Done skipping for %u [%d,%d,%d]",
-				    uncomplete_date, ret, nfds, i);
+				    "Done skipping: %us [%d,%d,%d]",
+				    time(NULL)-uncomplete_date, ret, nfds, i);
 		uncomplete_date = 0;
 	    }
 	return ret;
