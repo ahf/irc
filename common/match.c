@@ -144,7 +144,7 @@ unsigned char char_atribs[] = {
 		PRINT|ALPHA|NVALID|UVALID, PRINT|ALPHA|NVALID|UVALID,
 /* yz  */	PRINT|ALPHA|NVALID|UVALID, PRINT|ALPHA|NVALID|UVALID,
 /* {|  */	PRINT|NVALID|UVALID, PRINT|NVALID|UVALID,
-/* }~  */	PRINT|NVALID|UVALID, PRINT|UVALID,
+/* }~  */	PRINT|NVALID|UVALID, PRINT|NVALID|UVALID,
 /* del */	0,
 /* 80-8f */	0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 /* 90-9f */	0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
