@@ -123,7 +123,7 @@ char	*parv[];
 	Reg	aConfItem *aconf;
 	char	*server;
 	Reg	aClient	*acptr;
-	char	*comment = (parc > 2 && parv[2]) ? parv[2] : cptr->name;
+	char	*comment = (parc > 2 && parv[2]) ? parv[2] : "no reason";
 
 	if (parc > 1)
 	    {
@@ -212,12 +212,18 @@ char	*parv[];
 	    }
 	if (MyPerson(sptr))
 	{
-		char bufn[HOSTLEN+7];
+		int	k=TOPICLEN-strlen(sptr->name)-7;
 
-		sprintf(bufn, " (by %s)", sptr->name);
-		if (strlen(comment) > TOPICLEN)
-			comment[TOPICLEN] = '\0';
-		strcat(comment, bufn);
+		/* Shorten original comment, should it be too long. */
+		if (strlen(comment) > k)
+		{
+			comment[k] = '\0';
+		}
+		/* As we change comment, we have to copy, who knows what
+		** parv[2] can overwrite. */
+		comment2[0] = '\0';
+		sprintf(comment2, "%s (by %s)", comment, sptr->name);
+		comment = comment2;
 	}
 	if (!MyConnect(acptr) && (cptr != acptr->from))
 	    {
