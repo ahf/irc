@@ -3562,7 +3562,7 @@ int	m_save(aClient *cptr, aClient *sptr, int parc, char *parv[])
 ** Note: these #ifdefs mimic 2.10 behaviour; this function, however,
 ** is written with O:line permission flags in mind. --B. */
 
-int	is_allowed(aClient *cptr, ACL function)
+int	is_allowed(aClient *cptr, long function)
 {
 	int	ret;
 
