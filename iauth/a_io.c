@@ -189,7 +189,7 @@ AnInstance *last;
 	{
 	    int r;
 
-	    cldata[cl].timeout = time(NULL) + 15; /* hmmpf */
+	    cldata[cl].timeout = time(NULL) + cldata[cl].instance->timeout;
 	    r = cldata[cl].instance->mod->start(cl);
 	    DebugLog((ALOG_DIO, 0,
 		      "next_io(#%d, %x): %s->start() returned %d",
