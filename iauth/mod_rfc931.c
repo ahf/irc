@@ -114,7 +114,11 @@ u_int cl;
 			if (cldata[cl].buflen > 512)
 			    cldata[cl].inbuffer[512] = '\0';
 			ch = index(cldata[cl].inbuffer, ':');
-			if (!strncmp(": USERID : UNIX : ", ch, 18))
+			if (ch == NULL)
+			    {
+				/* broken ident server */
+			    }
+			else if (!strncmp(": USERID : UNIX : ", ch, 18))
 			    {
 				/* bingo! */
 				if (cldata[cl].authuser)
