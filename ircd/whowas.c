@@ -400,11 +400,13 @@ char	*parv[];
 
 		if (up == NULL)
 		    {
-			if (strlen(parv[1]) > (size_t) NICKLEN)
-				parv[1][NICKLEN] = '\0';
+			if (strlen(nick) > (size_t) NICKLEN)
+				nick[NICKLEN] = '\0';
 			sendto_one(sptr, err_str(ERR_WASNOSUCHNICK, parv[0]),
-				   parv[1]);
+				   nick);
 		    }
+		else
+			up = NULL;
 
 		if (p)
 			p[-1] = ',';
