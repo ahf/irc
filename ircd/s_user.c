@@ -1652,13 +1652,7 @@ static	void	who_find(aClient *sptr, char *mask, int oper)
 	int	member;
 	int	showperson;
 	aClient	*acptr;
-	int	myoper = 0;
-
-	if (MyConnect(sptr) && IsAnOper(sptr))
-	{
-		myoper = 1;
-	}
-
+	
 	/* first, show INvisible matching users on common channels */
 	for (lp = sptr->user->channel; lp ;lp = lp->next)
 	{
@@ -1712,7 +1706,10 @@ static	void	who_find(aClient *sptr, char *mask, int oper)
 		/* allow local opers to see matching clients
 		 * on _LOCAL_ server and show the user himself */
 		if (IsInvisible(acptr) && (acptr != sptr)
-		    && !(MyConnect(acptr) && myoper))
+		    && !(MyConnect(acptr) &&
+			&& MyConnect(sptr) && IsAnOper(sptr)
+			)
+		   )
 		{
 			continue;
 		}
