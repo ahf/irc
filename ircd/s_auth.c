@@ -150,7 +150,7 @@ vsendto_iauth(char *pattern, va_list va)
 		p += i;
 		len -= i;
 	}
-	while (len > 0)
+	while (len > 0);
 
 	return 0;
 }
