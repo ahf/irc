@@ -822,12 +822,13 @@ char	*parv[];
 		sptr->flags |= FLAGS_KILLED;
 		return exit_client(cptr, sptr, &me, "Nick/Server collision");
 	    }
-	if (!(acptr = find_client(nick, NULL))
+	if (!(acptr = find_client(nick, NULL)))
 	    {
 		aClient	*acptr2;
-		if ((IsServer(cptr) || !(bootopt & BOOT_PROT))
+
+		if (IsServer(cptr) || !(bootopt & BOOT_PROT))
 			goto nickkilldone;
-		if (acptr2 = get_history(nick, (long)(KILLCHASETIMELIMIT)) &&
+		if ((acptr2 = get_history(nick, (long)(KILLCHASETIMELIMIT))) &&
 		    !MyConnect(acptr2))
 			/*
 			** Lock nick for KCTL so one cannot nick collide
