@@ -857,7 +857,6 @@ char	*argv[];
 	timeofday = time(NULL);
 	open_debugfile();
 	timeofday = time(NULL);
-	init_sid(NULL);
 	(void)init_sys();
 
 #ifdef USE_SYSLOG
@@ -894,6 +893,7 @@ char	*argv[];
 
 	dbuf_init();
 	setup_me(&me);
+	init_sid(SERVER_ID);
 	check_class();
 	ircd_writetune(tunefile);
 	if (bootopt & BOOT_INETD)

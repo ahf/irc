@@ -748,7 +748,7 @@ char	*comment;
 				/* again, this is all that is needed */
 
 			/* remove from uid hash table */
-			if (UniqueUser(sptr))
+			if (HasUID(sptr))
 				del_from_uid_hash_table(sptr->user->uid, sptr);
 
 			/* Add user to history */
