@@ -134,9 +134,12 @@ u_int cl;
 				/* ack, open SOCKS proxy! */
 				if (cldata[cl].instance->opt &&
 				    strstr(cldata[cl].instance->opt, "reject"))
+				    {
 					sendto_ircd("K %d %s %u ", cl,
 						    cldata[cl].itsip,
 						    cldata[cl].itsport);
+					cldata[cl].state |= A_DENY;
+				    }
 				if (cldata[cl].instance->opt &&
 				    strstr(cldata[cl].instance->opt, "log"))
 					sendto_log(ALOG_FLOG, LOG_INFO,

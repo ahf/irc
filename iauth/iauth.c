@@ -156,6 +156,13 @@ char	*argv[];
 	init_io();
 	conf_read(NULL);
 
+#if defined(IAUTH_DEBUG)
+	if (debuglevel & ALOG_DIRCD)
+		sendto_ircd("1 G");
+	else
+#endif
+		sendto_ircd("0 G");
+
 	while (1)
 		loop_io();
 }
