@@ -312,12 +312,6 @@ aClient	*cptr;
 {
 	Reg	u_int	hashv;
 
-	if (cptr->status < -1)
-	{
-		/* Don't add unregistered clients */
-		return -1;
-	}
-
 	hashv = hash_nick_name(name, &cptr->hashv);
 	cptr->hnext = (aClient *)clientTable[hashv].list;
 	clientTable[hashv].list = (void *)cptr;
