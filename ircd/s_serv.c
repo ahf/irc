@@ -3004,7 +3004,7 @@ int	m_motd(aClient *cptr, aClient *sptr, int parc, char *parv[])
 	for(temp=motd;temp != NULL;temp = temp->next)
 		sendto_one(sptr, replies[RPL_MOTD], ME, BadTo(parv[0]), temp->line);
 	sendto_one(sptr, replies[RPL_ENDOFMOTD], ME, BadTo(parv[0]));
-	return 2;
+	return IsUnknown(sptr) ? 5 : 2;
 }
 
 /*
