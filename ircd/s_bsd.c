@@ -1810,8 +1810,7 @@ int	msg_ready;
 			** all that was received.
 			*/
 			if (cptr->flags & FLAGS_ZIP)
-				while (cptr->zip->in->avail_in != 0 ||
-				       cptr->zip->in->avail_out == 0)
+				while (cptr->zip->in->avail_in != 0)
 				    {
 					done = dopacket(cptr, readbuf, 0);
 					if (done && done != 2)
