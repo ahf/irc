@@ -345,7 +345,6 @@ int	register_user(aClient *cptr, aClient *sptr, char *nick, char *username)
 	aClient	*acptr;
 	aServer	*sp = NULL;
 	anUser	*user = sptr->user;
-	short	oldstatus = sptr->status;
 	char	*parv[3];
 #ifndef NO_PREFIX
 	char	prefix;

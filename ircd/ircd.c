@@ -1178,7 +1178,6 @@ static	void	open_debugfile()
 {
 #ifdef	DEBUGMODE
 	int	fd;
-	aClient	*cptr;
 
 	if (debuglevel >= 0)
 	    {
