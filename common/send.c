@@ -1247,6 +1247,8 @@ void	sendto_match_butone(aClient *one, aClient *from, char *mask, int what, char
 				    match_it(srch, mask, what))
 					break;
 			}
+			if (srch == NULL)
+				continue;
 		    }
 		/* my client, does he match ? */
 		else if (!(IsRegisteredUser(cptr) && 
