@@ -2133,7 +2133,7 @@ int	m_users(aClient *cptr, aClient *sptr, int parc, char *parv[])
 
 #ifdef USERS_RFC1459
 	{
-#ifdef ENABLE_USERS
+#ifdef USERS_SHOWS_UTMP
 		char	namebuf[10],linebuf[10],hostbuf[17];
 		int	fd, flag = 0;
 

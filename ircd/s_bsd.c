@@ -2818,7 +2818,7 @@ static	struct	SOCKADDR *connect_unix(aConfItem *aconf, aClient *cptr,
 /*
  * The following section of code performs summoning of users to irc.
  */
-#if defined(ENABLE_SUMMON) || defined(ENABLE_USERS)
+#if defined(ENABLE_SUMMON) || defined(USERS_SHOWS_UTMP) 
 int	utmp_open(void)
 {
 #ifdef O_NOCTTY

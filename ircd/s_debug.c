@@ -63,7 +63,7 @@ char	serveropts[] = {
 #ifdef	BETTER_CDELAY
 'h',
 #endif
-#ifndef	NO_DEFAULT_INVISIBLE
+#ifdef	DEFAULT_INVISIBLE
 'I',
 #endif
 #ifdef	OPER_DIE
@@ -112,7 +112,7 @@ char	serveropts[] = {
 #ifndef	NO_PREFIX
 'u',
 #endif
-#ifdef	ENABLE_USERS
+#ifdef	USERS_SHOWS_UTMP
 'U',
 #endif
 #ifdef	UNIXPORT
