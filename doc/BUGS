@@ -7,7 +7,5 @@ Anyone with some free time is welcome to fix those =)
   in the hash tables. (Vesa already fixed this bug several
   times but it keeps crashing :^)
 
-* inetd support isn't functional.
-
 * RECONNECT is still in some unknown state. (and deactivated
   for various reasons)
