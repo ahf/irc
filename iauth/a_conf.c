@@ -245,6 +245,13 @@ char *cfile;
 			itmp = itmp->nexti;
 		    }
 	    }
+	else
+		while (itmp)
+		    {
+			if (itmp->mod->init)
+				itmp->mod->init(itmp);
+			itmp = itmp->nexti;
+		    }
 }
 
 /* conf_match: check if an instance is to be applied to a connection */
@@ -272,4 +279,40 @@ AnInstance *inst;
 			ttmp = ttmp->nextt;
 		    }
 	return 1;
+}
+
+/* conf_ircd: send the configuration to the ircd daemon */
+void
+conf_ircd()
+{
+	AnInstance *itmp = instances;
+	aTarget *ttmp;
+
+	sendto_ircd("a");
+	while (itmp)
+	    {
+		if (itmp->address == NULL && itmp->hostname == NULL)
+			sendto_ircd("A * %s %s", itmp->mod->name,
+				    (itmp->popt) ? itmp->popt : "");
+		else
+		    {
+			ttmp = itmp->address;
+			while (ttmp)
+			    {
+				sendto_ircd("A %s %s %s", ttmp->value,
+					    itmp->mod->name,
+					    (itmp->popt) ? itmp->popt : "");
+				ttmp = ttmp->nextt;
+			    }
+			ttmp = itmp->hostname;
+			while (ttmp)
+			    {
+				sendto_ircd("A %s %s %s", ttmp->value,
+					    itmp->mod->name,
+					    (itmp->popt) ? itmp->popt : "");
+				ttmp = ttmp->nextt;
+			    }
+		    }
+		itmp = itmp->nexti;
+	    }
 }

@@ -178,13 +178,14 @@ char	*argv[];
 		   );
 	init_io();
 	conf_read(NULL);
+	conf_ircd();
 
 #if defined(IAUTH_DEBUG)
 	if (debuglevel & ALOG_DIRCD)
-		sendto_ircd("1 G");
+		sendto_ircd("G 1");
 	else
 #endif
-		sendto_ircd("0 G");
+		sendto_ircd("G 0");
 
 	while (1)
 	    {

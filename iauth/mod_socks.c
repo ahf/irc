@@ -41,11 +41,20 @@ AnInstance *self;
 	if (self->opt == NULL)
 		return "Aie! no option(s): nothing to be done!";
 	if (strstr(self->opt, "log") && strstr(self->opt, "reject"))
+	    {
+		self->popt = "log,reject";
 		return "Set to log and reject.";
+	    }
 	if (strstr(self->opt, "log"))
+	    {
+		self->popt = "log";
 		return "Set to log (but not reject).";
+	    }
 	if (strstr(self->opt, "reject"))
+	    {
+		self->popt = "reject";
 		return "Set to reject without logging.";
+	    }
 	return "Aie! unknown option(s): nothing to be done!";
 }
 
