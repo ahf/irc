@@ -2524,7 +2524,7 @@ char	*parv[];
 	clean_channelname(parv[2]);
 	if (check_channelmask(sptr, acptr->from, parv[2]))
 		return 1;
-	if (*parv[2] == '&')
+	if (*parv[2] == '&' && !MyClient(acptr))
 		return 1;
 	if (!(chptr = find_channel(parv[2], NullChn)))
 	    {
