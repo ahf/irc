@@ -809,9 +809,9 @@ aChannel *chptr;
 			    {
 				if (lp->flags & CHFL_CHANOP)
 					buf[len++] = '@';
-				else if (lp->flags & CHFL_VOICE)
-					buf[len++] = '+';
 			    }
+			if (lp->flags & CHFL_VOICE)
+				buf[len++] = '+';
 			buf[len] = '\0';
 		    }
 		(void)strcpy(buf + len, c2ptr->name);
@@ -2282,14 +2282,14 @@ char	*parv[];
 				/* actually never sends in a JOIN ^G */
 				if (*(target+2) == '+')
 				    {
-					strcpy(mbuf, "\007O");
+					strcpy(mbuf, "\007Ov");
 					chop = CHFL_UNIQOP|CHFL_CHANOP| \
 					  CHFL_VOICE;
 					name = target + 3;
 				    }
 				else
 				    {
-					strcpy(mbuf, "\007Ov");
+					strcpy(mbuf, "\007O");
 					chop = CHFL_UNIQOP|CHFL_CHANOP;
 					name = target + 2;
 				    }
