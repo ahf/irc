@@ -86,7 +86,7 @@ define(RESTRICTED,I:\`HOST(\$1)':\`PASS(\$2)':\
 define(BOUNCE,B:\$1::\$2:\$3:)
 define(CONNECT,C:\`HOST(\$1)':\`PASS(\$2)':\`SERV(\$3)':\
 \`CPORT(\$4)':\`CL(\$5)')
-define(VERSION,V:\$1:\$2:\`ifelse(len(\$3),0,*,\$3)'::)
+define(EXCLUDEVERSION,V:\$1:\$2:\`ifelse(len(\$3),0,*,\$3)'::)
 define(ME,M:\$1:\$2:\$3:\$4:\$5
 P:*:*:*:\$4)
 define(HUB,H:\`ifelse(len(\$2),0,*,\$2)':*:\$1)
