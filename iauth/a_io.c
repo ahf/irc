@@ -41,7 +41,7 @@ static int		iob_len = 0, rb_len = 0;
 void
 init_io()
 {
-    bzero((char *) &cldata, sizeof(cldata));
+    bzero((char *) cldata, sizeof(cldata));
 }
 
 /* sendto_ircd() functions */
