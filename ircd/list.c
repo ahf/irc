@@ -179,16 +179,20 @@ aClient	*cptr;
 /*
 ** 'make_user' add's an User information block to a client
 ** if it was not previously allocated.
+** iplen is lenght of the IP we want to allocate.
 */
-anUser	*make_user(cptr)
+anUser	*make_user(cptr, iplen)
 aClient *cptr;
+int	iplen;
 {
 	Reg	anUser	*user;
 
 	user = cptr->user;
 	if (!user)
 	    {
-		user = (anUser *)MyMalloc(sizeof(anUser));
+		user = (anUser *)MyMalloc(sizeof(anUser) + iplen);
+		memset(user, 0, sizeof(anUser) + iplen);
+
 #ifdef	DEBUGMODE
 		users.inuse++;
 #endif
