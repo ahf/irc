@@ -283,8 +283,8 @@ static	aConfItem 	*initconf()
 	    }
 
 #if defined(CONFIG_DIRECTIVE_INCLUDE)
-	files = ConfigTop = config_read(fd, 0, new_config_file(configfile, NULL, 0));
-	ftop = files->file;
+	ftop = new_config_file(configfile, NULL, 0);
+	files = ConfigTop = config_read(fd, 0, ftop);
 	for(filelist = ConfigTop; filelist; filelist = filelist->next)
 #else
 	ftop = configfile;
