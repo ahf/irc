@@ -145,20 +145,12 @@ int	send_message(aClient *to, char *msg, int len)
 # ifdef HUB
 		if (CBurst(to))
 		{
-			aConfItem	*aconf;
-
-			if (IsServer(to))
-				aconf = to->serv->nline;
-			else
-				aconf = to->confs->value.aconf;
-
-			poolsize -= MaxSendq(aconf->class) >> 1;
-			IncSendq(aconf->class);
-			poolsize += MaxSendq(aconf->class) >> 1;
+			/* Allow bursting clients (servers or services) to
+			 * exceed their maxsendq. --B. */
 			sendto_flag(SCH_NOTICE,
-				    "New poolsize %d. (sendq adjusted)",
-				    poolsize);
-			istat.is_dbufmore++;
+				"Max SendQ limit exceeded for %s: %d > %d",
+				get_client_name(to, FALSE),
+				DBufLength(&to->sendQ), get_sendq(to));
 		}
 		else
 # endif
