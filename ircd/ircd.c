@@ -857,6 +857,7 @@ char	*argv[];
 	timeofday = time(NULL);
 	open_debugfile();
 	timeofday = time(NULL);
+	init_sid(NULL);
 	(void)init_sys();
 
 #ifdef USE_SYSLOG
