@@ -83,9 +83,11 @@ int	main(int argc, char *argv[])
 		configfile = argv[1];
 	/* Initialize counters to be able to print line number even with m4 */
 	mywc();
+#ifdef DEBUGMODE
 	for(filelist = files; filelist->next; filelist = filelist->next)
 	  fprintf(stderr, "%s: Min %d - Max %d\n",
 		  filelist->filename, filelist->min, filelist->max);
+#endif
 	/* If I do not use result as temporary return value
 	 * I get loops when M4_PREPROC is defined - Babar */
 	result = initconf();
