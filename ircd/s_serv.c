@@ -3799,6 +3799,7 @@ int	m_encap(aClient *cptr, aClient *sptr, int parc, char *parv[])
 /* announces server DIE */
 int	m_sdie(aClient *cptr, aClient *sptr, int parc, char *parv[])
 {
+	sendto_serv_v(cptr, SV_UID, ":%s SDIE", sptr->serv->sid);
 	return 0;
 }
 

@@ -73,6 +73,7 @@ aClient *ListenerLL = NULL;	/* Listeners linked list */
 
 RETSIGTYPE s_die(int s)
 {
+	sendto_serv_v(NULL, SV_UID, ":%s SDIE", me.serv->sid);
 #ifdef	USE_SYSLOG
 	(void)syslog(LOG_CRIT, "Server Killed By SIGTERM");
 	(void)closelog();
