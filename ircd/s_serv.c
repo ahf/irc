@@ -274,8 +274,10 @@ aClient	*cptr;
 	else
 		id = "";
 
-	/* hop = 1 really for local client, return it in m_server_estab() */
-	if (!strncmp(cptr->info, "0209", 4))
+	if (!strncmp(cptr->info, "021", 3) ||
+	    !strncmp(cptr->info, "020999", 6))
+		cptr->hopcount = SV_29|SV_NJOIN|SV_NMODE|SV_NCHAN; /* SV_2_10*/
+	else if (!strncmp(cptr->info, "0209", 4))
 	    {
 		cptr->hopcount = SV_29;	/* 2.9+ protocol */
 		if (!(cptr->info[4] == '0' &&
@@ -290,9 +292,6 @@ aClient	*cptr;
 			*/
 			cptr->hopcount |= SV_NJOIN;
 	    }
-	else if (!strncmp(cptr->info, "021", 3) ||
-		 !strncmp(cptr->info, "020999", 6))
-		cptr->hopcount = SV_29|SV_NJOIN|SV_NMODE|SV_NCHAN; /* SV_2_10*/
 	else
 		cptr->hopcount = SV_OLD; /* uhuh */
 
