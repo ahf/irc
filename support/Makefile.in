@@ -28,7 +28,7 @@ exec_prefix = @exec_prefix@
 
 CC = @CC@
 S_CFLAGS = @CFLAGS@ -I. -I../ircd -I../common @IRC_ZLIB_INCLUDE@
-CC_CFLAGS = @CFLAGS@ -I. -I../ircd -I../common @IRC_ZLIB_INCLUDE@
+CC_CFLAGS = @CFLAGS@ -I. -I../ircd -I../common
 C_CFLAGS = @CFLAGS@ -I. -I../irc -I../common
 LDFLAGS = @LDFLAGS@
 LIBS = @LIBS@
@@ -105,7 +105,7 @@ $(SERVER): $(SERVER_COMMON_OBJS) $(SERVER_OBJS)
 
 $(CHKCONF): $(CHKCONF_COMMON_OBJS) $(CHKCONF_OBJS)
 	$(RM) $@
-	$(CC) $(LDFLAGS) -o $@ $(CHKCONF_COMMON_OBJS) $(CHKCONF_OBJS) $(LIBS)
+	$(CC) $(LDFLAGS) -DCHKCONF_COMPILE -o $@ $(CHKCONF_COMMON_OBJS) $(CHKCONF_OBJS) $(LIBS)
 
 install: install-client install-server
 
