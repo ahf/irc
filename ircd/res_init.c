@@ -76,6 +76,12 @@ static char rcsid[] = "$Id$";
 #else
 # include "portability.h"
 #endif
+#include "setup.h"
+#ifdef  NEED_INET_ATON
+extern  int     inetaton __P((const char *, struct in_addr *));
+#else
+# define inetaton inet_aton
+#endif
 
 /*-------------------------------------- info about "sortlist" --------------
  * Marc Majka		1994/04/16
