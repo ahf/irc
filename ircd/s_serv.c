@@ -1725,10 +1725,16 @@ int	mask;
 			}
 			else if (tmp->status & (CONF_CLIENT | CONF_RCLIENT))
 			{
+				char *iflags;
+				iflags = iline_flags_to_string(tmp->flags);
+				if (*iflags == '\0')
+				{
+					iflags = "*";
+				}
 				sendto_one(sptr, replies[p[1]], ME, BadTo(to),
 					   c, host, (pass) ? "*" : null,
 					   name, port, get_conf_class(tmp),
-					   iline_flags_to_string(tmp->flags));
+					   iflags);
 
 			}
 			else
