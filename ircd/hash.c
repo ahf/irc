@@ -425,7 +425,11 @@ int	new;
 		sidTable = table;
 		for (sptr = svrtop; sptr; sptr = sptr->nexts)
 		{
-			(void)add_to_sid_hash_table(sptr->sid, sptr->bcptr);
+			if (ST_UID(sptr))
+			{
+				(void) add_to_sid_hash_table(sptr->sid,
+					sptr->bcptr);
+			}
 		}
 		MyFree(otab);
 	}
