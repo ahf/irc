@@ -909,7 +909,7 @@ badparamcountkills:
 		** A new NICK being introduced by a neighbouring
 		** server (e.g. message type "NICK new" received)
 		*/
-		if (parc == 2)
+		if (parc != 8)
 		{
 			/* New NICK *must* have proper param count */
 			goto badparamcountkills;
