@@ -112,7 +112,10 @@ aClient *cptr;
 		goto badmask;
 	*p = '\0';
 	
-	m = atoi(p + 1);
+	if (sscanf(p + 1, "%d", &m) != 1)
+	{
+		goto badmask;
+	}
 #ifndef	INET6
 	if (m < 0 || m > 32)
 		goto badmask;
