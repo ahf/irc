@@ -1191,6 +1191,7 @@ aCache	*cachep;
 			base = (char **)MyRealloc((char *)ab,
 					(addrcount + 1) * sizeof(*ab));
 			cp->he.h_addr_list = base;
+			ab = (struct IN_ADDR **)base;
 #ifdef	DEBUG
 # ifdef	INET6
 			Debug((DEBUG_DNS,"u_l:add IP %s hal %x ac %d",
