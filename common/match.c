@@ -363,8 +363,8 @@ int	isvalidusername(char *username)
 		}
 	}
 	/* we require at least one alphanum and no more than
-	   one nonalphanum */
-	if (nan > 1 || an == 0)
+	   two nonalphanum */
+	if (nan > 2 || an == 0)
 	{
 		return 0;
 	}
