@@ -266,9 +266,12 @@ aChannel *chptr;
 
 	if (!tmp)
 	    {
-		char *ip = (char *) inetntoa((char *)&cptr->ip);
+		char *ip = NULL;
 
-		if (strcmp(ip, cptr->user->host))
+		if (MyConnect(cptr))
+			ip = (char *) inetntoa((char *)&cptr->ip);
+
+		if (ip == NULL || strcmp(ip, cptr->user->host))
 		    {
 			s = make_nick_user_host(cptr->name,
 						cptr->user->username, ip);
