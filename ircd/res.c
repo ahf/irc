@@ -1327,7 +1327,11 @@ ResRQ	*rptr;
 	*/
 	for (i = 0; WHOSTENTP(rptr->he.h_addr_list[i].S_ADDR); i++)
 		if ((cp = find_cache_number(rptr,
+#ifdef INET6
+				(char *)(rptr->he.h_addr_list[i].S_ADDR))))
+#else
 				(char *)&(rptr->he.h_addr_list[i].S_ADDR))))
+#endif
 			return cp;
 
 	/*
