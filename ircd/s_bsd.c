@@ -1679,6 +1679,9 @@ static	void	read_listener(aClient *cptr)
 		}
 		nextping = timeofday; /* isn't this abusive? -kalt */
 		istat.is_unknown++;
+
+		/* Notice on connect. */
+		sendto_one(acptr, replies[RPL_HELLO], ME, HELLO_MSG);
 	    }
 }
 
