@@ -3537,12 +3537,12 @@ void	do_emulated_eob(aClient *sptr)
 {
 	aClient *acptr = sptr;
 
-	SetEOB(sptr);
-
 	if (IsBursting(sptr))
 	{
 		istat.is_eobservers++;
 	}
+	
+	SetEOB(sptr);
 	
 	if (MyConnect(sptr))
 	{
