@@ -267,7 +267,7 @@ int	port;
 	    {
 		char	buf[1024];
 
-		(void)sprintf(buf, rpl_str(RPL_MYPORTIS, "*"),
+		(void)sprintf(buf, replies[RPL_MYPORTIS], ME, "*",
 			ntohs(server.SIN_PORT));
 		(void)write(0, buf, strlen(buf));
 	    }
@@ -2797,7 +2797,7 @@ Chat on\n\r");
 	    }
 	(void)close(fd);
 	(void)alarm(0);
-	sendto_one(who, rpl_str(RPL_SUMMONING, who->name), namebuf);
+	sendto_one(who, replies[RPL_SUMMONING], ME, BadTo(who->name), namebuf);
 	return;
 }
 #  endif

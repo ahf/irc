@@ -1594,7 +1594,7 @@ int	class, fd;
 			    {
 				char rpl[BUFSIZE];
 				
-				SPRINTF(rpl, rpl_str(RPL_BOUNCE,"unknown"),
+				SPRINTF(rpl, replies[RPL_BOUNCE], ME, "unknown",
 					aconf->name, aconf->port);
 				strcat(rpl, "\r\n");
 #ifdef INET6
@@ -1628,7 +1628,7 @@ int	class, fd;
 			else if (match(aconf->host, cptr->sockhost))
 				continue;
 
-		sendto_one(cptr, rpl_str(RPL_BOUNCE, cptr->name), aconf->name,
+		sendto_one(cptr, replies[RPL_BOUNCE], ME, BadTo(cptr->name), aconf->name,
 			   aconf->port);
 		return;
 	    }

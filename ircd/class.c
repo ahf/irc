@@ -227,7 +227,7 @@ char	*to;
 	Reg	aClass	*cltmp;
 
 	for (cltmp = FirstClass(); cltmp; cltmp = NextClass(cltmp))
-		sendto_one(sptr, rpl_str(RPL_STATSYLINE, to), 'Y',
+		sendto_one(sptr, replies[RPL_STATSYLINE], ME, BadTo(to), 'Y',
 			   Class(cltmp), PingFreq(cltmp), ConFreq(cltmp),
 			   MaxLinks(cltmp), MaxSendq(cltmp),
 			   MaxHLocal(cltmp), MaxUHLocal(cltmp),

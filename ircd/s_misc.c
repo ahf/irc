@@ -103,7 +103,7 @@ aClient	*sptr;
 {
 	if (!IsRegisteredUser(sptr))
 	    {
-		sendto_one(sptr, err_str(ERR_NOTREGISTERED, "*"));
+		sendto_one(sptr, replies[ERR_NOTREGISTERED], ME, "*");
 		return -1;
 	    }
 	return 0;
@@ -119,7 +119,7 @@ aClient	*sptr;
 {
 	if (!IsRegistered(sptr))
 	    {
-		sendto_one(sptr, err_str(ERR_NOTREGISTERED, "*"));
+		sendto_one(sptr, replies[ERR_NOTREGISTERED], ME, "*");
 		return -1;
 	    }
 	return 0;
@@ -134,7 +134,7 @@ aClient	*sptr;
 {
 	if (!IsService(sptr))
 	    {
-		sendto_one(sptr, err_str(ERR_NOTREGISTERED, "*"));
+		sendto_one(sptr, replies[ERR_NOTREGISTERED], ME, "*");
 		return -1;
 	    }
 	return 0;
