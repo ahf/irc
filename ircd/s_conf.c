@@ -770,7 +770,7 @@ int	sig;
 			 * this....-avalon
 			 */
 			acptr->hostp = NULL;
-#if defined(R_LINES_REHASH) && !defined(R_LINES_OFTEN)
+#if defined(R_LINES) && ( defined(R_LINES_REHASH) && !defined(R_LINES_OFTEN) )
 			if (find_restrict(acptr))
 			    {
 				sendto_flag(SCH_NOTICE,
