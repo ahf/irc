@@ -304,13 +304,14 @@ int	send_queued(aClient *to)
 				if (bysptr && !MyConnect(bysptr))
 				{
 					sendto_one(bysptr, ":%s NOTICE %s :"
-					"Write error (%d) to %s, closing link",
-					ME, bysptr->name, -rlen, to->name);
+					"Write error (%s) to %s, closing link",
+					ME, bysptr->name, strerror(-rlen),
+					to->name);
 				}
 			}
 			return dead_link(to,
-				"Write error (%d) to %s, closing link",
-				-rlen, get_client_name(to, FALSE));
+				"Write error (%s) to %s, closing link",
+				strerror(-rlen), get_client_name(to, FALSE));
 		}
 		(void)dbuf_delete(&to->sendQ, rlen);
 		to->lastsq = DBufLength(&to->sendQ)/1024;
