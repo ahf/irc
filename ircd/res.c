@@ -1446,7 +1446,8 @@ int len;
 	char	*s, c;
 
 	for (s = name; (c = *s) && len; s++, len--)
-		if (isspace(c) || (c == 0x7) || (c == ':'))
+		if (isspace(c) || (c == 0x7) || (c == ':') ||
+		    (c == '*') || (c == '?'))
 			return -1;
 	return 0;
 }
