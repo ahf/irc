@@ -70,8 +70,8 @@ int	get_client_class(aClient *acptr)
 			if (!tmp->value.aconf ||
 			    !(cl = tmp->value.aconf->class))
 				continue;
-			if (Class(cl) > retc)
-				retc = Class(cl);
+			retc = Class(cl);
+			break;
 		    }
 
 	Debug((DEBUG_DEBUG,"Returning Class %d For %s",retc,acptr->name));
