@@ -1372,7 +1372,7 @@ char	*parv[], *mbuf, *pbuf;
 				   cptr->name), "MODE +l");
 			break;
 		case 'i' : /* falls through for default case */
-			if (whatt == MODE_DEL)
+			if (whatt == MODE_DEL && ischop)
 				while ((lp = chptr->invites))
 					del_invite(lp->value.cptr, chptr);
 		default:
