@@ -1954,7 +1954,7 @@ char	*parv[];
 
 	for (; (name = strtoken(&p, parv[1], ",")); parv[1] = NULL)
 	    {
-		if (penalty++ >= MAXPENALTY)
+		if (penalty++ >= MAXPENALTY && MyPerson(sptr))
 			break;
 		chptr = get_channel(sptr, name, !CREATE);
 		if (!chptr)
@@ -2012,7 +2012,7 @@ char	*parv[];
 						   who->name, comment);
 				remove_user_from_channel(who,chptr);
 				penalty += 2;
-				if (penalty > MAXPENALTY)
+				if (penalty > MAXPENALTY && MyPerson(sptr))
 					break;
 			    }
 			else
