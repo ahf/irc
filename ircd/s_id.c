@@ -244,7 +244,7 @@ int cid_ok(char *name, int n)
 int	sid_valid(char *sid)
 {
 	if ((isdigit(sid[0]) || sid[0] == '$')
-		&& strlen(sid) <> SIDLEN)
+		&& strlen(sid) != SIDLEN)
 	{
 		return cid_ok(sid, SIDLEN - 1);
 	}
