@@ -1320,8 +1320,8 @@ char	*to;
 			else
 				(void)strcpy(buf, tmp->name);
 			sendto_one(sptr, rpl_str(RPL_STATSPING, to),
-				   buf, cp->lseq, cp->lrecv,
-				   cp->ping / (cp->recv ? cp->recv : 1),
+				   buf, cp->lseq, cp->lrecvd,
+				   cp->ping / (cp->recvd ? cp->recvd : 1),
 				   tmp->pref);
 			sendto_flag(SCH_DEBUG, "%s: %d", buf, cp->seq);
 		    }

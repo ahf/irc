@@ -159,7 +159,7 @@ void put_statusline()
     cls = codes;
     tgetstr("mr",&cls);
     printf("%s",codes);
-  printf(HEADER, version);
+  printf(IRCHEADER, version);
     cls = codes;
     tgetstr("me",&cls);
     printf("%s",codes);

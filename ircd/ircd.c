@@ -311,17 +311,17 @@ time_t	currenttime;
 	if (!lastsort || lastsort < currenttime)
 	    {
 		for (aconf = conf; aconf; aconf = aconf->next)
-			if (!(cp = aconf->ping) || !cp->seq || !cp->recv)
+			if (!(cp = aconf->ping) || !cp->seq || !cp->recvd)
 				aconf->pref = -1;
 			else
 			    {
-				f = (double)cp->recv / (double)cp->seq;
+				f = (double)cp->recvd / (double)cp->seq;
 				f2 = pow(f, (double)20.0);
 				if (f2 < (double)0.001)
 					f = (double)0.001;
 				else
 					f = f2;
-				f2 = (double)cp->ping / (double)cp->recv;
+				f2 = (double)cp->ping / (double)cp->recvd;
 				f = f2 / f;
 				if (f > 100000.0)
 					f = 100000.0;
