@@ -985,7 +985,7 @@ void	sendto_channel_butserv(aChannel *chptr, aClient *from, char *pattern, ...)
 		lfrm = &anon;
 	    }
 
-	for (lp = chptr->members; lp; lp = lp->next)
+	for (lp = chptr->clist; lp; lp = lp->next)
 		if (MyClient(acptr = lp->value.cptr) && acptr != from)
 		    {
 			if (!len)
