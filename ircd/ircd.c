@@ -864,7 +864,7 @@ time_t	delay;
 	else
 		delay = MIN(delay, TIMESEC);
 
-#ifdef	HUB
+#if defined(PREFER_SERVER)
 	(void)read_message(1, &fdas);
 	flush_connections(me.fd);
 	Debug((DEBUG_DEBUG, "delay for %d", delay));
