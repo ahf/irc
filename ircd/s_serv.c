@@ -960,6 +960,9 @@ int	m_server_estab(aClient *cptr, char *sid, char *versionbuf)
 {
 	Reg	aClient	*acptr;
 	aClient *bysptr = NULL;
+#ifndef	HUB
+	int	i;
+#endif
 	
 	Reg	aConfItem	*aconf, *bconf;
 	char	mlname[HOSTLEN+1], *inpath, *host, *s, *encr, *stok;

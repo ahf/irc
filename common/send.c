@@ -1313,7 +1313,7 @@ char	msg, *username, *hostname;
 	** EXITC_REG == 0 means registered client quitting, so it goes to
 	** userlog; otherwise it's rejection and goes to connlog --Beeth.
 	*/
-	logfile = msg == EXITC_REG ? userlog : connlog;
+	logfile = (msg == EXITC_REG ? userlog : connlog);
 
 #if !defined(USE_SERVICES) && !( defined(USE_SYSLOG) && \
 	(defined(SYSLOG_USERS) || defined(SYSLOG_CONN)) )
