@@ -657,14 +657,13 @@ char	*argv[];
 			tunefile = p;
 			break;
 		    case 'v':
-			(void)printf("ircd %s %s\n\tzlib %s\n\t%s #%s\n",
-				     version, serveropts,
+			(void)printf("ircd %s %s\n\tzlib %s\n\tircd_dir: %s \n\t%s #%s\n", version, serveropts,
 #ifndef	ZIP_LINKS
 				     "not used",
 #else
 				     zlib_version,
 #endif
-				     creation, generation);
+				     dpath, creation, generation);
 			  exit(0);
 		    case 'x':
 #ifdef	DEBUGMODE
