@@ -2419,6 +2419,7 @@ struct	hostent	*hp;
 	else
 		(void)strcpy(cptr->serv->by, "AutoConn.");
 	cptr->serv->up = &me;
+	cptr->serv->maskedby = cptr;
 	cptr->serv->nline = aconf;
 	if (cptr->fd > highest_fd)
 		highest_fd = cptr->fd;
