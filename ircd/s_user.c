@@ -1007,9 +1007,10 @@ nickkilldone:
 					   err_str(ERR_RESTRICTED, nick));
 				return 2;
 			    }
-			/* is the user banned on any channel ? */
+			/* Can the user speak on all channels? */
 			for (lp = sptr->user->channel; lp; lp = lp->next)
-				if (can_send(sptr, lp->value.chptr) ==MODE_BAN)
+				if (can_send(sptr, lp->value.chptr) &&
+				    !IsQuiet(lp->value.chptr))
 					break;
 		}
 		/*
