@@ -2817,9 +2817,6 @@ static	void	polludp()
 		    }
 	    }
 
-	sendto_flag(SCH_DEBUG, "udp packet from: %d bytes from %s.%d",
-		    n,inetntoa((char *)&from.sin_addr),
-		    ntohs(from.sin_port));
 	if (timeofday == last)
 	    {
 		if (timeofday > lasterr + 30)
