@@ -996,7 +996,8 @@ int	parc, notice;
 		/*
 		** channel msg?
 		*/
-		if (IsPerson(sptr) && (chptr = find_channel(nick, NullChn)))
+		if ((IsPerson(sptr) || IsService(sptr)) &&
+		    (chptr = find_channel(nick, NullChn)))
 		    {
 			if (can_send(sptr, chptr) == 0)
 				sendto_channel_butone(cptr, sptr, chptr,
