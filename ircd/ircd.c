@@ -265,6 +265,9 @@ static	time_t	try_connections(time_t currenttime)
 		{
 			con_conf = aconf;
 		}
+		/* above is my doubt: if we always choose best connection
+		** and it always fails connecting, we may never try another,
+		** even "worse"; what shall we do? --Beeth */
 	}
 	if (con_conf)
 	{
