@@ -95,8 +95,8 @@
   internal resolver.  It relies on the name servers defined in
   ``/etc/resolv.conf'' to be IPv4 addresses.
 
-  This version was tested on the following IPv6 systems: Digital Unix,
-  Linux, NetBSD+INRIA.
+  This version was tested on the following IPv6 systems: BSD/OS+KAME,
+  Digital Unix, FreeBSD+KAME, Linux, NetBSD+INRIA.
 
   Because IPv6 numeric addresses contain ``:'' characters, tthhee sseeppaarraattoorr
   ffoorr tthhee sseerrvveerr ccoonnffiigguurraattiioonn ffiillee wwaass cchhaannggeedd ttoo ````%%''''.
