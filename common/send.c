@@ -1228,6 +1228,7 @@ void	sendto_flog(aClient *cptr, char msg, char *username, char *hostname)
 	** And the rest... just count, I got 154 --Beeth
 	*/
 	char	linebuf[1500];
+	int	linebuflen;
 	/*
 	** This is a potential buffer overflow.
 	** I mean, when you manage to keep ircd
@@ -1285,8 +1286,8 @@ void	sendto_flog(aClient *cptr, char msg, char *username, char *hostname)
 		}
 		(void)sprintf(buf, "%s", anyptr);
 	}
-	(void)sprintf(linebuf,
-		"%s (%s): %s@%s [%s] %c %lu %luKb %lu %luKb",
+	linebuflen = sprintf(linebuf,
+		"%s (%s): %s@%s [%s] %c %lu %luKb %lu %luKb ",
 		myctime(cptr->firsttime), buf,
 		username[0] ? username : "<none>", hostname,
 		cptr->auth ? cptr->auth : "<none>",
@@ -1296,8 +1297,8 @@ void	sendto_flog(aClient *cptr, char msg, char *username, char *hostname)
 	/*
 	** This is the content of loglines.
 	*/
-	(void)sprintf(linebuf,
-		"%c %d %d %s %s %s %s %d %s %lu %llu %lu %llu",
+	linebuflen = sprintf(linebuf,
+		"%c %d %d %s %s %s %s %d %s %lu %llu %lu %llu ",
 		/* exit code as defined in common/struct_def.h; some common:
 		 * '0' normal exit, '-' unregistered client quit, 'k' k-lined,
 		 * 'K' killed, 'X' x-lined, 'Y' max clients limit of Y-line,
@@ -1359,7 +1360,7 @@ void	sendto_flog(aClient *cptr, char msg, char *username, char *hostname)
 #endif
 	if (logfile != -1)
 	{
-		(void)strcat(linebuf, "\n");
-		(void)write(logfile, linebuf, strlen(linebuf));
+		linebuf[linebuflen-1] = '\n';
+		(void)write(logfile, linebuf, linebuflen);
 	}
 }
