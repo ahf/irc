@@ -857,7 +857,6 @@ char	*argv[];
 	timeofday = time(NULL);
 	open_debugfile();
 	timeofday = time(NULL);
-	init_sid(NULL);
 	(void)init_sys();
 
 #ifdef USE_SYSLOG
@@ -1030,7 +1029,6 @@ void	io_loop()
 		** Timed out (e.g. *NO* traffic at all).
 		** Try again but also check to empty sendQ's for all clients.
 		*/
-		sendto_flag(SCH_DEBUG, "read_message(RO) -> 0 [%d]", delay);
 		(void)read_message(delay - 1, &fdall, 0);
 	    }
 	timeofday = time(NULL);
