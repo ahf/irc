@@ -251,7 +251,7 @@ int	new;
 		size, osize, table, new));
 
 	*size = new;
-	MyFree((char *)table);
+	ircd_writetune(tunefile);
 	table = (aHashEntry *)MyMalloc(sizeof(*table) * new);
 	bzero((char *)table, sizeof(*table) * new);
 
@@ -259,6 +259,8 @@ int	new;
 	    {
 		Debug((DEBUG_ERROR, "Channel Hash Table from %d to %d (%d)",
 			    osize, new, chsize));
+		sendto_flag(SCH_HASH, "Channel Hash Table from %d to %d (%d)",
+			osize, new, chsize);
 		chmiss = 0;
 		chhits = 0;
 		chsize = 0;
@@ -267,11 +269,12 @@ int	new;
 			chptr->hnextch = NULL;
 		for (chptr = channel; chptr; chptr = chptr->nextch)
 			(void)add_to_channel_hash_table(chptr->chname, chptr);
-		sendto_flag(SCH_HASH, "Channel Hash Table from %d to %d (%d)",
-			    osize, new, chsize);
+		MyFree(otab);
 	    }
 	else if (otab == clientTable)
 	    {
+		int	i;
+		aClient	*next;
 		Debug((DEBUG_ERROR, "Client Hash Table from %d to %d (%d)",
 			    osize, new, clsize));
 		sendto_flag(SCH_HASH, "Client Hash Table from %d to %d (%d)",
@@ -280,10 +283,18 @@ int	new;
 		clhits = 0;
 		clsize = 0;
 		clientTable = table;
-		for (cptr = client; cptr; cptr = cptr->next)
-			cptr->hnext = NULL;
-		for (cptr = client; cptr; cptr = cptr->next)
-			(void)add_to_client_hash_table(cptr->name, cptr);
+
+		for (i = 0; i < osize; i++)
+		    {
+			for (cptr = (aClient *)otab[i].list; cptr;
+				cptr = next)
+			    {
+				next = cptr->hnext;
+				(void)add_to_client_hash_table(cptr->name, 
+					cptr);
+			    }
+		    }
+		MyFree(otab);
 	    }
 	else if (otab == serverTable)
 	    {
@@ -297,8 +308,8 @@ int	new;
 			sptr->shnext = NULL;
 		for (sptr = svrtop; sptr; sptr = sptr->nexts)
 			(void)add_to_server_hash_table(sptr, sptr->bcptr);
+		MyFree(otab);
 	    }
-	ircd_writetune(tunefile);
 	return;
 }
 
