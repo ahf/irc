@@ -224,9 +224,6 @@ time_t	now;
 		if (now >= tout)
 			if (--rptr->retries <= 0)
 			    {
-#if defined(USE_IAUTH)
-				char buf[80];
-#endif
 #ifdef DEBUG
 				Debug((DEBUG_ERROR,"timeout %x now %d cptr %x",
 				       rptr, now, rptr->cinfo.value.cptr));
@@ -237,8 +234,7 @@ time_t	now;
 				    {
 				case ASYNC_CLIENT :
 #if defined(USE_IAUTH)
-					sprintf(buf, "%d d\n", cptr->fd);
-					sendto_iauth(buf);
+					sendto_iauth("%d d", cptr->fd);
 #endif
 					ClearDNS(cptr);
 					if (!DoingAuth(cptr))	/* XAuth? */

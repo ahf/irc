@@ -418,11 +418,7 @@ time_t	currenttime;
 				ClearAuth(cptr);
 #if defined(USE_IAUTH)
 				if (DoingDNS(cptr) || DoingXAuth(cptr))
-				    {
-					char buf[80];
-					sprintf(buf, "%d T\n", cptr->fd);
-					sendto_iauth(buf);
-				    }
+					sendto_iauth("%d T", cptr->fd);
 #endif
 				ClearDNS(cptr);
 				ClearXAuth(cptr);
