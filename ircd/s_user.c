@@ -692,6 +692,7 @@ char	*nick, *username;
 		send_umode(NULL, sptr, 0, ALL_UMODES, buf);
 	check_services_num(sptr, buf);
 #endif
+	add_to_hostname_hash_table(user->host, user);
 	return 1;
     }
 
