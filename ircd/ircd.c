@@ -1196,15 +1196,15 @@ char *filename;
 		if (write(fd, buf, strlen(buf)) == -1)
 			sendto_flag(SCH_ERROR,
 				    "Failed (%d) to write tune file: %s.",
-				    errno, basename(filename));
+				    errno, mybasename(filename));
 		else
 			sendto_flag(SCH_NOTICE, "Updated %s.",
-				    basename(filename));
+				    mybasename(filename));
 		close(fd);
 	    }
 	else
 		sendto_flag(SCH_ERROR, "Failed (%d) to open tune file: %s.",
-			    errno, basename(filename));
+			    errno, mybasename(filename));
 }
 
 /*

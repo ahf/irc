@@ -151,6 +151,21 @@ time_t	value;
 	return buf;
 }
 
+/*
+** mybasename()
+**	removes path from a filename
+*/
+char *
+mybasename(path)
+char *path;
+{
+	char *lastslash;
+
+	if (lastslash = rindex(path, '/'))
+		return lastslash + 1;
+	return path;
+}
+
 #ifdef INET6
 /*
  * inetntop: return the : notation of a given IPv6 internet number.
