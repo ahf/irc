@@ -1817,6 +1817,11 @@ char	*parv[];
 	doall = !match(name, ME) && !match(cm, ME);
 	wilds = index(cm, '*') || index(cm, '?');
 
+	if (parc > 1 && parv[1][1] != '\0')
+	{
+		stat = '*';
+	}
+
 	switch (stat)
 	{
 	case 'L' : case 'l' :
