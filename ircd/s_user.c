@@ -949,8 +949,7 @@ badparamcountkills:
 	 * creation) then reject it. If from a server and we reject it,
 	 * we have to KILL it. -avalon 4/4/92
 	 */
-	if (donickname == 0 ||
-	    (IsServer(cptr) && strcmp(nick, parv[1])))
+	if (donickname == 0 || strcmp(nick, parv[1]))
 	    {
 		sendto_one(sptr, replies[ERR_ERRONEOUSNICKNAME], ME, BadTo(parv[0]),
 			   parv[1]);
