@@ -1195,7 +1195,8 @@ Reg	aConfItem	*aconf;
 
 	if (isdigit(*s))
 #ifdef INET6
-		inet_pton(s, aconf->ipnum.s6_addr);
+		if(!inet_pton(AF_INET6, s, aconf->ipnum.s6_addr))
+			bcopy(minus_one,aconf->ipnum.s6_addr,16);
 #else
 		aconf->ipnum.s_addr = inetaddr(s);
 #endif
