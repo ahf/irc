@@ -190,7 +190,7 @@ tryagain:
 			/* Anyway, 10% increase. */
 			poolsize *= 1.1;
 			sendto_flag(SCH_NOTICE,
-				    "New poolsize %d. (reached)",
+				    "New poolsize %u. (reached)",
 				    poolsize);
 			istat.is_dbufmore++;
 			goto tryagain;
