@@ -77,7 +77,7 @@ static	RETSIGTYPE	s_log(int s)
         do_log = 1;
 }
 
-static	void	init_signals()
+static	void	init_signals(void)
 {
 	/* from ircd/ircd.c setup_signals() */
 #if POSIX_SIGNALS

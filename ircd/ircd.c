@@ -667,7 +667,7 @@ static	void	setup_me(aClient *mp)
 **	This is called when the commandline is not acceptable.
 **	Give error message and exit without starting anything.
 */
-static	int	bad_command()
+static	int	bad_command(void)
 {
   (void)printf(
 	 "Usage: ircd [-a] [-b] [-c]%s [-h servername] [-q] [-o] [-i]"

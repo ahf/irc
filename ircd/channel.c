@@ -78,8 +78,7 @@ static	char	modebuf[MODEBUFLEN], parabuf[MODEBUFLEN], uparabuf[MODEBUFLEN];
 /*
  * return the length (>=0) of a chain of links.
  */
-static	int	list_length(lp)
-Reg	Link	*lp;
+static	int	list_length(invLink *lp)
 {
 	Reg	int	count = 0;
 

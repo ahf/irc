@@ -146,7 +146,7 @@ void	report_error(char *text, aClient *cptr)
 	char	fmbuf[BUFSIZE+1];
 	aClient *bysptr = NULL;
 	
-	extern	char	*strerror();
+	extern	char	*strerror(int);
 
 	host = (cptr) ? get_client_name(cptr, FALSE) : "";
 
