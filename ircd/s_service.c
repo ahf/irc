@@ -419,10 +419,14 @@ char	*parv[];
 			    get_client_name(sptr, TRUE));
 		istat.is_unknown--;
 		istat.is_myservice++;
+		if (istat.is_myservice > istat.is_m_myservice)
+			istat.is_m_myservice = istat.is_myservice;
 	    }
 #endif
 
 	istat.is_service++;
+	if (istat.is_service > istat.is_m_service)
+		istat.is_m_service = istat.is_service;
 	svc = make_service(sptr);
 	SetService(sptr);
 	svc->servp = sp;

@@ -625,6 +625,10 @@ struct Channel	{
 	u_int	hashv;		/* raw hash value */
 	Mode	mode;
 	char	topic[TOPICLEN+1];
+#ifdef TOPIC_WHO_TIME
+	char	topic_nuh[BANLEN+1];
+	time_t	topic_t;
+#endif
 	int	users;		/* current membership total */
 	Link	*members;	/* channel members */
 	Link	*invites;	/* outstanding invitations */
@@ -777,6 +781,16 @@ typedef	struct	{
 	u_int	is_dbufmin;	/* min number of dbuf in use */
 	u_int	is_dbufmax;	/* max number of dbuf in use */
 	u_int	is_dbufmore;	/* how many times we increased the bufferpool*/
+	u_long	is_m_users;	/* maximum users connected */
+	time_t	is_m_users_t;	/* timestamp of last maximum users */
+	u_long	is_m_serv;	/* maximum servers connected */
+	u_long	is_m_service;	/* maximum services connected */
+	u_long	is_m_myclnt;	/* maximum local clients */
+	time_t	is_m_myclnt_t;	/* timestamp of last maximum local clients */
+	u_long	is_m_myserv;	/* maximum local servers */
+	u_long	is_m_myservice;	/* maximum local services */
+	u_long	is_l_myclnt;	/* last local user count */
+	time_t	is_l_myclnt_t;	/* timestamp for last count */
 } istat_t;
 
 /* String manipulation macros */

@@ -835,9 +835,9 @@ char	*argv[];
 	    }
 
 #endif
+	timeofday = time(NULL);
 	initstats();
 	ircd_readtune(tunefile);
-	timeofday = time(NULL);
 #ifdef	CACHED_MOTD
 	motd = NULL;
 	read_motd(IRCDMOTD_PATH);
