@@ -671,7 +671,7 @@ char	*nick, *username;
 	    {	/* Find my leaf servers and feed the new client to them */
 		if ((acptr = local[fdas.fd[i]]) == cptr || IsMe(acptr))
 			continue;
-		if ((acptr->serv->version & SV_UID) && user->uid[0])
+		if (ST_UID(acptr) && user->uid[0])
 			sendto_one(acptr,
 				   ":%s UNICK %s %s %s %s %s %s :%s",
 				   user->servp->sid, nick, user->uid,
@@ -680,7 +680,7 @@ char	*nick, *username;
 				   (*buf) ? buf : "+",
 				   sptr->info);
 		else
-			if ((aconf = acptr->serv->nline) &&
+			if (!ST_UID(acptr) && (aconf = acptr->serv->nline) &&
 			    !match(my_name_for_link(ME, aconf->port),
 				   user->server))
 				sendto_one(acptr, "NICK %s %d %s %s %s %s :%s",

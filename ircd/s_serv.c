@@ -1222,13 +1222,13 @@ int	m_server_estab(aClient *cptr, char *sid, char *versionbuf)
 			** These are only true when *BOTH* NICK and USER have
 			** been received. -avalon
 			*/
-			if (*mlname == '*' &&
+			if (!ST_UID(cptr) && *mlname == '*' &&
 			    match(mlname, acptr->user->server) == 0)
 				stok = me.serv->tok;
 			else
 				stok = acptr->user->servp->tok;
 			send_umode(NULL, acptr, 0, SEND_UMODES, buf);
-			if (cptr->serv->version & SV_UID && *acptr->user->uid)
+			if (ST_UID(cptr) && *acptr->user->uid)
 				sendto_one(cptr,
 					   ":%s UNICK %s %s %s %s %s %s :%s",
 					   acptr->user->servp->sid,
@@ -1247,7 +1247,7 @@ int	m_server_estab(aClient *cptr, char *sid, char *versionbuf)
 		else if (IsService(acptr) &&
 			 match(acptr->service->dist, cptr->name) == 0)
 		    {
-			if (*mlname == '*' &&
+			if (!ST_UID(cptr) && *mlname == '*' &&
 			    match(mlname, acptr->service->server) == 0)
 				stok = me.serv->tok;
 			else
