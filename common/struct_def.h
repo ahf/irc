@@ -200,7 +200,7 @@ typedef struct        LineItem aExtData;
 #ifdef UNIXPORT
 #define	IsUnixSocket(x)		((x)->flags & FLAGS_UNIX)
 #endif
-#define	IsListening(x)		((x)->flags & FLAGS_LISTEN)
+#define	IsListener(x)		((x)->flags & FLAGS_LISTEN)
 #define IsListenerInactive(x)	((x)->flags & FLAGS_LISTENINACTIVE)
 #define	IsLocal(x)		(MyConnect(x) && (x)->flags & FLAGS_LOCAL)
 #define	IsDead(x)		((x)->flags & FLAGS_DEADSOCK)

@@ -916,7 +916,7 @@ int	main(int argc, char *argv[])
                     {   
 			if (!(acptr = local[i]))
 				continue;
-			if (IsListening(acptr))
+			if (IsListener(acptr))
 				break;
 			acptr = NULL;
 		    }
