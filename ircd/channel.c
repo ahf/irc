@@ -1223,7 +1223,10 @@ char	*parv[], *mbuf, *pbuf;
 				if (*mode->key && (ischop || IsServer(cptr)))
 				    {
 					lp = &chops[opcnt++];
-					lp->value.cp = mode->key;
+					lp->value.cp = *parv;
+					if (strlen(lp->value.cp) >
+					    (size_t) KEYLEN)
+						lp->value.cp[KEYLEN] = '\0';
 					lp->flags = MODE_KEY|MODE_DEL;
 					keychange = 1;
 				    }
