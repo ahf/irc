@@ -15,7 +15,8 @@ on the same IRC network.
 Configuration changes between 2.9.3 and 2.9.4:
 
 	* The format for B lines has slightly changed.
-	* The format for Y lines has changed ([user@]host limits)
+	* The format for Y lines has changed ([user@]host limits).
+	* K lines on IP addresses now match resolving hosts by default.
 
 ------
 

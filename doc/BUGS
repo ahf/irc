@@ -11,3 +11,6 @@ Anyone with some free time is welcome to fix those =)
 
 * RECONNECT is still in some unknown state. (and deactivated
   for various reasons)
+
+* The connection limit specified by Y lines can be exceeded
+  in some undetermined circumstances.
