@@ -1924,6 +1924,14 @@ static	void	report_configured_links(aClient *sptr, char *to, int mask)
 					   iline_flags_to_string(tmp->flags));
 
 			}
+			else if ((tmp->status & (CONF_OPERATOR|CONF_LOCOP)))
+			{
+				sendto_one(sptr, replies[p[1]], ME, BadTo(to),
+					   c, host, (pass) ? "*" : null,
+					   name, port, get_conf_class(tmp),
+					   oline_flags_to_string(tmp->flags));
+
+			}
 			else
 				sendto_one(sptr, replies[p[1]], ME, BadTo(to),
 					   c, host, (pass) ? "*" : null,
