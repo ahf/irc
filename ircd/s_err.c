@@ -546,7 +546,11 @@ char *	replies[] = {
 /* 496 */ (char *)NULL,
 /* 497 */ (char *)NULL,
 /* 498 */ (char *)NULL,
+#ifdef TXT_NOSTATSK
+/* 499 */ 			":%s 499 %s :" TXT_NOSTATSK,
+#else
 /* 499 */ (char *)NULL,
+#endif
 /* 500 */ (char *)NULL,
 /* 501 ERR_UMODEUNKNOWNFLAG */	":%s 501 %s :Unknown MODE flag",
 /* 502 ERR_USERSDONTMATCH */	":%s 502 %s :Can't change mode for other users"

@@ -2169,6 +2169,15 @@ int	m_stats(aClient *cptr, aClient *sptr, int parc, char *parv[])
 		break;
 #endif
 	case 'K' : /* K lines */
+#ifdef TXT_NOSTATSK
+		if (!IsAnOper(sptr))
+		{
+			sendto_one(sptr, replies[ERR_STATSKLINE],
+				ME, BadTo(parv[0]));
+			return 2;
+		}
+		else
+#endif
 		report_configured_links(cptr, parv[0],
 					(CONF_KILL|CONF_OTHERKILL));
 		break;
