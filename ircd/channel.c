@@ -3378,7 +3378,7 @@ int	m_list(aClient *cptr, aClient *sptr, int parc, char *parv[])
 		 * behaviour is changed, MyConnect() check needs to be added
 		 * here and within following loops as well. - jv
 		 */
-		maxsendq = (int) ((float) get_sendq(sptr) * (float) 0.9);
+		maxsendq = (int) ((float) get_sendq(sptr, 0) * (float) 0.9);
 		
 		/* First, show all +s/+p channels user is on */
 		for (lp = sptr->user->channel; lp; lp = lp->next)
