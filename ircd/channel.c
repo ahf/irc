@@ -2639,8 +2639,13 @@ int	m_njoin(aClient *cptr, aClient *sptr, int parc, char *parv[])
 		}
 
 		/* send join to local users on channel */
-		sendto_channel_butserv(chptr, acptr, ":%s JOIN %s", acptr->name,
-				       parv[1]);
+		/* Little syntax trick. Put ":" before channel name if it is
+		** not burst, so clients can use it for discriminating normal
+		** join from netjoin. 2.10.x is using NJOIN only during
+		** burst, but 2.11 always. Hence we check for EOB from 2.11
+		** to know what kind of NJOIN it is. --B. */
+		sendto_channel_butserv(chptr, acptr, ":%s JOIN %s%s", acptr->name,
+			(ST_NOTUID(sptr) || IsBursting(sptr)) ? "" : ":", parv[1]);
 		/* build MODE for local users on channel, eventually send it */
 		if (*mbuf)
 		    {
