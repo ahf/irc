@@ -642,9 +642,9 @@ char	*buffer, *bufend;
 		return-1;
 	    }
 	if (MyConnect(from) && !IsServer(from) &&
-		(mptr->flags & (MSG_LOP|MSG_OP)))
-		if (!IsOper(from) &&
-		    !((mptr->flags & MSG_LOP) && IsLocOp(from)))
+	    (mptr->flags & (MSG_LOP|MSG_OP)) &&
+	    !((mptr->flags & MSG_OP) && (IsOper(from))) &&
+	    !((mptr->flags & MSG_LOP) && (IsLocOp(from))))
 		    {
 			sendto_one(from, err_str(ERR_NOPRIVILEGES, para[0]));
 			return -1;
