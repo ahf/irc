@@ -545,7 +545,7 @@ aClient *find_target(char *name,aClient *cptr)
 		{
 			acptr = find_server(name, NULL);
 		}
-		if (!acptr && match(name, ME))
+		if (!acptr && !match(name, ME))
 		{
 			acptr = &me;
 		}
