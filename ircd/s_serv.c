@@ -2920,7 +2920,7 @@ char	*parv[];
 	}
 	else
 	{
-		sendto_serv_v(sptr, SV_UID, ":%s EOB");
+		sendto_serv_v(sptr, SV_UID, ":%s EOB", sptr->serv->sid);
 	}
 	
 	return 1;
