@@ -30,7 +30,7 @@ static  char rcsid[] = "@(#)$Id$";
 /****************************** PRIVATE *************************************/
 
 #define CACHETIME 30
-
+#define BROKEN_PROXIES 1
 #define SOCKSPORT 1080
 
 struct proxylog
@@ -335,7 +335,11 @@ char *strver;
     
     if (cldata[cl].mod_status == ST_V4)
 	{
-	    if (cldata[cl].inbuffer[0] == 0)
+	    if (cldata[cl].inbuffer[0] == 0
+#ifdef BROKEN_PROXIES
+		|| cldata[cl].inbuffer[0] == 4
+#endif
+		)
 		{
 		    if (cldata[cl].inbuffer[1] < 90 ||
 			cldata[cl].inbuffer[1] > 93)
