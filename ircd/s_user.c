@@ -1849,7 +1849,7 @@ char	*parv[];
 	    {
 		sendto_serv_butone(cptr, ":%s KILL %s :%s!%s",
 				   parv[0], acptr->name, inpath, path);
-		if (chasing)
+		if (chasing && !IsClient(cptr))
 			sendto_one(cptr, ":%s KILL %s :%s!%s",
 				   ME, acptr->name, inpath, path);
 		acptr->flags |= FLAGS_KILLED;
