@@ -33,11 +33,6 @@ static	int	socks_start(u_int cl);
 
 #define CACHETIME 30
 #define SOCKSPORT 1080
-/* 
-   A lot of socks v4 proxies return 4,91 instead of 0,91 otherwise
-   working perfectly -- this will deal with them.
-*/
-#define BROKEN_PROXIES 1
 
 struct proxylog
 {
@@ -352,6 +347,11 @@ static	int	socks_read(u_int cl, char *strver)
 	if (cldata[cl].mod_status == ST_V4)
 	{
 		if (cldata[cl].inbuffer[0] == 0
+/* 
+   A lot of socks v4 proxies return 4,91 instead of 0,91 otherwise
+   working perfectly -- this will deal with them.
+*/
+#define BROKEN_PROXIES
 #ifdef BROKEN_PROXIES
 			|| cldata[cl].inbuffer[0] == 4
 #endif
