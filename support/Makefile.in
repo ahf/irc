@@ -269,7 +269,7 @@ install-server: install-ircd server
 		$(INSTALL_DATA) ../support/iauth.conf $(IAUTHCONF_PATH); \
 	fi
 	-@if [ ! -f $(IRCDMOTD_PATH) ]; then \
-		$(INSTALL_DATA) ../support/iauth.conf $(IRCDMOTD_PATH); \
+		$(INSTALL_DATA) ../support/ircd.motd $(IRCDMOTD_PATH); \
 	fi
 	@echo "installation of server done."
 
