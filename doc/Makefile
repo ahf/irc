@@ -24,9 +24,14 @@ MANDIR=/usr/local/man
 
 all:
 
-sgml: INSTALL.sgml
+sgml: service doc
+
+doc: INSTALL.sgml
 	sgml2txt INSTALL.sgml
 	sgml2info INSTALL.sgml
+
+service: SERVICE.sgml
+	sgml2txt SERVICE.sgml
 
 install: all
 	-${INSTALL} -c -m 644 ircd.8 ${MANDIR}/man8
