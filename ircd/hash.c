@@ -425,7 +425,7 @@ int	new;
 		sidTable = table;
 		for (sptr = svrtop; sptr; sptr = sptr->nexts)
 		{
-			if (ST_UID(sptr))
+			if (sptr->version & SV_UID)
 			{
 				(void) add_to_sid_hash_table(sptr->sid,
 					sptr->bcptr);
