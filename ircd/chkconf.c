@@ -211,10 +211,9 @@ int	opt;
 		    {
                         (void)fprintf(stderr, "ERROR: Bad config line (%s)\n",
 				line);
-			if (IRCDCONF_DELIMITER != ':')
-				(void)fprintf(stderr,
-				      "\tWrong delimiter? (should be %c)\n",
-					      IRCDCONF_DELIMITER);
+			(void)fprintf(stderr,
+			      "\tWrong delimiter? (should be %c)\n",
+				      IRCDCONF_DELIMITER);
                         continue;
                     }
 
