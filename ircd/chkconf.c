@@ -211,10 +211,14 @@ int	opt;
 		    *line == ' ' || *line == '\t')
 			continue;
 
-		if (line[1] != ':')
+		if (line[1] != IRCDCONF_DELIMITER)
 		    {
                         (void)fprintf(stderr, "ERROR: Bad config line (%s)\n",
 				line);
+			if (IRCDCONF_DELIMITER != ':')
+				(void)fprintf(stderr,
+				      "\tWrong delimiter? (should be %c)\n",
+					      IRCDCONF_DELIMITER);
                         continue;
                     }
 
@@ -531,7 +535,7 @@ char	*irc_newline;
 		return(NULL);
 
 	field = line;
-	if ((end = (char *)index(line,':')) == NULL)
+	if ((end = (char *)index(line, IRCDCONF_DELIMITER)) == NULL)
 	    {
 		line = NULL;
 		if ((end = (char *)index(field,'\n')) == NULL)

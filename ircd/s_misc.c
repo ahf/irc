@@ -190,8 +190,6 @@ aClient	*sptr;
 **	to modify what it points!!!
 */
 
-char mydummy[256];
-
 char	*get_client_name(sptr, showip)
 aClient *sptr;
 int	showip;
@@ -219,7 +217,7 @@ int	showip;
 #ifdef INET6 
 					      inet_ntop(AF_INET6,
 							(char *)&sptr->ip,
-							mydummy, 16));
+							mydummy, MYDUMMY_SIZE));
 #else
 					      inetntoa((char *)&sptr->ip));
 #endif

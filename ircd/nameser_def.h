@@ -88,8 +88,7 @@
  * is new enough to contain a certain feature.
  */
 
-#ifndef	INET6
-/* let's assume for now that IPv6 system don't need ours -kalt */
+#ifndef	OSF
 
 #define __BIND		19960801	/* interface version stamp */
 

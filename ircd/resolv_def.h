@@ -80,7 +80,7 @@
 #define	MAXRESOLVSORT		10	/* number of net to sort on */
 #define	RES_MAXNDOTS		15	/* should reflect bit field size */
 
-#ifndef	INET6
+#ifndef	OSF
 struct __res_state {
 	int	retrans;	 	/* retransmition time interval */
 	int	retry;			/* number of times to retransmit */
@@ -145,6 +145,10 @@ struct __res_state {
 /*			0x00008000	*/
 
 /* hooks are still experimental as of 4.9.2 */
+#if defined(OSF) && defined(INET6) && defined(__GNUC__)
+
+#else
+
 typedef enum { res_goahead, res_nextns, res_modified, res_done, res_error }
 	res_sendhookact;
 
@@ -161,8 +165,9 @@ typedef res_sendhookact (*res_send_rhook)__P((const struct SOCKADDR_IN *ns,
 					      u_char *ans,
 					      int anssiz,
 					      int *resplen));
+#endif
 
-#ifndef	INET6
+#ifndef	OSF
 struct res_sym {
 	int	number;		/* Identifying number, like T_MX */
 	char *	name;		/* Its symbolic name, like "MX" */
