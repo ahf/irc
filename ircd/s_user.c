@@ -595,8 +595,6 @@ int	register_user(aClient *cptr, aClient *sptr, char *nick, char *username)
 			return exit_client(cptr, sptr, &me, (reason) ? buf :
 					   "K-lined");
 		    }
-		if (oldstatus == STAT_MASTER && MyConnect(sptr))
-			(void)m_oper(&me, sptr, 1, parv);
 		sp = user->servp;
 	    }
 	else
