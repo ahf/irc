@@ -855,7 +855,7 @@ static	void	exit_one_client(aClient *cptr, aClient *sptr, aClient *from,
 			/* Clean up invitefield */
 			while ((ilp = sptr->user->invited))
 			{
-				del_invite(sptr, ilp->value.chptr);
+				del_invite(sptr, ilp->chptr);
 				/* again, this is all that is needed */
 			}
 

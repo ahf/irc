@@ -622,15 +622,9 @@ struct	SLink	{
 
 struct	invSLink	{
 	struct	invSLink	*next;
-	union {
-		aClient	*cptr;
-		aChannel *chptr;
-		aConfItem *aconf;
-		char	*cp;
-		int	i;
-	} value;
-	char	*who;
-	int	flags;
+	aChannel		*chptr;
+	char			*who;
+	int			flags;
 };
 
 /* channel structure */
