@@ -751,6 +751,8 @@ int	sig;
 	    {
 		sendto_flag(SCH_NOTICE,
 			    "Got signal SIGHUP, reloading ircd.conf file");
+		logfiles_close();
+		logfiles_open();
 #ifdef	ULTRIX
 		if (fork() > 0)
 			exit(0);
