@@ -1461,6 +1461,15 @@ int 	initconf(int opt)
 		if (aconf->status & (CONF_LISTEN_PORT|CONF_CLIENT))
 		{
 			aConfItem *bconf;
+			
+			/* any flags in this line? */
+			if (tmp3)
+			{
+				aconf->flags |=
+					((aconf->status == CONF_CLIENT) ?
+					iline_flags_parse(tmp3) :
+					pline_flags_parse(tmp3));
+			}
 
 			/* trying to find exact conf line in already existing
 			 * conf, so we don't delete old one, just update it */
@@ -1494,15 +1503,6 @@ int 	initconf(int opt)
 				{
 					(void)add_listener(aconf);
 				}
-			}
-
-			/* any flags in this line? */
-			if (tmp3)
-			{
-				aconf->flags |=
-					((aconf->status == CONF_CLIENT) ?
-					iline_flags_parse(tmp3) :
-					pline_flags_parse(tmp3));
 			}
 		}
 
