@@ -179,7 +179,7 @@ void	debug(int level, char *form, ...)
 		va_start(va, form);
 		vsprintf(debugbuf, form, va);
 		va_end(va);
-		syslog(LOG_ERR, debugbuf);
+		syslog(LOG_ERR, "%s", debugbuf);
 # endif
 #endif
 	    }
@@ -200,8 +200,7 @@ void	debug(int level, char *form, ...)
 			local[2]->sendM++;
 			local[2]->sendB += strlen(debugbuf);
 		    }
-		(void)fprintf(stderr, "%s", debugbuf);
-		(void)fputc('\n', stderr);
+		(void)fprintf(stderr, "%s\n", debugbuf);
 	    }
 	errno = err;
 }
