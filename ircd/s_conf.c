@@ -1045,6 +1045,10 @@ int	rehash(aClient *cptr, aClient *sptr, int sig)
 
 	if (sig == 'd')
 		flush_cache();
+#ifdef TKLINE
+	if (sig == 't')
+		tkline_expire(1);
+#endif
 	(void) initconf(0);
 	close_listeners();
 
