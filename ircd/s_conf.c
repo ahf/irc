@@ -995,7 +995,7 @@ int	opt;
 			if ((tmp = getfield(NULL)) == NULL)
 				break;
 			aconf->port = 0;
-			if (sscanf(tmp, "%x", &aconf->port) != 1 ||
+			if (sscanf(tmp, "0x%x", &aconf->port) != 1 ||
 			    aconf->port == 0)
 				aconf->port = atoi(tmp);
 			if (aconf->status == CONF_CONNECT_SERVER)
