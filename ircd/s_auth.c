@@ -335,7 +335,7 @@ Reg	aClient	*cptr;
 
 		sprintf(abuf, "%d C %s %u ", cptr->fd,
 			inetntoa((char *)&them.sin_addr),ntohs(them.sin_port));
-		sprintf(abuf+strlen(abuf), "%s %u\n",
+		sprintf(abuf+strlen(abuf), "%s %u",
 			inetntoa((char *)&us.sin_addr), ntohs(us.sin_port));
 		if (sendto_iauth(abuf) == 0)
 		    {
