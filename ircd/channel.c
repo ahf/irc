@@ -941,8 +941,15 @@ char	*parv[], *mbuf, *pbuf;
 				Reg	u_char	*s;
 
 				for (s = (u_char *)*parv; *s; )
-					*s++ &= 0x7f;
+					if (*s > 0x7f)
+						if (*s > 0xa0)
+							*s++ &= 0x7f;
+						else
+							*s = '\0';
 			}
+
+			if (!**parv)
+				break;
 			*parv = check_string(*parv);
 			if (opcnt >= MAXMODEPARAMS)
 #ifndef V29PlusOnly
