@@ -1754,11 +1754,6 @@ static	int	set_mode(aClient *cptr, aClient *sptr, aChannel *chptr,
 						chptr->reop = timeofday +
 							LDELAYCHASETIMELIMIT;
 					}
-					/* XXX: fix this in 2.11.1 */
-					if (MyClient(sptr) && !IsAnOper(sptr))
-					{
-						break;
-					}
 				}
 				if (ischop &&
 					(((whatt & MODE_ADD) &&
