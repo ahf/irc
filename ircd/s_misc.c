@@ -736,6 +736,9 @@ char	*comment;
 #endif
 						 is_chan_op(sptr, lp->value.chptr))
 						lp->value.chptr->history = timeofday + DELAYCHASETIMELIMIT;
+				if (IsAnonymous(lp->value.chptr) &&
+				    !IsQuiet(lp->value.chptr))
+					sendto_channel_butserv(lp->value.chptr, sptr, ":%s PART %s :None", sptr->name, lp->value.chptr->chname);
 				remove_user_from_channel(sptr,lp->value.chptr);
 			    }
 
