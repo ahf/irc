@@ -1046,6 +1046,7 @@ int	main(int argc, char *argv[])
 		);
 
 	timeofday = time(NULL);
+	mysrand(timeofday);
 	
 	daemonize();	
 	if (!(bootopt & BOOT_OPER))

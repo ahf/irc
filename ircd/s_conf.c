@@ -962,6 +962,7 @@ int	rehash(aClient *cptr, aClient *sptr, int sig)
 	{
 		rehashed = 1;
 	}
+	mysrand(timeofday);
 	return ret;
 }
 
