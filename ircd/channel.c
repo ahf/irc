@@ -473,6 +473,11 @@ aChannel *chptr;
 	member = IsMember(cptr, chptr);
 	lp = find_user_link(chptr->members, cptr);
 
+	if ((!lp || !(lp->flags & (CHFL_CHANOP | CHFL_VOICE))) &&
+	    !match_modeid(CHFL_EXCEPTION, cptr, chptr) &&
+	    match_modeid(CHFL_BAN, cptr, chptr))
+		return (MODE_BAN);
+
 	if (chptr->mode.mode & MODE_MODERATED &&
 	    (!lp || !(lp->flags & (CHFL_CHANOP|CHFL_VOICE))))
 			return (MODE_MODERATED);
