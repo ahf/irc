@@ -2325,7 +2325,7 @@ char	*parv[];
 		
 	}
 	/* *MUST* be after parse of user specified umodes */
-	if (sptr->flags & FLAGS_RILINE)
+	if (sptr->flags & FLAGS_RESTRICT)
 		SetRestricted(sptr);
 	strncpyzt(user->host, host, sizeof(user->host));
 	user->server = find_server_string(me.serv->snum);
