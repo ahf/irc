@@ -145,7 +145,12 @@ int	send_message(aClient *to, char *msg, int len)
 # ifdef HUB
 		if (CBurst(to))
 		{
-			aConfItem	*aconf = to->serv->nline;
+			aConfItem	*aconf;
+
+			if (IsServer(to))
+				aconf = to->serv->nline;
+			else
+				aconf = to->confs->value.aconf;
 
 			poolsize -= MaxSendq(aconf->class) >> 1;
 			IncSendq(aconf->class);
@@ -192,7 +197,12 @@ tryagain:
 	{
 		if (i == -2 && CBurst(to))
 		    {	/* poolsize was exceeded while connect burst */
-			aConfItem	*aconf = to->serv->nline;
+			aConfItem	*aconf;
+
+			if (IsServer(to))
+				aconf = to->serv->nline;
+			else
+				aconf = to->confs->value.aconf;
 
 			poolsize -= MaxSendq(aconf->class) >> 1;
 			IncSendq(aconf->class);

@@ -601,7 +601,7 @@ int	m_servset(aClient *cptr, aClient *sptr, int parc, char *parv[])
 	** distribution code is respected.
 	** service type also respected.
 	*/
-	/* cptr->flags |= FLAGS_CBURST; doesn't work.. */
+	cptr->flags |= FLAGS_CBURST;
 	if (burst & SERVICE_WANT_SERVER)
 	    {
 		int	split;
