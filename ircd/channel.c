@@ -1037,11 +1037,13 @@ char	*parv[], *mbuf, *pbuf;
 			** just some extra messages if nick appeared more than
 			** once in the MODE message... --msa
 			*/
+/* nobody can figure this part of the code anymore.. -kalt
 			if (chasing && ischop)
 				sendto_one(cptr, ":%s MODE %s %c%c %s",
 					   ME, chptr->chname,
 					   whatt == MODE_ADD ? '+' : '-',
 					   *curr, who->name);
+*/
 			count++;
 			*penalty += 2;
 			break;
