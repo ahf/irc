@@ -867,6 +867,8 @@ char	*comment;
 		if (cptr == sptr)
 			sendto_flag(SCH_NOTICE, "Service %s disconnected",
 				    get_client_name(sptr, TRUE));
+		sendto_flag(SCH_SERVICE, "Received QUIT %s from %s (%s)",
+			    sptr->name, from->name, comment);
 		istat.is_service--;
 	    }
 
