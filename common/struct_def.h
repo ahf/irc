@@ -495,6 +495,7 @@ struct Client	{
 				  */
 	char	passwd[PASSWDLEN+1];
 	char	exitc;
+	char	*reason;	/* additional exit message */
 };
 
 #define	CLIENT_LOCAL_SIZE sizeof(aClient)
