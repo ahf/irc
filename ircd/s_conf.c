@@ -2400,6 +2400,9 @@ int	m_tkline(aClient *cptr, aClient *sptr, int parc, char **parv)
 		user++;
 	}
 	*host++ = '\0';
+#ifdef INET6
+	host = ipv6_convert(host);
+#endif
 	reason = parv[3];
 	if (strlen(reason) > TOPICLEN)
 	{
