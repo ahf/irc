@@ -232,6 +232,7 @@ void	read_iauth(void)
 			    sendto_flag(SCH_AUTH, "iauth version %s running.",
 					iauth_version);
 			    start = end;
+			    sendto_iauth("0 M %s", me.name);
 			    continue;
 			}
 		    if (*start == 'a')
