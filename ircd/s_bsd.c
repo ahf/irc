@@ -315,6 +315,10 @@ int	inetport(aClient *cptr, char *ip, char *ipmask, int port, int dolisten)
 #endif
 	cptr->port = port;
 	local[cptr->fd] = cptr;
+	if (dolisten)
+	{
+		listen(cptr->fd, LISTENQUEUE);
+	}
 
 	return 0;
 }
@@ -501,11 +505,6 @@ void	open_listener(aClient *cptr)
 		add_fd(cptr->fd, &fdas);
 		add_fd(cptr->fd, &fdall);
 		set_non_blocking(cptr->fd, cptr);
-
-		if (dolisten)
-		{
-			listen(cptr->fd, LISTENQUEUE);
-		}
 	}
 }
 
