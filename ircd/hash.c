@@ -140,7 +140,10 @@ int	size;
 	if (size < 4)
 		return size;
 
-	for ( ; ; size++)
+	if (size % 2 == 0)      /* Make sure it's odd because... */
+		size++;
+	
+	for ( ; ; size += 2)    /* ...no point checking even numbers - Core */
 	    {
 		failure = 0;
 		sq = (int)sqrt((double)size);
