@@ -2637,6 +2637,25 @@ int	m_njoin(aClient *cptr, aClient *sptr, int parc, char *parv[])
 	chptr = get_channel(&me, parv[1], CREATE);
 	/* assert(chptr != NULL); */
 
+	/* Hack for creating empty channels and locking them.
+	** This also allows for getting MODEs for such channels (otherwise
+	** they'd get ignored). We need that to prevent desynch, especially
+	** after we (re)started.
+	** This requires that single dot cannot be used as a name of
+	** remote clients that can join channels. --B. */
+	if (parv[2][0] == '.' && parv[2][1] == '\0')
+	{
+		/* If we have clients on a channel, it cannot be
+		** locked, can it? --B. */
+		if (chptr->users == 0 && chptr->history == 0)
+		{
+			chptr->history = timeofday + (*chptr->chname == '!' ?
+				LDELAYCHASETIMELIMIT : DELAYCHASETIMELIMIT);
+		}
+		/* There cannot be anything else in this NJOIN. */
+		return 0;
+	}
+
 	*nbuf = '\0'; q = nbuf;
 	*uidbuf = '\0'; u = uidbuf;
  	/* 17 comes from syntax ": NJOIN  :,@@+\r\n\0" */ 
