@@ -2040,10 +2040,7 @@ char	*parv[];
 		if (cptr->serv && (s = index(name, '\007')))
 			*s++ = '\0';
 		else
-		    {
-			s = NULL;
 			clean_channelname(name), s = NULL;
-		    }
 
 		if (MyConnect(sptr) &&
 		    sptr->user->joined >= MAXCHANNELSPERUSER) {
