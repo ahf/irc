@@ -1346,7 +1346,7 @@ void	close_connection(aClient *cptr)
 	if (cptr->fd >= 0)
 	{
 #if defined(USE_IAUTH)
-		if (!IsListener(cptr))
+		if (!IsListener(cptr) && !IsConnecting(cptr))
 		{
 			/* iauth doesn't know about listening FD nor
 			 * cancelled outgoing connections.
