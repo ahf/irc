@@ -2574,7 +2574,7 @@ int	m_untkline(aClient *cptr, aClient *sptr, int parc, char **parv)
 
 	if (deleted)
 	{
-		sendto_flag(SCH_NOTICE, "UNTKLINE %s@%s by %s",
+		sendto_flag(SCH_OPER, "UNTKLINE %s@%s by %s",
 			user, host, parv[0]);
 	}
 	return 1;
