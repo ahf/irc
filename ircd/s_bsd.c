@@ -1926,7 +1926,7 @@ FdAry	*fdp;
 				sendto_flag(SCH_ERROR,
 					    "All connections in use. (%s)",
 					    get_client_name(cptr, TRUE));
-				find_bounce(NULL, fdnew);
+				find_bounce(NULL, 0, fdnew);
 				(void)send(fdnew,
 					   "ERROR :All connections in use\r\n",
 					   32, 0);
