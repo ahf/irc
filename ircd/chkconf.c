@@ -116,9 +116,13 @@ int	main(int argc, char *argv[])
 	/* Initialize counters to be able to print line number even with m4 */
 	mywc();
 # ifdef DEBUGMODE
+	{
+	struct wordcount *filelist;
+
 	for(filelist = files; filelist->next; filelist = filelist->next)
 	  fprintf(stderr, "%s: Min %d - Max %d\n",
 		  filelist->filename, filelist->min, filelist->max);
+	}
 # endif
 #endif
 	/* If I do not use result as temporary return value
