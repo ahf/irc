@@ -694,7 +694,7 @@ char	flag, *chname;
 			send = 1;
 		if (send)
 		    {
-			sendto_one(cptr, ":%s MODE %s %s %s",
+			sendto_one(cptr, ":%s MODE %s %s%s",
 				   ME, chname, modebuf, parabuf);
 			send = 0;
 			*parabuf = '\0';
@@ -745,7 +745,7 @@ uncommented may just lead to desynchs..
 		if (modebuf[1] || *parabuf)
 		    {
 			/* only needed to help compatibility */
-			sendto_one(cptr, ":%s MODE %s %s %s",
+			sendto_one(cptr, ":%s MODE %s %s%s",
 				   ME, chptr->chname, modebuf, parabuf);
 			*parabuf = '\0';
 			*modebuf = '+';
@@ -757,7 +757,7 @@ uncommented may just lead to desynchs..
 			       CHFL_INVITE, 'I');
 	    }
 	if (modebuf[1] || *parabuf)
-		sendto_one(cptr, ":%s MODE %s %s %s",
+		sendto_one(cptr, ":%s MODE %s %s%s",
 			   ME, chptr->chname, modebuf, parabuf);
 }
 
