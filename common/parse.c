@@ -126,6 +126,13 @@ struct Message msgtab[] = {
 # endif
 					, 0, 0, 0L},
 #endif
+#ifdef OPER_SET
+  { MSG_SET,  m_set,   MAXPARA, MSG_REGU|MSG_OP
+#ifdef LOCOP_SET
+					| MSG_LOP
+#endif
+					, 0, 0, 0L},
+#endif /* OPER_SET */
 #endif /* !CLIENT_COMPILE */
   { (char *) 0, (int (*)()) 0, 0, 0, 0, 0, 0L}
 };
