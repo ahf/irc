@@ -751,7 +751,7 @@ static	void	exit_one_client(aClient *cptr, aClient *sptr, aClient *from,
 			else if (!IsMasked(sptr))
 			{
 				sendto_one(acptr, ":%s SQUIT %s :%s",
-					sptr->serv->up->name, sptr->name,
+					from->name, sptr->name,
 					comment);
 			}
 		}
