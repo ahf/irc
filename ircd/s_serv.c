@@ -208,6 +208,11 @@ char	*parv[];
 		sendto_one(sptr, err_str(ERR_NOSUCHSERVER, parv[0]), server);
 		return 1;
 	    }
+	if (MyConnect(sptr) && !MyConnect(acptr) && parc < 3)
+	    {
+                sendto_one(sptr, err_str(ERR_NEEDMOREPARAMS,parv[0]), "SQUIT");
+		return 0;
+            }
 	if (IsLocOp(sptr) && !MyConnect(acptr))
 	    {
 		sendto_one(sptr, err_str(ERR_NOPRIVILEGES, parv[0]));
