@@ -128,7 +128,7 @@ static void sig_handler (int signo)
 
 #ifndef POSIX_SIGNALS
     (void)signal(SIGALRM, &sig_handler);
-#endif;
+#endif
 
     return;
   }
