@@ -468,6 +468,16 @@ int	opt;
 			else
 				flags |= aconf->status;
 		    }
+
+		if (aconf->status & CONF_VER)
+		    {
+			if (*aconf->host && !index(aconf->host, '/'))
+				(void)fprintf(stderr,
+					      "\tWARNING: No / in V line.");
+			else if (*aconf->passwd && !index(aconf->passwd, '/'))
+				(void)fprintf(stderr,
+					      "\tWARNING: No / in V line.");
+		    }
 print_confline:
 		if (debugflag > 8)
 			(void)printf("(%d) (%s) (%s) (%s) (%d) (%s)\n",
