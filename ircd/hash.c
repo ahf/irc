@@ -705,7 +705,7 @@ aClient	*cptr;
 }
 
 /*
-** del_from_server_hash_table
+** del_from_sid_hash_table
 */
 int	del_from_sid_hash_table(aServer *sptr, aClient *cptr)
 {
