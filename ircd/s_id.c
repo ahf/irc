@@ -27,11 +27,6 @@ static  char rcsid[] = "@(#)$Id$";
 #include "s_externs.h"
 #undef S_ID_C
 
-/*
- * channel IDs
- */
-#define CHIDNB 36
-
 static unsigned char id_alphabet[CHIDNB+1] =
 	"ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
 
