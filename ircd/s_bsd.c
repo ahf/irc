@@ -195,6 +195,11 @@ int	port;
 	 * easy conversion of "*" to 0.0.0.0 or 134.* to 134.0.0.0 :-)
 	 */
 	(void)sscanf(ipmask, "%d.%d.%d.%d", &ad[0], &ad[1], &ad[2], &ad[3]);
+	if (ad[0]>>8 || ad[1]>>8 || ad[2]>>8 || ad[3]>>8)
+	{
+		report_error("invalid ipmask %s", ipmask);
+		return -1;
+	}
 	(void)sprintf(ipname, "%d.%d.%d.%d", ad[0], ad[1], ad[2], ad[3]);
 
 	(void)sprintf(cptr->sockhost, "%-.42s.%u", ip ? ip : ME,
