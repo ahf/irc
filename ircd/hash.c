@@ -456,6 +456,7 @@ static	void	bigger_hash_table(int *size, aHashEntry *table, int new)
 		svsize = 0;
 		serverTable = table;
 		for (sptr = svrtop; sptr; sptr = sptr->nexts)
+			if (ST_NOTUID(sptr->bcptr))
 			(void)add_to_server_hash_table(sptr, sptr->bcptr);
 		MyFree(otab);
 	    }
