@@ -56,7 +56,7 @@ AnInstance *self;
 	struct _data *dt;
 
 	dt = (struct _data *) malloc(sizeof(struct _data));
-	bzero((char *) self->data, sizeof(struct _data));
+	bzero((char *) dt, sizeof(struct _data));
 	self->data = (void *) dt;
 
 	/* undocumented option */
