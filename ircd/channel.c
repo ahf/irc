@@ -3236,7 +3236,8 @@ aChannel *chptr;
 			    cnt = 0;
 			    mbuf[0] = nbuf[0] = '\0';
 			}
-		    if ((!(MyConnect(lp->value.cptr) && IsRestricted(lp->value.cptr)))
+		    if (!(MyConnect(lp->value.cptr) 
+			&& IsRestricted(lp->value.cptr)))
 			{
 			    op.value.cptr = lp->value.cptr;
 			    change_chan_flag(&op, chptr);
