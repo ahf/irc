@@ -254,10 +254,20 @@ Reg	aClient	*cptr;
 Reg	char	*host;
 {
 	Reg	char	*s;
+
+	if (!cptr || !host)
+	{
+		/* however unlikely this is, don't risk */
+		return;
+	}
 	if ((s = (char *)index(host, '@')))
+	{
 		s++;
+	}
 	else
+	{
 		s = host;
+	}
 	strncpyzt(cptr->sockhost, s, sizeof(cptr->sockhost));
 	Debug((DEBUG_DNS,"get_sockhost %s",s));
 }
