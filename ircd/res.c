@@ -1380,6 +1380,7 @@ ResRQ	*rptr;
 	*/
 	if (!rptr->he.h_name || !WHOSTENTP(rptr->he.h_addr.S_ADDR))
 		return NULL;
+#if 0
 	/*
 	** Make cache entry.  First check to see if the cache already exists
 	** and if so, return a pointer to it.
@@ -1392,6 +1393,7 @@ ResRQ	*rptr;
 				(char *)&(rptr->he.h_addr_list[i].S_ADDR))))
 #endif
 			return cp;
+#endif
 
 	/*
 	** a matching entry wasnt found in the cache so go and make one up.
