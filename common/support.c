@@ -465,7 +465,7 @@ size_t	x;
 	    }
 	bzero(ret, (int)x + SZ_EX);
 	bcopy((char *)&ret, ret, SZ_CH);
-	bcopy((char *)&x, ret + SZ_ST, SZ_ST);
+	bcopy((char *)&x, ret + SZ_CH, SZ_ST);
 	bcopy("VAVA", ret + SZ_CHST + (int)x, 4);
 	Debug((DEBUG_MALLOC, "MyMalloc(%ld) = %#x", x, ret + SZ_CHST));
 	for(i = 0, s = marray; *s && i < mindex; i++, s++)
