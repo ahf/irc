@@ -203,7 +203,6 @@ int	len;
 		return dead_link(to, "Max Sendq exceeded");
 # endif /* HUB */
 	}
-tryagain:
 # ifdef	ZIP_LINKS
 	/*
 	** data is first stored in to->zip->outbuf until
@@ -214,8 +213,10 @@ tryagain:
 	if (to->flags & FLAGS_ZIP)
 		msg = zip_buffer(to, msg, &len, 0);
 
+tryagain:
 	if (len && (i = dbuf_put(&to->sendQ, msg, len)) < 0)
 # else 	/* ZIP_LINKS */
+tryagain:
 	if ((i = dbuf_put(&to->sendQ, msg, len)) < 0)
 # endif	/* ZIP_LINKS */
 	{
