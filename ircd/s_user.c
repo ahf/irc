@@ -238,6 +238,7 @@ int	hunt_server(aClient *cptr, aClient *sptr, char *command, int server,
 **	'~'-character should be allowed, but
 **	a change should be global, some confusion would
 **	result if only few servers allowed it...
+**	It will be allowed in 2.11.1 (and is now accepted from servers).
 */
 
 int	do_nick_name(char *nick, int server)
@@ -260,6 +261,12 @@ int	do_nick_name(char *nick, int server)
 		if (!server && isscandinavian(*ch))
 		{
 			break;
+		}
+		/* 2.11.1 should remove this if() and fix
+		** match.c to make '~' NVALID --B. */
+		if (server && *ch == '~')
+		{
+			continue;
 		}
 		if (!isvalidnick(*ch))
 		{
