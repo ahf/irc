@@ -976,7 +976,7 @@ Reg	aClient	*cptr;
 			if (cptr->serv->version & SV_UID && *acptr->user->uid)
 				sendto_one(cptr,
 					   ":%s UNICK %s %s %s %s %s %s :%s",
-					   me.serv->sid,
+					   acptr->user->servp->sid,
 					   acptr->name, acptr->user->uid,
 					   acptr->user->username,
 					   acptr->user->host,
