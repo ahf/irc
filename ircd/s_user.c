@@ -1060,7 +1060,7 @@ int	parc, notice;
 		/*
 		** channel msg?
 		*/
-		if ((IsPerson(sptr) || IsService(sptr)) &&
+		if ((IsPerson(sptr) || IsService(sptr) || IsServer(sptr)) &&
 		    (chptr = find_channel(nick, NullChn)))
 		    {
 			if (can_send(sptr, chptr) == 0)
