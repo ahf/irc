@@ -114,7 +114,7 @@ static	u_int	hash_uid(char *uid, u_int *store)
 
 	for (; (ch = *uid); uid++)
 	{
-		hash <<= 1;
+		hash <<= 4;
 		hash += hashtab[(int)ch];
 	}
 	if (store)
@@ -135,7 +135,7 @@ static	u_int	hash_sid(char *sid, u_int *store)
 
 	for (; (ch = *sid); sid++)
 	{
-		hash <<= 1;
+		hash <<= 4;
 		hash += hashtab[(int)ch];
 	}
 	if (store)
