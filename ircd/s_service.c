@@ -573,7 +573,7 @@ char	*parv[];
 	** distribution code is respected.
 	** service type also respected.
 	*/
-	cptr->flags |= FLAGS_CBURST;
+	/* cptr->flags |= FLAGS_CBURST; doesn't work.. */
 	if (burst & SERVICE_WANT_SERVER)
 	    {
 		int	split;
@@ -661,7 +661,7 @@ char	*parv[];
 			    }
 		    }
 	    }
-	cptr->flags ^= FLAGS_CBURST;
+	/* cptr->flags ^= FLAGS_CBURST; */
 	return 0;
 }
 #endif
