@@ -1671,7 +1671,11 @@ int 	initconf(int opt)
 
 			/* trying to find exact conf line in already existing
 			 * conf, so we don't delete old one, just update it */
-			if ((bconf = find_conf_entry(aconf, aconf->status)))
+			if (
+#ifdef FASTER_ILINE_REHASH
+				(aconf->status & CONF_LISTEN_PORT) &&
+#endif
+				(bconf = find_conf_entry(aconf, aconf->status)))
 			{
 				/* we remove bconf (already existing) from conf
 				 * so that we can add it back uniformly at the
