@@ -170,6 +170,10 @@ int	hunt_server(aClient *cptr, aClient *sptr, char *command, int server,
 	if ((acptr = find_client(parv[server], NULL)))
 		if (acptr->from == sptr->from && !MyConnect(acptr))
 			acptr = NULL;
+	/* Match SID */
+	if (!acptr && (acptr = find_sid(parv[server], NULL)))
+		if (acptr->from == sptr->from && !MyConnect(acptr))
+			acptr = NULL;
 	/* Match *.masked.servers */
 	if (!acptr && (acptr = find_server(parv[server], NULL)))
 		if (acptr->from == sptr->from && !MyConnect(acptr))
