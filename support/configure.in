@@ -708,6 +708,12 @@ logdir=$with_logdir
 logdir=$localstatedir'/log'
 ])
 AC_SUBST(logdir)
+AC_ARG_WITH(rundir, [  --with-rundir=DIR       pid and tune files in DIR [[localstatedir/run]]], [
+rundir=$with_rundir
+],[
+rundir=$localstatedir'/run'
+])
+AC_SUBST(rundir)
 AC_CONFIG_HEADER(setup.h:../support/setup.h.in)
 AC_CONFIG_AUX_DIR(../support)
 AC_PROG_INSTALL
