@@ -318,9 +318,10 @@ void	send_defines(aClient *cptr, char *nick)
 		-1
 #endif
 		);
-	sendto_one(cptr, ":%s %d %s :AC:%d CA:%d S:%d SS:%d SU:%d", ME, RPL_STATSDEFINE,
-		   nick, iconf.aconnect, iconf.caccept, iconf.split,
-		   iconf.split_minservers, iconf.split_minusers);
+	sendto_one(cptr, ":%s %d %s :AC:%d CA:%d S:%d SS:%d(%d) SU:%d(%d)",
+		ME, RPL_STATSDEFINE, nick, iconf.aconnect, iconf.caccept, 
+		iconf.split, iconf.split_minservers, istat.is_eobservers,
+		iconf.split_minusers, istat.is_user[0] + istat.is_user[1]);
 #ifdef CLIENTS_CHANNEL
 	sendto_one(cptr, ":%s %d %s :CCL:0x%X", ME, RPL_STATSDEFINE, nick,
 		CLIENTS_CHANNEL_LEVEL);
