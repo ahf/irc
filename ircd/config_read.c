@@ -181,8 +181,8 @@ aConfig *config_read(FILE *fd, int depth, aFile *curfile)
 			continue;
 		}
 eatline:
-		new = (aConfig *)malloc(sizeof(aConfig));
-		new->line = (char *) malloc((linelen+1) * sizeof(char));
+		new = (aConfig *)MyMalloc(sizeof(aConfig));
+		new->line = (char *) MyMalloc((linelen+1) * sizeof(char));
 		memcpy(new->line, line, linelen);
 		new->line[linelen] = '\0';
 		new->linenum = linenum;
@@ -232,9 +232,9 @@ void config_free(aConfig *cnf)
 
 aFile *new_config_file(char *filename, aFile *parent, int fnr)
 {
-	aFile *tmp = (aFile *) malloc(sizeof(aFile));
+	aFile *tmp = (aFile *) MyMalloc(sizeof(aFile));
 
-	tmp->filename = strdup(filename);
+	tmp->filename = mystrdup(filename);
 	tmp->includeline = fnr;
 	tmp->parent = parent;
 	tmp->next = NULL;
