@@ -2007,13 +2007,15 @@ static	int	check_channelmask(aClient *sptr, aClient *cptr, char *chname)
 	if ((t = index(s, '\007')))
 		*t = '\0';
 
-	s++;
-	if (*s == '\0')
+	if (*(s+1) == '\0')
 	{
 		/* ':' was last char (thus empty mask) --B. */
-		*(s-1) = '\0';
+		while (s >= chname && *s == ':')
+			s--;
+		*(s+1) = '\0';
 		return 0;
 	}
+	s++;
 	if (match(s, ME) || (IsServer(cptr) && match(s, cptr->name)))
 	    {
 		if (MyClient(sptr))
