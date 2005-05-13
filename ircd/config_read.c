@@ -20,6 +20,9 @@
 #define fdopen fdbopen
 #define fgets fbgets
 #define fopen fbopen
+#if !defined(HAVE_STRLCPY)
+#define strlcpy(x, y, N) strncpyzt((x), (y), (N))
+#endif
 #include "fileio.c"
 #endif
 
