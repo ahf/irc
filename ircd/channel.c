@@ -1960,10 +1960,10 @@ static	int	check_channelmask(aClient *sptr, aClient *cptr, char *chname)
 	if (*(s+1) == '\0')
 	{
 		/* ':' was last char (thus empty mask) --B. */
-		while (s >= chname && *s == ':')
-			s--; 
-		*(s+1) = '\0';
-		return 0;
+		if (MyClient(sptr))
+			sendto_one(sptr, replies[ERR_BADCHANMASK], ME,
+				BadTo(sptr->name), chname);
+		return -1;
 	}
 	s++;
 	if (match(s, ME) || (IsServer(cptr) && match(s, cptr->name)))
