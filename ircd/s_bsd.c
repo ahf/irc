@@ -697,6 +697,23 @@ void	init_sys(void)
 			exit(-1);
 		    }
 	    }
+	/* Let's assume that if it has define for fd limit, then
+	   it can do core limits, too. --B. */
+	if (!getrlimit(RLIMIT_CORE, &limit))
+	{
+		limit.rlim_cur = limit.rlim_max;
+		if (limit.rlim_cur != RLIM_INFINITY)
+		{
+			(void)fprintf(stderr, "warning: max core"
+				" is not unlimited\n");
+		}
+		if (setrlimit(RLIMIT_CORE, &limit) == -1)
+		{
+			(void)fprintf(stderr, "error setting max core to %d\n",
+				(int) limit.rlim_cur);
+			exit(-1);
+		}
+	}
 #endif
 #if !defined(USE_POLL)
 # ifdef sequent
