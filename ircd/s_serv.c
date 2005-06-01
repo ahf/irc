@@ -3174,6 +3174,11 @@ int	m_set(aClient *cptr, aClient *sptr, int parc, char *parv[])
 				else if (!mycmp(parv[2], "ON"))
 				{
 					iconf.caccept = 1;
+					/* Well... give admin the chance. */
+					if (!firstrejoindone)
+					{
+						activate_delayed_listeners();
+					}
 				}
 				else if (!mycmp(parv[2], "SPLIT"))
 				{
