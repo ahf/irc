@@ -2721,7 +2721,7 @@ static	struct	SOCKADDR *connect_inet(aConfItem *aconf, aClient *cptr,
 	server.SIN_FAMILY = AFINET;
 	get_sockhost(cptr, aconf->host);
 	
-	if (aconf->source_ip)
+	if (!BadPtr(aconf->source_ip))
 	{
 		memset(&outip, 0, sizeof(outip));
 		outip.SIN_PORT = 0;
