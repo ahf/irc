@@ -3222,7 +3222,7 @@ int	m_list(aClient *cptr, aClient *sptr, int parc, char *parv[])
 		
 		}
 		
-end_of_list:
+end_of_list:;
 #ifdef LIST_ALIS_NOTE
 		/* Send second notice if we listed more than 24 channels
 		 * - usual height of irc client in text mode.
