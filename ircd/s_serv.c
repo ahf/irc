@@ -153,6 +153,10 @@ int	m_squit(aClient *cptr, aClient *sptr, int parc, char *parv[])
 	*/
 	if (!acptr)
 	{
+		acptr = find_server(server, NULL);
+	}
+	if (!acptr)
+	{
 		for (acptr = client;
 			(acptr = next_client(acptr, server));
 			acptr = acptr->next)
