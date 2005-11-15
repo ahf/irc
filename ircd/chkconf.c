@@ -28,6 +28,9 @@ static const volatile char rcsid[] = "@(#)$Id$";
 #undef CHKCONF_C
 
 #define mystrdup(x) strdup(x)
+#ifdef MyMalloc
+#undef MyMalloc
+#endif
 #define MyMalloc(x)     malloc(x)
 /*#define MyFree(x)       free(x)*/
 
