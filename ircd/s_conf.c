@@ -255,6 +255,8 @@ char	*oline_flags_to_string(long flags)
 		*s++ ='e';
 	if (flags & ACL_TKLINE)
 		*s++ ='T';
+	if (flags & ACL_KLINE)
+		*s++ ='q';
 #ifdef CLIENTS_CHANNEL
 	if (flags & ACL_CLIENTS)
 		*s++ ='&';
@@ -298,6 +300,7 @@ long	oline_flags_parse(char *string)
 		case 'D': tmp |= ACL_DIE; break;
 		case 'e': tmp |= ACL_SET; break;
 		case 'T': tmp |= ACL_TKLINE; break;
+		case 'q': tmp |= ACL_KLINE; break;
 #ifdef CLIENTS_CHANNEL
 		case '&': tmp |= ACL_CLIENTS; break;
 #endif
@@ -335,6 +338,9 @@ long	oline_flags_parse(char *string)
 #endif
 #ifndef OPER_TKLINE
 	tmp &= ~ACL_TKLINE;
+#endif
+#ifndef OPER_KLINE
+	tmp &= ~ACL_KLINE;
 #endif
 	return tmp;
 }
