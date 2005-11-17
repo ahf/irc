@@ -723,6 +723,7 @@ They define privileges of an operator.
 <item>S - allows local and remote SQUIT 
 <item>s - allows local SQUIT
 <item>T - allows TKLINE
+<item>q - allows KLINE
 <item>t - enables full TRACE and STATS L
 </itemize>
 ``L'' flag cannot be overridden by other flags.
