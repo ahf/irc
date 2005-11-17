@@ -2546,13 +2546,13 @@ int	prep_kline(int tkline, aClient *cptr, aClient *sptr, int parc, char **parv)
 		if (!IsPerson(sptr))
 		{
 			sendto_one(sptr, ":%s NOTICE %s "
-				":TKLINE: Incorrect format",
+				":T/KLINE: Incorrect format",
 				ME, parv[0]);
 			return exit_client(cptr, cptr, &me,
-				"TKLINE: Incorrect format");
+				"T/KLINE: Incorrect format");
 		}
-		sendto_one(sptr, ":%s NOTICE %s :TKLINE: Incorrect format",
-			ME, parv[0]);
+		sendto_one(sptr, ":%s NOTICE %s :%sKLINE: Incorrect format",
+			tkline?"T":"", ME, parv[0]);
 		return 2;
 	}
 
