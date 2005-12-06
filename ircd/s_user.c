@@ -252,6 +252,11 @@ int	do_nick_name(char *nick, int server)
 	if (strcasecmp(nick, "anonymous") == 0)
 		return 0;
 
+#ifdef MINLOCALNICKLEN
+	if (!server && nick[MINLOCALNICKLEN-1] == '\0')
+		return 0;
+#endif
+
 	for (ch = nick; *ch && (ch-nick) < (server?NICKLEN:LOCALNICKLEN); ch++)
 	{
 		if (!isvalidnick(*ch))
