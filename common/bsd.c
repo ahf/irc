@@ -153,7 +153,10 @@ int	deliver_it(aClient *cptr, char *str, int len)
 			acpt->sendB += retval;
 		    }
 	    }
-	else
+	/* Retval of erroneous send() would always be -1, so we return
+	** (negative) saved errno, so upper layer will give proper notice.
+	** Note above about EAGAIN or EWOULDBLOCK. --B. */
+	if (retval < 0)
 		retval = -savederrno;
 	
 	return(retval);
