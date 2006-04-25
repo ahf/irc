@@ -95,6 +95,8 @@ static	int	pipe_start(u_int cl)
 		    return -1;
 	    case 0 :
 		    {
+			char portbuf[6];	/* 5 chars to hold the port number */
+
 			(void)close(pp[0]);
 			for (rc = 2; rc < MAXCONNECTIONS; rc++)
 				if (rc != pp[1])
@@ -104,9 +106,10 @@ static	int	pipe_start(u_int cl)
 			(void)dup2(2, 1);
 			if (pp[1] != 2 && pp[1] != 1)
 				(void)close(pp[1]);
+			snprintf(portbuf, 5, "%d", cldata[cl].itsport);
 			(void)execlp(cldata[cl].instance->popt,
 				cldata[cl].instance->popt,
-				cldata[cl].itsip, cldata[cl].itsport,
+				cldata[cl].itsip, portbuf,
 				(char *) NULL);
 			_exit(-1);
 		    }
