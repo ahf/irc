@@ -3038,6 +3038,11 @@ int	m_eob(aClient *cptr, aClient *sptr, int parc, char *parv[])
 int	m_eoback(aClient *cptr, aClient *sptr, int parc, char *parv[])
 {
 	cptr->flags &= ~FLAGS_CBURST;
+	if (cptr->serv && cptr->serv->byuid[0])
+	{
+		/* no need to report link break few days later, is there? --B. */
+		cptr->serv->byuid[0] = '\0';
+	}
 	return 0;
 }
 
