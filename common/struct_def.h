@@ -104,6 +104,7 @@ typedef struct        LineItem aExtData;
 #define	BOOT_PROT	0x100
 #define	BOOT_STRICTPROT	0x200
 #define	BOOT_NOIAUTH	0x400
+#define	BOOT_STANDALONE	0x800
 
 typedef enum Status {
 	STAT_CONNECTING = -4,
