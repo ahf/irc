@@ -219,6 +219,9 @@ static	time_t	try_connections(time_t currenttime)
 	int	i;
 #endif
 
+	if ((bootopt & BOOT_STANDALONE))
+		return 0;
+
 	Debug((DEBUG_NOTICE,"Connection check at   : %s",
 		myctime(currenttime)));
 	for (aconf = conf; aconf; aconf = aconf->next )
@@ -848,6 +851,8 @@ int	main(int argc, char *argv[])
 				bootopt |= BOOT_PROT;
 			else if (!strcmp(p, "off"))
 				bootopt &= ~(BOOT_PROT|BOOT_STRICTPROT);
+			else if (!strcmp(p, "standalone"))
+				bootopt |= BOOT_STANDALONE;
 			else
 				bad_command();
 			break;
