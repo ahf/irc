@@ -115,7 +115,10 @@ static RETSIGTYPE s_rehash(int s)
 #else
 	(void)signal(SIGHUP, s_rehash);	/* sysV -argv */
 #endif
-	dorehash = 1;
+	if (dorehash >= 1)
+		dorehash = 2;
+	else
+		dorehash = 1;
 }
 
 void	restart(char *mesg)
@@ -1243,11 +1246,11 @@ static	void	io_loop(void)
 
 	if (dorestart)
 		restart("Caught SIGINT");
-	if (dorehash)
+	if (dorehash > 0)
 	    {	/* Only on signal, not on oper /rehash */
 		ircd_writetune(tunefile);
 		(void)rehash(&me, &me, 1);
-		dorehash = 0;
+		dorehash--;
 	    }
 	if (restart_iauth || timeofday >= nextiarestart)
 	    {
