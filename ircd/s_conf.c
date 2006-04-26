@@ -1191,6 +1191,8 @@ int	rehash(aClient *cptr, aClient *sptr, int sig)
 	for (cltmp = NextClass(FirstClass()); cltmp; cltmp = NextClass(cltmp))
 		MaxLinks(cltmp) = -1;
 
+	if (sig == 'a')
+		start_iauth(2);	/* 2 means kill iauth first */
 	if (sig == 'd')
 		flush_cache();
 #ifdef TKLINE
