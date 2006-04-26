@@ -1194,7 +1194,11 @@ int	rehash(aClient *cptr, aClient *sptr, int sig)
 	if (sig == 'a')
 		start_iauth(2);	/* 2 means kill iauth first */
 	if (sig == 'd')
+	{
 		flush_cache();
+		close(resfd);
+		resfd = init_resolver(0x1f);
+	}
 #ifdef TKLINE
 	if (sig == 't')
 		tkline_expire(1);
