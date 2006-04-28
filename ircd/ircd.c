@@ -872,13 +872,14 @@ int	main(int argc, char *argv[])
 			tunefile = p;
 			break;
 		    case 'v':
-			(void)printf("ircd %s %s\n\tzlib %s\n\t%s #%s\n",
+			(void)printf("ircd %s %s\n\tzlib %s\n\tircd.conf delimiter %c\n\t%s #%s\n",
 				     version, serveropts,
 #ifndef	ZIP_LINKS
 				     "not used",
 #else
 				     zlib_version,
 #endif
+					IRCDCONF_DELIMITER,
 				     creation, generation);
 			  exit(0);
 		    case 'x':
