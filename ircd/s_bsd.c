@@ -2141,6 +2141,7 @@ int	read_message(time_t delay, FdAry *fdp, int ro)
 		pfd = &poll_fdarray[nbr_pfds++];\
 		pfd->fd     = thisfd;		\
 		pfd->events = 0;		\
+		pfd->revents = 0;		\
 	}
 
 	struct pollfd   poll_fdarray[MAXCONNECTIONS];
