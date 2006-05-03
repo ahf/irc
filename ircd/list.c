@@ -137,6 +137,10 @@ aClient	*make_client(aClient *from)
 #ifdef	ZIP_LINKS
 		cptr->zip = NULL;
 #endif
+#ifdef XLINE
+		cptr->user2 = NULL;
+		cptr->user3 = NULL;
+#endif
 	    }
 	return (cptr);
 }
@@ -161,6 +165,12 @@ void	free_client(aClient *cptr)
 		{
 			MyFree(cptr->reason);
 		}
+#ifdef XLINE
+		if (cptr->user2)
+			MyFree(cptr->user2);
+		if (cptr->user3)
+			MyFree(cptr->user3);
+#endif
 	}
 	MyFree(cptr);
 }
