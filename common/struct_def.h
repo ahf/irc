@@ -292,16 +292,6 @@ struct	CPing	{
 	u_long	lrecvd;		/* # received */
 };
 
-#ifdef XLINE
-typedef	struct	UnregItem aUnregItem;
-struct	UnregItem {
-	int	fd;	/* client fd */
-	char	*user2;	/* 2nd param of USER */
-	char	*user3;	/* 3rd param of USER */
-	struct	UnregItem *next;
-};
-#endif
-
 struct	ConfItem	{
 	u_int	status;		/* If CONF_ILLEGAL, delete when no clients */
 	int	clients;	/* Number of *LOCAL* clients using this */
@@ -557,6 +547,14 @@ struct Client	{
 	char	passwd[PASSWDLEN+1];
 	char	exitc;
 	char	*reason;	/* additional exit message */
+#ifdef XLINE
+	/* Those logically should be in anUser struct, but would be null for
+	** all remote users... so better waste two pointers for all local
+	** non-users than two pointers for all remote users. --B. */
+	char	*user2;	/* 2nd param of USER */
+	char	*user3;	/* 3rd param of USER */
+#endif
+
 };
 
 #define	CLIENT_LOCAL_SIZE sizeof(aClient)
