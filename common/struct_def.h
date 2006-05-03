@@ -299,6 +299,7 @@ struct	ConfItem	{
 	char	*host;
 	char	*passwd;
 	char	*name;
+	char	*name2;
 	int	port;
 	long	flags;		/* I-line flags */
 	int	pref;		/* preference value */
