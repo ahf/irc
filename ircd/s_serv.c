@@ -1710,10 +1710,11 @@ static  void    report_x_lines(aClient *sptr, char *to)
 		if (tmp->status != CONF_XLINE)
 			continue;
 
-		sendto_one(sptr,":%s %d %s X :%s %s %s %s", 
+		sendto_one(sptr,":%s %d %s X :%s %s %s %s %s", 
 			ME, RPL_STATSDEBUG, to,
 			BadTo(tmp->host), BadTo(tmp->passwd),
-			BadTo(tmp->name), BadTo(tmp->source_ip));
+			BadTo(tmp->name), BadTo(tmp->source_ip),
+			BadTo(tmp->name2));
 	}
 }
 #endif
