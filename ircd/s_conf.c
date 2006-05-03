@@ -1606,7 +1606,9 @@ int 	initconf(int opt)
 			if (aconf->status == CONF_XLINE)
 			{
 				DupString(aconf->source_ip, tmp);
-				/* For X: we stop parsing after 4th field */
+				if ((tmp = getfield(NULL)) == NULL)
+					break;
+				DupString(aconf->name2, tmp);
 				break;
 			}
 #endif
@@ -1630,6 +1632,8 @@ int 	initconf(int opt)
 		istat.is_confmem += aconf->host ? strlen(aconf->host)+1 : 0;
 		istat.is_confmem += aconf->passwd ? strlen(aconf->passwd)+1 :0;
 		istat.is_confmem += aconf->name ? strlen(aconf->name)+1 : 0;
+		istat.is_confmem += aconf->name2 ? strlen(aconf->name2)+1 : 0;
+		istat.is_confmem += aconf->source_ip ? strlen(aconf->source_ip)+1 : 0;
 
 		/*
 		** Bounce line fields are mandatory
