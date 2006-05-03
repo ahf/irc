@@ -1076,7 +1076,7 @@
 
      FFoorrmmaatt
 
-        X:<USER 1st arg>:<USER 2nd arg>:<USER 3rd arg>:<USER 4th arg>:nick:
+        X:<USER 1st arg>:<USER 2nd arg>:<USER 3rd arg>:<USER 4th arg>:<Nick>:
 
 
 

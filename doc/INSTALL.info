@@ -1148,7 +1148,7 @@ Remove an errant user from IRC on your site.
      disable his access from that IRCD Server as well.
 
 `Format'
-     X:<USER 1st arg>:<USER 2nd arg>:<USER 3rd arg>:<USER 4th arg>:nick:
+     X:<USER 1st arg>:<USER 2nd arg>:<USER 3rd arg>:<USER 4th arg>:<Nick>:
 
 `X'
      "X" tells the IRCD that you are making an XKILL USER command entry.
