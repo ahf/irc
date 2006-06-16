@@ -1,6 +1,15 @@
 # @(#)$Id$
 
-This is version 2.11.1 of the IRC software.
+This is version 2.11.2 of the IRC software.
+===============================================================================
+
+Important configuration changes in 2.11.2 (since 2.11.1):
+
+	* Y-line limits maxlinks behaviour is changed. Now all I-lines
+	  share the same maxlink if they are in the same class. If you
+	  want old behaviour, define YLINE_LIMITS_OLD_BEHAVIOUR.
+
+This is version 2.11.2 of the IRC software.
 ===============================================================================
 
 New features in 2.11.1:
