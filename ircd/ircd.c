@@ -1033,10 +1033,10 @@ int	main(int argc, char *argv[])
 			"Fatal Error: No M-line in ircd.conf.\n");
 			exit(-1);
 		}
-		if (check_servername(ME))
+		if ((i=check_servername(ME)))
 		{
 			fprintf(stderr,
-			"Fatal Error: Invalid server name.\n");
+			"Fatal Error: %s.\n", check_servername_errors[i-1][1]);
 			exit(-1);
 		}
 		if (!me.serv->sid)

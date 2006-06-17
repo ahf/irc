@@ -40,7 +40,7 @@ static	void	report_listeners(aClient *, char *);
 static	void	count_servers_users(aClient *, int *, int *);
 const	char	*check_servername_errors[3][2] = {
 	{ "too long", "Bogus servername - too long" },
-	{ "invalid", "Bogus servername - invalid hostname" },
+	{ "invalid", "Bogus servername - invalid chars in hostname" },
 	{ "bogus", "Bogus servername - no dot"}};
 static	int	send_users(aClient *, aClient *, int, char **);
 
