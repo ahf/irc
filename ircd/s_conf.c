@@ -717,8 +717,13 @@ int	attach_conf(aClient *cptr, aConfItem *aconf)
 		return -1; /* EXITC_FAILURE, hmm */
 	if ((aconf->status & (CONF_OPERATOR | CONF_CLIENT )))
 	    {
-		if (aconf->clients >= ConfMaxLinks(aconf) &&
-		    ConfMaxLinks(aconf) > 0)
+		if (
+#ifdef YLINE_LIMITS_OLD_BEHAVIOUR
+			aconf->clients >= ConfMaxLinks(aconf)
+#else
+			ConfLinks(aconf) >= ConfMaxLinks(aconf)
+#endif
+			&& ConfMaxLinks(aconf) > 0)
 			return -3;    /* EXITC_YLINEMAX */
 	    }
 
