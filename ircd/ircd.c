@@ -237,6 +237,11 @@ static	time_t	try_connections(time_t currenttime)
 		if (aconf->port <= 0)
 			continue;
 
+		cltmp = Class(aconf);
+		/* not a candidate for AC */
+		if (MaxLinks(cltmp) == 0)
+			continue;
+
 		/* minimize next to lowest hold time of all AC-able C-lines */
 		if (next > aconf->hold || next == 0)
 			next = aconf->hold;
@@ -248,7 +253,6 @@ static	time_t	try_connections(time_t currenttime)
 		/* at least one candidate not held for future, good */
 		allheld = 0;
 
-		cltmp = Class(aconf);
 		/* see if another link in this conf is allowed */
 		if (Links(cltmp) >= MaxLinks(cltmp))
 			continue;
