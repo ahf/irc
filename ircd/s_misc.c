@@ -1071,6 +1071,8 @@ void	tstats(aClient *cptr, char *name)
 		ME, RPL_STATSDEBUG, name, istat.is_delayclosewait,
 		istat.is_delayclose);
 #endif
+	sendto_one(cptr, ":%s %d %s :local channels reops %d",
+		ME, RPL_STATSDEBUG, name, sp->is_reop);
 	sendto_one(cptr, ":%s %d %s :Client - Server",
 		   ME, RPL_STATSDEBUG, name);
 	sendto_one(cptr, ":%s %d %s :connected %lu %lu",
