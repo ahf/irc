@@ -3670,6 +3670,7 @@ static int	reop_channel(time_t now, aChannel *chptr, int reopmode)
 		sendto_channel_butserv(chptr, &me, ":%s MODE %s +o %s",
 			ME, chptr->chname, op.value.cptr->name);
 		chptr->reop = 0;
+		ircstp->is_reop++;
 		return 1;
 	}
 	return 0;
