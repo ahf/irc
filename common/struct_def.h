@@ -585,6 +585,7 @@ struct	stats {
 	u_int	is_save; /* number of saved clients */
 	u_int	is_fake; /* MODE 'fakes' */
 	u_int	is_reop; /* number of local reops */
+	u_int	is_rreop; /* number of remote reops */
 	u_int	is_asuc; /* successful auth requests */
 	u_int	is_abad; /* bad auth requests */
 	u_int	is_udpok;	/* packets recv'd on udp port */
