@@ -1343,7 +1343,7 @@ void	sendto_flog(aClient *cptr, char msg, char *username, char *hostname)
 		/* client IP */
 		cptr->user ? cptr->user->sip :
 #ifdef INET6
-		inetntop(AF_INET6, (char *)&cptr->ip, mydummy, MYDUMMY_SIZE),
+		inetntop(AF_INET6, (char *)&cptr->ip, ipv6string, sizeof(ipv6string)),
 #else
 		inetntoa((char *)&cptr->ip),
 #endif

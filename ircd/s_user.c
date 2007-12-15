@@ -2776,8 +2776,8 @@ int	m_oper(aClient *cptr, aClient *sptr, int parc, char *parv[])
 			IsUnixSocket(sptr) ? sptr->sockhost :
 #endif
 #ifdef INET6
-                       inet_ntop(AF_INET6, (char *)&sptr->ip, mydummy,
-			       MYDUMMY_SIZE)
+                       inet_ntop(AF_INET6, (char *)&sptr->ip, ipv6string,
+			       sizeof(ipv6string))
 #else
                        inetntoa((char *)&sptr->ip)
 #endif
@@ -2817,7 +2817,7 @@ int	m_oper(aClient *cptr, aClient *sptr, int parc, char *parv[])
 #endif
 #ifdef INET6
 				inetntop(AF_INET6, (char *)&sptr->ip,
-					mydummy, MYDUMMY_SIZE)
+					ipv6string, sizeof(ipv6string))
 #else
 				inetntoa((char *)&sptr->ip)
 #endif

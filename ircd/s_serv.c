@@ -1828,7 +1828,7 @@ static void report_fd(aClient *sptr, aClient *acptr, char *to)
 #ifdef INET6
 		inetntop(AF_INET6,
 		(char *)&acptr->acpt->ip,
-		mydummy, MYDUMMY_SIZE);
+		ipv6string, sizeof(ipv6string));
 #else
 		inetntoa((char *)&acptr->acpt->ip);
 #endif
@@ -1843,7 +1843,7 @@ static void report_fd(aClient *sptr, aClient *acptr, char *to)
 #ifdef INET6
 		inetntop(AF_INET6,
 		(char *)&acptr->ip,
-		mydummy, MYDUMMY_SIZE),
+		ipv6string, sizeof(ipv6string)),
 #else
 		inetntoa((char *)&acptr->ip),
 #endif
