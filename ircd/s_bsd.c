@@ -1263,16 +1263,14 @@ static	int completed_connection(aClient *cptr)
 		return -1;
 	    }
 	if (!BadPtr(aconf->passwd))
-#ifndef	ZIP_LINKS
-		sendto_one(cptr, "PASS %s %s IRC|%s %s", aconf->passwd,
-			   pass_version, serveropts,
-			   (bootopt & BOOT_STRICTPROT) ? "P" : "");
-#else
 		sendto_one(cptr, "PASS %s %s IRC|%s %s%s", aconf->passwd,
-			   pass_version, serveropts,
-			   (bootopt & BOOT_STRICTPROT) ? "P" : "",
-			   (aconf->status == CONF_ZCONNECT_SERVER) ? "Z" : "");
+			pass_version, serveropts,
+			(bootopt & BOOT_STRICTPROT) ? "P" : "",
+#ifdef ZIP_LINKS
+			(aconf->status == CONF_ZCONNECT_SERVER) ? "Z" :
 #endif
+			"",
+			);
 
 	aconf = find_conf(cptr->confs, cptr->name, CONF_NOCONNECT_SERVER);
 	if (!aconf)
