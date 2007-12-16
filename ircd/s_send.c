@@ -367,7 +367,7 @@ void	esendto_match_servs(aClient *orig, char *imsg, aChannel *chptr,
 		{
 		    return;
 		}
-		if ((mask = rindex(chptr->chname, ':')))
+		if ((mask = get_channelmask(chptr->chname)))
 		{
 		    mask++;
 		}
