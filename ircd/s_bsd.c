@@ -1269,7 +1269,7 @@ static	int completed_connection(aClient *cptr)
 #ifdef ZIP_LINKS
 			(aconf->status == CONF_ZCONNECT_SERVER) ? "Z" :
 #endif
-			"",
+			""
 			);
 
 	aconf = find_conf(cptr->confs, cptr->name, CONF_NOCONNECT_SERVER);
