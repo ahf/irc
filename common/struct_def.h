@@ -181,6 +181,9 @@ typedef enum Status {
 				  ** a SQUIT. */
 #define	FLAGS_EOB	0x4000000 /* EOB received */
 #define FLAGS_LISTENINACTIVE 0x8000000 /* Listener does not listen() */
+#ifdef JAPANESE
+#define	FLAGS_JP	0x10000000 /* jp version, used both for chans and servs */
+#endif
 	
 #define	FLAGS_OPER	0x0001 /* operator */
 #define	FLAGS_LOCOP	0x0002 /* local operator -- SRB */
@@ -692,6 +695,9 @@ struct Channel	{
 	Link	*clist;		/* list of local! connections which are members */
 	time_t	history;	/* channel history (aka channel delay) */
 	time_t	reop;		/* server reop stamp for !channels */
+#ifdef JAPANESE
+	int flags;
+#endif
 	char	chname[1];
 };
 

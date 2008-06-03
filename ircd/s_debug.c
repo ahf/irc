@@ -66,6 +66,9 @@ char	serveropts[] = {
 #ifdef	DEFAULT_INVISIBLE
 'I',
 #endif
+#ifdef	JAPANESE
+'j',
+#endif
 #ifdef	OPER_DIE
 'J',
 #endif

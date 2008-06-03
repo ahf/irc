@@ -389,6 +389,11 @@ int	check_version(aClient *cptr)
 		}
 	}
 
+#ifdef JAPANESE
+	if (link && strchr(link, 'j'))	/* jp version */
+		cptr->flags |= FLAGS_JP;
+#endif
+
 	/* right now, I can't code anything good for this */
 	/* Stop whining, and do it! ;) */
 	if (link && strchr(link, 'Z'))	/* Compression requested */
@@ -1037,9 +1042,14 @@ int	m_server_estab(aClient *cptr, char *sid, char *versionbuf)
 		    }
 
 		if (bconf->passwd[0])
-			sendto_one(cptr, "PASS %s %s IRC|%s %s%s",
+			sendto_one(cptr, "PASS %s %s IRC|%s %s%s%s",
 				bconf->passwd, pass_version, serveropts,
 				(bootopt & BOOT_STRICTPROT) ? "P" : "",
+#ifdef	JAPANESE
+				"j",
+#else
+				"",
+#endif
 #ifdef	ZIP_LINKS
 				(bconf->status == CONF_ZCONNECT_SERVER) ? "Z" :
 #endif
