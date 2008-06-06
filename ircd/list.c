@@ -568,6 +568,11 @@ aClass	*make_class(void)
 
 void	free_class(aClass *tmp)
 {
+#ifdef ENABLE_CIDR_LIMITS
+	if(tmp->ip_limits)
+		patricia_destroy(tmp->ip_limits);
+#endif
+
 	MyFree(tmp);
 #ifdef	DEBUGMODE
 	classs.inuse--;
