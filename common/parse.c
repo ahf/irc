@@ -643,7 +643,7 @@ int	parse(aClient *cptr, char *buffer, char *bufend)
 			if (buffer[0] != '\0')
 			    {
 				cptr->flags |= FLAGS_UNKCMD;
-				if (IsPerson(from))
+				if (IsPerson(from) || IsService(from))
 					sendto_one(from,
 					    ":%s %d %s %s :Unknown command",
 					    me.name, ERR_UNKNOWNCOMMAND,
