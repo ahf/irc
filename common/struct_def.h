@@ -308,6 +308,9 @@ struct	ConfItem	{
 	char	*passwd;
 	char	*name;
 	char	*name2;
+#ifdef XLINE
+	char	*name3;
+#endif
 	int	port;
 	long	flags;		/* I-line flags */
 	int	pref;		/* preference value */
