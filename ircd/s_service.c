@@ -108,7 +108,7 @@ static	aClient *best_service(char *name, aClient *cptr)
 **	action	type on notice
 **	server	origin
 */
-void	check_services_butone(long action, char *server, aClient *cptr,
+void	check_services_butone(long action, aServer *servp, aClient *cptr,
 		char *fmt, ...)
 /* shouldn't cptr be named sptr? */
 {
@@ -128,7 +128,7 @@ void	check_services_butone(long action, char *server, aClient *cptr,
 		** wanted AND if it comes from a server matching the dist
 		*/
 		if ((sp->wants & action)
-		    && (!server || !match(sp->dist, server)))
+		    && (!servp || !match(sp->dist, servp->bcptr->name)))
 		{
 			if ((sp->wants & (SERVICE_WANT_PREFIX|SERVICE_WANT_UID))
 			    && cptr && IsRegisteredUser(cptr) &&
