@@ -1474,7 +1474,8 @@ static	int	m_message(aClient *cptr, aClient *sptr, int parc,
 		/*
 		** nickname addressed?
 		*/
-		if ((IsServer(cptr) && (acptr = find_uid(nick, NULL))) || 
+		if (((IsServer(cptr) || IsService(cptr))
+			&& (acptr = find_uid(nick, NULL))) || 
 			(acptr = find_person(nick, NULL)))
 		    {
 			if (!notice && MyConnect(sptr) &&
