@@ -57,7 +57,7 @@ typedef struct        LineItem aExtData;
 #define	BUFSIZE		512		/* WARNING: *DONT* CHANGE THIS!!!! */
 #define	MAXRECIPIENTS 	20
 #define	MAXBANS		64
-#define	MAXBANLENGTH	1024
+#define	MAXBANLENGTH	2048
 #define	BANLEN		(USERLEN + NICKLEN + HOSTLEN + 3)
 #define MAXPENALTY	10
 #define	CHIDLEN		5		/* WARNING: *DONT* CHANGE THIS!!!! */
