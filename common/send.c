@@ -1143,6 +1143,12 @@ void	sendto_flag(u_int chan, char *pattern, ...)
 			check_services_butone(SERVICE_WANT_NUMERICS, NULL, &me,
 					      "&NUMERICS :%s", nbuf);
 			break;
+#ifdef CLIENTS_CHANNEL
+		case SCH_CLIENT:
+			check_services_butone(SERVICE_WANT_CLIENTS, NULL, &me,
+					      "&CLIENTS :%s", nbuf);
+			break;
+#endif
 		    }
 #endif
 	    }
