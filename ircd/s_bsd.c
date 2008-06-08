@@ -809,7 +809,7 @@ void	daemonize(void)
 #if defined(HPUX) || defined(SVR4) || defined(DYNIXPTX) || \
     defined(_POSIX_SOURCE) || defined(SGI)
 		(void)setsid();
-#elif defined (__CYGWIN32__)
+#elif defined (__CYGWIN32__) || defined(__APPLE__)
     		(void)setpgrp();
 #else
 		(void)setpgrp(0, (int)getpid());
