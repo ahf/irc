@@ -1031,9 +1031,10 @@ typedef struct
 #define ACL_NOPENALTY		0x20000
 #define ACL_TRACE		0x40000
 #define ACL_KLINE		0x80000
+#define ACL_SIDTRACE		0x100000
 
 #define ACL_ALL_REMOTE		(ACL_KILLREMOTE|ACL_SQUITREMOTE|ACL_CONNECTREMOTE)
-#define ACL_ALL			0xFFFFF
+#define ACL_ALL			0x1FFFFF
 
 #ifdef CLIENTS_CHANNEL
 /* information scope of &CLIENTS channel. */

@@ -113,6 +113,10 @@ struct Message msgtab[] = {
 #ifdef KLINE
 { "KLINE",    2, MPAR, { _m(m_nop), _m(m_nopriv), _m(m_kline), _m(m_kline), _m(m_unreg) } },
 #endif
+{ "ETRACE",   0, MPAR, { _m(m_nop), _m(m_nopriv), _m(m_etrace), _m(m_nop), _m(m_unreg) } },
+#ifdef ENABLE_SIDTRACE
+{ "SIDTRACE", 0, MPAR, { _m(m_nop), _m(m_nopriv), _m(m_sidtrace), _m(m_nop), _m(m_unreg) } },
+#endif
 { NULL,       0,    0, { _m(NULL), _m(NULL), _m(NULL), _m(NULL), _m(NULL) } }
 };
 #undef _m

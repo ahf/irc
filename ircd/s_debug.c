@@ -118,6 +118,9 @@ char	serveropts[] = {
 #ifdef	USERS_SHOWS_UTMP
 'U',
 #endif
+#ifdef	ENABLE_SIDTRACE
+'v',
+#endif
 #ifdef	UNIXPORT
 'X',
 #endif
