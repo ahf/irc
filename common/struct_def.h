@@ -50,13 +50,13 @@ typedef struct        LineItem aExtData;
 #define UIDLEN		9	/* must not be bigger than NICKLEN --Beeth */
 #define	USERLEN		10
 #define	REALLEN	 	50
-#define	TOPICLEN	160
+#define	TOPICLEN	255
 #define	CHANNELLEN	50
 #define	PASSWDLEN 	20
 #define	KEYLEN		23
 #define	BUFSIZE		512		/* WARNING: *DONT* CHANGE THIS!!!! */
 #define	MAXRECIPIENTS 	20
-#define	MAXBANS		42
+#define	MAXBANS		64
 #define	MAXBANLENGTH	1024
 #define	BANLEN		(USERLEN + NICKLEN + HOSTLEN + 3)
 #define MAXPENALTY	10
