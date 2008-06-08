@@ -2661,7 +2661,9 @@ int	prep_kline(int tkline, aClient *cptr, aClient *sptr, int parc, char **parv)
 		** some crucial parts, which can be seen as a typo. --Beeth */
 		i = 1;
 	}
+#ifdef KLINE
 badkline:
+#endif
 	if (i || !host)
 	{
 		/* error */
