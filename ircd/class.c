@@ -278,7 +278,7 @@ void	report_classes(aClient *sptr, char *to)
 #ifdef ENABLE_CIDR_LIMITS
 		if (MaxCidrAmount(cltmp) > 0 && CidrLen(cltmp) > 0)
 			/* leading space is important */
-			sprintf(tmp, " %d/%d",
+			snprintf(tmp, sizeof(tmp), " %d/%d",
 				MaxCidrAmount(cltmp), CidrLen(cltmp));
 		else
 			tmp[0] = '\0';
