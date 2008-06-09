@@ -714,7 +714,8 @@ int	detach_conf(aClient *cptr, aConfItem *aconf)
 					if (ConfLinks(aconf) > 0)
 						--ConfLinks(aconf);
 #ifdef ENABLE_CIDR_LIMITS
-					remove_cidr_limit(cptr, aconf);
+					if ((aconf->status & CONF_CLIENT))
+						remove_cidr_limit(cptr, aconf);
 #endif
 				}
 
