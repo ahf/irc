@@ -460,7 +460,9 @@ struct	User	{
 	char	host[HOSTLEN+1];
 	char	*server;
 	u_int	hhashv;		/* hostname hash value */
+	u_int	iphashv;	/* IP hash value */
 	struct User *hhnext;	/* next entry in hostname hash */
+	struct User *iphnext;	/* next entry in IP hash */
 				/* sip MUST be the last in this struct!!! */
 	char	sip[1];		/* ip as a string, big enough for ipv6
 				 * allocated to real size in make_user */
