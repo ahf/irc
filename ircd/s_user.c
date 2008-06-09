@@ -1751,7 +1751,7 @@ static	void	who_find(aClient *sptr, char *mask, int oper)
 	aClient	*acptr;
 	
 	/* first, show INvisible matching users on common channels */
-	if (sptr->user) // service can request who as well
+	if (sptr->user) /* service can request who as well */
 	for (lp = sptr->user->channel; lp ;lp = lp->next)
 	{
 		chptr = lp->value.chptr;
