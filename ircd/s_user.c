@@ -825,6 +825,7 @@ int	register_user(aClient *cptr, aClient *sptr, char *nick, char *username)
 	check_services_num(sptr, buf);
 #endif
 	add_to_hostname_hash_table(user->host, user);
+	add_to_ip_hash_table(user->sip, user);
 	return 1;
 }
 
