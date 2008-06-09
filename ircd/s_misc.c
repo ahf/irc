@@ -904,6 +904,7 @@ static	void	exit_one_client(aClient *cptr, aClient *sptr, aClient *from,
 			off_history(sptr);
 			del_from_hostname_hash_table(sptr->user->host,
 						     sptr->user);
+			del_from_ip_hash_table(sptr->user->sip, sptr->user);
 		    }
 	    }
 	else if (sptr->name[0] && IsService(sptr))
