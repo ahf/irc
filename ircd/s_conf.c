@@ -2612,6 +2612,7 @@ void do_kline(int tkline, char *who, time_t time, char *user, char *host, char *
 				sprintf(buff, "Kill line active: %.80s",
 					aconf->passwd);
 			}
+			acptr->exitc = tkline ? EXITC_TKLINE : EXITC_KLINE;
 			(void) exit_client(acptr, acptr, &me, buff);
 		}
 	}

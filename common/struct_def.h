@@ -951,6 +951,9 @@ typedef enum ServerChannels {
 #define EXITC_BADPASS	'p'	/* bad password */
 #define EXITC_SENDQ	'Q'	/* send queue exceeded */
 #define EXITC_REF	'R'	/* Refused */
+#ifdef TKLINE
+#define EXITC_TKLINE	't'	/* tkline */
+#endif
 #define EXITC_AREF	'U'	/* Unauthorized by iauth */
 #define EXITC_AREFQ	'u'	/* Unauthorized by iauth, be quiet */
 #define EXITC_VIRUS	'v'	/* joined a channel used by PrettyPark virus */
