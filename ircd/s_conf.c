@@ -813,10 +813,15 @@ int	attach_conf(aClient *cptr, aConfItem *aconf)
 		if (ConfMaxHLocal(aconf) > 0 || ConfMaxUHLocal(aconf) > 0 ||
 		    ConfMaxHGlobal(aconf) > 0 || ConfMaxUHGlobal(aconf) > 0 )
 		{
+#ifdef YLINE_LIMITS_IPHASH
 			for ((user = hash_find_ip(cptr->user->sip, NULL));
 			     user; user = user->iphnext)
-			{
 				if (!mycmp(cptr->user->sip, user->sip))
+#else
+			for ((user = hash_find_hostname(cptr->sockhost, NULL));
+			     user; user = user->hhnext)
+				if (!mycmp(cptr->sockhost, user->host))
+#endif
 				{
 					ghcnt++;
 					if (ConfMaxHGlobal(aconf) > 0 &&
@@ -860,7 +865,6 @@ int	attach_conf(aClient *cptr, aConfItem *aconf)
 						return -7; /* EXITC_GUHMAX */
 					}
 				}
-			}
 		}
 	}
 
