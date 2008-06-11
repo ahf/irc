@@ -2654,6 +2654,9 @@ int	m_njoin(aClient *cptr, aClient *sptr, int parc, char *parv[])
 		{
 			chptr->history = timeofday + (*chptr->chname == '!' ?
 				LDELAYCHASETIMELIMIT : DELAYCHASETIMELIMIT);
+			istat.is_hchan++;
+			istat.is_hchanmem += sizeof(aChannel) +
+				strlen(chptr->chname);
 		}
 		/* There cannot be anything else in this NJOIN. */
 		return 0;
