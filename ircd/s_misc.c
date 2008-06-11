@@ -902,9 +902,13 @@ static	void	exit_one_client(aClient *cptr, aClient *sptr, aClient *from,
 			add_history(sptr, (sptr == cptr) ? &me : NULL);
 #endif
 			off_history(sptr);
+#ifdef USE_HOSTHASH
 			del_from_hostname_hash_table(sptr->user->host,
 						     sptr->user);
+#endif
+#ifdef USE_IPHASH
 			del_from_ip_hash_table(sptr->user->sip, sptr->user);
+#endif
 		    }
 	    }
 	else if (sptr->name[0] && IsService(sptr))
