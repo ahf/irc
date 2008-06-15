@@ -1924,7 +1924,7 @@ int	m_stats(aClient *cptr, aClient *sptr, int parc, char *parv[])
 		/* send list of file descriptors 
 		 * Avaible only for local opers for security reasons.
 		 */
-		if (!IsAnOper(sptr) || !MyConnect(sptr))
+		if (!is_allowed(sptr, ACL_TRACE) || !MyConnect(sptr))
 		{
 			stat = '*';
 			break;
