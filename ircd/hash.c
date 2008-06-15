@@ -1246,7 +1246,7 @@ anUser	*hash_find_ip(char *ip, anUser *user)
 
 	for (tmp = (anUser *)tmp3->list; tmp; prv = tmp, tmp = tmp->iphnext)
 	{
-		if (hv == tmp->iphashv && !mycmp(ip, tmp->host))
+		if (hv == tmp->iphashv && !mycmp(ip, tmp->sip))
 		    {
 			iphits++;
 			return (tmp);
