@@ -256,6 +256,7 @@ void	initclass(void)
 	PingFreq(FirstClass()) = PINGFREQUENCY;
 	MaxLinks(FirstClass()) = MAXIMUM_LINKS;
 	MaxSendq(FirstClass()) = QUEUELEN;
+	MaxBSendq(FirstClass()) = QUEUELEN;
 	Links(FirstClass()) = 0;
 	NextClass(FirstClass()) = NULL;
 	MaxHLocal(FirstClass()) = 1;
