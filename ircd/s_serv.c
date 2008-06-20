@@ -2858,6 +2858,11 @@ int	m_etrace(aClient *cptr, aClient *sptr, int parc, char *parv[])
 				get_client_class(acptr),
 				acptr->name, acptr->user->username,
 				acptr->user->host, acptr->user->sip,
+#ifdef XLINE
+				acptr->user2, acptr->user3, 
+#else
+				"-", "-",
+#endif
 				acptr->info);
 	}
 	else
@@ -2876,6 +2881,11 @@ int	m_etrace(aClient *cptr, aClient *sptr, int parc, char *parv[])
 				get_client_class(acptr), 
 				acptr->name, acptr->user->username, 
 				acptr->user->host, acptr->user->sip,
+#ifdef XLINE
+				acptr->user2, acptr->user3, 
+#else
+				"-", "-",
+#endif
 				acptr->info);
 		}
 	}
