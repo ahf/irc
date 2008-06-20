@@ -760,7 +760,7 @@ char *	replies[] = {
 /* 706 */ (char *)NULL,
 /* 707 */ (char *)NULL,
 /* 708 */ (char *)NULL,
-/* 709 RPL_ETRACE */		":%s 709 %s %s %d %s %s %s %s :%s",
+/* 709 RPL_ETRACE */		":%s 709 %s %s %d %s %s %s %s %s %s :%s",
 /* 710 */ (char *)NULL,
 /* 711 */ (char *)NULL,
 /* 712 */ (char *)NULL,
