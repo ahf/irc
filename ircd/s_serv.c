@@ -2854,7 +2854,7 @@ int	m_etrace(aClient *cptr, aClient *sptr, int parc, char *parv[])
 		if ((acptr = find_person(parv[1], NULL)) && MyClient(acptr))
 			sendto_one(sptr, replies[RPL_ETRACEFULL],
 				ME, sptr->name,
-				IsOper(acptr) ? "Oper" : "User",
+				IsAnOper(acptr) ? "Oper" : "User",
 				get_client_class(acptr),
 				acptr->name, acptr->user->username,
 				acptr->user->host, acptr->user->sip,
@@ -2877,7 +2877,7 @@ int	m_etrace(aClient *cptr, aClient *sptr, int parc, char *parv[])
 		
 			sendto_one(sptr, replies[RPL_ETRACEFULL],
 				ME, sptr->name, 
-				IsOper(acptr) ? "Oper" : "User", 
+				IsAnOper(acptr) ? "Oper" : "User", 
 				get_client_class(acptr), 
 				acptr->name, acptr->user->username, 
 				acptr->user->host, acptr->user->sip,
