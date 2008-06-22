@@ -16,6 +16,11 @@
 
 #define	AR_TTL		600	/* TTL in seconds for dns cache entries */
 
+#define FLAGS_A_VALID		1
+#define FLAGS_AAAA_VALID		2
+#define FLAGS_PTR_PEND		4
+#define FLAGS_PTR_VALID		8
+
 struct	hent {
 	char	*h_name;	/* official name of host */
 	char	*h_aliases[MAXALIASES];	/* alias list */
@@ -47,6 +52,7 @@ typedef	struct	reslist {
 typedef	struct	cache {
 	time_t	expireat;
 	time_t	ttl;
+	int	flags;
 	struct	hostent	he;
 	struct	cache	*hname_next, *hnum_next, *list_next;
 	} aCache;
