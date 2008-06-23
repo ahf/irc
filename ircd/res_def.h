@@ -17,7 +17,9 @@
 #define	AR_TTL		600	/* TTL in seconds for dns cache entries */
 
 #define FLAGS_A_VALID		1
+#ifdef INET6
 #define FLAGS_AAAA_VALID		2
+#endif
 #define FLAGS_PTR_PEND		4
 #define FLAGS_PTR_VALID		8
 
