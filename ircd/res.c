@@ -1759,7 +1759,7 @@ int	m_dns(aClient *cptr, aClient *sptr, int parc, char *parv[])
 	if (parv[1] && *parv[1] == 'l') {
 		for(cp = cachetop; cp; cp = cp->list_next)
 		{
-			sendto_one(sptr, "NOTICE %s :Ex %d ttl %d host %s(%s)",
+			sendto_one(sptr, "NOTICE %s :Ex %d ttl %d host %s(%s) %d",
 				parv[0], cp->expireat - timeofday, cp->ttl,
 				cp->he.h_name,
 #ifdef INET6
@@ -1768,7 +1768,7 @@ int	m_dns(aClient *cptr, aClient *sptr, int parc, char *parv[])
 #else
 				inetntoa(cp->he.h_addr)
 #endif
-				);
+				, cp->flags);
 			for (i = 0; cp->he.h_aliases[i]; i++)
 			{
 				sendto_one(sptr,"NOTICE %s : %s = %s (CN)",
