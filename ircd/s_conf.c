@@ -1825,10 +1825,22 @@ int 	initconf(int opt)
 		if (aconf->status & CONF_SERVICE)
 			aconf->port &= SERVICE_MASK_ALL;
 		if (aconf->status & (CONF_SERVER_MASK|CONF_SERVICE))
-			if (ncount > MAXCONFLINKS || ccount > MAXCONFLINKS ||
-			    !aconf->host || index(aconf->host, '*') ||
-			     index(aconf->host,'?') || !aconf->name)
-				continue;
+		{
+			char *hostptr = NULL;
+
+			/* since it's u@h syntax, let's ignore user part
+			   in checks below --B. */
+			hostptr = index(aconf->host, '@');
+			if (hostptr != NULL)
+				hostptr++;	/* move ptr after '@' */
+			else
+				hostptr = aconf->host;
+
+			if (ncount > MAXCONFLINKS || ccount > MAXCONFLINKS
+				|| !hostptr || index(hostptr, '*')
+				|| index(hostptr,'?') || !aconf->name)
+				continue;	/* next config line */
+		}
 
 		if (aconf->status &
 		    (CONF_SERVER_MASK|CONF_OPERATOR|CONF_SERVICE))
