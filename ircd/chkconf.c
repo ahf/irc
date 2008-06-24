@@ -188,6 +188,9 @@ static	int	openconf(void)
 		 */
 		(void)execlp(M4_PATH, "m4",
 #ifdef HAVE_GNU_M4
+#ifdef USE_M4_PREFIXES
+			"-P",
+#endif
 			"-I", includedir,
 #endif
 #ifdef INET6
