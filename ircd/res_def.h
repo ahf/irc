@@ -16,14 +16,14 @@
 
 #define	AR_TTL		600	/* TTL in seconds for dns cache entries */
 
-#define FLAGS_A_VALID		1
+#define FLG_A_VALID		1
 #ifdef INET6
-#define FLAGS_AAAA_VALID		2
+#define FLG_AAAA_VALID		2
 #endif
-#define FLAGS_PTR_PEND_FWD	4
-#define FLAGS_PTR_PEND_REV	8
-#define FLAGS_PTR_PEND		(FLAGS_PTR_PEND_FWD|FLAGS_PTR_PEND_REV)
-#define FLAGS_PTR_VALID		16
+#define FLG_PTR_PEND_FWD	4
+#define FLG_PTR_PEND_REV	8
+#define FLG_PTR_PEND		(FLG_PTR_PEND_FWD|FLG_PTR_PEND_REV)
+#define FLG_PTR_VALID		16
 
 struct	hent {
 	char	*h_name;	/* official name of host */
