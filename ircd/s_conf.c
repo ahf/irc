@@ -1363,11 +1363,11 @@ int	openconf(void)
 		 * goes out with report_error.  Could be dangerous,
 		 * two servers running with the same fd's >:-) -avalon
 		 */
-		(void)execlp(M4_PATH, "m4", IRCDM4_PATH, 
+		(void)execlp(M4_PATH, "m4",
 #ifdef INET6
 			"-DINET6",
 #endif
-			configfile, 0);
+			IRCDM4_PATH, configfile, 0);
 		if (serverbooting)
 		{
 			fprintf(stderr,"Fatal Error: Error executing m4 (%s)",
