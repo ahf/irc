@@ -1194,6 +1194,9 @@ void	check_split(void)
 			{
 				firstrejoindone = 1;
 				activate_delayed_listeners();
+#ifdef CACCEPT_DEFAULT
+				iconf.caccept = CACCEPT_DEFAULT;
+#endif
 			}
 		}
 	}
