@@ -569,8 +569,8 @@ aClass	*make_class(void)
 void	free_class(aClass *tmp)
 {
 #ifdef ENABLE_CIDR_LIMITS
-	if(tmp->ip_limits)
-		patricia_destroy(tmp->ip_limits);
+	if (tmp->ip_limits)
+		patricia_destroy(tmp->ip_limits, NULL);
 #endif
 
 	MyFree(tmp);

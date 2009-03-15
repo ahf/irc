@@ -37,10 +37,9 @@
  */
 #include "os.h"
 #include "s_defines.h"
-#define S_PATRICIA_C
+#define PATRICIA_C
 #include "s_externs.h"
-#undef S_PATRICIA_C
-#include "patricia_ext.h"
+#undef PATRICIA_C
 
 /* Enable both of these to debug patricia.c
  * #define PATRICIA_NOTYET 1
