@@ -1873,10 +1873,9 @@ int	m_who(aClient *cptr, aClient *sptr, int parc, char *parv[])
 		if (sptr->user && sptr->user->channel)
 			channame = sptr->user->channel->value.chptr->chname;
 
-#if 0
-		/* I think it's useless --Beeth */
-		clean_channelname(mask);
-#endif
+		if (clean_channelname(mask) == -1)
+			/* maybe we should tell user? --B. */
+			continue;
 
 		/*
 		** We can never have here !mask 
