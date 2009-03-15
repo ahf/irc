@@ -2727,16 +2727,21 @@ int	m_oper(aClient *cptr, aClient *sptr, int parc, char *parv[])
 	password = parv[2];
 
 	if (IsAnOper(sptr))
-	    {
+	{
 		if (MyConnect(sptr))
 			sendto_one(sptr, replies[RPL_YOUREOPER], ME, BadTo(parv[0]));
 		return 1;
-	    }
+	}
 	if (!(aconf = find_Oline(name, sptr)))
-	    {
+	{
 		sendto_one(sptr, replies[ERR_NOOPERHOST], ME, BadTo(parv[0]));
 		return 1;
-	    }
+	}
+	if (aconf->clients >= MaxLinks(Class(aconf)))
+	{
+		sendto_one(sptr, ":%s %d %s :Too many opers", ME, ERR_NOOPERHOST, BadTo(parv[0]));
+		return 1;
+	}
 #ifdef CRYPT_OPER_PASSWORD
 	/* pass whole aconf->passwd as salt, let crypt() deal with it */
 
