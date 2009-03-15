@@ -91,8 +91,8 @@ char	*strtoken(char **save, char *str, char *fs)
            else if (pos[0] == '\033' && pos[2] == 'B' &&
 	   	(pos[1] == '$' || pos[1] == '('))
            {
-	       pos += 3;
 	       flag = (pos[1] == '$') ? 1 : 0;
+	       pos += 3;
 	   }
            else
            {
