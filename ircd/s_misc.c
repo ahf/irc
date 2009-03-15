@@ -1152,8 +1152,6 @@ void	read_motd(char *filename)
 		else
 			line[len] = '\0';
 		temp = (aMotd *)MyMalloc(sizeof(aMotd));
-		if (!temp)
-			outofmemory();
 		temp->line = mystrdup(line);
 		temp->next = NULL;
 		       if (!motd)
