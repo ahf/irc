@@ -1015,15 +1015,7 @@ aConfItem	*find_Oline(char *name, aClient *cptr)
 	char	userip[USERLEN+HOSTLEN+3];
 
 	sprintf(userhost, "%s@%s", cptr->username, cptr->sockhost);
-	sprintf(userip, "%s@%s", cptr->username, 
-#ifdef INET6
-		(char *)inetntop(AF_INET6, (char *)&cptr->ip, ipv6string,
-			sizeof(ipv6string))
-#else
-		(char *)inetntoa((char *)&cptr->ip)
-#endif
-	);
-
+	sprintf(userip, "%s@%s", cptr->username, cptr->user->sip);
 
 	for (tmp = conf; tmp; tmp = tmp->next)
 	    {
