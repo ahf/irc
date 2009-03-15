@@ -662,8 +662,9 @@ int	jp_chname(char *chname)
 	cn = chname;
 	while (*cn)
 	{
-		if (cn[0] == '\033' && cn[2] == 'B'
-			&& (cn[1] == '$' || cn[1] == '('))
+		if (cn[0] == '\033'
+			&& (cn[1] == '$' || cn[1] == '(')
+			&& cn[2] == 'B')
 		{
 			flag = (cn[1] == '$') ? 1 : 0;
 			cn += 2;
@@ -2058,8 +2059,9 @@ void	clean_channelname(char *cn)
 		/* Japanese channel names can have comma in their name, but
 		** only between "\033$B" (begin) and "\033(B" (end) markers.
 		** So we mark it (using flag) for above check. --Beeth */
-		if (cn[0] == '\033' && cn[2] == 'B' &&
-			(cn[1] == '$' || cn[1] == '('))
+		if (cn[0] == '\033'
+			&& (cn[1] == '$' || cn[1] == '(')
+			&& cn[2] == 'B')
 		{
 			flag = (cn[1] == '$') ? 1 : 0;
 			cn += 2;
