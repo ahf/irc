@@ -1375,7 +1375,7 @@ int	openconf(void)
 #ifdef INET6
 			"-DINET6",
 #endif
-			IRCDM4_PATH, configfile, 0);
+			IRCDM4_PATH, configfile, (char *) NULL);
 		if (serverbooting)
 		{
 			fprintf(stderr,"Fatal Error: Error executing m4 (%s)",

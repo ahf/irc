@@ -196,7 +196,7 @@ static	int	openconf(void)
 #ifdef INET6
 			"-DINET6",
 #endif
-			IRCDM4_PATH, configfile, 0);
+			IRCDM4_PATH, configfile, (char *) NULL);
 		perror("m4");
 		exit(-1);
 	default :
