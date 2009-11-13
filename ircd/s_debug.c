@@ -100,6 +100,9 @@ char	serveropts[] = {
 #ifdef	CRYPT_LINK_PASSWORD
 'P',
 #endif
+#ifdef	OPER_SQUIT_REMOTE
+'Q',
+#endif
 #ifdef	OPER_RESTART
 'R',
 #endif

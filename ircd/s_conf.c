@@ -334,6 +334,9 @@ long	oline_flags_parse(char *string)
 #ifndef OPER_SQUIT
 	tmp &= ~ACL_SQUIT;
 #endif
+#ifndef OPER_SQUIT_REMOTE
+	tmp &= ~ACL_SQUITREMOTE;
+#endif
 #ifndef OPER_CONNECT
 	tmp &= ~ACL_CONNECT;
 #endif
