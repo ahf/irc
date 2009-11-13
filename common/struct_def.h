@@ -798,7 +798,7 @@ struct Channel	{
 
 #define	IsMasked(x)		(x && x->serv && x->serv->maskedby != x)
 
-#define IsSplit()		(iconf.split == 1)
+#define IsSplit()		(iconf.split > 0)
 
 typedef	struct	{
 	u_long	is_user[2];	/* users, non[0] invis and invis[1] */

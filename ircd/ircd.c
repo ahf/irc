@@ -340,7 +340,8 @@ static	time_t	try_connections(time_t currenttime)
 		 * try_connections() other servers have chance. --B. */
 		con_conf->hold += get_con_freq(Class(con_conf));
 
-		if (!iconf.aconnect)
+		if (iconf.aconnect == 0 || iconf.aconnect == 2 && 
+				timeofday - iconf.split > DELAYCHASETIMELIMIT)
 		{
 			sendto_flag(SCH_NOTICE,
 				"Connection to %s deferred. Autoconnect "

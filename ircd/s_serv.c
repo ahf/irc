@@ -3262,11 +3262,15 @@ int	m_set(aClient *cptr, aClient *sptr, int parc, char *parv[])
 				{
 					iconf.aconnect = 0;
 				}
+				else if (!mycmp(parv[2], "ND"))
+				{
+					iconf.aconnect = 2;
+				}
 				else
 				{
 					sendto_one(sptr, ":%s NOTICE %s SET "
 						":Illegal value for ACONNECT. "
-						"Possible values: ON OFF",
+						"Possible values: ON OFF ND",
 						ME, parv[0]);
 					break;
 				}
@@ -3373,7 +3377,8 @@ int	m_set(aClient *cptr, aClient *sptr, int parc, char *parv[])
 		if (acmd & TSET_ACONNECT)
 		{
 			sendto_one(sptr, ":%s NOTICE %s :ACONNECT = %s", ME,
-				parv[0], iconf.aconnect == 1 ? "ON" : "OFF");
+				parv[0], iconf.aconnect == 2 ? "ND" : 
+				(iconf.aconnect == 1 ? "ON" : "OFF"));
 		}
 		if (acmd & TSET_CACCEPT)
 		{

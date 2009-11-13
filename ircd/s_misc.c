@@ -1177,7 +1177,7 @@ void	check_split(void)
 		{
 			sendto_flag(SCH_NOTICE,
 				"Network split detected, split mode activated");
-			iconf.split = 1;
+			iconf.split = timeofday;
 		}
 	}
 	else
