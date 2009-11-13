@@ -1011,8 +1011,8 @@ void	initruntimeconf(void)
 	iconf.caccept = 2; /* accept clients when no split */
 
 	/* Defaults set in config.h */
-	iconf.split_minservers = SPLIT_SERVERS;
-	iconf.split_minusers = SPLIT_USERS;
+	iconf.split_minservers = DEFAULT_SPLIT_SERVERS;
+	iconf.split_minusers = DEFAULT_SPLIT_USERS;
 
 	if ((bootopt & BOOT_STANDALONE))
 	{
