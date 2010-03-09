@@ -2700,7 +2700,7 @@ int	prep_kline(int tkline, aClient *cptr, aClient *sptr, int parc, char **parv)
 		** some crucial parts, which can be seen as a typo. --Beeth */
 		err = 1;
 	}
-	if (host && strchr(host, '/') && match_ipmask(host, sptr, 0) == -1)
+	if (host && strchr(host, '/') && match_ipmask(host+1, sptr, 0) == -1)
 	{
 		/* check validity of 1.2.3.0/24 or it will be spewing errors
 		** for every connecting client. */
