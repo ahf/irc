@@ -81,6 +81,22 @@ RETSIGTYPE s_die(int s)
 	logfiles_close();
 	ircd_writetune(tunefile);
 	flush_connections(me.fd);
+#ifdef  UNIXPORT
+	{
+		aClient *acptr;
+		char unixpath[256];
+		for (acptr = ListenerLL; acptr; acptr = acptr->next)
+		{
+			if (IsUnixSocket(acptr))
+			{
+				sprintf(unixpath, "%s/%d",
+				    acptr->confs->value.aconf->host,
+				    acptr->confs->value.aconf->port);
+				(void)unlink(unixpath);
+			}
+		}
+	}
+#endif
 	exit(-1);
 }
 
