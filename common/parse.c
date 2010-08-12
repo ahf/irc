@@ -901,8 +901,9 @@ static	int	cancel_clients(aClient *cptr, aClient *sptr, char *cmd)
 	if (IsServer(cptr))
 	    {
 		sendto_serv_butone(NULL, ":%s KILL %s :%s (%s[%s] != %s)",
-				   me.name, sptr->name, me.name,
-				   sptr->name, sptr->from->name,
+				   me.name,
+				   sptr->user ? sptr->user->uid : sptr->name,
+				   me.name, sptr->name, sptr->from->name,
 				   get_client_name(cptr, TRUE));
 		sptr->flags |= FLAGS_KILLED;
 		return exit_client(cptr, sptr, &me, "Fake Prefix");
