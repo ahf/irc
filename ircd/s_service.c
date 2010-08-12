@@ -498,7 +498,7 @@ int	m_service(aClient *cptr, aClient *sptr, int parc, char *parv[])
 		if (!(bcptr = local[fdas.fd[i]]) || !IsServer(bcptr) ||
 		    bcptr == cptr)
 			continue;
-		if (match(dist, bcptr->name))
+		if (match(dist, bcptr->name) && match(dist, bcptr->serv->sid))
 			continue;
 
 		sendto_one(bcptr, ":%s SERVICE %s %s %d :%s",
