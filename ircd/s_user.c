@@ -2047,9 +2047,9 @@ static	void	send_whois(aClient *sptr, aClient *acptr)
 
 	if (acptr->user && MyConnect(acptr))
 		sendto_one(sptr, replies[RPL_WHOISIDLE], ME, BadTo(sptr->name),
-			   name, timeofday - user->last
+			   name, (long)(timeofday - user->last)
 #ifdef WHOIS_SIGNON_TIME
-			, acptr->firsttime
+			, (long)acptr->firsttime
 #endif
 			);
 }
