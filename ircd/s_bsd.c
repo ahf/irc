@@ -3491,7 +3491,7 @@ static	void	do_dns_async(void)
  * log such crap.
  *
  * Based on Ari `DLR' Heikkinen <aheikin@dlr.pspt.fi> irce0.9.1
- * by Piotr `Beeth' Kucharski <chopin@sgh.waw.pl>
+ * by Piotr `Beeth' Kucharski <chopin@42.pl>
  *
  * Note: calling with fd == -2 closes all delayed fds.
  */
