@@ -1017,7 +1017,7 @@ void	initruntimeconf(void)
 	if ((bootopt & BOOT_STANDALONE))
 	{
 		/* standalone mode */
-		iconf.split = 3;
+		iconf.split = -1;
 	}
 }
 

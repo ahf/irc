@@ -1915,7 +1915,7 @@ static	void	read_listener(aClient *cptr)
 
 		/* Can cptr->confs->value.aconf be NULL? --B. */
 		if ((iconf.caccept == 0 ||
-			(iconf.caccept == 2 && iconf.split == 1))
+			(iconf.caccept == 2 && IsSplit()))
 			&& cptr->confs->value.aconf != NULL
 			&& IsConfDelayed(cptr->confs->value.aconf))
 		{

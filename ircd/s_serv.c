@@ -3817,7 +3817,7 @@ static void report_listeners(aClient *sptr, char *to)
 		{
 			if (iconf.caccept == 0)
 				what = "noaccept";
-			else if (iconf.caccept == 2 && iconf.split == 1)
+			else if (iconf.caccept == 2 && IsSplit())
 				what = "splitnoaccept";
 			else
 				what = "active";
